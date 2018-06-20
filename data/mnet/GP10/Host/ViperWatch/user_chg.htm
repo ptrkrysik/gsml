@@ -1,0 +1,127 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Add GP10 User</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+
+<SCRIPT language="JavaScript">
+
+function PresetForm(theForm)
+{
+	return true;
+}
+
+
+function ParseForm(theForm)
+{
+	var year, hour, month;
+	var newDate;
+	var tmpval
+
+	if (theForm.userName.value.length < 4)
+	{
+		alert("Too short user name!")
+		return false;
+	}
+	if (theForm.password1.value.length < 4)
+	{
+		alert("Too short password!")
+		return false;
+	}
+	
+	if (theForm.password1.value != theForm.password2.value)
+	{
+		alert("Two passwords do not match ")
+		return false;
+	}
+	
+	tmpval= theForm.userName.value;
+	tmpval += "|" +  theForm.oldPassword.value + "|"
+
+	theForm.elements[0].value  = tmpval + theForm.password1.value;
+}
+
+
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" onsubmit="return ParseForm(this)" name="smscbAddMsg">
+
+  <input name="ViperCellUserMgmt(ChgUser)" type="hidden" value="">
+
+   <input name="ac" type="hidden" value="">
+  <p>&nbsp;</p>
+  <table border="0" width="83%" cellspacing="3" cellpadding="3" height="92">
+    <tr>
+      <td width="100%" height="80">
+      <p align="left">&nbsp;
+      <div align="center">
+        <center>
+        <table border="4" bgcolor="#D6D3CE" width="540">
+          <tr>
+            <td width="587">
+            <h2 align="center">Change Password</h2>
+            </center>
+            <center>
+            <table border="0" width="95%">
+              <tr>
+                <td width="30%" nowrap height="23" align="left">User Name</td>
+                <td nowrap width="70%">
+                <p style=" padding-top: 0px; padding-bottom: 0px"><input name="userName" size="25" maxlength="32" value="$%ViperCellUserMgmt(GetUser)#$">
+              </tr>
+              <tr>
+                <td width="30%" nowrap height="23" align="left">Old Password</td>
+                <td nowrap width="70%">
+                <p style=" padding-top: 0px; padding-bottom: 0px"><input type="password" name="oldPassword" size="25" maxlength="32">
+              </tr>
+              <tr>
+                <td width="30%" nowrap height="23" align="left">New Password</td>
+                <td nowrap width="70%">
+                <p style=" padding-top: 0px; padding-bottom: 0px"><input type="password" name="password1" size="25" maxlength="32">
+              </tr>
+              <tr>
+                <td width="30%" nowrap height="23" align="left">Confirm New Password</td>
+                <td nowrap width="70%">
+                <p style=" padding-top: 0px; padding-bottom: 0px"><input type="password" name="password2" size="25" maxlength="32">
+              </tr>
+            </table>
+            <div align="center">
+              <table border="0" cellpadding="3" width="212">
+                <tr>
+                  <td align="center" width="64">&nbsp;</td>
+                  <td align="center" width="62"></td>
+                  <td align="center" width="56"></td>
+                </tr>
+                <tr>
+                  <td align="center" width="64"></td>
+                  <td align="center" width="62"><input name="B1" type="submit" value="Change Password" title="Click this button to commit the change."></td>
+                  <td align="center" width="56"></td>
+                </tr>
+                <tr>
+                  <td align="center" width="64"></td>
+                  <td align="center" width="62"></td>
+                  <td align="center" width="56"></td>
+                </tr>
+              </table>
+            </div>
+            </center>
+          </td>
+        </tr>
+        </table>
+      </div>
+      </td>
+    </tr>
+  </table>
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

@@ -1,0 +1,88 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Parameter</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+
+<SCRIPT language="JavaScript" >
+
+var index = 1;
+function displayIndex()
+{
+	document.write(" " + index++ + " ");
+}
+
+</Script>
+<body onload="$%reloadTopframe#$" >
+<form method="POST" cellpadding="0" name="apaClockSourceFrequencyTable">
+
+<div align="center">
+  <table border="4" bgcolor="#D6D3CE">
+    <tr>
+      <td>
+    <h3 align="center">
+      Frequency Hopping</h3>
+    <div align="center">
+      <center>
+      <table border="0">
+        <tr>
+          <td>Hopping Sequence Number:</td>
+          <td><input type="text" name="hoppingSequenceNumber" size="20"
+            value="$%hoppingSequenceNumber#$"></td>
+        </tr>
+        <tr>
+          <td>Mobile Allocation Table:</td>
+          <td><input type="text" name="mobileAllocationTable" size="20"
+            value="$%mobileAllocationTable#$"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+      </center>
+    </div>
+    <div align="center">
+      <center>
+      <table border="1" width="97%" height="0">
+        <tr>
+   <td height="19" align="center" width="206" >Index&nbsp;</td>
+   <td height="19" align="center" width="88" >ARFCN</td>
+  </tr>
+  <! $%createTable(mobileAllocationIndex,*,,,,,mobileAllocationIndex,mobileAllocation)#$ >
+  <! $%REPEAT(mobileAllocationIndex,1,16)#$ >   
+  <tr>
+  <td align="center" width="206"><script> displayIndex() </script></td>
+  <td title="an entry of radio freuency (ARFCNs) allocated to all channel that belong to the frequencyHopping instance that contains the attribute." align="center" width="88"><input type="text" name="mobileAllocation.$%getInstance(cellAllocationIndex)#$" value="$%mobileAllocation#$" size="4" maxlength="4" onchange="return isValidInt(this,0,1023);"></td>
+  </tr>  
+    
+  <! $%endRow(mobileAllocationIndex)#$ >
+  <! $%REPEAT(END)#$ >
+  <! $%endTable(mobileAllocationIndex)#$>    
+
+  </table>
+   </center>
+   </div>
+  <center>
+  <div align="center">
+    <table border="0" cellpadding="3">
+      <tr>
+        <td align="center"><input name="B2" type="submit" value="Submit">  </td>
+        <td align="center">  <input name="Recall1" type="button" value="Recall" onclick="window.location.reload()"></td>
+      </tr>
+    </table>
+  </div>
+    </td>
+    </tr>
+  </table>
+</div>
+
+</form>
+
+</body>
+

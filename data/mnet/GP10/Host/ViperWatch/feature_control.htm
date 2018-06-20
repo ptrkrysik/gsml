@@ -1,0 +1,184 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Feature Control</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+
+
+<SCRIPT language="JavaScript">
+
+function PresetForm(theForm)
+{
+	theForm.AuthCiphSelect.selectedIndex = Number(theForm.mm_authenticationRequired.value) + Number(theForm.mm_cipheringRequired.value);
+ 	theForm.AuthCiphSelect.defaultSelectedIndex =  theForm.AuthCiphSelect.selectedIndex;
+ 	SyncFrequency(theForm.AuthCiphSelect, theForm.rm_nim_0_7);
+	//clickCheckBox(theForm.mm_IMEICheckRequiredCheck, theForm.mm_IMEICheckRequired);
+	//clickCheckBox(theForm.gprsCheck, theForm.enableGprs);
+	clickCheckBox(theForm.smscbCheck, theForm.rm_nim_0_1);
+	clickCheckBox(theForm.overloadedCellBarring, theForm.rm_nim_1_1);
+
+	// clickCheckBox(theForm.frequencyHoppingCheck, theForm.rm_nim_0_2);
+	return true;
+} 
+
+
+function ParseForm(theForm)
+{	
+	switch(theForm.AuthCiphSelect.selectedIndex)
+	{
+	case  0:  
+		theForm.mm_authenticationRequired.value = 0;
+		theForm.mm_cipheringRequired.value = 0; 		
+		break;
+	case  1:  
+		theForm.mm_authenticationRequired.value = 1;
+		theForm.mm_cipheringRequired.value = 0; 		
+		break;	
+	case  2: 
+		theForm.mm_authenticationRequired.value = 1;
+		theForm.mm_cipheringRequired.value = 1; 		
+		break;
+	}
+	//parseCheckBox(theForm.mm_IMEICheckRequiredCheck, theForm.mm_IMEICheckRequired);
+	//parseCheckBox(theForm.gprsCheck, theForm.enableGprs);
+	parseCheckBox(theForm.smscbCheck, theForm.rm_nim_0_1);
+	parseCheckBox(theForm.overloadedCellBarring, theForm.rm_nim_1_1);
+
+	// parseCheckBox(theForm.frequencyHoppingCheck, theForm.rm_nim_0_2);
+	return true;
+
+}
+
+function SyncFrequency(theSelect, theDm)
+{
+	if (theSelect.selectedIndex == 0) 
+	{
+		theDm.disabled = true;					
+	} else {
+		theDm.disabled = false;
+	}
+}
+
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="feature_control">
+
+  <input name="rm_nim_0_1" type="hidden" value="$%rm_nim_0_1#$">
+  <input name="rm_nim_0_2" type="hidden" value="0">
+  <input type="hidden" name="mm_authenticationRequired" value="$%mm_authenticationRequired#$">
+  <input type="hidden" name="mm_cipheringRequired" value="$%mm_cipheringRequired#$">
+  <!--<input type="hidden" name="enableGprs" value="$%enableGprs#$">-->
+ 
+  <!--- Not used at this time
+  <input type="hidden" name="mm_IMEICheckRequired" value="$%mm_IMEICheckRequired#$">
+  -------------->
+  <input type="hidden" name="rm_nim_1_1" value="$%rm_nim_1_1#$">
+
+  
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="506">
+      <tr>
+        <td width="490">
+        <h2 align="center">Feature Control</h2>
+        </center>
+              <div align="center">
+                <table border="0" width="368">
+                  <tr>
+                    <td height="23" width="354" colspan="2">
+    <center>
+    <table border="1" width="100%">
+      <tr>
+        <td width="100%">
+          <p align="center"><b>&nbsp;Authentication and Ciphering</b></p>
+          <table border="0" width="471">
+            <tr>
+                    <td width="168">Authentication Option:</td>
+                    <td width="282"><select size="1" name="AuthCiphSelect" onchange="SyncFrequency(this, this.form.rm_nim_0_7);">>
+                        <option selected value="0">Disable Ciphering and  Authentication</option>
+                        <option value="1">Enable Authentication Only</option>
+                        <option value="2">Enable both Ciphering and
+                        Authentication</option>
+                      </select></td>
+                    <td width="1"></td>
+            </tr>
+            <tr>
+              <td width="168">Authentication Frequency:</td>
+              <td width="282"><input type="text" name="rm_nim_0_7" value="$%rm_nim_0_7#$" size="1" maxlength="1" onchange="return isValidIntName(this,0,5, 'Authentication Frequency');"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    </center>
+ 
+                      </td>
+                  </tr>
+                    <tr>
+                    <td width="354" colspan="2"></td>
+                    </tr>
+                    <!-------- Not used at this time
+                    <tr>
+                    <td width="27"><input type="checkbox" name="mm_IMEICheckRequiredCheck" value="ON"></td>
+                    <td width="327">Enable IMEI Check</td>
+                    </tr>
+                    ------------->
+                  <!--<tr>
+                    <td height="23" width="27"><input type="checkbox" name="gprsCheck" value="ON"></td>
+                    <td height="23" width="327"><font color="#000000">Enable GPRS</font></td>
+                  </tr>-->
+                  <tr>
+                    <td height="23" width="27"><input type="checkbox" name="smscbCheck"></td>
+                    <td height="23" width="327"><font color="#000000">Enable SMS-CB</font></td>
+                  </tr>
+                  <tr>
+                    <td height="23" width="27"><input type="checkbox" name="overloadedCellBarring" value="ON"></td>
+                    <td height="23" width="327"><font color="#000000">Enable Overloaded Cell Barring</font></td>
+                  </tr>
+                  <!--- Not used now
+                  <tr>
+                    <td height="16" width="27" title="Frequency hopping is not available at this time">
+                    <input type="checkbox" name="frequencyHoppingCheck"></td>
+                    <td height="16" width="327"><font color="#000000">Enable Frequency Hopping</font></td>
+                  </tr>
+                  ------------------->
+                </table>
+              </div>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      </td>
+    </tr>
+    </table>
+  </div>
+  <p align="center">&nbsp;</p>
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

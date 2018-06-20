@@ -1,0 +1,115 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GP10 Voip Parameters</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/ip.js"></SCRIPT>
+
+
+<SCRIPT >
+
+function PresetForm(theForm)
+{
+	cvtIntToBCD(theForm.h323_t35CountryCode, 3);
+	theForm.h323_t35CountryCode.defaultValue = theForm.h323_t35CountryCode.value;
+	return true;
+} 
+
+function ParseForm(theForm)
+{
+	return validateIp(theForm.h323_GKIPAddress, "GMC IP Address");
+
+} 
+
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" onsubmit="return ParseForm(this);" name="h323Mib">
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="446">
+      <tr>
+        <td width="430">
+        <h2 align="center">GP10 VoIP Parameters</h2>
+        <div align="center">
+          <table border="1" width="94%">
+            <tr>
+              <td width="100%">&nbsp;
+              <div align="center">
+                <table border="0" width="90%">
+                  <tr>
+                    <td><font face="Times New Roman">GMC Port</font></td>
+                    <td><input type="text" name="h323_GKPort" size="5" maxlenght="5" value="$%h323_GKPort#$"
+                    onchange="isValidInt(this,0,65535);"></td>
+                  </tr>
+                  <tr>
+                    <td><font face="Times New Roman">GMC IP Address</font></td>
+                    <td><input type="text" name="h323_GKIPAddress" size="15" maxlength="15" value="$%h323_GKIPAddress#$"></td>
+                  </tr>
+                  <tr>
+                    <td>
+                    <p style="padding-top: 0px; padding-bottom: 0px"><font face="Times New Roman">Call
+                    Signaling Port</font></td>
+                    <td>
+                    <p style="padding-top: 0px; padding-bottom: 0px" align="left"><input type="text" name="h323_Q931CallSignalingPort"
+                    size="5" maxlength="5" value="$%h323_Q931CallSignalingPort#$" onchange="isValidInt(this,0,65535);"></td>
+                  </tr>
+                  <tr>
+                    <td>T35 Country Code</td>
+                    <td>
+                    <p align="left"><font face="Times New Roman"><input type="text" name="h323_t35CountryCode" size="3"
+                    value="$%h323_t35CountryCode#$" maxlength="3" onchange="isValidInt(this,0,999);cvtIntToBCD(this,3)"></font></p>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              </td>
+            </tr>
+          </table>
+    </center>
+        <table border="0" width="90%">
+          <tr>
+            <td width="100%"><blink><font size="1" color="#0000FF"><br>
+              Note: Changes made&nbsp;
+        on this page&nbsp; will not be effective until the next reboot&nbsp;
+        of&nbsp; the GP10.</font>
+              </td>
+            </tr>
+          </table>
+          <blink>
+        </div>
+    <center>
+        <div align="center">
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+        </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

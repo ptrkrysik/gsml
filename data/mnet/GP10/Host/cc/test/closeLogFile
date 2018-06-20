@@ -1,0 +1,5 @@
+# Force an update write on the log file.
+
+logFdDelete(logFile)
+
+close(logFile)

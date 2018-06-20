@@ -1,0 +1,94 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Parameter</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+
+<SCRIPT Language="JavaScript">
+
+function parseSelect(theSelect, valueHolder)
+{
+	for (var i = 0; i < theSelect.length; i++)
+	{
+		if (theSelect.options[i].selected) 
+		{
+			valueHolder.value = theSelect.options[i].value;
+			break;
+		}
+	}
+}
+
+function PresetButtons(theForm)
+{
+	selectOption(theForm.gsmdcsIndicatorSelect, theForm.gsmdcsIndicator);
+	clickCheckBox(theForm.rm_nim_0_0Check, theForm.rm_nim_0_0);
+}
+
+function ParseForm(theForm)
+{	
+	parseSelect(theForm.rm_nim_0_0Select, theForm.rm_nim_0_0);
+	parseCheckBox(theForm.rm_nim_0_1Check, theForm.rm_nim_0_1);
+	parseCheckBox(theForm.rm_nim_0_2Check, theForm.rm_nim_0_2);
+
+} 
+
+</SCRIPT>
+
+<body onload="PresetButtons(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this);" name="rm_config_data">
+
+  <input name="rm_nim_0_0" type="hidden" value="$%rm_nim_0_0#$"><input name="gsmdcsIndicator" type="hidden" value="$%gsmdcsIndicator#$">
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="384">
+      <tr>
+        <td width="446">
+        <h2 align="center">GP10 Internal Control Screen</h2>
+        <div align="center">
+          <table border="0" width="368">
+            <tr>
+              <td height="23" width="236"><font color="#000000">Swap TRX Required</font></td>
+              <td height="23" width="118">
+              <p style="padding-top: 0px; padding-bottom: 0px"><input type="checkbox" name="rm_nim_0_0Check" value="ON"></td>
+            </tr>
+            <tr>
+              <td height="29" width="261"
+              title="Indicates the type (GSM, PCS, DCS 1800) of the cell. The value may be used to interpret or check other attribute values.">Radio
+              Indicator:</td>
+              <td height="29" width="246"><select name="gsmdcsIndicatorSelect" size="1">
+                <option value="0">GSM 900</option>
+                <option value="1">DCS 1800</option>
+                <option value="2" selected>PCS 1900</option>
+              </select></td>
+            </tr>
+            <tr>
+              <td height="21" width="236"></td>
+              <td height="21" width="118"></td>
+            </tr>
+          </table>
+        </div>
+        <div align="center">
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"><input name="B2" type="submit" value="Submit"></td>
+              <td align="center"><input name="Recall1" type="button" value="Recall" onclick="window.location.reload()"></td>
+              <td align="center"><input name="Reset1" type="reset" value="Reset"></td>
+            </tr>
+          </table>
+        </div>
+        </td>
+      </tr>
+    </table>
+    </center>
+  </div>
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

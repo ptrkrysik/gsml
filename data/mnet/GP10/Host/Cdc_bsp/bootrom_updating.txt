@@ -1,0 +1,33 @@
+Note (1): How to update bootRom for pre-FCS3 loads:
+---------------------------------------------------
+1. Connect to the desired vipercell using telnet (or serial port)
+2. FTP bootflash.o, nvram2.o and bootrom_uncmp.hex to /ata/vipercall
+3. Load bootflash.o and nvram2.o from /ata/vipercall directory
+	ld < /ata/vipercall/bootflash.o
+	ld < /ata/vipercall/nvram2.o
+4. Program new bootcode by calling the following function:
+	vxBootLoadHex("/ata/vipercall/bootrom_uncmp.hex")
+5. Update boot parameters by calling the following function:
+	UpdateBootParameters
+6. Use FTP to update to the post FCS 3 build (at the very least you need the new vxWorks that matches the new boot code)
+7. Reboot
+
+Note: bootflash.o, nvram2.o and bootrom_uncmp.hex may be deleted after upgrading.
+
+
+
+Note (2): How to update bootrom from newer, FCS3 and beyond, loads:
+(This sequence can also be used to reload the original bootrom code)
+-------------------------------------------------------------------
+
+1. Connect to the desired vipercell using telnet (or serial port)
+2. FTP ViperBoot_uncmp.hex to /ata/vipercall
+3. Program new bootcode by calling the following function:
+	vxBootLoadHex("/ata/vipercall/ViperBoot_uncmp.hex")
+4. Reboot
+
+Note: ViperBoot_uncmp.hex may be deleted after upgrading.
+
+
+
+

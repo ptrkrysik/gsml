@@ -1,0 +1,112 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GSM Port(GP) Manager Title Page</title>
+
+<script language="JavaScript">
+
+function logoutCfm()
+{
+	var status = false;
+	var msg="The best way to logout is to quit a browser.\n\nIf you want to logout without having to quit a browser.\nUser name : bye\nPassword   : blank or any password\nin the next authentication windows.";
+	status = confirm(msg)
+	return status
+}
+
+function displayOpState(theState)
+{
+	var textState = "";
+	var Color = "";
+	var help = ""
+
+	switch(theState)
+	{
+	case  "0":  
+		// Disabled
+		textState = "Disabled";
+		Color += "Red";
+		help = "The operation state is disabled. Check if there is an outstanding alarm."
+		break;
+	case  "1":  
+		// Enabled
+		textState = "Enabled";
+		Color += "Green";
+		help = "The operation state is enabled."
+		break;	
+	default:
+		textState = "Invalid";
+		Color += "Yellow";
+		help = "Invalid value of operational state!!!"
+		break;
+	}
+	document.write("<td height=\"10\" width=\"16%\" valign=\"top\" align=\"center\" title=\"" + help + "\" > <font size=1>  Op. State: <font Color=\"" + Color + "\" >"  + textState +  "</font> </font> </td>");
+}
+
+function displayAdminState(theState)
+{
+	var textState = "";
+	var Color = "";
+	var help = ""
+
+	switch(theState)
+	{
+	case  "0":  
+		// Disabled
+		textState = "Locked";
+		Color = "Red";
+		help = "The Admin. state is locked by the operator."
+		break;
+	case  "1":  
+		// Enabled
+		textState = "Unlocked";
+		Color = "Green";
+		help = "The Admin. state is unlocked."		
+		break;	
+	case  "2":  
+		// Shuttig Down
+		textState = "Shutting down";
+		Color = "Pink";
+		help = "The GP10 is being shutdown"
+		break;
+	default:
+		textState = "Invalid";
+		Color = "Yellow";
+		help = "Invalid value of Admin. state"
+		break;
+	}
+	document.write("<td height=\"10\" width\"16%\" valign=\"top\" align=\"center\" title=\"" + help + "\" > <font size=1> Admin. State: <font Color=\"" + Color + "\" >"  + textState +  "</font> </font></td>");
+	
+}
+</script>
+
+<base target="main">
+
+</head>
+
+<body topmargin="0" leftmargin="0" onload="setInterval('window.location.reload()', 300000);">
+
+<table border="0" cellspacing="0" cellpadding="0" width="98%" height="1">
+  <tr>
+    <td width="90%" height="10" align="center" colspan="6" valign="middle"> <h3>Cisco GSM Port
+      Manager</h3></td>
+    <td width="10%" height="20" align="right" rowspan="2" valign="middle"><img border="0" src="Images/ciscologo.jpg" width="68" height="50" alt="Cisco Logo"></td>
+  </tr>
+  <tr>
+      <td height="10" width="16%" valign="top" align="center"><font size="1">User: $%UserName#$</font></td>
+      <td height="10" width="16%" valign="top" align="center"><font size="1">Name: $%viperCellName#$</font></td>
+      <td height="10" width="16%" valign="top" align="center"><font size="1">IP Address:$%viperCellIPAddress#$</font></td>
+      <script language="JavaScript"> displayOpState("$%bts_operationalState#$") </script>
+      <script language="JavaScript"> displayAdminState("$%bts_administrativeState#$") </script>
+   	  <td height="10" width="10%" valign="top" align="center"><a target=main onClick="return logoutCfm()" href="logout.htm" ><font size="1">Logout</font></a></td>
+  </tr>
+
+  </table>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

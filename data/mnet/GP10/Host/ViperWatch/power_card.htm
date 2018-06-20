@@ -1,0 +1,82 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Power Card</title>
+</head>
+
+<SCRIPT >
+
+function presetButtons(theForm)
+{
+
+	return true;
+} 
+
+function parseButtons(theForm)
+{	
+	return true;	
+}
+
+function  displayPwrVolt(volt)
+{
+	var aVolt = volt.split("=");
+	if(aVolt.length >1)
+	{
+	   document.write("<tr><td>" + aVolt[0] +" </td><td> " + aVolt[1] + "</td> </tr>\n");
+	}
+}
+
+function displayPwrVolts(thePwrStatus)
+{
+   var aVolts = thePwrStatus.split("|");
+	for (var i=0; i< aVolts .length; i++)
+	{
+		displayPwrVolt(aVolts[i])
+    }
+}
+
+
+
+</SCRIPT>
+
+<body onload="presetButtons(this.document.forms[0]);$%reloadTopframe#$">
+<form method="POST" cellpadding="0" onsubmit="return FrontPage_Form1_Validator(this)" name="FrontPage_Form1">
+
+<div align="center">
+  <center>
+  <table border="4" bgcolor="#D6D3CE" width="440">
+    <tr>
+      <td width="502">
+    <h2 align="center">Power Supply Status</h2>
+        <div align="center">
+          <table border="1" width="352">
+            <tr>
+              <td height="23" width="175"><b>Expected Voltage (± 5%)</b></td>
+              <td height="23" width="163"><b>Actual Voltage</b></td>
+            </tr>
+            <script language="JavaScript"> displayPwrVolts("$%cdcPwrSupplyStatus#$"); </script>
+            </table>
+        </div>
+
+    <div align="center">
+      <table border="0" cellpadding="3">
+        <tr>
+          <td align="center">  <input name="Recall1" type="button" value="Recall" onclick="window.location.reload()"></td>
+        </tr>
+      </table>
+    </div>
+      </td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+<p align="center">&nbsp;</p>
+
+</form>
+
+</body>
+

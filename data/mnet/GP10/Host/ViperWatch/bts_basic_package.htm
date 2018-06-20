@@ -1,0 +1,310 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>BTS Basic Package</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/state.js"></SCRIPT>
+
+
+
+
+<SCRIPT language="JavaScript">
+
+function updateCheckBox(theForm, theCheckBox)
+{
+	
+	for (var i = 0; i < theCheckBox.length; i++)
+	{
+		if (theForm.elements[i].value == "1") 
+		{
+			theCheckBox[i].checked = true;
+			theCheckBox[i].defaultChecked = true;
+
+		}
+	}
+			
+}
+
+	
+function PresetForm(theForm)
+{
+	theForm.ny1.defaultValue = 0;
+
+	updateCheckBox(theForm, theForm.plmnPermittedCheck);
+	cvtIntToBCD(theForm.bts_mcc, "3");
+	theForm.bts_mcc.defaultValue = theForm.bts_mcc.value;
+	cvtIntToBCD(theForm.bts_mnc, "2");
+	theForm.bts_mnc.defaultValue = theForm.bts_mnc.value;
+	selectOption(theForm.bts_administrativeStateSelect,theForm.bts_administrativeState);
+	return true;
+} 
+
+
+
+function updateHidden(theForm, theCheckBox)
+{
+	
+	for (var i = 0; i < theCheckBox.length; i++)
+	{
+		if (theCheckBox[i].checked)
+		{
+			theForm.elements[i].value = "1";
+		} else {
+		    theForm.elements[i].value = "0";
+		}
+	}
+}
+
+
+function ParseForm(theForm)
+{	
+	updateHidden(theForm, theForm.plmnPermittedCheck);
+	parseSelect(theForm.bts_administrativeStateSelect, theForm.bts_administrativeState);
+	theForm.btsID.value = theForm.bts_lac.value;
+}
+
+function displayGsmDcsInd(theState)
+{
+	var textState = "";
+	var Color = "";
+	switch(theState)
+	{
+	case  "0":  
+		textState = "GSM 900";
+		Color += "Black";
+		break;
+	case  "1":  
+		textState = "DCS 1800";
+		Color += "Black";
+		break;	
+	case "2":
+		textState = "PCS 1900";
+		Color += "Black";
+		break;
+	default:
+	    textState = "Invalid";
+	    Color += "Yellow";
+				help = "Invalid value of operational state!!!"
+		break;
+	}
+	document.write("<font color=\"" + Color + "\"> " + textState +  "</font>");
+}
+
+ 
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="dual_trx_card">
+
+  <!$%createTable(plmnPermittedIndex,*,,,,,plmnPermittedIndex,plmnPermitted)#$>
+  <!$%REPEAT(plmnPermittedIndex,1,8)#$>
+  <input type="hidden" name="plmnPermitted.$%getInstance(plmnPermittedIndex)#$" value="$%plmnPermitted#$">
+  <!$%endRow(plmnPermittedIndex)#$><!$%REPEAT(END)#$>
+  <!$%endTable(plmnPermittedIndex)#$>
+
+  <input name="bts_administrativeState" type="hidden" value="$%bts_administrativeState#$">
+  <input name="btsID" type="hidden" value="$%bts_ci#$">
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="536">
+      <tr>
+        <td width="520">
+        <h2 align="center">BTS Basic Package</h2>
+      <div align="center">
+        <table border="1">
+          <tr>
+            <td><b>Current State:</b>
+              <div align="center">
+                <table border="0">
+                  <tr>
+   						<td height="23" align="left">Administrative State:</td>
+   						<td height="23" align="left">
+   							<select name="bts_administrativeStateSelect" size="1" onchange="return ConfirmAdminState(this, this.form.bts_administrativeState, 'GP10', 'GP10', '1', 'NIL');">
+                				<option value="0">Locked</option>
+                				<option selected value="1">Unlocked</option>
+                				<option value="2">Shutting Down</option>
+              			</select>
+              		</td>
+                  </tr>
+                   <tr>
+  						 <td height="23" align="left">Operational State:</td>
+   						<td height="23" align="left">
+   							<script> displayState("$%bts_operationalState#$") </script>
+  						 </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+        <div align="center">
+          <center>
+          <table border="1" height="451" width="521" cellpadding="2">
+            <tr>
+              <td height="34" width="260"
+              title="BSIC is transmitted on the SCH and used for identifying a BTS. It consists of the Network Colour Code (NCC) and the Base Station Colour Code (BCC)">Base
+              Station Identity Code (BSIC)</td>
+              <td height="34" width="246" title="Network (PLMN) Colour Code: INTEGER (0..7)">
+              <table border="0" width="100%">
+                <tr>
+                  <td height="34" width="57" title="Network (PLMN) Colour Code: INTEGER (0..7)">NCC:&nbsp;&nbsp; &nbsp;</td>
+                  <td height="34" width="57" title="Network (PLMN) Colour Code: INTEGER (0..7)"><font face="Times New Roman"><input name="bts_ncc"
+                  size="1" maxlength="1" value="$%bts_ncc#$" onchange="return isValidInt(this,0,7);"></font></td>
+                  <td height="34" width="67" title="Base Transceiver Station (BTS) Colour Code: INTEGER (0..7)">BCC:&nbsp;</td>
+                  <td height="34" width="65" title="Base Transceiver Station (BTS) Colour Code: INTEGER (0..7)"><font face="Times New Roman"><input
+                  name="bts_cid" size="1" maxlenght="1" value="$%bts_cid#$" onchange="return isValidInt(this,0,7);"></font></td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+            <tr>
+              <td height="69" width="261"
+              title="This attribute contains the Cell Identification (CI) and the Location Area of the cell. A Location Area is unique within a GSM PLMN; a Cell Identification is unique within a location area.">Cell
+              Global Identity:</td>
+              <td height="65" width="242" title="Mobile Country Code: 3 Digits">
+              <table border="0" width="100%">
+                <tr>
+                  <td height="25" width="57" title="Mobile Country Code: 3 Digits">MCC:</td>
+                  <td height="25" width="56" title="Mobile Country Code: 3 Digits"><font face="Times New Roman"><input name="bts_mcc" size="3"
+                  maxlength="3" value="$%bts_mcc#$" onchange="return isValidInt(this,0,999);"></font></td>
+                  <td height="25" width="65" title="Mobile Network Code: 2 Digits">MNC:&nbsp;</td>
+                  <td height="25" width="64" title="Mobile Network Code: 2 Digits"><font face="Times New Roman"><input name="bts_mnc" size="2"
+                  maxlength="2" value="$%bts_mnc#$" onchange="return isValidInt(this,0,99);"></font></td>
+                </tr>
+                <tr>
+                  <td height="40" width="57" title="Location Area Code: INTEGER (0..65535)">LAC:&nbsp;</td>
+                  <td height="40" width="56" title="Location Area Code: INTEGER (0..65535)"><font face="Times New Roman"><input name="bts_lac"
+                  size="5" maxlength="5" value="$%bts_lac#$" onchange="return isValidInt(this,0,65535);"></font></td>
+                  <td height="40" width="65" title="Cell Identity : INTEGER (0..65535)">CI:&nbsp;</td>
+                  <td height="40" width="64" title="Cell Identity : INTEGER (0..65535)"><font face="Times New Roman"><input name="bts_ci" size="5"
+                  maxlength="5" value="$%bts_ci#$" onchange="return isValidInt(this,0,65535);"></font></td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+            <tr>
+              <td height="36" width="261"
+              title="The cell-reselect-hysteresis attribute indicates the value of the receiver RF power level hysteresis required for cell reselection.">Cell
+              Reselect Hysteresis:<br>
+              <font size="1">&nbsp;(in 2dB step):</font></td>
+              <td height="36" width="246" title="This parameter has a range of 0 to 14 dB with a step size of 2 dB and is coded as INTEGER (0..7)."><input
+              name="cellReselectHysteresis" size="1" maxlength="1" value="$%cellReselectHysteresis#$" onchange="return isValidInt(this,0,7);"></td>
+            </tr>
+            <tr>
+              <td height="29" width="261"
+              title="Indicates the type (GSM, PCS, DCS 1800) of the cell. The value may be used to interpret or check other attribute values.">Radio
+              Indicator:</td>
+              <td height="29" width="246"> 
+              <script> displayGsmDcsInd("$%gsmdcsIndicator#$") </script>
+<!----
+              <select name="gsmdcsIndicatorSelect" size="1" readonly disabled>
+                <option value="0">GSM 900</option>
+                <option value="1">DCS 1800</option>
+                <option value="2" selected>PCS 1900</option>
+              </select>
+------------------->              
+              </td>
+            </tr>
+            <tr>
+              <td height="43" width="261"
+              title="The ny1 attribute indicates the maximum number of repetitions of the PHYSICAL INFORMATION message on the radio interface (GSM 04.08). This message is sent by the BTS to the MS during a handover procedure between two not synchronized cells, in order to establish a physical channel connection on the new cell.">Max
+              Number of Repetitions of Physical Info. (ny1):</td>
+              <td height="43" width="246" title="INTEGER"><input name="ny1" size="10" value="$%ny1#$" onchange="return isValidInt(this,0,7);"></td>
+            </tr>
+            <tr>
+              <td height="74" width="261" title="NCCs for which the MS is permitted to report measurement results.">PLMN Permitted NCCs</td>
+              <td height="70" width="240" title="Select if the MS is permitted to report measurement results to NCC 0">
+              <table border="0" width="100%">
+                <tr>
+                  <td height="35" width="60" title="Select if the MS is permitted to report measurement results to NCC 0">
+                  <p align="center">0<br>
+                  <input name="plmnPermittedCheck" type="checkbox" value="ON"></td>
+                  <td height="35" width="60" title="Select if the MS  is permitted to report measurement results to NCC 1.">
+                  <p align="center">1<br>
+                  <input name="plmnPermittedCheck" type="checkbox" value="ON"></td>
+                  <td height="35" width="60" title="Select if the MS  is permitted to report measurement results to NCC 2.">
+                  <p align="center">2<br>
+                  <input name="plmnPermittedCheck" type="checkbox" value="ON"></td>
+                  <td height="35" width="60" title="Select if the MS  is permitted to report measurement results to NCC 3.">
+                  <p align="center">3<br>
+                  <input name="plmnPermittedCheck" type="checkbox" value="ON"></td>
+                </tr>
+                <tr>
+                  <td height="35" width="60" title="Select if the MS  is permitted to report measurement results to NCC 4.">
+                  <p align="center">4<br>
+                  <input name="plmnPermittedCheck" type="checkbox" value="ON"></td>
+                  <td height="35" width="60" title="Select if the MS  is permitted to report measurement results to NCC 5.">
+                  <p align="center">5<br>
+                  <input name="plmnPermittedCheck" type="checkbox" value="ON"></td>
+                  <td height="35" width="60" title="Select if the MS  is permitted to report measurement results to NCC 6.">
+                  <p align="center">6<br>
+                  <input name="plmnPermittedCheck" type="checkbox" value="ON"></td>
+                  <td height="35" width="60" title="Select if the MS  is permitted to report measurement results to NCC 7.">
+                  <p align="center">7<br>
+                  <input name="plmnPermittedCheck" type="checkbox" value="ON"></td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+            <tr>
+              <td height="31" width="261"
+              title="This attribute is used to indicate the maximum value of the radio link counter needed to detect a radio link failure.">Radio Link
+              Timeout<br>
+              &nbsp;<font size="1">(in 4 SACCH frame unit):</font></td>
+              <td height="31" width="246" title="Integer(0..15)"><input name="radioLinkTimeout" size="2" maxlength="2" value="$%radioLinkTimeout#$"
+              onchange="return isValidInt(this,0,15);"></td>
+            </tr>
+            <tr>
+              <td height="31" width="261"
+              title="This attribute is used to indicate the minimum receive level at the MS required for access to the system.">Minimum Receive Level
+              Access:</td>
+              <td height="31" width="246"
+              title="RxLev ::= INTEGER (0..63)
+-- 0 : &lt; -110 dB,
+-- 1 : -110 dB .. -109 dB
+-- 2 : -109 dB .. -108 dB
+--
+-- 63: &gt; -48 dB
+-- Ref. GSM 05.08 (RXLEV)"><input name="rxLevAccessMin" size="2" maxlength="2" value="$%rxLevAccessMin#$" onchange="return isValidInt(this,0,63);"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        </td>
+      </tr>
+    </table>
+    </center>
+  </div>
+  <p align="center">&nbsp;
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

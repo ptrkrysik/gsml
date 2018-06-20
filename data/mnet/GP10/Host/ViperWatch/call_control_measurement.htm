@@ -1,0 +1,221 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Call Control Measurement Parameters</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/common.js"></SCRIPT>
+
+
+
+<script language="JavaScript">
+
+
+function PresetForm(theForm)
+{
+	// clickCheckBox(theForm.apaEnableCheck, theForm.apaEnable);
+}
+
+function ParseForm(theForm)
+{
+	// parseCheckBox(theForm.apaEnableCheck, theForm.apaEnable);
+}
+
+</script>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" name="call_control_measurements">
+
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="472">
+      <tr>
+        <td valign="middle" width="679">
+        <h2 align="center">Call Control Measurement Parameters</h2>
+        <div align="center">
+            <center>
+              <table border="0">
+                <tr>
+                  <td align="left">
+                  <p align="left"><b> Start Time:</b></td>
+                  <td>
+                  <i>
+                  <script> displayTime("$%meanPCHAGCHQueueLength#$") </script>
+                  </i>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="left"><b>Duration:</b></td>
+                  <td><i>Last Completed 15-Minute Measurement Interval</i></td>
+                </tr>
+              </table>
+            </center>
+        </div>
+        <div align="center">
+            <center>
+          <table border="1" cellspacing="0" cellpadding="0" width="90%">
+            <tr>
+              <th valign="middle" align="left"  width="80%" nowrap>Parameters</th>
+              <th valign="middle" align="left" width="17%" >Value</th>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Attempted mobile originating calls:</td>
+            </center>
+    </center>
+
+    <center>
+            <center>
+              <td valign="middle" align="left" width="17%" >$%attMobileOriginatingCalls#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Successful mobile originating calls:</td>
+              <td valign="middle" align="left" width="17%" >$%succMobileOriginatingCalls#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Answered mobile originating calls:</td>
+              <td valign="middle" align="left" width="17%" >$%ansMobileOriginatingCalls#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Attempted mobile terminating calls:</td>
+              <td valign="middle" align="left" width="17%" >$%attMobileTerminatingCalls#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Successful mobile terminating calls:</td>
+              <td valign="middle" align="left" width="17%" >$%succMobileTerminatingCalls#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Answered mobile terminating calls:</td>
+              <td valign="middle" align="left" width="17%" >$%ansMobileTerminatingCalls#$</td>
+            </tr>
+           <tr>           
+              <td valign="middle" align="left"  width="80%" nowrap>Attempted Mobile Emergency calls</td>
+              <td valign="middle" align="left" width="17%" >$%attMobileEmergencyCalls#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Successful Mobile Emergency calls</td>
+              <td valign="middle" align="left" width="17%" >$%succMobileEmergencyCalls#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Answered Mobile Emergency calls</td>
+              <td valign="middle" align="left" width="17%" >$%ansMobileEmergencyCalls#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Attempted ciphering mode control procedures:</td>
+              <td valign="middle" align="left" width="17%" >$%attCipheringModeControlProcs#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Successful ciphering mode control procedures:</td>
+              <td valign="middle" align="left" width="17%" >$%succCipheringModeControlProcs#$</td>
+            </tr>
+            <!------ Hide for now
+            
+            <tr>
+              <td valign="middle" align="left">Attempted interrogations of GMC for routing</td>
+              <td valign="middle" align="center" width="100" height="19">$%attInterrogationOfHLRsForRouting#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left">Successful interrogations of GMC (MSRN obtained)</td>
+              <td valign="middle" align="center" width="100" height="19">$%succInterrogationOfHLRsMSRNObtained#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left">Successful interrogations of GMC (call Forwarding)</td>
+              <td valign="middle" align="center" width="100" height="19">$%succInterrogationOfHLRsCallForwarding#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left">Attempted operations for mobile originating point to point SMs</td>
+              <td valign="middle" align="center" width="100" height="19">$%attOpForMobileOriginatingPointToPointSMs#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left" >Successful operations for mobile originating point to point SMs</td>
+              <td valign="middle" align="center" width="100" height="19">$%succOpForMobileOriginatingPointToPointSMs#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left">Attempted operations for mobile terminating point to point SMs</td>
+              <td valign="middle" align="center" width="100" height="19">$%attOpForMobileTerminatingPointToPointSMs#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left" >Successful operations for mobile terminating point to point SMs</td>
+              <td valign="middle" align="center" width="100">$%succOpForMobileTerminatingPointToPointSMs#$</td>
+            </tr>
+            <tr>
+            --------------------->
+              <td valign="middle" align="left"  width="80%" nowrap>Mean time to provide the
+                call setup service:</td>
+              <td valign="middle" align="left" width="17%" >
+                 <script language="JavaScript"> cvtTicks2Sec("$%meanTimeToCallSetupService#$"); </script>
+              </td>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Mean time to provide the
+                location update service:</td>
+              <td valign="middle" align="left" width="17%" >
+              <script language="JavaScript"> cvtTicks2Sec("$%meanTimeToLocationUpdateService#$"); </script>
+              </td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Transactions on the MM-layer<br>
+              where subscriber was identified with IMSI:</td>
+              <td valign="middle" align="left" width="17%" >$%transSubIdentifiedWithIMSI#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>IMSI detach procedures:</td>
+              <td valign="middle" align="left" width="17%" >$%imsiDetachProcs#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>IMSI attach procedures;:</td>
+              <td valign="middle" align="left" width="17%" >$%imsiAttachProcs#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Attempted incoming
+                inter-GP10 Handovers:</td>
+              <td valign="middle" align="left" width="17%" >$%attIncomingInterMSCHDOs#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Successful incoming
+                inter-GP10 Handovers:</td>
+              <td valign="middle" align="left" width="17%" >$%succIncomingInterMSCHDOs#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Attempted outgoing
+                inter-GP10 Handovers:</td>
+              <td valign="middle" align="left" width="17%" >$%attOutgoingInterMSCHDOs#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Successful outgoing
+                inter-GP10 Handovers:</td>
+              <td valign="middle" align="left" width="17%" >$%succOutgoingInterMSCHDOs#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Unsuccessful inter-GP10 Handovers<br>
+              with reconnection to old channels, per
+                GP10:</td>
+              <td valign="middle" align="left" width="17%" >$%unsuccExternHDOsWithReconnectionPerMSC#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Unsuccessful inter-GP10 Handovers<br>
+              with loss of connection, per GP10:</td>
+              <td valign="middle" align="left" width="17%" >$%unsuccExternHDOsWithLossOfConnectionPerMSC#$</td>
+            </tr>
+          </table>
+            </center>
+        </div>
+        <div align="center">
+            <center>
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"></td>
+            </tr>
+          </table>
+            </center>
+        </div>
+        </td>
+      </tr>
+    </table>
+</form>
+
+</body>

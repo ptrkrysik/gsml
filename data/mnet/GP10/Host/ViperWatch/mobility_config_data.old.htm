@@ -1,0 +1,184 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Parameter</title>
+</head>
+
+<SCRIPT >
+
+function updateCheckBox(theCheckBox)
+{
+	
+	if (theCheckBox.value == "1") 
+	{
+		theCheckBox.checked = true;
+	} else {
+		theCheckBox.checked = false;
+	}
+}
+
+function presetButtons(theForm)
+{
+	updateCheckBox(theForm.mm_authenticationRequiredCheck);
+	updateCheckBox(theForm.mm_cipheringRequiredCheck);
+	updateCheckBox(theForm.mm_IMEICheckRequiredCheck);
+	return true;
+} 
+
+function updateCheckBoxValue(theCheckBox, valueHolder)
+{
+
+	if (theCheckBox.checked == true) 
+	{
+		valueHolder.value = "1";
+	}
+
+}
+
+function parseButtons(theForm)
+{	
+	updateCheckBoxValue(theForm.mm_authenticationRequiredCheck, theForm.mm_authenticationRequired);
+	updateCheckBoxValue(theForm.mm_cipheringRequiredCheck, theForm.mm_cipheringRequired);
+	updateCheckBoxValue(theForm.mm_IMEICheckRequiredCheck, theForm.mm_IMEICheckRequired);
+	return true;
+	
+} 
+
+
+</SCRIPT>
+
+<body onload="presetButtons(this.document.forms[0]);$%reloadTopframe#$">
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+  if (theForm.mm_max_mm_connections.value == "")
+  {
+    alert("Please enter a value for the \"mm_max_mm_connections\" field.");
+    theForm.mm_max_mm_connections.focus();
+    return (false);
+  }
+
+  if (theForm.mm_max_mm_connections.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"mm_max_mm_connections\" field.");
+    theForm.mm_max_mm_connections.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.mm_max_mm_connections.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"mm_max_mm_connections\" field.");
+    theForm.mm_max_mm_connections.focus();
+    return (false);
+  }
+
+  if (theForm.mm_paging_t3113.value == "")
+  {
+    alert("Please enter a value for the \"mm_paging_t3113\" field.");
+    theForm.mm_paging_t3113.focus();
+    return (false);
+  }
+
+  if (theForm.mm_paging_t3113.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"mm_paging_t3113\" field.");
+    theForm.mm_paging_t3113.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.mm_paging_t3113.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"mm_paging_t3113\" field.");
+    theForm.mm_paging_t3113.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" cellpadding="0" onsubmit="return FrontPage_Form1_Validator(this)" name="FrontPage_Form1">
+
+<h2 align="center">Mobility Config Parameters</h2>
+
+<div align="center">
+ <center>
+ <table border="1">
+  <tr>
+   <td height="21" align="left"><strong><font face="Times New Roman">Parameter</font></strong></td>
+   <td height="21" align="left"><strong><font face="Times New Roman">Value</font></strong></td>
+  </tr>
+  <tr>
+   <td>Max. #&nbsp; of MM Connections</td>
+   <td><font size="1"><!--webbot bot="Validation" s-data-type="Integer"
+    s-number-separators="x" b-value-required="TRUE" i-maximum-length="6" --><input type="text" name="mm_max_mm_connections" size="6" value="$%mm_max_mm_connections#$" maxlength="6"></font></td>
+  </tr>
+  <tr>
+   <td>Paging Response Timer<span lang="FR" style="mso-ansi-language:FR"> -T3113<o:p>
+          </o:p>
+   </span></td>
+   <td><font size="1"><!--webbot bot="Validation" s-data-type="Integer"
+    s-number-separators="x" b-value-required="TRUE" i-maximum-length="6" --><input type="text" name="mm_paging_t3113" size="6" value="$%mm_paging_t3113#$" maxlength="6"></font></td>
+  <tr>
+   <td>Authentication Required</td>
+   <td><input type="checkbox" name="mm_authenticationRequiredCheck" value="$%mm_authenticationRequired#$" ></td>
+  <tr>
+   <td>Ciphering Required<o:p>
+&nbsp;</td>
+   <td><input type="checkbox" name="mm_cipheringRequiredCheck" value="$%mm_cipheringRequired#$" ></td>
+  <tr>
+   <td>IMEI Check Required</td>
+   <td><input type="checkbox" name="mm_IMEICheckRequiredCheck" value="$%mm_IMEICheckRequired#$" ></td>
+   
+   <input type="hidden" name="mm_authenticationRequired" value="0" >
+   <input type="hidden" name="mm_cipheringRequired" value="0" >
+   <input type="hidden" name="mm_IMEICheckRequired" value="0" >
+
+   
+ </table>
+ </center>
+</div>
+
+<p align="center">&nbsp;<input name="B1" type="submit" value="Submit" onClick="parseButtons(window.document.forms[0]);">  <input name="Recall" type="button" value="Recall" onclick="window.location.reload()"><input name="Reset" type="reset" value="Reset" onclick="presetButtons(window.document.forms[0])"> </p>
+
+</form>
+
+</body>
+

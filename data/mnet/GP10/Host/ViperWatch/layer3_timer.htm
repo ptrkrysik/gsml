@@ -1,0 +1,118 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Layer 3 Timer</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+
+<SCRIPT language="JavaScript">
+
+function ParseForm(theForm)
+{
+	return true;	
+}
+
+function PresetForm(theForm)
+{
+	return true;	
+}
+
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="layer2_timer">
+
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="380">
+      <tr>
+        <td width="501">
+        <h2 align="center">Layer 3 (RRM) Timers</h2>
+        <div align="center">
+          <table border="1" width="273">
+            <tr>
+              <td align="left" valign="middle" width="165"><b>&nbsp;Timer Name</b></td>
+              <td align="left" valign="middle" title="Integer(0..65535) (the unit is 10ms)" width="92">
+              <p align="center"><b>&nbsp;Value<br>
+              <font size="1">( in 10ms units)</font></b></td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle" width="165"><span style="text-transform: capitalize">Immediate Assignment<br>
+              &nbsp;(T3101)</span></td>
+              <td align="left" valign="middle" title="Integer(0..65535) (the unit is 10ms)" width="92"><input name="t3101" size="5" maxlenght="5"
+              value="$%t3101#$" onchange="isValidInt(this,0,65535)"></td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle" width="165"><span style="text-transform: capitalize">&nbsp;Handover Command<br>
+              (T3103)</span></td>
+              <td align="left" valign="middle" title="Integer(0..65535) (the unit is 10ms)" width="92"><input name="t3103" size="5" maxlenght="5"
+              value="$%t3103#$" onchange="isValidInt(this,0,65535)"></td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle" width="165"><span style="text-transform: capitalize">physical Information<br>
+              (T3105)</span></td>
+              <td align="left" valign="middle" title="Integer(0..65535) (the unit is 10ms)" width="92"><input name="t3105" size="5" maxlenght="5"
+              value="$%t3105#$" onchange="isValidInt(this,0,65535)"></td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle" width="165"><span style="text-transform: capitalize">Assignment Command<br>
+              (T3107)</span></td>
+              <td align="left" valign="middle" title="Integer(0..65535) (the unit is 10ms)" width="92"><input name="t3107" size="5" maxlenght="5"
+              value="$%t3107#$" onchange="isValidInt(this,0,65535)"></td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle" width="165"><span style="text-transform: capitalize">lower layer failure<br>
+              (T3109)</span></td>
+              <td align="left" valign="middle" title="Integer(0..65535) (the unit is 10ms)" width="92"><input name="t3109" size="5" maxlenght="5"
+              value="$%t3109#$" onchange="isValidInt(this,0,65535)"></td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle" width="165"><span style="text-transform: capitalize">Channel Activation Delay<br>
+              (T3111)</span></td>
+              <td align="left" valign="middle" title="Integer(0..65535) (the unit is 10ms)" width="92"><input name="t3111" size="5" maxlenght="5"
+              value="$%t3111#$" onchange="isValidInt(this,0,65535)"></td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle" width="165"><span style="text-transform: capitalize">Paging Messages<br>
+              (T3113)</span></td>
+              <td align="left" valign="middle" title="Integer(0..65535) (the unit is 10ms)" width="92"><input name="t3113" size="5" maxlenght="5"
+              value="$%t3113#$" onchange="isValidInt(this,0,65535)"></td>
+            </tr>
+          </table>
+        </div>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        </center>
+      </td>
+    </tr>
+    </table>
+  </div>
+  <p align="center">&nbsp;</p>
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

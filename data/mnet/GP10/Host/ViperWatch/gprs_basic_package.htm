@@ -1,0 +1,127 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GPRS Basic Package</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/state.js"></SCRIPT>
+
+
+<SCRIPT language="JavaScript">
+	
+function PresetForm(theForm)
+{
+	selectOption(theForm.enableGprsSelect,theForm.enableGprs);
+	return true;
+} 
+
+
+
+function ParseForm(theForm)
+{	
+	parseSelect(theForm.enableGprsSelect, theForm.enableGprs);
+
+	if (!validateIp(theForm.gprsServerIpAddress, "GPRS IP Address"))
+		return false;
+
+	return true;
+}
+
+function PrintDisableMessage(theElem)
+{
+	if (theElem.value == 0)
+		{
+		alert("You are going to disable GPRS feature.\nPlease make sure that all slot is not configured as GPRS");
+		}
+}
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="gprs_basic_package">
+
+  <input name="enableGprs" type="hidden" value="$%enableGprs#$">
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="340">
+      <tr>
+        <td >
+        <h2 align="center">GPRS Basic Package</h2>
+		  <div align="center">
+			<table border="1">
+			  <tr>
+				<td><b>Current State:</b>
+				  <div align="center">
+					<table border="0">
+					  <tr>
+   							<td height="23" align="left">GPRS Feature:</td>
+   							<td height="23" align="left">
+   								<select name="enableGprsSelect" size="1" onChange="PrintDisableMessage(this);">
+                					<option value="0">Disable</option>
+                					<option selected value="1">Enable</option>
+              				</select>
+              			</td>
+					  </tr>
+					   <tr>
+  							 <td height="23" align="left">Operational State:</td>
+   							<td height="23" align="left">
+   								<script> displayState("$%gprsOperationalStatus#$") </script>
+  							 </td>
+					  </tr>
+					</table>
+				  </div>
+				</td>
+			  </tr>
+			</table>
+		  </div>
+			<div align="center">
+			  <center>
+			  <p>
+			  <p>
+			  <table border="1" cellpadding="2">
+				<tr>
+				  <td width="130" height="34" title="GPRS server's IP address">GPRS IP Address
+				  </td>
+				  <td width="130">
+					<font face="Times New Roman">
+					  <input name="gprsServerIpAddress" size="15" maxlength="15" value="$%gprsServerIpAddress#$">
+					</font>					
+				  </td>
+				</tr>
+				<tr>
+				  <td height="34" title="Routing Area Code to indicate which RA this GP10 belongs to">GPRS RAC
+				  </td>
+				  <td title="Routing Area Code: INTEGER (0..65535)">
+					<font face="Times New Roman">
+					  <input name="gprsRac" size="5" maxlength="5" value="$%gprsRac#$" onchange="return isValidInt(this, 0, 65535);">
+					</font>
+				  </td>
+				</tr>
+			  </table>
+			  </center>
+			</div>
+			<div align="center">
+			  <center>
+			  <table height="50" border="0" cellpadding="3">
+				<tr>
+				  <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+				  <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+				  title="Click this button to refresh the form."></td>
+				</tr>
+			  </table>
+			  </center>
+			</div>
+        </td>
+      </tr>
+    </table>
+    </center>
+  </div>
+</form>
+
+</body>

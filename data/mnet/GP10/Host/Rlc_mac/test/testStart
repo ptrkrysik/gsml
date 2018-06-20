@@ -1,0 +1,21 @@
+
+# load viperLoad, viperLoadList functions
+load_path = malloc(150);
+strcpy(load_path, getenv("VIPERCALL_BASE"))
+strcat(load_path, "/Bin/load_module.out")
+ld(0, 0, load_path)
+
+taskDelay(10)
+
+# load applications
+viperLoadList("Scripts/module_list", getenv("VIPERCALL_BASE"), 1)
+
+ld 1,1,"/ata/vipercall/bin/rlc_mac.out"
+ld 1,1,"/ata/vipercall/bin/rlc_mac_test.out"
+
+SysCommand_Log 1
+
+SetModuleLogOptions 350,0x1f3 
+SetModuleLogOptions 351,0x1f3 
+SetModuleLogOptions 352,0x1f3 
+

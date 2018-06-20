@@ -1,0 +1,406 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Handover Control Package</title>
+</head>
+
+<body onload="$%reloadTopframe#$">
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+  if (theForm.interferenceAveragingParamAveragingPeriod.value == "")
+  {
+    alert("Please enter a value for the \"Averaging Period (INTAVE)\" field.");
+    theForm.interferenceAveragingParamAveragingPeriod.focus();
+    return (false);
+  }
+
+  if (theForm.interferenceAveragingParamAveragingPeriod.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Averaging Period (INTAVE)\" field.");
+    theForm.interferenceAveragingParamAveragingPeriod.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.interferenceAveragingParamAveragingPeriod.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Averaging Period (INTAVE)\" field.");
+    theForm.interferenceAveragingParamAveragingPeriod.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "1" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"1\" and less than or equal to \"31\" in the \"Averaging Period (INTAVE)\" field.");
+    theForm.interferenceAveragingParamAveragingPeriod.focus();
+    return (false);
+  }
+
+  if (theForm.interferenceAveragingParamThresholdBoundary0.value == "")
+  {
+    alert("Please enter a value for the \"Threshold Boundray 1\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary0.focus();
+    return (false);
+  }
+
+  if (theForm.interferenceAveragingParamThresholdBoundary0.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Threshold Boundray 1\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary0.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.interferenceAveragingParamThresholdBoundary0.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Threshold Boundray 1\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary0.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"Threshold Boundray 1\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary0.focus();
+    return (false);
+  }
+
+  if (theForm.interferenceAveragingParamThresholdBoundary1.value == "")
+  {
+    alert("Please enter a value for the \"Threshold Boundray 1\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary1.focus();
+    return (false);
+  }
+
+  if (theForm.interferenceAveragingParamThresholdBoundary1.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Threshold Boundray 1\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary1.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.interferenceAveragingParamThresholdBoundary1.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Threshold Boundray 1\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary1.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"Threshold Boundray 1\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary1.focus();
+    return (false);
+  }
+
+  if (theForm.interferenceAveragingParamThresholdBoundary2.value == "")
+  {
+    alert("Please enter a value for the \"Threshold Boundray 2\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary2.focus();
+    return (false);
+  }
+
+  if (theForm.interferenceAveragingParamThresholdBoundary2.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Threshold Boundray 2\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary2.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.interferenceAveragingParamThresholdBoundary2.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Threshold Boundray 2\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary2.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"Threshold Boundray 2\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary2.focus();
+    return (false);
+  }
+
+  if (theForm.interferenceAveragingParamThresholdBoundary3.value == "")
+  {
+    alert("Please enter a value for the \"Threshold Boundray 3\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary3.focus();
+    return (false);
+  }
+
+  if (theForm.interferenceAveragingParamThresholdBoundary3.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Threshold Boundray 3\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary3.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.interferenceAveragingParamThresholdBoundary3.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Threshold Boundray 3\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary3.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"Threshold Boundray 3\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary3.focus();
+    return (false);
+  }
+
+  if (theForm.interferenceAveragingParamThresholdBoundary4.value == "")
+  {
+    alert("Please enter a value for the \"Threshold Boundray 4\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary4.focus();
+    return (false);
+  }
+
+  if (theForm.interferenceAveragingParamThresholdBoundary4.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Threshold Boundray 4\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary4.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.interferenceAveragingParamThresholdBoundary4.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Threshold Boundray 4\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary4.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"Threshold Boundray 4\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary4.focus();
+    return (false);
+  }
+
+  if (theForm.interferenceAveragingParamThresholdBoundary5.value == "")
+  {
+    alert("Please enter a value for the \"Threshold Boundray 5\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary5.focus();
+    return (false);
+  }
+
+  if (theForm.interferenceAveragingParamThresholdBoundary5.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Threshold Boundray 5\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary5.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.interferenceAveragingParamThresholdBoundary5.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Threshold Boundray 5\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary5.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"Threshold Boundray 5\" field.");
+    theForm.interferenceAveragingParamThresholdBoundary5.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" onsubmit="return FrontPage_Form1_Validator(this)" name="FrontPage_Form1">
+
+<div align="center">
+ <center>
+ <table border="0" cellpadding="0" cellspacing="0" height="200" width="308">
+  <tr>
+   <td align="center" valign="top" height="48" width="306">
+   <p align="center"><font size="4">Handover Package <br>
+   Interference Averaging Parameters</font></td>
+  </tr>
+  <tr>
+   <td align="center" valign="top" height="1" width="306">
+   <table border="1" cellspacing="1" width="98%">
+    <tr>
+     <td>Averaging Period</td>
+     <td><!--webbot bot="Validation" S-Display-Name="Averaging Period (INTAVE)" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="1" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="interferenceAveragingParamAveragingPeriod" size="2" value="$%interferenceAveragingParamAveragingPeriod#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td>Threshold Boundary 0</td>
+     <td><!--webbot bot="Validation" s-display-name="Threshold Boundray 1" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="63" --><input type="text" name="interferenceAveragingParamThresholdBoundary0" size="2" value="$%interferenceAveragingParamThresholdBoundary0#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td>Threshold Boundary 1</td>
+     <td><!--webbot bot="Validation" s-display-name="Threshold Boundray 1" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="63" --><input type="text" name="interferenceAveragingParamThresholdBoundary1" size="2" value="$%interferenceAveragingParamThresholdBoundary1#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td>Threshold Boundary 2</td>
+     <td><!--webbot bot="Validation" s-display-name="Threshold Boundray 2" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="63" --><input type="text" name="interferenceAveragingParamThresholdBoundary2" size="2" value="$%interferenceAveragingParamThresholdBoundary2#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td>Threshold Boundary 3</td>
+     <td><!--webbot bot="Validation" s-display-name="Threshold Boundray 3" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="63" --><input type="text" name="interferenceAveragingParamThresholdBoundary3" size="2" value="$%interferenceAveragingParamThresholdBoundary3#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td>Threshold Boundary 4</td>
+     <td><!--webbot bot="Validation" s-display-name="Threshold Boundray 4" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="63" --><input type="text" name="interferenceAveragingParamThresholdBoundary4" size="2" value="$%interferenceAveragingParamThresholdBoundary4#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td>Threshold&nbsp; Boundary 5</td>
+     <td><!--webbot bot="Validation" s-display-name="Threshold Boundray 5" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="63" --><input type="text" name="interferenceAveragingParamThresholdBoundary5" size="2" value="$%interferenceAveragingParamThresholdBoundary5#$" maxlength="2"></td>
+    </tr>
+   </table>
+   </td>
+  </tr>
+ </table>
+ </center>
+</div>
+
+<p align="center"><input name="B1" type="submit" value="Submit" >   <input name="Recall" type="button" value="Recall" onclick="window.location.reload()"> <input name="Reset" type="reset" value="Reset"> </p>
+</form>
+
+</body>
+
+</html>

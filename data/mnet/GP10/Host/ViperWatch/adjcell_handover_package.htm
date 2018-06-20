@@ -1,0 +1,289 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Adjacent Cell Handover Package</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+
+<SCRIPT language="JavaScript">
+
+var noCols = Number("16");
+var noRows = Number("16");
+var index = 1;
+function displayIndex()
+{
+	document.write(" " + index++ + " ");
+}
+
+function PresetForm(theForm)
+{
+	for (var i = 0; i < theForm.adjCell_synchronizedSelect.length; i++)
+	{
+		if(theForm.elements[(i+1)*noCols-1].value > 0)
+		{
+			theForm.elements[(i*noCols)].checked = true;
+			theForm.elements[(i*noCols)].defaultChecked = true;
+		}
+		ZeroOutRow(theForm.elements[(i*noCols)])
+		cvtIntToBCD(theForm.elements[(i*noCols)+1], 3);
+		theForm.elements[(i*noCols)+1].defaultValue =  theForm.elements[(i*noCols)+1].value;
+		cvtIntToBCD(theForm.elements[(i*noCols)+2], 2);
+		theForm.elements[(i*noCols)+2].defaultValue =  theForm.elements[(i*noCols)+2].value;
+		selectOption(theForm.adjCell_synchronizedSelect[i], theForm.elements[(i*noCols)+9]);
+		clickCheckBox(theForm.elements[(i*noCols)+noCols-3], theForm.elements[(i*noCols)+noCols-2]);
+	}
+	return true;
+} 
+
+function ZeroOutRow(theCheck)
+{
+	var theIndex = Number(theCheck.value);
+	
+	 if (!theCheck.checked)
+	 {
+		for (var i = 1; i < noCols;  i++)
+		{
+			if (i != 8)
+			{
+				theCheck.form.elements[(theIndex*noCols)+i].value = 0;
+			} 
+	   }
+	}		
+	return true;
+} 
+
+function validateRow(theForm, theIndex)
+{
+	if (theForm.elements[theIndex*noCols].checked)
+	{ 
+		if (theForm.elements[(theIndex*noCols)+3].value == 0)
+		{
+			alert("You must provide a non-zero Location Area Code (LAC) for the cell configured at row " + Number(theIndex+1) );
+	 		theForm.elements[(theIndex*noCols)+3].focus();	
+
+			return false;
+		}
+
+		for (var i = 1; i <= 5 ; i++)
+		{
+		 	if ( i != 4 && i != 3 )
+			{
+				if (theForm.elements[(theIndex*noCols)+i].value == 0)
+				{
+					if (!confirm("You are trying to save a zero for at least one of the fields of the neighboring cell configured at row " + Number(theIndex+1) + ".\n Though zero is a legitimate value for this field it should be used sparingly.\n Are you sure you want to save this parameter."))
+				 	{
+				 		theForm.elements[(theIndex*noCols)+i].focus();	
+				   		return false;
+				 	} else {
+				   		return true;
+				 	}
+				}
+			}
+		}
+	}
+	return true;
+} 
+	
+	
+function ParseForm(theForm)
+{
+    for (var i = 0; i < theForm.adjCell_synchronizedSelect.length; i++)
+	{
+		if (!validateRow(theForm, i))
+		 return false;
+	} 
+	for (var theIndex = 0; theIndex < theForm.adjCell_synchronizedSelect.length;  theIndex++)
+	{	      
+	    if (theForm.elements[theIndex*noCols].checked)
+	    {
+	  		theForm.elements[(theIndex*noCols)+noCols-1].value = theForm.elements[(theIndex*noCols)+3].value;
+			if (theForm.elements[(theIndex*noCols)+noCols-3].checked)
+				theForm.elements[(theIndex*noCols)+noCols-2].value = 1;
+			else
+				theForm.elements[(theIndex*noCols)+noCols-2].value = 0;
+	    }
+	} 	
+	return true;
+} 
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="adjcell_handover">
+
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" height="238">
+      <tr>
+        <td height="232">
+        <h2 align="center">Adjacent Cell Handover Package</h2>
+        <table border="1">
+          <tr>
+            <td rowspan="2"><b>Index</b></td>
+            <td rowspan="2"><b>Selected</b></td>
+
+            <td colspan="4"
+            title="This attribute contains the Cell Identification (CI) and the Location Area of the cell. A Location Area is unique within a GSM PLMN; a Cell Identification is unique within a location area. For further details see Specification GSM 03.03.">
+            <p align="center"><b>Cell Global Identity</b></td>
+            <td rowspan="2"
+            title="This attribute contains the absolute radio frequency channel number of the BCCH channel of adjacent cells. This information is sent to the mobile station.">
+            <p align="center"><b>BCCH<br>
+            &nbsp;Frequency</b></p>
+            </td>
+            <td colspan="2"
+            title="This attribute contains the Base Station Identity Code (BSIC), which is transmitted on the SCH and used for identifying a BTS. The BSIC consists of the Network Colour Code (NCC) and the Base Station Colour Code (BCC). Refer to Specification GSM 04.08.">
+            <p align="center"><b>BSIC</b></td>
+            <td rowspan="2"
+            title="The synchronized attribute indicates whether the adjacent cell is synchronized with the origin cell. Refer to Specification GSM 05.08 [21] (N_CELL_LIST).">
+            <p align="center"><b>Synchronized<br>
+            &nbsp;</b></p>
+            </td>
+            <td rowspan="2"
+            title="The hoMargin attribute value is used as a threshold to prevent repetitive hand-over between adjacent cells, in case the handover is caused by received signal level or the power budget  process. Refer to Annex A of Specification GSM 05.08 [21] (HO_MARGIN (n)).">
+            <p align="center"><b>Handover<br>
+            Margin<br>
+            (dB)</b></p>
+            </td>
+            <td rowspan="2"
+            title="The msTxPwrMaxCell attribute is used to indicate the maximum power level a MS may use in an adjacent cell. See Table 1 of Annex A of Specification GSM 05.08 [21] (MS_TXPWR_MAX (n)).">
+            <p align="center"><b>Max Tx<br>
+            &nbsp;Power<br>
+            (dBm)</b></p>
+            </td>
+            <td rowspan="2"
+            title="The rxLevMinCell attribute holds the minimum received signal strength in a cell, for a MS to be handed over to that cell. See Annex A of Specification GSM 05.08 [21] (RXLEV_MIN (n)). Each adjacent cell may have a different specific value.">
+            <p align="center"><b>Min Rx<br>
+            &nbsp;Level</b></p>
+            </td>
+            <td rowspan="2"
+            title="External handover">
+            <p align="center"><b>External<br>
+             Handover</b></p>
+            </td>
+          </tr>
+          <tr>
+            <td title="Mobile Country Code"><b>MCC</b></td>
+            <td title="Mobile Network Code"><b>MNC</b></td>
+            <td title="Location Area Code"><b>LAC</b></td>
+            <td title="Cell Identification"><b>CI</b></td>
+            <td title="Network Colour Code"><b>NCC</b></td>
+            <td title="Base Station Colour Code"><b>BCC</b></td>
+          </tr>
+
+          <form method="POST">
+          <!$%createTable(adjCell_handoverIndex,*,,,,,adjCell_handoverIndex,adjCell_handoverCellID,adjCell_mcc,adjCell_mnc,adjCell_lac,adjCell_ci,adjCell_bCCHFrequency,adjCell_ncc,adjCell_cid,adjCell_synchronized,adjCell_hoPriorityLevel,adjCell_hoMargin,adjCell_msTxPwrMaxCell,adjCell_rxLevMinCell,adjCell_isExternal)#$>
+          <!$%REPEAT(adjCell_handoverIndex,1,16)#$>
+          <tr>
+            <td valign="middle" align="center"><script> displayIndex() </script></td>
+            <td valign="middle" align="center" title="Check this button and fill the rest of the row if you want to enable add cell as a handover candidate.">
+            <input type="checkbox" name="used.$%getInstance(adjCell_handoverIndex)#$" value="$%getInstance(adjCell_handoverIndex)#$" onClick="ZeroOutRow(this);">
+            </td>
+            <td valign="middle" align="center" title="Mobile Country Code: 3 Digits">
+            <p align="center"><input type="text" name="adjCell_mcc.$%getInstance(adjCell_handoverIndex)#$" value="$%adjCell_mcc#$" size="3"
+            maxlength="3" onchange="isValidInt(this,0,999); cvtIntToBCD(this,3);"></p>
+            </td>
+            <td valign="middle" align="center" title="Mobile Network Code: 2 Digits">
+            <p align="center"><input type="text" name="adjCell_mnc.$%getInstance(adjCell_handoverIndex)#$" value="$%adjCell_mnc#$" size="2"
+            maxlength="2" onchange="isValidInt(this,0,99); cvtIntToBCD(this,2);"></p>
+            </td>
+            <td valign="middle" align="center" title="Location Area Code: INTEGER (0..65535)">
+            <p align="center"><input type="text" name="adjCell_lac.$%getInstance(adjCell_handoverIndex)#$" value="$%adjCell_lac#$" size="6"
+            maxlength="6" onchange="return isValidInt(this);"></p>
+            </td>
+            <td valign="middle" align="center"  title="Cell Identity : INTEGER (0..65535)">
+            <p align="center"><input type="text" name="adjCell_ci.$%getInstance(adjCell_handoverIndex)#$" value="$%adjCell_ci#$" size="5"
+            maxlength="5" onchange="return isValidInt(this,0,65534);"></p>
+            </td>
+            <td valign="middle" align="center"  title="BCCH frequency of the cell -- INTEGER(0..1023)">
+            <p align="center"><input type="text" name="adjCell_bCCHFrequency.$%getInstance(adjCell_handoverIndex)#$" value="$%adjCell_bCCHFrequency#$"
+            size="4" maxlength="4" onchange="return isValidInt(this,0,1023);"></p>
+            </td>
+            <td valign="middle" align="center"  title="Network (PLMN) Colour Code: INTEGER (0..7)">
+            <p align="center"><input type="text" name="adjCell_ncc.$%getInstance(adjCell_handoverIndex)#$" value="$%adjCell_ncc#$" size="1"
+            maxlength="1" onchange="return isValidInt(this,0,7);"></p>
+            </td>
+            <td valign="middle" align="center"  title="Base Transceiver Station (BTS) Colour Code: INTEGER (0..7)">
+            <p align="center"><input type="text" name="adjCell_cid.$%getInstance(adjCell_handoverIndex)#$" value="$%adjCell_cid#$" size="1"
+            maxlength="1" onchange="return isValidInt(this,0,7);"></p>
+            </td>
+            <td valign="middle" align="center"><select size="1" name="adjCell_synchronizedSelect">
+            <!------------- Not used now
+              <option value="1">Yes</option>
+            -------------->  
+              <option value="0">NO</option>
+            </select></td>
+            <input name="adjCell_synchronized.$%getInstance(adjCell_handoverIndex)#$" type="hidden" value="$%adjCell_synchronized#$">
+            <td valign="middle" align="center" title="INTEGER (0..24) -- dB">
+            <p align="center"><input type="text" name="adjCell_hoMargin.$%getInstance(adjCell_handoverIndex)#$" value="$%adjCell_hoMargin#$" size="2"
+            maxlength="2" onchange="return isValidInt(this,0,24);"></p>
+            </td>
+            <td valign="middle" align="center"
+            title="TxPower ::= INTEGER
+-- Value in dBm
+-- TXPWR range in GSM 900:  5..39 dBm
+-- TXPWR range in DCS 1800: 0..30 dBm
+-- TXPWR range in PCS 1900: 0..33 dBm">
+            <p align="center"><input type="text" name="adjCell_msTxPwrMaxCell.$%getInstance(adjCell_handoverIndex)#$"
+            value="$%adjCell_msTxPwrMaxCell#$" size="2" maxlength="2" onchange="return isValidTxPower(this, $%gsmdcsIndicator#$);"></p>
+            </td>
+            
+            <td valign="middle" align="center"
+            title="RxLev ::= INTEGER (0..63)
+-- 0 : &lt; -110 dB,
+-- 1 : -110 dB .. -109 dB
+-- 2 : -109 dB .. -108 dB
+--
+-- 63: &gt; -48 dB
+-- Ref. GSM 05.08 (RXLEV)">
+            <p align="center"><input type="text" name="adjCell_rxLevMinCell.$%getInstance(adjCell_handoverIndex)#$" value="$%adjCell_rxLevMinCell#$"
+            size="2" maxlength="2" onchange="return isValidInt(this,0,63);"></p>
+            </td>
+
+            <td valign="middle" align="center" title="External Handover">
+            <input type="checkbox" name="ExternalCheckBox">
+			<input type="hidden" name="adjCell_isExternal.$%getInstance(adjCell_handoverIndex)#$" value="$%adjCell_isExternal#$">
+            </td>
+
+          </tr>
+          <input type="hidden" name="adjCell_handoverCellID.$%getInstance(adjCell_handoverIndex)#$" value="$%adjCell_handoverCellID#$">
+          <!$%endRow(adjCell_handoverIndex)#$>
+          <!$%REPEAT(END)#$>
+          <!$%endTable(adjCell_handoverIndex)#$>
+
+        </table>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        </center>
+      </td>
+    </tr>
+    </table>
+  </div>
+  <p align="center">&nbsp;</p>
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

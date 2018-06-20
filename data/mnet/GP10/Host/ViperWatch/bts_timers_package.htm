@@ -1,0 +1,519 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>BTS Timers Package</title>
+</head>
+
+<body onload="$%reloadTopframe#$">
+
+<h3 align="center">BTS Timers Package</h3>
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.sdcchSAPI0.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"sdcchSAPI0\" field.");
+    theForm.sdcchSAPI0.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.facchTCHF.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"facchTCHF\" field.");
+    theForm.facchTCHF.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.facchTCHH.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"facchTCHH\" field.");
+    theForm.facchTCHH.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.sacchTCHSAPI0.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"sacchTCHSAPI0\" field.");
+    theForm.sacchTCHSAPI0.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.sacchSDCCH.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"sacchSDCCH\" field.");
+    theForm.sacchSDCCH.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.sdcchSAPI3.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"sdcchSAPI3\" field.");
+    theForm.sdcchSAPI3.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.t3101.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"t3101\" field.");
+    theForm.t3101.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.t3103.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"t3103\" field.");
+    theForm.t3103.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.t3105.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"t3105\" field.");
+    theForm.t3105.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.t3107.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"t3107\" field.");
+    theForm.t3107.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.t3109.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"t3109\" field.");
+    theForm.t3109.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.t3111.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"t3111\" field.");
+    theForm.t3111.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.t3113.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"t3113\" field.");
+    theForm.t3113.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.sdcchTCHSAPI3.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"sdcchTCHSAPI3\" field.");
+    theForm.sdcchTCHSAPI3.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" name="FrontPage_Form1" onsubmit="return FrontPage_Form1_Validator(this)">
+
+<div align="center">
+<center>
+<table border="1" height="205" cellspacing="1" width="499">
+  <tbody>
+    <tr>
+      <td height="23" colspan="3" width="489">
+        <p align="center"><b>T200 Timers -- in 5ms units</b></td>
+    </tr>
+    <tr>
+      <td height="23" align="right" width="138">SDCCH SAPI 0</td>
+      <td height="23" width="80">
+        <p align="right"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input name="sdcchSAPI0" size="10" value="$%sdcchSAPI0#$"></p>
+      </td>
+      <td height="23" width="259"><font size="1">SDCCH, SAPI 0 layer 2
+        timer&nbsp;</font></td>
+      <font face="Arial" size="2">
+      </tr>
+      <tr>
+        <td height="25" align="right" width="138"></font>FACCH
+        TCHF</td>
+      <td height="25" width="80">
+        <p align="right"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input name="facchTCHF" size="10" value="$%facchTCHF#$"></p>
+        </td>
+      <td height="25" width="259"><font size="1">Associated with a Full
+        Rate TCH layer 2 timer</font></td>
+      <font face="Arial" size="2">
+      </tr>
+      <tr>
+        <td height="23" align="right" width="138"></font>FACCH
+        TCHH</td>
+      <td height="23" width="80">
+        <p align="right"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input name="facchTCHH" size="10" value="$%facchTCHH#$"></p>
+        </td>
+      <td height="23" width="259"><font size="1">Associated with a Half
+        Rate TCH layer 2 timer</font></td>
+      <font face="Arial" size="2">
+      </tr>
+      <tr>
+        <td height="23" align="right" width="138"></font>TCH
+        SAPI 0</td>
+      <td height="23" width="80">
+        <p align="right"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input name="sacchTCHSAPI0" size="10" value="$%sacchTCHSAPI0#$"></p>
+        </td>
+      <td height="23" width="259"><font size="1">Associated with SACCH with
+        TCH SAPI 0 layer 2 timer</font></td>
+      <font face="Arial" size="2">
+      </tr>
+      <tr>
+        <td height="23" align="right" width="138"></font>SACCH
+        SDCCH</td>
+      <td height="23" width="80"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input name="sacchSDCCH" size="10" value="$%sacchSDCCH#$"></td>
+      <td height="23" width="259"><font size="1">Associated with SACCH with
+        SDCCH layer 2 timer</font></td>
+      <font face="Arial" size="2">
+      </tr>
+      <tr>
+        <td height="23" align="right" width="138"></font>SDCCH
+        SAPI 3</td>
+      <td height="23" width="80"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input name="sdcchSAPI3" size="10" value="$%sdcchSAPI3#$"></td>
+      <td height="23" width="259"><font size="1">Associated with SDCCH,
+        SAPI 3 layer 2 timer</font></td>
+      </tr>
+      <font face="Arial" size="2">
+      <tr>
+        <th colspan="3" width="489">T31xx Timers -- in 10ms units</th>
+      </tr>
+      <tr>
+        <td align="right" width="138">T3101</td>
+      <td width="80"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input name="t3101" size="10" value="$%t3101#$"></td>
+      </font>
+      <td width="259">
+      <font face="Arial" size="1">
+      Used with IMMEDIATE ASSIGNMENT&nbsp;</font></td>
+        </tr>
+      <font face="Arial" size="2">
+      <tr>
+        <td align="right" width="138">T3103</td>
+      <td width="80"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input name="t3103" size="10" value="$%t3103#$"></td>
+      </font>
+      <td width="259">
+      <font face="Arial" size="1">
+      Used with HANDOVER COMMAND</font></td>
+        </tr>
+      <font face="Arial" size="2">
+      <tr>
+        <td align="right" width="138">T3105</td>
+      <td width="80"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input name="t3105" size="10" value="$%t3105#$"></td>
+      </font>
+      <td width="259">
+      <font face="Arial" size="1">
+      Used with PHYSICAL INFORMATION</font></td>
+        </tr>
+      <font face="Arial" size="2">
+      <tr>
+        <td align="right" width="138">T3107</td>
+      <td width="80"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input name="t3107" size="10" value="$%t3107#$"></td>
+      </font>
+      <td width="259">
+      <font face="Arial" size="1">
+      Used with ASSIGNMENT COMMAND</font></td>
+        </tr>
+      <font face="Arial" size="2">
+      <tr>
+        <td align="right" width="138">T3109</td>
+      <td width="80"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input name="t3109" size="10" value="$%t3109#$"></td>
+      </font>
+      <td width="259">
+      <font face="Arial" size="1">
+      Used for lower layer failure</font></td>
+        </tr>
+      <font face="Arial" size="2">
+      <tr>
+        <td align="right" width="138">T3111</td>
+      <td width="80"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input name="t3111" size="10" value="$%t3111#$"></td>
+      </font>
+      <td width="259">
+      <font face="Arial" size="1">
+      Used for Channel Activation Delay</font></td>
+        </tr>
+      <font face="Arial" size="2">
+      <tr>
+        <td align="right" width="138">T3113</td>
+      <td width="80"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input name="t3113" size="10" value="$%t3113#$"></td>
+      </font>
+      <td width="259">
+      <font face="Arial" size="1">
+      Used with Paging Messages</font></td>
+        </tr>
+      <tr>
+        <td height="23" align="right" width="138">SACCH
+        TCH SAPI 3</td>
+      <td height="23" width="80"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input name="sdcchTCHSAPI3" size="10" value="$%sdcchTCHSAPI3#$"></td>
+      <td height="23" width="259"><font size="1">Associated with SACCH with
+        TCH, SAPI 3 layer 2 timer</font></td>
+      </tr>
+    </tbody>
+  </table>
+        </center>
+      </div>
+
+      <font face="Arial" size="2">
+  <p align="center"><INPUT name=B1 type=submit value="Submit">
+  <font size="3"> <input name="Reset" type="reset" value="Reset" maxlength="0"></font><INPUT name=Recall type=button value="Recall" onClick="window.location.reload()" >
+ </p>
+        </form>
+</font>
+
+</body>
+
+</html>

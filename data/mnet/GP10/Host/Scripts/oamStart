@@ -1,0 +1,29 @@
+# Oam startup scrip
+# viperStart
+
+# Lower the priority for tShell task, tTelnetOutTask, tTelnetInTask
+shellTaskPriority=255
+telnetTaskPriority=255
+
+# load viperLoad, viperLoadList functions
+load_path = malloc(150);
+strcpy(load_path, getenv("VIPERCALL_BASE"))
+strcat(load_path, "/Bin/LoadModule.out")
+ld(0, 0, load_path)
+
+taskDelay(10)
+
+# load applications
+viperLoadList("Scripts/oam_module_list", getenv("VIPERCALL_BASE"), 1)
+
+# initialize Snm
+snmp_initialize(0)
+
+cdcInit("fpga/fpga.rbf", getenv("VIPERCALL_BASE"))
+
+# sync time with the serve
+time_syncTime()
+
+# load http server
+http_taskCreate()
+

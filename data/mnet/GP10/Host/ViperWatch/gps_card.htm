@@ -1,0 +1,111 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GPS Card Parameters</title>
+</head>
+
+<SCRIPT >
+
+
+
+function PresetForm(theForm)
+{
+
+	return true;
+} 
+
+function ParseForm(theForm)
+{	
+	return true;	
+} 
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="gps_card">
+
+  <input type="hidden" name="gpsSatelliteStatus" value="$%gpsSatelliteStatus#$"><input type="hidden" name="gpsCardStatus"
+  value="$%gpsCardStatusSelect#$">
+  <p align="center">&nbsp;</p>
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="437">
+      <tr>
+        <td width="499">
+        <h2 align="center">GPS Card</h2>
+        <div align="center">
+          <table border="1" width="90%">
+            <tr>
+              <td height="1" width="184"><font color="#000000">Type</font></td>
+              <td height="1" width="223">
+              <p style="padding-top: 0px; padding-bottom: 0px">$%gpsCardType#$ </td>
+            </tr>
+            <tr>
+              <td height="22" width="184"><font color="#000000">Software Version</font></td>
+              <td height="22" width="223">$%gpsCardSoftwareVersion#$&nbsp; </td>
+            </tr>
+            <tr>
+              <td height="24" width="184"><font color="#000000">Current Status</font></td>
+              <td height="24" width="223">$%gpsCardStatus#$ </td>
+            </tr>
+            <tr>
+              <td height="23" width="184"><font color="#000000">Position</font></td>
+              <td height="23" width="223">$%gpsPosition#$&nbsp;&nbsp; </td>
+            </tr>
+            <tr>
+              <td height="23" width="184"><font color="#000000">GPS Time</font></td>
+              <td height="23" width="223">
+              <p style="padding-top: 0px; padding-bottom: 0px">$%gpsTime#$ &nbsp;</td>
+            </tr>
+            <tr>
+              <td height="23" width="184"><font color="#000000">UTC Time</font></td>
+              <td height="23" width="223">$%utcTime#$ &nbsp;</td>
+            </tr>
+            <tr>
+              <td height="23" width="184"><font color="#000000">Clock Status Frequency Error</font></td>
+              <td height="23" width="223">$%clockStatusFrequencyError#$ </td>
+            </tr>
+            <tr>
+              <td height="23" width="184"><font color="#000000">Clock Status DAC Voltage</font></td>
+              <td height="23" width="223">$%clockStatusDACVoltage#$ </td>
+            </tr>
+            <tr>
+              <td height="23" width="184"><font color="#000000">Antenna Status</font></td>
+              <td height="23" width="223">$%gpsAntennaStatus#$ </td>
+            </tr>
+            <tr>
+              <td height="23" width="184"><font color="#000000">Satellite Status</font></td>
+              <td height="23" width="223">$%gpsSatelliteStatus#$ </td>
+            </tr>
+          </table>
+        </div>
+        <div align="center">
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change." disabled></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+        </div>
+        </td>
+      </tr>
+    </table>
+    </center>
+  </div>
+</form>
+
+</body>

@@ -1,0 +1,2348 @@
+<html>
+
+<head>
+
+	<META NAME="VPSiteProject" CONTENT="file:///D|/JetCell/Gui/jetcell.vpp"><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<title>Radio Parameters</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body onload="$%reloadTopframe#$">
+  <font size="3"><!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+  if (theForm.NCC.value == "")
+  {
+    alert("Please enter a value for the \"NCC\" field.");
+    theForm.NCC.focus();
+    return (false);
+  }
+
+  if (theForm.NCC.value.length < 1)
+  {
+    alert("Please enter at least 1 characters in the \"NCC\" field.");
+    theForm.NCC.focus();
+    return (false);
+  }
+
+  if (theForm.NCC.value.length > 1)
+  {
+    alert("Please enter at most 1 characters in the \"NCC\" field.");
+    theForm.NCC.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.NCC.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NCC\" field.");
+    theForm.NCC.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "7"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"7\" in the \"NCC\" field.");
+    theForm.NCC.focus();
+    return (false);
+  }
+
+  if (theForm.BCC.value == "")
+  {
+    alert("Please enter a value for the \"BCC\" field.");
+    theForm.BCC.focus();
+    return (false);
+  }
+
+  if (theForm.BCC.value.length < 1)
+  {
+    alert("Please enter at least 1 characters in the \"BCC\" field.");
+    theForm.BCC.focus();
+    return (false);
+  }
+
+  if (theForm.BCC.value.length > 1)
+  {
+    alert("Please enter at most 1 characters in the \"BCC\" field.");
+    theForm.BCC.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.BCC.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"BCC\" field.");
+    theForm.BCC.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "7"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"7\" in the \"BCC\" field.");
+    theForm.BCC.focus();
+    return (false);
+  }
+
+  if (theForm.MCC.value == "")
+  {
+    alert("Please enter a value for the \"MCC\" field.");
+    theForm.MCC.focus();
+    return (false);
+  }
+
+  if (theForm.MCC.value.length < 1)
+  {
+    alert("Please enter at least 1 characters in the \"MCC\" field.");
+    theForm.MCC.focus();
+    return (false);
+  }
+
+  if (theForm.MCC.value.length > 4)
+  {
+    alert("Please enter at most 4 characters in the \"MCC\" field.");
+    theForm.MCC.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.MCC.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"MCC\" field.");
+    theForm.MCC.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "999"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"999\" in the \"MCC\" field.");
+    theForm.MCC.focus();
+    return (false);
+  }
+
+  if (theForm.MNC.value == "")
+  {
+    alert("Please enter a value for the \"MNC\" field.");
+    theForm.MNC.focus();
+    return (false);
+  }
+
+  if (theForm.MNC.value.length < 1)
+  {
+    alert("Please enter at least 1 characters in the \"MNC\" field.");
+    theForm.MNC.focus();
+    return (false);
+  }
+
+  if (theForm.MNC.value.length > 3)
+  {
+    alert("Please enter at most 3 characters in the \"MNC\" field.");
+    theForm.MNC.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.MNC.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"MNC\" field.");
+    theForm.MNC.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "99"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"99\" in the \"MNC\" field.");
+    theForm.MNC.focus();
+    return (false);
+  }
+
+  if (theForm.LAC.value == "")
+  {
+    alert("Please enter a value for the \"LAC\" field.");
+    theForm.LAC.focus();
+    return (false);
+  }
+
+  if (theForm.LAC.value.length < 1)
+  {
+    alert("Please enter at least 1 characters in the \"LAC\" field.");
+    theForm.LAC.focus();
+    return (false);
+  }
+
+  if (theForm.LAC.value.length > 5)
+  {
+    alert("Please enter at most 5 characters in the \"LAC\" field.");
+    theForm.LAC.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.LAC.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"LAC\" field.");
+    theForm.LAC.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "65535"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"65535\" in the \"LAC\" field.");
+    theForm.LAC.focus();
+    return (false);
+  }
+
+  if (theForm.LAC1.value == "")
+  {
+    alert("Please enter a value for the \"LAC\" field.");
+    theForm.LAC1.focus();
+    return (false);
+  }
+
+  if (theForm.LAC1.value.length < 1)
+  {
+    alert("Please enter at least 1 characters in the \"LAC\" field.");
+    theForm.LAC1.focus();
+    return (false);
+  }
+
+  if (theForm.LAC1.value.length > 5)
+  {
+    alert("Please enter at most 5 characters in the \"LAC\" field.");
+    theForm.LAC1.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.LAC1.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"LAC\" field.");
+    theForm.LAC1.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "65535"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"65535\" in the \"LAC\" field.");
+    theForm.LAC1.focus();
+    return (false);
+  }
+
+  if (theForm.CellReselectHysteresis.value == "")
+  {
+    alert("Please enter a value for the \"CellReselectHysteresis\" field.");
+    theForm.CellReselectHysteresis.focus();
+    return (false);
+  }
+
+  if (theForm.CellReselectHysteresis.value.length < 1)
+  {
+    alert("Please enter at least 1 characters in the \"CellReselectHysteresis\" field.");
+    theForm.CellReselectHysteresis.focus();
+    return (false);
+  }
+
+  if (theForm.CellReselectHysteresis.value.length > 1)
+  {
+    alert("Please enter at most 1 characters in the \"CellReselectHysteresis\" field.");
+    theForm.CellReselectHysteresis.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.CellReselectHysteresis.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"CellReselectHysteresis\" field.");
+    theForm.CellReselectHysteresis.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "7"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"7\" in the \"CellReselectHysteresis\" field.");
+    theForm.CellReselectHysteresis.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.NY1.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NY1\" field.");
+    theForm.NY1.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.CCCHloadindication.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"CCCHloadindication\" field.");
+    theForm.CCCHloadindication.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.RadioLinkTimeout.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"RadioLinkTimeout\" field.");
+    theForm.RadioLinkTimeout.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "15"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"15\" in the \"RadioLinkTimeout\" field.");
+    theForm.RadioLinkTimeout.focus();
+    return (false);
+  }
+
+  if (theForm.RxLevAccessMin.value == "")
+  {
+    alert("Please enter a value for the \"RxLevAccessMin\" field.");
+    theForm.RxLevAccessMin.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.RxLevAccessMin.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"RxLevAccessMin\" field.");
+    theForm.RxLevAccessMin.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"RxLevAccessMin\" field.");
+    theForm.RxLevAccessMin.focus();
+    return (false);
+  }
+
+  if (theForm.CCCHLoadIndication.value == "")
+  {
+    alert("Please enter a value for the \"CCCHLoadIndication\" field.");
+    theForm.CCCHLoadIndication.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.CCCHLoadIndication.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"CCCHLoadIndication\" field.");
+    theForm.CCCHLoadIndication.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" action="_derived/nortbots.htm" onsubmit="location.href='_derived/nortbots.htm';return false;" name="FrontPage_Form1" webbot-action="--WEBBOT-SELF--" WEBBOT-onSubmit="return FrontPage_Form1_Validator(this)">
+    <!--webbot bot="SaveResults" startspan
+    U-File="D:\Oam\Manager\_private\form_results.txt" S-Format="TEXT/CSV"
+    S-Label-Fields="TRUE" --><strong>[FrontPage Save Results Component]</strong><!--webbot
+    bot="SaveResults" endspan i-checksum="6561" --></font><table border="0" width="887" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="232"><font face="Courier New" size="3"><strong>Parameter</strong></font></td>
+        <td width="342"><font size="3"><strong>Value</strong></font></td>
+        <td width="495"></td>
+      </tr>
+      <tr>
+        <td width="232"><font SIZE="2" face="Courier New">bsIdentityCode:</font></td>
+        <td width="342"><font SIZE="2">NCC: <!--webbot bot="Validation"
+          S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE"
+          I-Minimum-Length="1" I-Maximum-Length="1"
+          S-Validation-Constraint="Greater than or equal to"
+          S-Validation-Value="0" S-Validation-Constraint="Less than or equal to"
+          S-Validation-Value="7" --><input type="text" name="NCC" size="1" maxlength="1">&nbsp; BCC:
+          <!--webbot bot="Validation" S-Data-Type="Integer"
+          S-Number-Separators="x" B-Value-Required="TRUE" I-Minimum-Length="1"
+          I-Maximum-Length="1"
+          S-Validation-Constraint="Greater than or equal to"
+          S-Validation-Value="0" S-Validation-Constraint="Less than or equal to"
+          S-Validation-Value="7" --><input type="text" name="BCC" size="1" maxlength="1"></font></td>
+        <td width="495"><font SIZE="2">BTS BSIC = NCC + BCC</font></td>
+      </tr>
+      <tr>
+        <td width="232" rowspan="2"><font SIZE="2" face="Courier New">cellGlobalIdentity:</font></td>
+        <td width="342"><font SIZE="2">MCC: <!--webbot bot="Validation"
+          S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE"
+          I-Minimum-Length="1" I-Maximum-Length="4"
+          S-Validation-Constraint="Greater than or equal to"
+          S-Validation-Value="0" S-Validation-Constraint="Less than or equal to"
+          S-Validation-Value="999" --><input type="text" name="MCC" size="4" maxlength="4"> MNC:
+          <!--webbot bot="Validation" S-Data-Type="Integer"
+          S-Number-Separators="x" B-Value-Required="TRUE" I-Minimum-Length="1"
+          I-Maximum-Length="3"
+          S-Validation-Constraint="Greater than or equal to"
+          S-Validation-Value="0" S-Validation-Constraint="Less than or equal to"
+          S-Validation-Value="99" --><input type="text" name="MNC" size="3" maxlength="3"> </font></td>
+        <td width="495" rowspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="342"><font SIZE="2">LAC: <!--webbot bot="Validation"
+          S-Display-Name="LAC" S-Data-Type="Integer" S-Number-Separators="x"
+          B-Value-Required="TRUE" I-Minimum-Length="1" I-Maximum-Length="5"
+          S-Validation-Constraint="Greater than or equal to"
+          S-Validation-Value="0" S-Validation-Constraint="Less than or equal to"
+          S-Validation-Value="65535" --><input type="text" name="LAC" size="5" maxlength="5"> Cell ID:
+          <!--webbot bot="Validation" S-Display-Name="LAC" S-Data-Type="Integer"
+          S-Number-Separators="x" B-Value-Required="TRUE" I-Minimum-Length="1"
+          I-Maximum-Length="5"
+          S-Validation-Constraint="Greater than or equal to"
+          S-Validation-Value="0" S-Validation-Constraint="Less than or equal to"
+          S-Validation-Value="65535" --><input type="text" name="LAC1" size="5" maxlength="5"> </font></td>
+      </tr>
+      <tr>
+        <td width="232"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2" face="Courier New">cellReselectHysteresis:</font></td>
+        <td width="342"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2"><!--webbot
+          bot="Validation" S-Data-Type="Integer" S-Number-Separators="x"
+          B-Value-Required="TRUE" I-Minimum-Length="1" I-Maximum-Length="1"
+          S-Validation-Constraint="Greater than or equal to"
+          S-Validation-Value="0" S-Validation-Constraint="Less than or equal to"
+          S-Validation-Value="7" --><input type="text" name="CellReselectHysteresis" size="3" maxlength="1"></font></td>
+        <td width="495">x 2dB steps</td>
+      </tr>
+      <tr>
+        <td width="232"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2" face="Courier New">gsmdcsIndicator:</font></td>
+        <td width="342"><p style="padding-top: 0px; padding-bottom: 0px"><select name="D1" size="1">
+          <option value="GSM-900">GSM-900</option>
+          <option value="EGSM-900">EGSM-900</option>
+          <option value="DCS-1800">DCS-1800</option>
+          <option value="PCS-1900">PCS-1900</option>
+        </select></td>
+        <td width="495">&lt;This is only allowed when creating the VC&gt;</td>
+      </tr>
+      <tr>
+        <td width="232"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2" face="Courier New">ny1:</font></td>
+        <td width="342"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2"><!--webbot
+          bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input type="text" name="NY1" size="10"></font></td>
+        <td width="495">Max Number Repetitions of PHYSICAL INFO</td>
+      </tr>
+      <tr>
+        <td width="232"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2" face="Courier New">periodCCCHLoadIndication:</font></td>
+        <td width="342"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2"><!--webbot
+          bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" --><input type="text" name="CCCHloadindication" size="20"></font></td>
+        <td width="495">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="232"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2" face="Courier New">plmnPermitted:</font></td>
+        <td width="342"><p style="padding-top: 0px; padding-bottom: 0px">7 <input type="checkbox" name="NCC7" value="ON">6 <input type="checkbox" name="NCC8" value="ON">5 <input type="checkbox" name="NCC9" value="ON">4 <input type="checkbox" name="NCC10" value="ON">3 <input type="checkbox" name="NCC11" value="ON">2 <input type="checkbox" name="NCC12" value="ON">1
+        <input type="checkbox" name="NCC13" value="ON">0 <input type="checkbox" name="NCC14" value="ON"></td>
+        <td width="495">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="232"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2" face="Courier New">rACHBusyThreshold:</font></td>
+        <td width="342"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2"><input type="text" name="T9" size="20"></font></td>
+        <td width="495">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="232"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2" face="Courier New">rACHLoadAveragingSlots:</font></td>
+        <td width="342"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2"><input type="text" name="T10" size="20"></font></td>
+        <td width="495">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="232"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2" face="Courier New">radioLinkTimeout:</font></td>
+        <td width="342"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2"><!--webbot
+          bot="Validation" S-Data-Type="Integer" S-Number-Separators="x"
+          S-Validation-Constraint="Greater than or equal to"
+          S-Validation-Value="0" S-Validation-Constraint="Less than or equal to"
+          S-Validation-Value="15" --><input type="text" name="RadioLinkTimeout" size="3" value="0"></font></td>
+        <td width="495">x 4 SACCH Frames</td>
+      </tr>
+      <tr>
+        <td width="232"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2" face="Courier New">rxLevAccessMin:</font></td>
+        <td width="342"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2"><!--webbot
+          bot="Validation" S-Data-Type="Integer" S-Number-Separators="x"
+          B-Value-Required="TRUE"
+          S-Validation-Constraint="Greater than or equal to"
+          S-Validation-Value="0" S-Validation-Constraint="Less than or equal to"
+          S-Validation-Value="63" --><input type="text" name="RxLevAccessMin" size="3"></font></td>
+        <td width="495">See GSM TS 05.08 RXLEV</td>
+      </tr>
+      <tr>
+        <td width="232"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2" face="Courier New">thresholdCCCHLoadIndication:</font></td>
+        <td width="342"><p style="padding-top: 0px; padding-bottom: 0px"><font SIZE="2"><!--webbot
+          bot="Validation" S-Data-Type="Integer" S-Number-Separators="x"
+          B-Value-Required="TRUE" --><input type="text" name="CCCHLoadIndication" size="20"></font></td>
+        <td width="495">&nbsp;</td>
+      </tr>
+    </table>
+    <font SIZE="2"><p><input type="submit" value="Apply" name="btsBasicPackageApply"><input type="button" value="Recall" name="btsBasicPackageRecall"><input type="reset" value="Defaults" name="btsBasicPackageDefaults"></p>
+  </form>
+  <blockquote>
+    <p><font size="3"><u>bts -&gt;btsCCCHConfigurationPackage</u></font></p>
+  </blockquote>
+  </font><font size="3"><!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form2_Validator(theForm)
+{
+
+  if (theForm.NoBlockAccessGrant.value == "")
+  {
+    alert("Please enter a value for the \"NoBlockAccessGrant\" field.");
+    theForm.NoBlockAccessGrant.focus();
+    return (false);
+  }
+
+  if (theForm.NoBlockAccessGrant.value.length < 1)
+  {
+    alert("Please enter at least 1 characters in the \"NoBlockAccessGrant\" field.");
+    theForm.NoBlockAccessGrant.focus();
+    return (false);
+  }
+
+  if (theForm.NoBlockAccessGrant.value.length > 1)
+  {
+    alert("Please enter at most 1 characters in the \"NoBlockAccessGrant\" field.");
+    theForm.NoBlockAccessGrant.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.NoBlockAccessGrant.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NoBlockAccessGrant\" field.");
+    theForm.NoBlockAccessGrant.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "7"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"7\" in the \"NoBlockAccessGrant\" field.");
+    theForm.NoBlockAccessGrant.focus();
+    return (false);
+  }
+
+  if (theForm.NoMulitframes.value == "")
+  {
+    alert("Please enter a value for the \"NoMulitframes\" field.");
+    theForm.NoMulitframes.focus();
+    return (false);
+  }
+
+  if (theForm.NoMulitframes.value.length < 1)
+  {
+    alert("Please enter at least 1 characters in the \"NoMulitframes\" field.");
+    theForm.NoMulitframes.focus();
+    return (false);
+  }
+
+  if (theForm.NoMulitframes.value.length > 1)
+  {
+    alert("Please enter at most 1 characters in the \"NoMulitframes\" field.");
+    theForm.NoMulitframes.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.NoMulitframes.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"NoMulitframes\" field.");
+    theForm.NoMulitframes.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "2" && prsVal <= "9"))
+  {
+    alert("Please enter a value greater than or equal to \"2\" and less than or equal to \"9\" in the \"NoMulitframes\" field.");
+    theForm.NoMulitframes.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" action="_derived/nortbots.htm" onsubmit="location.href='_derived/nortbots.htm';return false;" name="FrontPage_Form2" webbot-action="--WEBBOT-SELF--" WEBBOT-onSubmit="return FrontPage_Form2_Validator(this)">
+    <!--webbot bot="SaveResults" startspan
+    U-File="D:\Oam\Manager\_private\form_results.txt" S-Format="TEXT/CSV"
+    S-Label-Fields="TRUE" --><strong>[FrontPage Save Results Component]</strong><!--webbot
+    bot="SaveResults" endspan i-checksum="6561" --><table border="1" width="853">
+      <tr>
+        <td width="230"></font><font size="3">&nbsp;</font></td>
+        <td width="191"><font size="3">&nbsp;</font></td>
+        <td width="611"><font size="3">&nbsp;</font></td>
+      </tr>
+      <tr>
+        <td width="230"><font face="Courier New" SIZE="2">maxNumberRetransmission: </font></td>
+        <font FACE="Arial" SIZE="2"><td width="191"><select name="MaxREtran" size="1">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="4">Four</option>
+          <option value="7">Seven</option>
+        </select></font></td>
+        <td width="611">&nbsp;</td>
+      </tr>
+      <tr>
+        <font SIZE="2"><td width="230"><font face="Courier New">mSTxPwrMaxCCHL:</font></font></td>
+        <font FACE="Arial" SIZE="2"><td width="191"><input type="text" name="T2" size="20"></font></td>
+        <td width="611">&nbsp;</td>
+      </tr>
+      <tr>
+        <font SIZE="2"><td width="230"><font face="Courier New">noOfBlocksForAccessGrant:</font></font></td>
+        <font FACE="Arial" SIZE="2"><td width="191"><!--webbot bot="Validation"
+          S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE"
+          I-Minimum-Length="1" I-Maximum-Length="1"
+          S-Validation-Constraint="Greater than or equal to"
+          S-Validation-Value="0" S-Validation-Constraint="Less than or equal to"
+          S-Validation-Value="7" --><input type="text" name="NoBlockAccessGrant" size="2" maxlength="1"></font></td>
+        <td width="611"><font FACE="Arial" SIZE="2">Needs to be Linked to BCCH Combination</font></td>
+      </tr>
+      <tr>
+        <font SIZE="2"><td width="230"><font face="Courier New">noOfMultiframesBetweenPaging:</font></font></td>
+        <font FACE="Arial" SIZE="2"><td width="191"><!--webbot bot="Validation"
+          S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE"
+          I-Minimum-Length="1" I-Maximum-Length="1"
+          S-Validation-Constraint="Greater than or equal to"
+          S-Validation-Value="2" S-Validation-Constraint="Less than or equal to"
+          S-Validation-Value="9" --><input type="text" name="NoMulitframes" size="2" value="2" maxlength="1"></font></td>
+        <td width="611">&nbsp;</td>
+      </tr>
+      <tr>
+        <font SIZE="2"><td width="230"><font face="Courier New">numberOfSlotsSpreadTrans:</font></font></td>
+        <font FACE="Arial" SIZE="2"><td width="191"><input type="text" name="T5" size="20"></font></td>
+        <td width="611">&nbsp;</td>
+      </tr>
+    </table>
+    <p><input type="submit" value="Submit" name="B1"><input type="reset" value="Reset" name="B2"></p>
+  </form>
+  <blockquote>
+    <p><font size="3"><u>bts -&gt;btsOptionsPackage</u></font></p>
+  </blockquote>
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form3_Validator(theForm)
+{
+
+  if (theForm.PeriodicLocationUpdate.value == "")
+  {
+    alert("Please enter a value for the \"PeriodicLocationUpdate\" field.");
+    theForm.PeriodicLocationUpdate.focus();
+    return (false);
+  }
+
+  if (theForm.PeriodicLocationUpdate.value.length < 1)
+  {
+    alert("Please enter at least 1 characters in the \"PeriodicLocationUpdate\" field.");
+    theForm.PeriodicLocationUpdate.focus();
+    return (false);
+  }
+
+  if (theForm.PeriodicLocationUpdate.value.length > 3)
+  {
+    alert("Please enter at most 3 characters in the \"PeriodicLocationUpdate\" field.");
+    theForm.PeriodicLocationUpdate.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.PeriodicLocationUpdate.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"PeriodicLocationUpdate\" field.");
+    theForm.PeriodicLocationUpdate.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "255"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"255\" in the \"PeriodicLocationUpdate\" field.");
+    theForm.PeriodicLocationUpdate.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" action="_derived/nortbots.htm" onsubmit="location.href='_derived/nortbots.htm';return false;" name="FrontPage_Form3" webbot-action="--WEBBOT-SELF--" WEBBOT-onSubmit="return FrontPage_Form3_Validator(this)">
+    <!--webbot bot="SaveResults" startspan
+    U-File="D:\Oam\Manager\_private\form_results.txt" S-Format="TEXT/CSV"
+    S-Label-Fields="TRUE" --><strong>[FrontPage Save Results Component]</strong><!--webbot
+    bot="SaveResults" endspan i-checksum="6561" --><table border="1" width="854">
+      <tr>
+        <td width="236"><font SIZE="2" face="Courier New">allowIMSIAttachDetach</font></td>
+        <td width="196"><input type="radio" value="V1" name="IMSIAttach"></td>
+        <td width="606">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="236"><font SIZE="2" face="Courier New">callReestablishmentAllowed</font></td>
+        <td width="196"><input type="radio" value="V2" name="CallReestablish"></td>
+        <td width="606">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="236"><font SIZE="2" face="Courier New">cellBarred</font></td>
+        <td width="196"><input type="radio" value="V3" name="CellBarred"></td>
+        <td width="606">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="236"><font SIZE="2" face="Courier New">dtxDownlink</font></td>
+        <td width="196"><input type="radio" value="V4" name="DTXDownlin"></td>
+        <td width="606">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="236"><font SIZE="2" face="Courier New">dtxUplink</font></td>
+        <td width="196"><select name="DTXUplink" size="1">
+          <option value="0">MS May Used DTX</option>
+          <option value="1">MS Shall use DTX</option>
+          <option selected value="2">MS Shall Not use DTX</option>
+        </select></td>
+        <td width="606">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="236"><font SIZE="2" face="Courier New">emergencyCallRestricted</font></td>
+        <td width="196"><input type="radio" value="V5" name="EmergencyCall"></td>
+        <td width="606">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="236"><font SIZE="2" face="Courier New">notAllowedAccessClasses</font></td>
+        <td width="196"><select name="D1" size="1" multiple>
+          <option value="Class 1">Class 1</option>
+          <option value="Class 2">Class 2</option>
+          <option value="Class 3">Class 3</option>
+          <option value="Class 4">Class 4</option>
+        </select></td>
+        <td width="606">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="236"><font SIZE="2" face="Courier New">timerPeriodicUpdateMS</font></td>
+        <td width="196"><!--webbot bot="Validation" S-Data-Type="Integer"
+          S-Number-Separators="x" B-Value-Required="TRUE" I-Minimum-Length="1"
+          I-Maximum-Length="3"
+          S-Validation-Constraint="Greater than or equal to"
+          S-Validation-Value="0" S-Validation-Constraint="Less than or equal to"
+          S-Validation-Value="255" --><input type="text" name="PeriodicLocationUpdate" size="3" maxlength="3"></td>
+        <td width="606"><small><font face="Courier New">In Deci Hours</font></small></td>
+      </tr>
+    </table>
+    <p><input type="submit" value="Submit" name="B1"><input type="reset" value="Reset" name="B2"></p>
+  </form>
+  <blockquote>
+    <font FACE="Arial" SIZE="2"><u><p>channel -&gt; channelPackage&nbsp; This needs to be done
+    on a per TRX&nbsp; basis</u></font></p>
+  </blockquote>
+  <form method="POST" action="_derived/nortbots.htm" onSubmit="location.href='_derived/nortbots.htm';return false;" webbot-action="--WEBBOT-SELF--" WEBBOT-onSubmit>
+    <!--webbot bot="SaveResults" startspan
+    U-File="D:\Oam\Manager\_private\form_results.txt" S-Format="TEXT/CSV"
+    S-Label-Fields="TRUE" --><strong>[FrontPage Save Results Component]</strong><!--webbot
+    bot="SaveResults" endspan i-checksum="6561" --><table border="1" width="853">
+      <tr>
+        <td width="145"><font face="Times New Roman" SIZE="2"><strong>Select TRX -&gt;</strong></font></td>
+        <td width="335" colspan="2"><select name="D4" size="1">
+          <option selected value="1">TRX 1</option>
+          <option value="2">TRX 2</option>
+        </select></td>
+        <td width="558">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="145"><font face="Times New Roman" SIZE="2"><strong>Channel Number</strong></font></td>
+        <td width="166" align="center"><strong>Channel Type</strong></td>
+        <td width="169" align="center"><strong>Training Sequence</strong></td>
+        <td width="558">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="145" align="center"><font size="2" face="Times New Roman"><strong>1</strong></font></td>
+        <td width="166"><select name="D2" size="1">
+          <option value="0">TCH Full</option>
+          <option value="1">TCH Half</option>
+          <option value="2">TCH Half 2</option>
+          <option value="3">SDCCH</option>
+          <option value="4">Main BCCH</option>
+          <option value="5">BCCH Combined</option>
+          <option value="6">CCCH</option>
+          <option value="7">BCCH with CBCH</option>
+          <option value="8">SDCCH with CBCH</option>
+        </select></td>
+        <td width="169"><select name="D3" size="1">
+          <option selected value="Use BCC">Use BCC</option>
+          <option value="TSC 1">TSC 1</option>
+          <option value="TSC 2">TSC 2</option>
+          <option value="TSC 3">TSC 3</option>
+          <option value="TSC 4">TSC 4</option>
+          <option value="TSC 5">TSC 5</option>
+          <option value="TSC 6">TSC 6</option>
+          <option value="TSC 7">TSC 7</option>
+          <option value="TSC 8">TSC 8</option>
+          <option value="TSC 9 - Special">TSC 9 - Special</option>
+        </select></td>
+        <td width="558">The Channel Type restrictions need to be checked</td>
+      </tr>
+      <tr>
+        <td width="145" align="center"><font size="2" face="Times New Roman"><strong>2</strong></font></td>
+        <td width="166"><select name="Channel2" size="1">
+          <option value="0">TCH Full</option>
+          <option value="1">TCH Half</option>
+          <option value="2">TCH Half 2</option>
+          <option value="3">SDCCH</option>
+          <option value="6">CCCH</option>
+          <option value="8">SDCCH with CBCH</option>
+        </select></td>
+        <td width="169"><select name="D3" size="1">
+          <option selected value="Use BCC">Use BCC</option>
+          <option value="TSC 1">TSC 1</option>
+          <option value="TSC 2">TSC 2</option>
+          <option value="TSC 3">TSC 3</option>
+          <option value="TSC 4">TSC 4</option>
+          <option value="TSC 5">TSC 5</option>
+          <option value="TSC 6">TSC 6</option>
+          <option value="TSC 7">TSC 7</option>
+          <option value="TSC 8">TSC 8</option>
+          <option value="TSC 9 - Special">TSC 9 - Special</option>
+        </select></td>
+        <td width="558">The Channel Type restrictions need to be checked</td>
+      </tr>
+      <tr>
+        <td width="145" align="center"><font size="2" face="Times New Roman"><strong>3</strong></font></td>
+        <td width="166"><select name="Channel3" size="1">
+          <option value="0">TCH Full</option>
+          <option value="1">TCH Half</option>
+          <option value="2">TCH Half 2</option>
+          <option value="3">SDCCH</option>
+          <option value="6">CCCH</option>
+          <option value="8">SDCCH with CBCH</option>
+        </select></td>
+        <td width="169"><select name="D3" size="1">
+          <option selected value="Use BCC">Use BCC</option>
+          <option value="TSC 1">TSC 1</option>
+          <option value="TSC 2">TSC 2</option>
+          <option value="TSC 3">TSC 3</option>
+          <option value="TSC 4">TSC 4</option>
+          <option value="TSC 5">TSC 5</option>
+          <option value="TSC 6">TSC 6</option>
+          <option value="TSC 7">TSC 7</option>
+          <option value="TSC 8">TSC 8</option>
+          <option value="TSC 9 - Special">TSC 9 - Special</option>
+        </select></td>
+        <td width="558">The Channel Type restrictions need to be checked</td>
+      </tr>
+      <tr>
+        <td width="145" align="center"><font size="2" face="Times New Roman"><strong>4</strong></font></td>
+        <td width="166"><select name="Channel4" size="1">
+          <option value="0">TCH Full</option>
+          <option value="1">TCH Half</option>
+          <option value="2">TCH Half 2</option>
+          <option value="3">SDCCH</option>
+          <option value="6">CCCH</option>
+          <option value="8">SDCCH with CBCH</option>
+        </select></td>
+        <td width="169"><select name="D3" size="1">
+          <option selected value="Use BCC">Use BCC</option>
+          <option value="TSC 1">TSC 1</option>
+          <option value="TSC 2">TSC 2</option>
+          <option value="TSC 3">TSC 3</option>
+          <option value="TSC 4">TSC 4</option>
+          <option value="TSC 5">TSC 5</option>
+          <option value="TSC 6">TSC 6</option>
+          <option value="TSC 7">TSC 7</option>
+          <option value="TSC 8">TSC 8</option>
+          <option value="TSC 9 - Special">TSC 9 - Special</option>
+        </select></td>
+        <td width="558">The Channel Type restrictions need to be checked</td>
+      </tr>
+      <tr>
+        <td width="145" align="center"><font size="2" face="Times New Roman"><strong>5</strong></font></td>
+        <td width="166"><select name="Channel5" size="1">
+          <option value="0">TCH Full</option>
+          <option value="1">TCH Half</option>
+          <option value="2">TCH Half 2</option>
+          <option value="3">SDCCH</option>
+          <option value="6">CCCH</option>
+          <option value="8">SDCCH with CBCH</option>
+        </select></td>
+        <td width="169"><select name="D3" size="1">
+          <option selected value="Use BCC">Use BCC</option>
+          <option value="TSC 1">TSC 1</option>
+          <option value="TSC 2">TSC 2</option>
+          <option value="TSC 3">TSC 3</option>
+          <option value="TSC 4">TSC 4</option>
+          <option value="TSC 5">TSC 5</option>
+          <option value="TSC 6">TSC 6</option>
+          <option value="TSC 7">TSC 7</option>
+          <option value="TSC 8">TSC 8</option>
+          <option value="TSC 9 - Special">TSC 9 - Special</option>
+        </select></td>
+        <td width="558">The Channel Type restrictions need to be checked</td>
+      </tr>
+      <tr>
+        <td width="145" align="center"><font size="2" face="Times New Roman"><strong>6</strong></font></td>
+        <td width="166"><select name="Channel6" size="1">
+          <option value="0">TCH Full</option>
+          <option value="1">TCH Half</option>
+          <option value="2">TCH Half 2</option>
+          <option value="3">SDCCH</option>
+          <option value="6">CCCH</option>
+          <option value="8">SDCCH with CBCH</option>
+        </select></td>
+        <td width="169"><select name="D3" size="1">
+          <option selected value="Use BCC">Use BCC</option>
+          <option value="TSC 1">TSC 1</option>
+          <option value="TSC 2">TSC 2</option>
+          <option value="TSC 3">TSC 3</option>
+          <option value="TSC 4">TSC 4</option>
+          <option value="TSC 5">TSC 5</option>
+          <option value="TSC 6">TSC 6</option>
+          <option value="TSC 7">TSC 7</option>
+          <option value="TSC 8">TSC 8</option>
+          <option value="TSC 9 - Special">TSC 9 - Special</option>
+        </select></td>
+        <td width="558">The Channel Type restrictions need to be checked</td>
+      </tr>
+      <tr>
+        <td width="145" align="center"><font size="2" face="Times New Roman"><strong>7</strong></font></td>
+        <td width="166"><select name="D2" size="1">
+          <option value="0">TCH Full</option>
+          <option value="1">TCH Half</option>
+          <option value="2">TCH Half 2</option>
+          <option value="3">SDCCH</option>
+          <option value="6">CCCH</option>
+          <option value="8">SDCCH with CBCH</option>
+        </select></td>
+        <td width="169"><select name="D3" size="1">
+          <option selected value="Use BCC">Use BCC</option>
+          <option value="TSC 1">TSC 1</option>
+          <option value="TSC 2">TSC 2</option>
+          <option value="TSC 3">TSC 3</option>
+          <option value="TSC 4">TSC 4</option>
+          <option value="TSC 5">TSC 5</option>
+          <option value="TSC 6">TSC 6</option>
+          <option value="TSC 7">TSC 7</option>
+          <option value="TSC 8">TSC 8</option>
+          <option value="TSC 9 - Special">TSC 9 - Special</option>
+        </select></td>
+        <td width="558">The Channel Type restrictions need to be checked</td>
+      </tr>
+      <tr>
+        <td width="145" align="center"><font size="2" face="Times New Roman"><strong>8</strong></font></td>
+        <td width="166"><select name="Channel8" size="1">
+          <option value="0">TCH Full</option>
+          <option value="1">TCH Half</option>
+          <option value="2">TCH Half 2</option>
+          <option value="3">SDCCH</option>
+          <option value="6">CCCH</option>
+          <option value="8">SDCCH with CBCH</option>
+        </select></td>
+        <td width="169"><select name="D3" size="1">
+          <option selected value="Use BCC">Use BCC</option>
+          <option value="TSC 1">TSC 1</option>
+          <option value="TSC 2">TSC 2</option>
+          <option value="TSC 3">TSC 3</option>
+          <option value="TSC 4">TSC 4</option>
+          <option value="TSC 5">TSC 5</option>
+          <option value="TSC 6">TSC 6</option>
+          <option value="TSC 7">TSC 7</option>
+          <option value="TSC 8">TSC 8</option>
+          <option value="TSC 9 - Special">TSC 9 - Special</option>
+        </select></td>
+        <td width="558">The Channel Type restrictions need to be checked</td>
+      </tr>
+    </table>
+    <p><input type="submit" value="Submit" name="B1"><input type="reset" value="Reset" name="B2"></p>
+  </form>
+  <u><font FACE="Arial" SIZE="2"><p></font><font size="3">radioCarrier -&gt;
+  radioCarrierPackage</font></u></p>
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form5_Validator(theForm)
+{
+
+  if (theForm.MaxPowerReduction.value == "")
+  {
+    alert("Please enter a value for the \"MaxPowerReduction\" field.");
+    theForm.MaxPowerReduction.focus();
+    return (false);
+  }
+
+  if (theForm.MaxPowerReduction.value.length > 1)
+  {
+    alert("Please enter at most 1 characters in the \"MaxPowerReduction\" field.");
+    theForm.MaxPowerReduction.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.MaxPowerReduction.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"MaxPowerReduction\" field.");
+    theForm.MaxPowerReduction.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "15"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"15\" in the \"MaxPowerReduction\" field.");
+    theForm.MaxPowerReduction.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" action="_derived/nortbots.htm" onsubmit="location.href='_derived/nortbots.htm';return false;" name="FrontPage_Form5" webbot-action="--WEBBOT-SELF--" WEBBOT-onSubmit="return FrontPage_Form5_Validator(this)">
+    <!--webbot bot="SaveResults" startspan
+    U-File="D:\Oam\Manager\_private\form_results.txt" S-Format="TEXT/CSV"
+    S-Label-Fields="TRUE" --><strong>[FrontPage Save Results Component]</strong><!--webbot
+    bot="SaveResults" endspan i-checksum="6561" --><table border="1" width="872">
+      <tr>
+        <td width="259"><font size="2" face="Courier New">powerClass</font></td>
+        <td width="193"><select name="PowerClass" size="1">
+          <option value="M1 - 250mW">M1 - 250mW</option>
+          <option value="M2 - 160mW">M2 - 160mW</option>
+        </select></td>
+        <td width="606">Some of this will depend on the GSM Indicator type above</td>
+      </tr>
+      <tr>
+        <td width="259"><font size="2" face="Courier New">txPwrMaxReduction</font></td>
+        <td width="193"><!--webbot bot="Validation" S-Data-Type="Integer"
+          S-Number-Separators="," B-Value-Required="TRUE" I-Maximum-Length="1"
+          S-Validation-Constraint="Greater than or equal to"
+          S-Validation-Value="0" S-Validation-Constraint="Less than or equal to"
+          S-Validation-Value="15" --><input type="text" name="MaxPowerReduction" size="2" maxlength="1"></td>
+        <td width="606">in 2dB Steps</td>
+      </tr>
+    </table>
+    <p><input type="submit" value="Submit" name="B1"><input type="reset" value="Reset" name="B2"></p>
+  </form>
+  <ul>
+    <li><big><strong>Protocol Configuration Management</strong></big></li>
+  </ul>
+  <p><font FACE="Arial" SIZE="2"><u>bsc-&gt; bscBasicPackage</u></font></p>
+  <table border="1" width="843">
+    <tr>
+      <td width="186"><font size="2" face="Courier New">handoverReqParam</font></td>
+      <td width="173">&nbsp;</td>
+      <td width="466">Need to check this one out</td>
+    </tr>
+  </table>
+  <p><u><font FACE="Arial" SIZE="2">bts -&gt;btsQueuingPackage</font></u></p>
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form6_Validator(theForm)
+{
+
+  if (theForm.MaxQLength.value == "")
+  {
+    alert("Please enter a value for the \"MaxQLength\" field.");
+    theForm.MaxQLength.focus();
+    return (false);
+  }
+
+  if (theForm.MaxQLength.value.length < 1)
+  {
+    alert("Please enter at least 1 characters in the \"MaxQLength\" field.");
+    theForm.MaxQLength.focus();
+    return (false);
+  }
+
+  if (theForm.MaxQLength.value.length > 3)
+  {
+    alert("Please enter at most 3 characters in the \"MaxQLength\" field.");
+    theForm.MaxQLength.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-,";
+  var checkStr = theForm.MaxQLength.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"MaxQLength\" field.");
+    theForm.MaxQLength.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "100"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"100\" in the \"MaxQLength\" field.");
+    theForm.MaxQLength.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" action="_derived/nortbots.htm" onsubmit="location.href='_derived/nortbots.htm';return false;" name="FrontPage_Form6" webbot-action="--WEBBOT-SELF--" WEBBOT-onSubmit="return FrontPage_Form6_Validator(this)">
+    <!--webbot bot="SaveResults" startspan
+    U-File="D:\Oam\Manager\_private\form_results.txt" S-Format="TEXT/CSV"
+    S-Label-Fields="TRUE" --><strong>[FrontPage Save Results Component]</strong><!--webbot
+    bot="SaveResults" endspan i-checksum="6561" --><table border="1" width="829">
+      <tr>
+        <td width="186"><font size="2" face="Courier New">maxQueueLength</font></td>
+        <td width="172"><!--webbot bot="Validation" S-Data-Type="Integer"
+          S-Number-Separators="," B-Value-Required="TRUE" I-Minimum-Length="1"
+          I-Maximum-Length="3"
+          S-Validation-Constraint="Greater than or equal to"
+          S-Validation-Value="0" S-Validation-Constraint="Less than or equal to"
+          S-Validation-Value="100" --><input type="text" name="MaxQLength" size="3" maxlength="3"></td>
+        <td width="453">% of all TCHs</td>
+      </tr>
+      <tr>
+        <td width="186"><font size="2" face="Courier New">msPriorityUsedInQueuing</font></td>
+        <td width="172">?</td>
+        <td width="453">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="186"><font size="2" face="Courier New">timeLimitCall</font></td>
+        <td width="172">?</td>
+        <td width="453">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="186"><font size="2" face="Courier New">timeLimitHandover</font></td>
+        <td width="172">?</td>
+        <td width="453">&nbsp;</td>
+      </tr>
+    </table>
+    <p><input type="submit" value="Submit" name="B1"><input type="reset" value="Reset" name="B2"></p>
+  </form>
+  <p><u><font FACE="Arial" SIZE="2">bts-&gt;btsTimerPackage</font></u></p>
+  <font FACE="Arial" SIZE="2"><!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form7_Validator(theForm)
+{
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.T200SDCCH.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"T200SDCCH\" field.");
+    theForm.T200SDCCH.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.T200FACCHTCHF.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"T200FACCHTCHF\" field.");
+    theForm.T200FACCHTCHF.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.T200FACCHTCHF1.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"T200FACCHTCHF1\" field.");
+    theForm.T200FACCHTCHF1.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.T200TCHSAPI0.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"T200TCHSAPI0\" field.");
+    theForm.T200TCHSAPI0.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.T200TCHSAPI1.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"T200TCHSAPI1\" field.");
+    theForm.T200TCHSAPI1.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.T200TCHSAPI2.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"T200TCHSAPI2\" field.");
+    theForm.T200TCHSAPI2.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.T200TCHSAPI3.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"T200TCHSAPI3\" field.");
+    theForm.T200TCHSAPI3.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.T3101.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"T3101\" field.");
+    theForm.T3101.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.T3103.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"T3103\" field.");
+    theForm.T3103.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.T3105.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"T3105\" field.");
+    theForm.T3105.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.T3107.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"T3107\" field.");
+    theForm.T3107.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.T3109.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"T3109\" field.");
+    theForm.T3109.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.T3111.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"T3111\" field.");
+    theForm.T3111.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.T3113.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"T3113\" field.");
+    theForm.T3113.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" action="_derived/nortbots.htm" onsubmit="location.href='_derived/nortbots.htm';return false;" name="FrontPage_Form7" webbot-action="--WEBBOT-SELF--" WEBBOT-onSubmit="return FrontPage_Form7_Validator(this)">
+    <!--webbot bot="SaveResults" startspan
+    U-File="D:\Oam\Manager\_private\form_results.txt" S-Format="TEXT/CSV"
+    S-Label-Fields="TRUE" --><strong>[FrontPage Save Results Component]</strong><!--webbot
+    bot="SaveResults" endspan i-checksum="6561" --><table border="1" width="829" height="205">
+      <tr>
+        <td width="186" height="23"></font><font size="2" face="Courier New">T200:SDCCH SAPI 0</font><font FACE="Arial" SIZE="2"></td>
+        <td width="172" height="23"><!--webbot bot="Validation"
+          S-Data-Type="Integer" S-Number-Separators="x" --><input type="text" name="T200SDCCH" size="20"></td>
+        <font size="1"><td width="453" height="23"><font face="Tahoma">SDCCH, SAPI 0 layer
+        2 timer in 5ms units</font></td>
+        </font><font FACE="Arial" SIZE="2">
+      </tr>
+      <tr>
+        <td width="186" height="25"></font><font size="2" face="Courier New">T200:FACCH TCHF</font><font FACE="Arial" SIZE="2"></td>
+        <td width="172" height="25"><!--webbot bot="Validation"
+          S-Data-Type="Integer" S-Number-Separators="x" --><input type="text" name="T200FACCHTCHF" size="20"></td>
+        <font size="1"><td width="453" height="25"><font face="Tahoma">Associated with a
+        Full Rate TCH layer 2 timer in 5ms units</font></td>
+        </font><font FACE="Arial" SIZE="2">
+      </tr>
+      <tr>
+        <td width="186" height="23"></font><font size="2" face="Courier New">T200:FACCH TCHH</font><font FACE="Arial" SIZE="2"></td>
+        <td width="172" height="23"><!--webbot bot="Validation"
+          S-Data-Type="Integer" S-Number-Separators="x" --><input type="text" name="T200FACCHTCHF1" size="20"></td>
+        <font size="1"><td width="453" height="23"><font face="Tahoma">Associated with a
+        Half Rate TCH layer 2 timer in 5ms units</font></td>
+        </font><font FACE="Arial" SIZE="2">
+      </tr>
+      <tr>
+        <td width="186" height="23"></font><font size="2" face="Courier New">T200:TCH SAPI 0</font><font FACE="Arial" SIZE="2"></td>
+        <td width="172" height="23"><!--webbot bot="Validation"
+          S-Data-Type="Integer" S-Number-Separators="x" --><input type="text" name="T200TCHSAPI0" size="20"></td>
+        <font size="1"><td width="453" height="23"><font face="Tahoma">Associated with
+        SACCH with TCH SAPI 0 layer 2 timer in 5ms units</font></td>
+        </font><font FACE="Arial" SIZE="2">
+      </tr>
+      <tr>
+        <td width="186" height="23"></font><font size="2" face="Courier New">T200:SACCH SDCCH</font><font FACE="Arial" SIZE="2"></td>
+        <td width="172" height="23"><!--webbot bot="Validation"
+          S-Data-Type="Integer" S-Number-Separators="x" --><input type="text" name="T200TCHSAPI1" size="20"></td>
+        <font size="1"><td width="453" height="23"><font face="Tahoma">Associated with
+        SACCH with SDCCH layer 2 timer in 5ms units</font></td>
+        </font><font FACE="Arial" SIZE="2">
+      </tr>
+      <tr>
+        <td width="186" height="23"></font><font size="2" face="Courier New">T200:SDCCH SAPI 3</font><font FACE="Arial" SIZE="2"></td>
+        <td width="172" height="23"><!--webbot bot="Validation"
+          S-Data-Type="Integer" S-Number-Separators="x" --><input type="text" name="T200TCHSAPI2" size="20"></td>
+        <font size="1"><td width="453" height="23"><font face="Tahoma">Associated with
+        SDCCH, SAPI 3 layer 2 timer in 5ms units</font></td>
+        </font><font FACE="Arial" SIZE="2">
+      </tr>
+      <tr>
+        <td width="186" height="23"></font><font size="2" face="Courier New">T200:SACCH TCH SAPI 3</font><font FACE="Arial" SIZE="2"></td>
+        <td width="172" height="23"><!--webbot bot="Validation"
+          S-Data-Type="Integer" S-Number-Separators="x" --><input type="text" name="T200TCHSAPI3" size="20"></td>
+        <font size="1"><td width="453" height="23"><font face="Tahoma">Associated with
+        SACCH with TCH, SAPI 3 layer 2 timer in 5ms units</font></td>
+        </font><font FACE="Arial" SIZE="2">
+      </tr>
+    </table>
+    <p>&nbsp;</p>
+    <table border="1" width="829">
+      <tr>
+        <td width="186"></font><font size="2" face="Courier New">T3101</font><font FACE="Arial" SIZE="2"></td>
+        <td width="172"><!--webbot bot="Validation" S-Data-Type="Integer"
+          S-Number-Separators="x" --><input type="text" name="T3101" size="20"></td>
+        <font size="1"><td width="453"><font face="Tahoma">Used with IMMEDIATE ASSIGNMENT</font></td>
+        </font><font FACE="Arial" SIZE="2">
+      </tr>
+      <tr>
+        <td width="186"></font><font size="2" face="Courier New">T3103</font><font FACE="Arial" SIZE="2"></td>
+        <td width="172"><!--webbot bot="Validation" S-Data-Type="Integer"
+          S-Number-Separators="x" --><input type="text" name="T3103" size="20"></td>
+        <font size="1"><td width="453"><font face="Tahoma">Used with HANDOVER COMMAND</font></td>
+        </font><font FACE="Arial" SIZE="2">
+      </tr>
+      <tr>
+        <td width="186"></font><font size="2" face="Courier New">T3105</font><font FACE="Arial" SIZE="2"></td>
+        <td width="172"><!--webbot bot="Validation" S-Data-Type="Integer"
+          S-Number-Separators="x" --><input type="text" name="T3105" size="20"></td>
+        <font size="1"><td width="453"><font face="Tahoma">Used with PHYSICAL INFORMATION</font></td>
+        </font><font FACE="Arial" SIZE="2">
+      </tr>
+      <tr>
+        <td width="186"></font><font size="2" face="Courier New">T3107</font><font FACE="Arial" SIZE="2"></td>
+        <td width="172"><!--webbot bot="Validation" S-Data-Type="Integer"
+          S-Number-Separators="x" --><input type="text" name="T3107" size="20"></td>
+        <font size="1"><td width="453"><font face="Tahoma">Used with ASSIGNMENT COMMAND</font></td>
+        </font><font FACE="Arial" SIZE="2">
+      </tr>
+      <tr>
+        <td width="186"></font><font size="2" face="Courier New">T3109</font><font FACE="Arial" SIZE="2"></td>
+        <td width="172"><!--webbot bot="Validation" S-Data-Type="Integer"
+          S-Number-Separators="x" --><input type="text" name="T3109" size="20"></td>
+        <font size="1"><td width="453"><font face="Tahoma">Used for lower layer failure</font></td>
+        </font><font FACE="Arial" SIZE="2">
+      </tr>
+      <tr>
+        <td width="186"></font><font size="2" face="Courier New">T3111</font><font FACE="Arial" SIZE="2"></td>
+        <td width="172"><!--webbot bot="Validation" S-Data-Type="Integer"
+          S-Number-Separators="x" --><input type="text" name="T3111" size="20"></td>
+        <font size="1"><td width="453"><font face="Tahoma">Used for Channel Activation
+        Delay</font></td>
+        </font><font FACE="Arial" SIZE="2">
+      </tr>
+      <tr>
+        <td width="186"></font><font size="2" face="Courier New">T3113</font><font FACE="Arial" SIZE="2"></td>
+        <td width="172"><!--webbot bot="Validation" S-Data-Type="Integer"
+          S-Number-Separators="x" --><input type="text" name="T3113" size="20"></td>
+        <font size="1"><td width="453"><font face="Tahoma">Used with Paging Messages</font></td>
+        </font><font FACE="Arial" SIZE="2">
+      </tr>
+    </table>
+    <p><input type="submit" value="Submit" name="B1"><input type="reset" value="Reset" name="B2"></p>
+  </form>
+  </font><ul>
+    <li><big><strong>Adjacent Cell Configuration Management</strong></big></li>
+    <li>There may be multiple of these for the Handover case</li>
+    <li><table BORDER="1" CELLSPACING="2" CELLPADDING="4" WIDTH="630">
+        <tr>
+          <td WIDTH="28%" VALIGN="TOP"><font FACE="Arial" SIZE="2"><b><p ALIGN="CENTER">Managed
+          Object Classes</b></font></td>
+          <td WIDTH="36%" VALIGN="TOP"><font FACE="Arial" SIZE="2"><b><p ALIGN="CENTER">Packages</b></font></td>
+          <td WIDTH="36%" VALIGN="TOP"><font FACE="Arial" SIZE="2"><b><p ALIGN="CENTER">Attributes/Actions/Notifications</b></font></td>
+        </tr>
+        <tr>
+          <td WIDTH="28%" VALIGN="TOP"><font FACE="Arial" SIZE="2">adjacentCellHandOver</font></td>
+          <td WIDTH="36%" VALIGN="TOP"><font FACE="Arial" SIZE="2">adjacentCellHandOverPackage</font></td>
+          <td WIDTH="36%" VALIGN="TOP"><font FACE="Arial" SIZE="2">adjacentCellID<p>bCCHFrequency
+          (from cellAllocation)</p>
+          <p>bsIdentityCode (as in cell config)</p>
+          <p>cellGlobalIdentity ( as above )</p>
+          <p>synchronized</font></td>
+        </tr>
+        <tr>
+          <td WIDTH="28%" VALIGN="TOP"><font FACE="Arial" SIZE="2">adjacentCellReselection</font></td>
+          <td WIDTH="36%" VALIGN="TOP"><font FACE="Arial" SIZE="2">adjacentCellReselectionPackage</font></td>
+          <td WIDTH="36%" VALIGN="TOP"><font FACE="Arial" SIZE="2">adjacentCellID<p>bCCHFrequency</font></td>
+        </tr>
+      </table>
+    </li>
+    <li><big><strong>Power Control Management</strong></big></li>
+    <li>This package needs to be provided by JetCell</li>
+    <li><big><strong>Handover Control Management</strong></big></li>
+    <li>We need to be able to make several of these for different Adjacent cells.<table BORDER="1" CELLSPACING="2" CELLPADDING="4" WIDTH="628">
+        <tr>
+          <td WIDTH="31%" VALIGN="TOP"><font FACE="Arial" SIZE="2"><b><p ALIGN="CENTER">Managed
+          Object Classes</b></font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2"><b><p ALIGN="CENTER">Packages</b></font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2"><b><p ALIGN="CENTER">Attributes/Actions/Notifications</b></font></td>
+        </tr>
+        <tr>
+          <td WIDTH="31%" VALIGN="TOP"><font FACE="Arial" SIZE="2"><u>basebandTransceiver </u></font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2"><u>basebandTransceiverPackage</u></font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2">forcedHO (action)</font></td>
+        </tr>
+        <tr>
+          <td WIDTH="31%" VALIGN="TOP"><font FACE="Arial" SIZE="2"><u>bsc </u></font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2">internalInterCellHandoverPackage</font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2">enableInternalInterCellHandover</font></td>
+        </tr>
+        <tr>
+          <td WIDTH="31%" VALIGN="TOP">&nbsp;</td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2">internalIntraCellHandoverPackage</font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2">enableInternalIntraCellHandover</font></td>
+        </tr>
+        <tr>
+          <td WIDTH="31%" VALIGN="TOP"><font FACE="Arial" SIZE="2"><u>bts </u></font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2"><u>btsBasicPackage</u></font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2">forcedHO (action)</font></td>
+        </tr>
+        <tr>
+          <td WIDTH="31%" VALIGN="TOP">&nbsp;</td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2">hoMsmtProcessingModePackage</font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2">hoMsmtProcessingMode</font></td>
+        </tr>
+        <tr>
+          <td WIDTH="31%" VALIGN="TOP"><font FACE="Arial" SIZE="2">handoverControl </font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2">handoverControlPackage</font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2">handoverControlID<p>msmtProcParamLoc</font></td>
+        </tr>
+        <tr>
+          <td VALIGN="TOP" COLSPAN="3"><font FACE="Arial" SIZE="2"><b>GSM 05.08 Algorithm Management
+          Related</b></font></td>
+        </tr>
+        <tr>
+          <td WIDTH="31%" VALIGN="TOP"><font FACE="Arial" SIZE="2">adjacentCellHandOverGSM0508 </font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2">adjacentCellHandOverGSM0508Package</font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2">hoMargin<p>hoPriorityLevel</p>
+          <p>msTxPwrMaxCell (as in mSTxPwrMaxCCH)</p>
+          <p>rxLevMinCell</font></td>
+        </tr>
+        <tr>
+          <td WIDTH="31%" VALIGN="TOP"><font FACE="Arial" SIZE="2">handoverControlGSM0508 </font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2">handoverControlGSM0508Package</font></td>
+          <td WIDTH="34%" VALIGN="TOP"><font FACE="Arial" SIZE="2">enableOptHandoverProcessing<p>hoAveragingAdjCellParam</p>
+          <p>hoAveragingDistParam</p>
+          <p>hoAveragingLevParam</p>
+          <p>hoAveragingQualParam</p>
+          <p>hoMarginDef</p>
+          <p>hoThresholdDistParam</p>
+          <p>hoThresholdInterferenceParam</p>
+          <p>hoThresholdLevParam</p>
+          <p>hoThresholdQualParam</p>
+          <p>interferenceAveragingParam</p>
+          <p>msTxPwrMaxCellDef</p>
+          <p>rxLevMinCellDef</font></td>
+        </tr>
+      </table>
+    </li>
+    <li><big><strong>Frequency Control Management</strong></big></li>
+    <li><big><strong>Not sure how this one works as it is a containment class, I think?</strong></big></li>
+  </ul>
+  <p><font SIZE="2" face="Courier New"><u>basebandTransceiver
+  -&gt;basebandTransceiverPackage</u></font></p>
+  <p><font SIZE="2" face="Courier New">relatedRadioCarrier</font></p>
+  <p><font SIZE="2" face="Courier New"><u>bts -&gt;btsBasicPackage</u></font></p>
+  <p><font SIZE="2" face="Courier New">cellAllocation </font></p>
+  <p><u><font SIZE="2" face="Courier New">bts -&gt;channelConfigModPackage</font></u></p>
+  <p><font SIZE="2"><font face="Courier New">channelConfigModification (action)</font></p>
+  <p><font face="Courier New">channelModComplete (notification)</font></font></p>
+  <p><font SIZE="2" face="Courier New"><u>channel -&gt;channelPackage</u></font></p>
+        <!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form8_Validator(theForm)
+{
+
+  if (theForm.HSN.value == "")
+  {
+    alert("Please enter a value for the \"HSN\" field.");
+    theForm.HSN.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.HSN.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"HSN\" field.");
+    theForm.HSN.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"HSN\" field.");
+    theForm.HSN.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" action="_derived/nortbots.htm" onsubmit="location.href='_derived/nortbots.htm';return false;" name="FrontPage_Form8" webbot-action="--WEBBOT-SELF--" WEBBOT-onSubmit="return FrontPage_Form8_Validator(this)">
+    <!--webbot bot="SaveResults" startspan
+    U-File="D:\Oam\Manager\_private\form_results.txt" S-Format="TEXT/CSV"
+    S-Label-Fields="TRUE" --><strong>[FrontPage Save Results Component]</strong><!--webbot
+    bot="SaveResults" endspan i-checksum="6561" --><table border="1" width="869">
+      <tr>
+        <td width="237"><font size="2" face="Courier New">frequencyUsage</font></td>
+        <td width="182"><select name="D1" size="1">
+          <option value="0">No Use - Initial Value</option>
+          <option value="Non Hopping">Non Hopping</option>
+          <option value="Hopping">Hopping</option>
+        </select></td>
+        <td width="432">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="237"><font size="2" face="Courier New">frequencyHoppingSystem </font></td>
+        <td width="182">&nbsp;</td>
+        <td width="432">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="237"><font size="2" face="Courier New">frequencyHoppingSystemPackage</font></td>
+        <td width="182">&nbsp;</td>
+        <td width="432">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="237"><font SIZE="2" face="Courier New">frequencyHoppingSystemID</font></td>
+        <td width="182">&nbsp;</td>
+        <td width="432">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="237"><font face="Courier New" SIZE="2">hoppingSequenceNumber</font></td>
+        <td width="182"><!--webbot bot="Validation" S-Data-Type="Integer"
+          S-Number-Separators="x" B-Value-Required="TRUE"
+          S-Validation-Constraint="Greater than or equal to"
+          S-Validation-Value="0" S-Validation-Constraint="Less than or equal to"
+          S-Validation-Value="63" --><input type="text" name="HSN" size="3"></td>
+        <td width="432">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="237"><font face="Courier New" SIZE="2">mobileAllocation</font></td>
+        <td width="182"><select name="MobileAllocation" size="1" multiple>
+          <option value="Non Hopping">Non Hopping</option>
+          <option value="No Allocation Set">No Allocation Set</option>
+        </select></td>
+        <td width="432">&nbsp;</td>
+      </tr>
+    </table>
+    <p><input type="submit" value="Submit" name="B1"><input type="reset" value="Reset" name="B2"></p>
+  </form>
+  <p><font SIZE="2" face="Courier New"><u>radioCarrier -&gt;radioCarrierPackage</u></font></p>
+  <table border="1" width="869">
+    <tr>
+      <td width="236"><font size="2" face="Courier New">carrierFrequencyList</font></td>
+      <td width="182">&nbsp;</td>
+      <td width="433">&nbsp;</td>
+    </tr>
+  </table>
+  <ul>
+    <li><big><strong>Architectural Element Management</strong></big></li>
+    <li><big><strong>Do we need this section</strong></big></li>
+  </ul>
+  <table BORDER="1" CELLSPACING="2" CELLPADDING="4" WIDTH="630">
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><font size="2"><b><p ALIGN="CENTER"><font face="Courier New">Managed
+      Object Classes</font></b></font></td>
+      <td WIDTH="35%" VALIGN="TOP"><font size="2"><b><p ALIGN="CENTER"><font face="Courier New">Packages</font></b></font></td>
+      <td WIDTH="36%" VALIGN="TOP"><font size="2"><b><p ALIGN="CENTER"><font face="Courier New">Attributes/Actions/Notifications</font></b></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><font face="Courier New" size="2">basebandTransceiver </font></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">basebandTransceiverPackage</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><font size="2"><font face="Courier New">basebandTransceiverID</font><p><font face="Courier New">relatedGSMEquipment</font></p>
+      <p><font face="Courier New">relatedOAMLapdLink</font></p>
+      <p><font face="Courier New">relatedTelecomLapdLink</font></p>
+      <p><font face="Courier New">State/Status Attributes***</font></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">equipmentRelatedAlarmPackage*</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">functionalRelatedAlarmPackage**</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><font face="Courier New" size="2">bsc </font></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">bscBasicPackage</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><font size="2"><font face="Courier New">bscID</font><p><font face="Courier New">relatedGSMEquipment</font></p>
+      <p><font face="Courier New">State/Status Attributes***</font></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">adjustExternalTimePackage</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><font face="Courier New" size="2">adjustExternalTime (action)</font></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">equipmentRelatedAlarmPackage*</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">functionalRelatedAlarmPackage**</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><font face="Courier New" size="2">bssFunction </font></td>
+      <td WIDTH="35%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><font face="Courier New" size="2">bts </font></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">btsBasicPackage</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><font size="2"><font face="Courier New">btsID</font><p><font face="Courier New">relatedGSMEquipment</font></p>
+      <p><font face="Courier New">relatedOAMLapdLink</font></p>
+      <p><font face="Courier New">relatedTranscoder</font></p>
+      <p><font face="Courier New">State/Status Attributes***</font></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">equipmentRelatedAlarmPackage*</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">functionalRelatedAlarmPackage**</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><font face="Courier New" size="2">btsSiteManager </font></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">btsSiteManagerBasicPackage</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><font size="2"><font face="Courier New">btsSiteManagerID</font><p><font face="Courier New">relatedGSMEquipment</font></p>
+      <p><font face="Courier New">relatedOAMLapdLink</font></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">equipmentRelatedAlarmPackage*</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><font face="Courier New" size="2">channel </font></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">channelPackage</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><font size="2"><font face="Courier New">channelID</font><p><font face="Courier New">relatedGSMEquipment</font></p>
+      <p><font face="Courier New">terrTrafChannel</font></p>
+      <p><font face="Courier New">State/Status Attributes***</font></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">equipmentRelatedAlarmPackage*</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">functionalRelatedAlarmPackage**</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><font face="Courier New" size="2">gsmManagedFunction </font></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">locationNamePackage</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><font face="Courier New" size="2">locationName</font></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">userLabelPackage</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><font face="Courier New" size="2">userLabel</font></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><font face="Courier New" size="2">lapdLink </font></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">lapdLinkPackage</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><font size="2"><font face="Courier New">lapdLinkID</font><p><font face="Courier New">abisSigChannel</font></p>
+      <p><font face="Courier New">sapi</font></p>
+      <p><font face="Courier New">tei</font></p>
+      <p><font face="Courier New">State/Status Attributes***</font></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">functionalRelatedAlarmPackage**</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><font face="Courier New" size="2">pcmCircuit </font></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">pcmCircuitPackage</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><font size="2"><font face="Courier New">pcmCircuitID</font><p><font face="Courier New">relatedGSMEquipment</font></p>
+      <p><font face="Courier New">administrativeState</font></p>
+      <p><font face="Courier New">State/Status Attributes***</font></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">equipmentRelatedAlarmPackage*</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">functionalRelatedAlarmPackage**</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><font face="Courier New" size="2">radioCarrier </font></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">radioCarrierPackage</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><font size="2"><font face="Courier New">radioCarrierID</font><p><font face="Courier New">relatedGSMEquipment</font></p>
+      <p><font face="Courier New">State/Status Attributes***</font></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">equipmentRelatedAlarmPackage*</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">functionalRelatedAlarmPackage**</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><font face="Courier New" size="2">transcoder </font></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">transcoderPackage</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><font size="2"><font face="Courier New">transcoderID</font><p><font face="Courier New">relatedGSMEquipment</font></p>
+      <p><font face="Courier New">State/Status Attributes***</font></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">transcoderMatrixPackage</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><font face="Courier New" size="2">transcoderMatrix</font></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">equipmentRelatedAlarmPackage*</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+    <tr>
+      <td WIDTH="29%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+      <td WIDTH="35%" VALIGN="TOP"><font face="Courier New" size="2">functionalRelatedAlarmPackage**</font></td>
+      <td WIDTH="36%" VALIGN="TOP"><big><font face="Courier New">&nbsp;</font></big></td>
+    </tr>
+  </table>
+  <ul>
+    <li><big><strong>Software Management</strong></big></li>
+    <li>THis needs to be aligned with our strategy?<table BORDER="1" CELLSPACING="2" CELLPADDING="4" WIDTH="630">
+        <tr>
+          <td WIDTH="29%" VALIGN="TOP"><font SIZE="2"><b><p ALIGN="CENTER"><font face="Courier New">Managed
+          Object Classes</font></b></font></td>
+          <td WIDTH="35%" VALIGN="TOP"><font SIZE="2"><b><p ALIGN="CENTER"><font face="Courier New">Packages</font></b></font></td>
+          <td WIDTH="36%" VALIGN="TOP"><font SIZE="2"><b><p ALIGN="CENTER"><font face="Courier New">Attributes/Actions/Notifications</font></b></font></td>
+        </tr>
+        <tr>
+          <td WIDTH="29%" VALIGN="TOP"><font face="Courier New"><font SIZE="2">executableSoftwareUnit
+          </font></font></td>
+          <td WIDTH="35%" VALIGN="TOP"><font face="Courier New"><font SIZE="2">executableSoftwareUnitPackage</font></font></td>
+          <td WIDTH="36%" VALIGN="TOP"><font face="Courier New"><font SIZE="2">relatedRSUs</font></font></td>
+        </tr>
+        <tr>
+          <td WIDTH="29%" VALIGN="TOP"><font face="Courier New"><font SIZE="2">operatingSoftwareUnit
+          </font></font></td>
+          <td WIDTH="35%" VALIGN="TOP"><font face="Courier New"><font SIZE="2">operatingSoftwareUnitPackage</font></font></td>
+          <td WIDTH="36%" VALIGN="TOP"><font SIZE="2"><font face="Courier New">operatingSoftwareID</font><p><font face="Courier New">backupESU</font></p>
+          <p><font face="Courier New">fallbackESU</font></p>
+          <p><font face="Courier New">newESU </font></p>
+          <p><font face="Courier New">runningESU</font></p>
+          <p><font face="Courier New">administrativeState</font></p>
+          <p><font face="Courier New">controlStatus</font></p>
+          <p><font face="Courier New">alarmStatus</font></p>
+          <p><font face="Courier New">operationalState</font></p>
+          <p><font face="Courier New">availabilityStatus</font></font></td>
+        </tr>
+        <tr>
+          <td WIDTH="29%" VALIGN="TOP"><font face="Courier New"><font SIZE="2">replaceableSoftwareUnit
+          </font></font></td>
+          <td WIDTH="35%" VALIGN="TOP"><font face="Courier New"><font SIZE="2">replaceableSoftwareUnitPackage</font></font></td>
+          <td WIDTH="36%" VALIGN="TOP"><font face="Courier New"><font SIZE="2">relatedFiles</font></font></td>
+        </tr>
+        <tr>
+          <td WIDTH="29%" VALIGN="TOP"><font SIZE="2" face="Courier New">simpleFileTransferControl </font></td>
+          <td WIDTH="35%" VALIGN="TOP"><font face="Courier New">&nbsp;</font></td>
+          <td WIDTH="36%" VALIGN="TOP"><font SIZE="2"><font face="Courier New">requestTransferDown
+          (action)</font><p><font face="Courier New">transferDownComplete (action)</font></p>
+          <p><font face="Courier New">transferDownReady (notification)</font></font></td>
+        </tr>
+      </table>
+    </li>
+    <li><big><strong>Equipment Management</strong></big></li>
+    <li>&nbsp;<table BORDER="1" CELLSPACING="2" CELLPADDING="4" WIDTH="631">
+        <tr>
+          <td WIDTH="32%" VALIGN="TOP"><font SIZE="2"><b><p ALIGN="CENTER"><font face="Courier New">Managed
+          Object Classes</font></b></font></td>
+          <td WIDTH="33%" VALIGN="TOP"><font SIZE="2"><b><p ALIGN="CENTER"><font face="Courier New">Packages</font></b></font></td>
+          <td WIDTH="36%" VALIGN="TOP"><font SIZE="2"><b><p ALIGN="CENTER"><font face="Courier New">Attributes/Actions/Notifications</font></b></font></td>
+        </tr>
+        <tr>
+          <td WIDTH="32%" VALIGN="TOP"><font SIZE="2" face="Courier New">gsmEquipment </font></td>
+          <td WIDTH="33%" VALIGN="TOP"><font SIZE="2" face="Courier New">gsmEquipmentPackage</font></td>
+          <td WIDTH="36%" VALIGN="TOP"><font SIZE="2"><font face="Courier New">equipmentType</font><p><font face="Courier New">relatedGSMFunctionalObjects</font></font></td>
+        </tr>
+      </table>
+    </li>
+  </ul>
+
+<p>&nbsp;</p>
+
+<blockquote>
+  <ul>
+    <li><big><strong>Mobility Management Related Parameters</strong></big></li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><big><strong>Call Control Related Parameters</strong></big></li>
+  </ul>
+</blockquote>
+
+<hr>
+
+<ul>
+  <li><a href="h323_parameters.htm"><strong><big><big>H.323 Parameters</big></big></strong></a></li>
+  <li><a href="jetcell_parameters.htm"><strong><big><big>JetCell Parameters</big></big></strong></a></li>
+  <li><a href="misc_parameters.htm"><strong><big><big>Miscellaneous Parameters</big></big></strong></a></li>
+  <li><a href="view_stats.htm"><strong><big><big>View Statistic Logs</big></big></strong></a></li>
+  <li><a href="main_features.htm"><strong><big><big>Mantainence Features (Must be Operator)</big></big></strong></a></li>
+</ul>
+
+<p><a href="access_vipercell.htm">Return to Access Page</a>&nbsp; <a href="index.htm">Return
+to Start</a> 
+        </body>
+</html>

@@ -1,0 +1,92 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Parameter</title>
+</head>
+
+<SCRIPT >
+
+
+function selectOption(theSelect, valueHolder)
+{
+	if (valueHolder.value < 0 && valueHolder.value >= theSelect.length)
+	{ 
+		window.alert("Incorrect MIB value for " + valueHolder.name + "  "+ valueHolder.value + "Corrected to 0");
+		valueHolder.value = 0;
+	}
+	for (var i = 0; i < theSelect.length; i++)
+	{
+		if (theSelect.options[i].value == valueHolder.value) 
+		{
+			theSelect.options[i].selected = true;
+			break;
+		}
+	}
+			
+}
+
+function presetButtons(theForm)
+{
+
+	return true;
+} 
+
+function parseSelect(theSelect, valueHolder)
+{
+	for (var i = 0; i < theSelect.length; i++)
+	{
+		if (theSelect.options[i].selected) 
+		{
+			valueHolder.value = theSelect.options[i].value;
+			break;
+		}
+	}
+}
+
+function parseButtons(theForm)
+{	
+	return true;	
+} 
+
+</SCRIPT>
+
+<body onload="presetButtons(this.document.forms[0]);$%reloadTopframe#$">
+<form method="POST" cellpadding="0" onsubmit="return FrontPage_Form1_Validator(this)" name="FrontPage_Form1">
+
+<div align="center">
+ <table border="1">
+  <tr>
+    <td colspan="3" align="center">
+      <h2>ARFCN RSSI Clock Control Table</h2>
+    </td>
+  </tr>
+ <center>
+  <tr>
+   <td height="19" align="center"><font color="#000000">Index</font></td>
+   <td height="19" align="center"><font color="#000000">ARFCN</font></td>
+   <td height="19" align="center"><font color="#000000">Clock Recovery Mode</font></td>
+  </tr>
+  <tr>
+   <td height="23"></td>
+   <td height="23">
+   </td>
+   <td height="23">
+   </td>
+  </tr>
+  <tr>
+   <td height="23"></td>
+   <td height="23"></td>
+   <td height="23"></td>
+  </tr>
+ </table>
+ </center>
+</div>
+
+<p align="center"><input name="B1" type="submit" value="Submit">  <input name="Recall" type="button" value="Recall" onclick="window.location.reload()"><input name="Reset" type="reset" value="Reset" onclick="presetButtons(window.document.forms[0])"></p>
+</form>
+
+</body>
+

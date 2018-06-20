@@ -1,0 +1,102 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Automatic Parameter Allocation</title>
+</head>
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+
+<script language="JavaScript">
+
+
+
+function PresetForm(theForm)
+{
+	clickCheckBox(theForm.apaEnableCheck, theForm.apaEnable);
+}
+
+function ParseForm(theForm)
+{
+	parseCheckBox(theForm.apaEnableCheck, theForm.apaEnable);
+}
+</script>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+<form method="POST" cellpadding="0" name="ApaParameters">
+
+<input name="apaEnable" type="hidden" value="$%apaEnable#$"> 
+
+<div align="center">
+  <center>
+  <table border="4" bgcolor="#D6D3CE" width="473">
+    <tr>
+      <td width="636">
+    <h2 align="center">Automatic Parameter Allocation</h2>
+        <div align="center">
+          <table border="0" width="436">
+            <tr>
+   <td height="23" width="272" align="left"><font color="#000000">Enable
+    Automatic Parameter Allocation&nbsp;</font></td>
+   <td height="23" width="150" align="left">
+   <p style="padding-top: 0px; padding-bottom: 0px"><font color="#000000"><input type="checkbox" name="apaEnableCheck" value="" checked></font></td>
+            </tr>
+            <tr>
+   <td height="23" width="272" align="left"><font color="#000000">Scan Frequency
+    Low Bound:</font></td>
+   <td height="23" width="150" align="left"><input type="text" name="apaScanFrequencyLowBound" size="5" value="$%apaScanFrequencyLowBound#$" onchange="return isValidInt(this,0,1023);"></td>
+            </tr>
+            <tr>
+   <td height="22" width="272" align="left"><font color="#000000">Scan Frequency
+    High Bound:</font></td>
+   <td height="22" width="150" align="left">
+   <p style="padding-top: 0px; padding-bottom: 0px"><input type="text" name="apaScanFrequencyHighBound" size="5" value="$%apaScanFrequencyHighBound#$" onchange="return isValidInt(this,0,1023);"></td>
+            </tr>
+            <tr>
+   <td height="23" width="272" align="left"><font color="#000000">Max. Power
+    Setting for the GP10:</font></td>
+   <td height="23" width="150" align="left"><input type="text" name="apaMaxPowerSetting" size="5" value="$%apaMaxPowerSetting#$" onchange="return isValidInt(this,0,100);"></td>
+            </tr>
+            <tr>
+   <td height="23" width="272" align="left"><font COLOR="#000000">Min. RSSI
+    Threshold for Neighboring Cell:</font></td>
+   <td height="23" width="150" align="left">
+   <p style="padding-top: 0px; padding-bottom: 0px"><input type="text" name="apaMinRSSIThresholdForNeighborId" size="5" value="$%apaMinRSSIThresholdForNeighborId#$" onchange="return isValidInt(this,0,1023);"></td>
+            </tr>
+            <tr>
+   <td height="23" width="272" align="left"><font color="#000000">Scan Rate for
+    Checking RSSI Value</font></td>
+   <td height="23" width="150" align="left"><input type="text" name="apaScanRate" size="5" value="$%apaScanRate#$" onchange="return isValidInt(this,0,1023);"></td>
+            </tr>
+            <tr>
+   <td height="23" width="272" align="left"><font COLOR="#000000">Hysteresis for
+    Change Power on the BCCH</font></td>
+   <td height="23" width="150" align="left">
+   <p style="padding-top: 0px; padding-bottom: 0px"><input type="text" name="apaHysteresisForBCCHPower" size="5" value="$%apaHysteresisForBCCHPower#$" onchange="return isValidInt(this,0,1023);"></td>
+            </tr>
+            <tr>
+   <td height="21" width="272"></td>
+   <td height="21" width="150"></td>
+            </tr>
+          </table>
+        </div>
+
+    <div align="center">
+      <table border="0" cellpadding="3">
+        <tr>
+          <td align="center"><input name="submit" type="submit" value="Submit" onClick="ParseForm(this.form)">  </td>
+          <td align="center">  <input name="Recall" type="button" value="Recall" onclick="window.location.reload()"></td>
+        </tr>
+      </table>
+    </div>
+      </td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+</form>
+
+</body>
+

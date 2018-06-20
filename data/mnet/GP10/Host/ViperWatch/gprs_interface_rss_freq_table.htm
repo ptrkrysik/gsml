@@ -1,0 +1,154 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GPRS Network Control Frequency Table Package</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+
+<SCRIPT language="JavaScript">
+var noCols = 2;
+var index = 1;
+function displayIndex()
+{
+	document.write(" " + index++ + " ");
+}
+
+function PresetForm(theForm)
+{
+  
+	 for (var i = 0; i < 16; i++)
+	{
+		if(theForm.elements[(i+1)*noCols-1].value > 0)
+		{
+			theForm.elements[(i*noCols)].checked = true;
+			theForm.elements[(i*noCols)].defaultChecked = true;
+		}
+		ZeroOutRow(theForm.elements[(i*noCols)])
+	}
+	return true;
+} 
+	
+function validateRow(theForm, theIndex)
+{
+	if (theForm.elements[theIndex*noCols].checked)
+	{
+		if (theForm.elements[(theIndex*noCols)+1].value == 0)
+		{
+			if (!confirm("You are trying to save a frequency with a zero Network Control frequency at row " + Number(theIndex+1) + ".\n Though zero is a legitimate frequency it should be used sparingly.\n Are you sure you want to save this parameter."))
+		 	{
+		 		theForm.elements[(theIndex*noCols)+1].focus();	
+		   		return false;
+		 	} else {
+		   		return true;
+		 	}
+		
+		}
+	}
+	return true;
+} 
+	
+	
+function ParseForm(theForm)
+{
+    for (var i = 0; i < 16; i++)
+	{
+		if (!validateRow(theForm, i))
+		 return false;
+	}
+	return true;
+} 
+
+function ZeroOutRow(theCheck)
+{
+	var theIndex = Number(theCheck.value);
+	if (theCheck.checked)
+	 {	 
+    	;
+	 } else {
+	  	for (var i = 1; i < noCols;  i++)
+		{
+			theCheck.form.elements[(theIndex*noCols)+i].value = 0;
+	   }
+	}		
+	return true;
+} 
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="ncfrequency">
+
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="520">
+      <tr>
+        <td >
+        <h2 align="center">GPRS Network Control Frequency Table</h2>
+        <div align="center">
+          <table border="1" cellpadding="2">
+            <tr>
+              <th width="42" height="22" align="center" >
+              <p align="center">Index</th>
+              <th width="51" height="22" align="center" >
+              <p align="center">Selected</th>
+              <th width="107" height="22" align="center" >
+              <p align="center">Frequency</th>
+            </tr>
+
+            <!$%createTable(ncFrequencyListIndex,*,,,,,ncFrequencyListIndex,ncFrequency)#$>
+            <!$%REPEAT(ncFrequencyListIndex,1,16)#$>
+            <tr>
+              <td width="42" align="center"><font face="Arial, Helvetica"><script> displayIndex() </script></font></td>
+              <td width="51" align="center">
+              <p align="center">
+               <input type="checkbox" name="used.$%getInstance(ncFrequencyListIndex)#$" value="$%getInstance(ncFrequencyListIndex)#$" onClick="ZeroOutRow(this);">
+              </p>
+              </td>
+              <td width="107" align="center">
+              <p align="center"><input type="text" name="ncFrequency.$%getInstance(ncFrequencyListIndex)#$"
+              value="$%ncFrequency#$" size="4" maxlength="4" onchange="return isValidInt(this,0,1023);"></p>
+              </td>
+            </tr>
+            <!$%endRow(ncFrequencyListIndex)#$>
+            <!$%REPEAT(END)#$>
+            <!$%endTable(ncFrequencyListIndex)#$>
+
+  
+          </table>
+        </div>
+        <div align="center">
+          <center>
+          <table height="50" border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        </center>
+      </td>
+    </tr>
+    </table>
+  </div>
+  <p align="center">&nbsp;</p>
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

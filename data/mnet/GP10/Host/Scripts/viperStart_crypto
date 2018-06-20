@@ -1,0 +1,58 @@
+# startup script
+# viperStart
+
+# Lower the priority for tShell task, tTelnetOutTask, tTelnetInTask
+shellTaskPriority=255
+telnetTaskPriority=255
+
+# load viperLoad, viperLoadList functions
+load_path = malloc(150);
+strcpy(load_path, getenv("VIPERCALL_BASE"))
+strcat(load_path, "/Bin/LoadModule.out")
+ld(0, 0, load_path)
+
+taskDelay(10)
+
+# load applications
+viperLoadList("Scripts/module_list", getenv("VIPERCALL_BASE"), 1)
+
+# initialize Snmp
+snmp_initialize(0)
+
+cdcInit("fpga/fpga.rbf", getenv("VIPERCALL_BASE"))
+
+# Execute power on self tests
+ExecutePost
+
+# sync time with the server
+time_syncTime()
+
+# load http server
+http_taskCreate()
+
+# load DSP
+initDsp(0)
+initDsp(1)
+initInt()
+
+ldCoff("bin/dsp_k9.out", getenv("VIPERCALL_BASE"))
+
+# Bring Up RootTask
+csu_TblInitAll()
+taskDelay(300)
+ShellInitRootTask
+
+taskDelay(700)
+
+intg_SendChanActivation(0,1)
+intg_SendChanDeActivation(0,1)
+intg_SendChanActivation(1,1)
+intg_SendChanDeActivation(1,1)
+
+strcpy(load_path, getenv("VIPERCALL_BASE"))
+strcat(load_path, "/Bin/gp10cli.out")
+ld(0, 0, load_path)
+commands_init();
+
+SSH_main();
+cd(getenv("VIPERCALL_BASE"))

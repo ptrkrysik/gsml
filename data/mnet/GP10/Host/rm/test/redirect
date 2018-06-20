@@ -1,0 +1,4 @@
+vf0=open("/vio/0", 2, 0)
+ioGlobalStdSet(0, vf0)
+ioGlobalStdSet(1, vf0)
+ioGlobalStdSet(2, vf0)

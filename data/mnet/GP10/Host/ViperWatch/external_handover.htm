@@ -1,0 +1,81 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Automatic Parameter Allocation Invalid Frequency Table</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/perCause.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/common.js"></SCRIPT>
+
+
+
+<body onload="$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" name="apaClockSourceFrequencyTable">
+
+  <div align="center">
+    <table border="4" bgcolor="#D6D3CE" width="379">
+      <tr>
+        <td width="909">
+        <h3 align="center"><font color="#000080">&nbsp;</font>External Handovers, per cause</h3>
+        <div align="center">
+          <center>
+          <table border="0">
+            <tr>
+              <td bgcolor="#C0C0C0">
+              <p align="center">Measurement Start Time:</td>
+              <td bgcolor="#C0C0C0"><script> displayTime("$%meanPCHAGCHQueueLength#$") </script>
+              </td>
+            </tr>
+            <tr>
+              <td bgcolor="#C0C0C0">Measurement Duration:</td>
+              <td bgcolor="#C0C0C0">&nbsp;15 Minutes</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <table border="1" width="449">
+            <tr>
+              <td height="19" align="center" width="45%">Cause of the external handover</td>
+              <td height="19" align="center" width="230">Counter of the number of external handovers for this cause.</td>
+            </tr>
+            <! $%createTable(apaInvalidFrequencyIndex,*,,,,,apaInvalidFrequencyIndex,apaInvalidFrequencyArfcn)#$ >
+            <! $%REPEAT(apaInvalidFrequencyIndex,1,16)#$ >   
+            <tr>
+              <td align="center" width="45%"><font color="#000080"> <script> displayCause("$%externalHDOsPerCauseCode#$") </script> </font></td>
+              <td align="center" width="230"><font color="#000080">$%externalHDOsPerCauseValue#$</font></td>
+            </tr>
+    
+            <! $%endRow(apaInvalidFrequencyIndex)#$ >
+            <! $%REPEAT(END)#$ >
+            <! $%endTable(apaInvalidFrequencyIndex)#$>    
+
+          </table>
+          </center>
+        </div>
+        <center>
+        <div align="center">
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"><font color="#000080"><input name="B2" type="submit" value="Submit" disabled></font></td>
+              <td align="center"><font color="#000080"><input name="Recall1" type="button" value="Recall" onclick="window.location.reload()"></font></td>
+            </tr>
+          </table>
+        </div>
+        </center>
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>
+
+</body>
+
+</html>

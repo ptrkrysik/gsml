@@ -1,0 +1,184 @@
+
+<HTML>
+<HEAD>
+<META name="Robots" content="noIndex, Follow">
+<title>GP10 Alarm Log</title>
+</head>
+
+<SCRIPT  LANGUAGE="javascript" src="./js/common.js">  </script>
+
+
+<SCRIPT  LANGUAGE="javascript"> 
+<!-- start hiding
+var hiColor = "green"
+var orgLinkColor = "";
+var index = 1;
+function getNextIndex()
+{
+	return index++;
+}
+
+function DisplayDetail(theAlarm) 
+{
+	var url = "./alarm_detail.htm?" + theAlarm;
+   var popupWin1 = window.open (url, "AlarmDetail", "width=550,height=250,toolbar=0,scrollbars=1,resizable=1");
+   	if (!document.all && window.focus) popupWin1.focus();
+
+}
+
+
+function getSeverityText(theSeverity)
+{
+	var textState = "";
+	var Color = "";
+	var help = ""
+
+	switch(theSeverity)
+	{
+	case  "0":  
+		// Critical
+		textState = "Critical";
+		Color = "#FF0000";
+		help = "A ciritcal Alarm."
+		break;
+	case  "1":  
+		// Major
+		textState = "Major";
+		Color = "#FF00FF";
+		help = "A major Alarm"		
+		break;	
+	case  "2":  
+		// Minor
+		textState = "Minor";
+		Color = "#0000FF";
+		help = "a Minor Alarm"
+		break;
+	case  "3":  
+		// Alarm Cleared
+		textState = "Information";
+		Color = "#000080";
+		help = "Alarm Information"
+		break;
+
+	default:
+		textState = "Invalid";
+		Color = "Yellow";
+		help = "Invalid value of Admin. State"
+		break;
+	}
+	
+	return "title=\"" + help + "\" > <font Color=\"" + Color + "\" >"  + textState +  "</font> </font>";
+	
+}
+
+
+function displayTime(utctime)
+{
+
+	var gmtDate = new Date(utctime*1000);
+	return gmtDate.toLocaleString();
+}
+
+
+function DisplayAlarm (sAlarm)
+{   
+	var aAlarm = sAlarm.split("|")
+		
+	if (aAlarm.lenght < 6)
+		return;
+		
+	document.write("<tr>")
+	//document.write("<td align=\"center\">" + getNextIndex() + "</td>");
+	document.write("<td align=\"center\">" + aAlarm[0] + "</td>");
+	document.write("<td align=\"center\">" + displayTime(aAlarm[1]) + "</td>");
+	document.write("<td align=\"left\""  + getSeverityText(aAlarm[2]) + "</td>");
+	document.write("<td align=\"left\"> <font size=\"-1\"> " + aAlarm[4] + " </font> </td>");
+	document.write("<td title=\"Click to see the detail of alarm code: " + aAlarm[5] + ". \" align=\"center\"> <a href=\"JavaScript:DisplayDetail(\'" + sAlarm + "\')\"> "  +  aAlarm[5] + "</a> </td>");
+	document.write("</tr>")
+}
+
+function DisplayUrl(url, helpText, displayText, hiColor)
+{
+
+ document.write("<A  target=\"_blank\" TITLE=\"" + helpText + "\" href=\"http://" + url + "/\" onMouseOver='highlight(this, hiColor);' onMouseOut='undoHighlight(this);' >" +  displayText + "</A>")
+}
+
+function highlight(obj, color) {
+  orgLinkColor = obj.style.color;
+  obj.style.color=color;
+}
+
+function undoHighlight(obj) {
+  obj.style.color=orgLinkColor;
+}
+	
+function comapare(first, second)
+{
+	var aFirst = first.split("|");
+	var aSecond = second.split("|");
+	if (aFirst.lenght < 5)
+	return 1;
+	
+	if (aSecond.length < 5)
+		return -1;
+		
+	return aSecond[0] - aFirst[0];
+}
+
+function DisplayAlarmList(sAlarmList)
+{   	
+	var aAlarmList = sAlarmList.split("#");
+	
+	aAlarmList.sort(comapare);
+		
+	for (var i=0; i< aAlarmList.length-1; i++)
+	{
+		DisplayAlarm(aAlarmList [i])
+    }
+}
+
+// end hiding -->
+
+</SCRIPT>
+<body marginwidth="0" marginheight="0" bgcolor="#C6C3C6" onload="$%reloadTopframe#$">
+<div align="center">
+  <table border="4" bgcolor="#D6D3CE" width="100%" height="100%">
+    <tr>
+      <td width="95%">
+      <div align="center">
+        <table border="0" cellpadding="3" width="100%">
+          <tr>
+            <td align="center" width="80%">
+            <h2 align="left"><font color="#000080">GP10 Alarm Log&nbsp;</font></h2>
+            </td>
+            <center>
+            <form>
+            <td align="center" width="10%">
+            		<input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+            		  title="Click this button to refresh the form."></td>
+            <td align="center" width="10%">
+               <input name="Close" type="button" value="Close" title="Click this button to close the window."
+            		onclick="window.close()"></td>
+            </form>
+            </tr>
+          </table>
+        </div>
+        <table border="1" width="100%">
+          <tr>
+            <th nowrap width="5%">&nbsp;ID</th>
+            <th nowrap width="40%">Date/Time</th>
+            <th nowrap width="15%">Severity</th>
+            <th nowrap width="25%">Module</th>
+            <th nowrap width="10%">Error Code</th>
+          </tr>
+        <script language="JavaScript"> DisplayAlarmList("$%AlarmList#$"); </script>
+        </table>
+      </center>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</body>
+
+</html>

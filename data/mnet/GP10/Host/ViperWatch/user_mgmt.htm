@@ -1,0 +1,79 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>SMSCB Message Management Page</title>
+</head>
+
+<body onload="$%reloadTopframe#$">
+
+<SCRIPT language="JavaScript" src="./js/link.js"></SCRIPT>
+
+<Script language="JavaScript">
+
+function displayTime(utctime)
+{
+
+	var gmtDate = new Date(utctime*1000);
+	return gmtDate.toLocaleString();
+}
+
+
+function DisplayUser (sMsg) 
+
+{  
+    var aMsg = sMsg.split("|")
+
+	if (aMsg[0].length < 1) 		return;
+	
+	document.write("<tr>")
+	document.write("<td align=\"left\" valign=\"middle\" width=\"30%\"> " + aMsg[0]  + " </td>");
+	document.write("<td align=\"middle\" valign=\"middle\" width=\"20%\">[<a href=\"./user_del.htm?" + aMsg[0] + "\">Delete User</a>][<a href=\"./user_chg.htm?" + aMsg[0] + "\">Change Password </a>]</td>");
+	document.write("</tr>");
+}
+
+function DisplayUserList(sMsgList)
+{   	
+	var aMsgList = sMsgList.split("#");
+		
+	for (var i=0; i< aMsgList.length-1; i++)
+	{
+		DisplayUser(aMsgList [i])
+    }
+}
+
+</Script>
+
+<h2 align="left"><nobr>GP10 User Management</nobr></h2>
+
+<p>&nbsp;
+<table border="0" cellPadding="2" cellSpacing="0" width="80%">
+  <tbody>
+    <tr>
+      <td bgColor="#dcdcdc" vAlign="top" width="407"><b><font face="Arial">Current
+        Users</font></b></td>
+      <td align="right" bgColor="#dcdcdc" width="302"><font face="arial" size="-1"><a href="user_add.htm">Add
+        a new user</a></font></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;
+<table border="1" cellPadding="4" cellSpacing="0" width="80%">
+  <tbody>
+    <tr bgColor="#ffffcc">
+      <th valign="middle" width="30%"> User Name</th>
+      <th valign="middle" width="70%">Action</th>
+    </tr>
+    <!----------
+       Test string Ram##Shyam#Gore#Sundari###
+    ------------>
+    <Script > DisplayUserList("$%ViperCellUserMgmt(GetUserList)#$") </Script>
+  </tbody>
+</table>
+
+</body>
+
+</html>

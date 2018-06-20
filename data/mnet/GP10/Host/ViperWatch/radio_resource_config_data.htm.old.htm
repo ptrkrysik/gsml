@@ -1,0 +1,2130 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Parameter</title>
+</head>
+
+<SCRIPT >
+
+
+function selectOption(theSelect, valueHolder)
+{
+	if (valueHolder.value < 0 && valueHolder.value >= theSelect.length)
+	{ 
+		window.alert("Incorrect MIB value for " + valueHolder.name + "  "+ valueHolder.value + "Corrected to 0");
+		valueHolder.value = 0;
+	}
+	for (var i = 0; i < theSelect.length; i++)
+	{
+		if (theSelect.options[i].value == valueHolder.value) 
+		{
+			theSelect.options[i].selected = true;
+			break;
+		}
+	}
+			
+}
+
+function presetButtons(theForm)
+{
+
+	return true;
+} 
+
+function parseSelect(theSelect, valueHolder)
+{
+	for (var i = 0; i < theSelect.length; i++)
+	{
+		if (theSelect.options[i].selected) 
+		{
+			valueHolder.value = theSelect.options[i].value;
+			break;
+		}
+	}
+}
+
+function parseButtons(theForm)
+{	
+	return true;
+} 
+
+</SCRIPT>
+
+<body onload="presetButtons(this.document.forms[0]);$%reloadTopframe#$">
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+  if (theForm.rm_t3L2.value == "")
+  {
+    alert("Please enter a value for the \"rm_t3L2\" field.");
+    theForm.rm_t3L2.focus();
+    return (false);
+  }
+
+  if (theForm.rm_t3L2.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_t3L2\" field.");
+    theForm.rm_t3L2.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_t3L2.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_t3L2\" field.");
+    theForm.rm_t3L2.focus();
+    return (false);
+  }
+
+  if (theForm.rm_bsCcChans.value == "")
+  {
+    alert("Please enter a value for the \"rm_bsCcChans\" field.");
+    theForm.rm_bsCcChans.focus();
+    return (false);
+  }
+
+  if (theForm.rm_bsCcChans.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_bsCcChans\" field.");
+    theForm.rm_bsCcChans.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_bsCcChans.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_bsCcChans\" field.");
+    theForm.rm_bsCcChans.focus();
+    return (false);
+  }
+
+  if (theForm.rm_bsCcchSdcchComb.value == "")
+  {
+    alert("Please enter a value for the \"rm_bsCcchSdcchComb\" field.");
+    theForm.rm_bsCcchSdcchComb.focus();
+    return (false);
+  }
+
+  if (theForm.rm_bsCcchSdcchComb.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_bsCcchSdcchComb\" field.");
+    theForm.rm_bsCcchSdcchComb.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_bsCcchSdcchComb.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_bsCcchSdcchComb\" field.");
+    theForm.rm_bsCcchSdcchComb.focus();
+    return (false);
+  }
+
+  if (theForm.rm_sysInfoOnOffMap.value == "")
+  {
+    alert("Please enter a value for the \"rm_sysInfoOnOffMap\" field.");
+    theForm.rm_sysInfoOnOffMap.focus();
+    return (false);
+  }
+
+  if (theForm.rm_sysInfoOnOffMap.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_sysInfoOnOffMap\" field.");
+    theForm.rm_sysInfoOnOffMap.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_sysInfoOnOffMap.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_sysInfoOnOffMap\" field.");
+    theForm.rm_sysInfoOnOffMap.focus();
+    return (false);
+  }
+
+  if (theForm.rm_airInterface.value == "")
+  {
+    alert("Please enter a value for the \"rm_airInterface\" field.");
+    theForm.rm_airInterface.focus();
+    return (false);
+  }
+
+  if (theForm.rm_airInterface.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_airInterface\" field.");
+    theForm.rm_airInterface.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_airInterface.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_airInterface\" field.");
+    theForm.rm_airInterface.focus();
+    return (false);
+  }
+
+  if (theForm.rm_viperCellTsc.value == "")
+  {
+    alert("Please enter a value for the \"rm_viperCellTsc\" field.");
+    theForm.rm_viperCellTsc.focus();
+    return (false);
+  }
+
+  if (theForm.rm_viperCellTsc.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_viperCellTsc\" field.");
+    theForm.rm_viperCellTsc.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_viperCellTsc.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_viperCellTsc\" field.");
+    theForm.rm_viperCellTsc.focus();
+    return (false);
+  }
+
+  if (theForm.rm_maxSlotPerTrx.value == "")
+  {
+    alert("Please enter a value for the \"rm_maxSlotPerTrx\" field.");
+    theForm.rm_maxSlotPerTrx.focus();
+    return (false);
+  }
+
+  if (theForm.rm_maxSlotPerTrx.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_maxSlotPerTrx\" field.");
+    theForm.rm_maxSlotPerTrx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_maxSlotPerTrx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_maxSlotPerTrx\" field.");
+    theForm.rm_maxSlotPerTrx.focus();
+    return (false);
+  }
+
+  if (theForm.rm_maxTrxs.value == "")
+  {
+    alert("Please enter a value for the \"rm_maxTrxs\" field.");
+    theForm.rm_maxTrxs.focus();
+    return (false);
+  }
+
+  if (theForm.rm_maxTrxs.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_maxTrxs\" field.");
+    theForm.rm_maxTrxs.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_maxTrxs.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_maxTrxs\" field.");
+    theForm.rm_maxTrxs.focus();
+    return (false);
+  }
+
+  if (theForm.rm_maxTchfs.value == "")
+  {
+    alert("Please enter a value for the \"rm_maxTchfs\" field.");
+    theForm.rm_maxTchfs.focus();
+    return (false);
+  }
+
+  if (theForm.rm_maxTchfs.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_maxTchfs\" field.");
+    theForm.rm_maxTchfs.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_maxTchfs.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_maxTchfs\" field.");
+    theForm.rm_maxTchfs.focus();
+    return (false);
+  }
+
+  if (theForm.rm_maxSdcch4s.value == "")
+  {
+    alert("Please enter a value for the \"rm_maxSdcch4s\" field.");
+    theForm.rm_maxSdcch4s.focus();
+    return (false);
+  }
+
+  if (theForm.rm_maxSdcch4s.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_maxSdcch4s\" field.");
+    theForm.rm_maxSdcch4s.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_maxSdcch4s.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_maxSdcch4s\" field.");
+    theForm.rm_maxSdcch4s.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxOnOffMap.value == "")
+  {
+    alert("Please enter a value for the \"rm_trxOnOffMap\" field.");
+    theForm.rm_trxOnOffMap.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxOnOffMap.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_trxOnOffMap\" field.");
+    theForm.rm_trxOnOffMap.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_trxOnOffMap.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_trxOnOffMap\" field.");
+    theForm.rm_trxOnOffMap.focus();
+    return (false);
+  }
+
+  if (theForm.rm_networkIfConfig.value == "")
+  {
+    alert("Please enter a value for the \"rm_networkIfConfig\" field.");
+    theForm.rm_networkIfConfig.focus();
+    return (false);
+  }
+
+  if (theForm.rm_networkIfConfig.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_networkIfConfig\" field.");
+    theForm.rm_networkIfConfig.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_networkIfConfig.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_networkIfConfig\" field.");
+    theForm.rm_networkIfConfig.focus();
+    return (false);
+  }
+
+  if (theForm.rm_bcchTrx.value == "")
+  {
+    alert("Please enter a value for the \"rm_bcchTrx\" field.");
+    theForm.rm_bcchTrx.focus();
+    return (false);
+  }
+
+  if (theForm.rm_bcchTrx.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_bcchTrx\" field.");
+    theForm.rm_bcchTrx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_bcchTrx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_bcchTrx\" field.");
+    theForm.rm_bcchTrx.focus();
+    return (false);
+  }
+
+  if (theForm.rm_preAlphaTrx.value == "")
+  {
+    alert("Please enter a value for the \"rm_preAlphaTrx\" field.");
+    theForm.rm_preAlphaTrx.focus();
+    return (false);
+  }
+
+  if (theForm.rm_preAlphaTrx.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_preAlphaTrx\" field.");
+    theForm.rm_preAlphaTrx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_preAlphaTrx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_preAlphaTrx\" field.");
+    theForm.rm_preAlphaTrx.focus();
+    return (false);
+  }
+
+  if (theForm.rm_ccchBcchComb.value == "")
+  {
+    alert("Please enter a value for the \"rm_ccchBcchComb\" field.");
+    theForm.rm_ccchBcchComb.focus();
+    return (false);
+  }
+
+  if (theForm.rm_ccchBcchComb.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_ccchBcchComb\" field.");
+    theForm.rm_ccchBcchComb.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_ccchBcchComb.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_ccchBcchComb\" field.");
+    theForm.rm_ccchBcchComb.focus();
+    return (false);
+  }
+
+  if (theForm.rm_ccchConf.value == "")
+  {
+    alert("Please enter a value for the \"rm_ccchConf\" field.");
+    theForm.rm_ccchConf.focus();
+    return (false);
+  }
+
+  if (theForm.rm_ccchConf.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_ccchConf\" field.");
+    theForm.rm_ccchConf.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_ccchConf.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_ccchConf\" field.");
+    theForm.rm_ccchConf.focus();
+    return (false);
+  }
+
+  if (theForm.rm_synchChanInfo.value == "")
+  {
+    alert("Please enter a value for the \"rm_synchChanInfo\" field.");
+    theForm.rm_synchChanInfo.focus();
+    return (false);
+  }
+
+  if (theForm.rm_synchChanInfo.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_synchChanInfo\" field.");
+    theForm.rm_synchChanInfo.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_synchChanInfo.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_synchChanInfo\" field.");
+    theForm.rm_synchChanInfo.focus();
+    return (false);
+  }
+
+  if (theForm.rm_SGainCtrlSetting_0_0.value == "")
+  {
+    alert("Please enter a value for the \"rm_SGainCtrlSetting_0_0\" field.");
+    theForm.rm_SGainCtrlSetting_0_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_SGainCtrlSetting_0_0.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_SGainCtrlSetting_0_0\" field.");
+    theForm.rm_SGainCtrlSetting_0_0.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_SGainCtrlSetting_0_0.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_SGainCtrlSetting_0_0\" field.");
+    theForm.rm_SGainCtrlSetting_0_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_SGainCtrlSetting_1_0.value == "")
+  {
+    alert("Please enter a value for the \"rm_SGainCtrlSetting_1_0\" field.");
+    theForm.rm_SGainCtrlSetting_1_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_SGainCtrlSetting_1_0.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_SGainCtrlSetting_1_0\" field.");
+    theForm.rm_SGainCtrlSetting_1_0.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_SGainCtrlSetting_1_0.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_SGainCtrlSetting_1_0\" field.");
+    theForm.rm_SGainCtrlSetting_1_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_SGainCtrlSetting_0_1.value == "")
+  {
+    alert("Please enter a value for the \"rm_SGainCtrlSetting_0_1\" field.");
+    theForm.rm_SGainCtrlSetting_0_1.focus();
+    return (false);
+  }
+
+  if (theForm.rm_SGainCtrlSetting_0_1.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_SGainCtrlSetting_0_1\" field.");
+    theForm.rm_SGainCtrlSetting_0_1.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_SGainCtrlSetting_0_1.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_SGainCtrlSetting_0_1\" field.");
+    theForm.rm_SGainCtrlSetting_0_1.focus();
+    return (false);
+  }
+
+  if (theForm.rm_SGainCtrlSetting_1_1.value == "")
+  {
+    alert("Please enter a value for the \"rm_SGainCtrlSetting_1_1\" field.");
+    theForm.rm_SGainCtrlSetting_1_1.focus();
+    return (false);
+  }
+
+  if (theForm.rm_SGainCtrlSetting_1_1.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_SGainCtrlSetting_1_1\" field.");
+    theForm.rm_SGainCtrlSetting_1_1.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_SGainCtrlSetting_1_1.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_SGainCtrlSetting_1_1\" field.");
+    theForm.rm_SGainCtrlSetting_1_1.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_0.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_0_0\" field.");
+    theForm.rm_nim_0_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_0.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_0_0\" field.");
+    theForm.rm_nim_0_0.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_0_0.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_0_0\" field.");
+    theForm.rm_nim_0_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_0.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_1_0\" field.");
+    theForm.rm_nim_1_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_0.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_1_0\" field.");
+    theForm.rm_nim_1_0.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_1_0.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_1_0\" field.");
+    theForm.rm_nim_1_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_1.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_0_1\" field.");
+    theForm.rm_nim_0_1.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_1.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_0_1\" field.");
+    theForm.rm_nim_0_1.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_0_1.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_0_1\" field.");
+    theForm.rm_nim_0_1.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_1.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_1_1\" field.");
+    theForm.rm_nim_1_1.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_1.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_1_1\" field.");
+    theForm.rm_nim_1_1.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_1_1.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_1_1\" field.");
+    theForm.rm_nim_1_1.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_2.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_0_2\" field.");
+    theForm.rm_nim_0_2.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_2.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_0_2\" field.");
+    theForm.rm_nim_0_2.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_0_2.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_0_2\" field.");
+    theForm.rm_nim_0_2.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_2.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_1_2\" field.");
+    theForm.rm_nim_1_2.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_2.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_1_2\" field.");
+    theForm.rm_nim_1_2.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_1_2.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_1_2\" field.");
+    theForm.rm_nim_1_2.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_3.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_0_3\" field.");
+    theForm.rm_nim_0_3.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_3.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_0_3\" field.");
+    theForm.rm_nim_0_3.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_0_3.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_0_3\" field.");
+    theForm.rm_nim_0_3.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_3.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_1_3\" field.");
+    theForm.rm_nim_1_3.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_3.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_1_3\" field.");
+    theForm.rm_nim_1_3.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_1_3.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_1_3\" field.");
+    theForm.rm_nim_1_3.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_4.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_0_4\" field.");
+    theForm.rm_nim_0_4.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_4.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_0_4\" field.");
+    theForm.rm_nim_0_4.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_0_4.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_0_4\" field.");
+    theForm.rm_nim_0_4.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_4.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_1_4\" field.");
+    theForm.rm_nim_1_4.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_4.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_1_4\" field.");
+    theForm.rm_nim_1_4.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_1_4.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_1_4\" field.");
+    theForm.rm_nim_1_4.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_5.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_0_5\" field.");
+    theForm.rm_nim_0_5.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_5.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_0_5\" field.");
+    theForm.rm_nim_0_5.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_0_5.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_0_5\" field.");
+    theForm.rm_nim_0_5.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_5.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_1_5\" field.");
+    theForm.rm_nim_1_5.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_5.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_1_5\" field.");
+    theForm.rm_nim_1_5.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_1_5.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_1_5\" field.");
+    theForm.rm_nim_1_5.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_6.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_0_6\" field.");
+    theForm.rm_nim_0_6.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_6.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_0_6\" field.");
+    theForm.rm_nim_0_6.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_0_6.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_0_6\" field.");
+    theForm.rm_nim_0_6.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_6.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_1_6\" field.");
+    theForm.rm_nim_1_6.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_6.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_1_6\" field.");
+    theForm.rm_nim_1_6.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_1_6.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_1_6\" field.");
+    theForm.rm_nim_1_6.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_7.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_0_7\" field.");
+    theForm.rm_nim_0_7.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_0_7.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_0_7\" field.");
+    theForm.rm_nim_0_7.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_0_7.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_0_7\" field.");
+    theForm.rm_nim_0_7.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_7.value == "")
+  {
+    alert("Please enter a value for the \"rm_nim_1_7\" field.");
+    theForm.rm_nim_1_7.focus();
+    return (false);
+  }
+
+  if (theForm.rm_nim_1_7.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_nim_1_7\" field.");
+    theForm.rm_nim_1_7.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_nim_1_7.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_nim_1_7\" field.");
+    theForm.rm_nim_1_7.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxSynthSetting_0_0.value == "")
+  {
+    alert("Please enter a value for the \"rm_trxSynthSetting_0_0\" field.");
+    theForm.rm_trxSynthSetting_0_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxSynthSetting_0_0.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_trxSynthSetting_0_0\" field.");
+    theForm.rm_trxSynthSetting_0_0.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_trxSynthSetting_0_0.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_trxSynthSetting_0_0\" field.");
+    theForm.rm_trxSynthSetting_0_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxSynthSetting_1_0.value == "")
+  {
+    alert("Please enter a value for the \"rm_trxSynthSetting_1_0\" field.");
+    theForm.rm_trxSynthSetting_1_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxSynthSetting_1_0.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_trxSynthSetting_1_0\" field.");
+    theForm.rm_trxSynthSetting_1_0.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_trxSynthSetting_1_0.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_trxSynthSetting_1_0\" field.");
+    theForm.rm_trxSynthSetting_1_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxSynthSetting_0_1.value == "")
+  {
+    alert("Please enter a value for the \"rm_trxSynthSetting_0_1\" field.");
+    theForm.rm_trxSynthSetting_0_1.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxSynthSetting_0_1.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_trxSynthSetting_0_1\" field.");
+    theForm.rm_trxSynthSetting_0_1.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_trxSynthSetting_0_1.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_trxSynthSetting_0_1\" field.");
+    theForm.rm_trxSynthSetting_0_1.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxSynthSetting_1_1.value == "")
+  {
+    alert("Please enter a value for the \"rm_trxSynthSetting_1_1\" field.");
+    theForm.rm_trxSynthSetting_1_1.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxSynthSetting_1_1.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_trxSynthSetting_1_1\" field.");
+    theForm.rm_trxSynthSetting_1_1.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_trxSynthSetting_1_1.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_trxSynthSetting_1_1\" field.");
+    theForm.rm_trxSynthSetting_1_1.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxFpgaDelay_0_0.value == "")
+  {
+    alert("Please enter a value for the \"rm_trxFpgaDelay_0_0\" field.");
+    theForm.rm_trxFpgaDelay_0_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxFpgaDelay_0_0.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_trxFpgaDelay_0_0\" field.");
+    theForm.rm_trxFpgaDelay_0_0.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_trxFpgaDelay_0_0.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_trxFpgaDelay_0_0\" field.");
+    theForm.rm_trxFpgaDelay_0_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxFpgaDelay_1_0.value == "")
+  {
+    alert("Please enter a value for the \"rm_trxFpgaDelay_1_0\" field.");
+    theForm.rm_trxFpgaDelay_1_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxFpgaDelay_1_0.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_trxFpgaDelay_1_0\" field.");
+    theForm.rm_trxFpgaDelay_1_0.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_trxFpgaDelay_1_0.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_trxFpgaDelay_1_0\" field.");
+    theForm.rm_trxFpgaDelay_1_0.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxFpgaDelay_0_1.value == "")
+  {
+    alert("Please enter a value for the \"rm_trxFpgaDelay_0_1\" field.");
+    theForm.rm_trxFpgaDelay_0_1.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxFpgaDelay_0_1.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_trxFpgaDelay_0_1\" field.");
+    theForm.rm_trxFpgaDelay_0_1.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_trxFpgaDelay_0_1.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_trxFpgaDelay_0_1\" field.");
+    theForm.rm_trxFpgaDelay_0_1.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxFpgaDelay_1_1.value == "")
+  {
+    alert("Please enter a value for the \"rm_trxFpgaDelay_1_1\" field.");
+    theForm.rm_trxFpgaDelay_1_1.focus();
+    return (false);
+  }
+
+  if (theForm.rm_trxFpgaDelay_1_1.value.length > 6)
+  {
+    alert("Please enter at most 6 characters in the \"rm_trxFpgaDelay_1_1\" field.");
+    theForm.rm_trxFpgaDelay_1_1.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.rm_trxFpgaDelay_1_1.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"rm_trxFpgaDelay_1_1\" field.");
+    theForm.rm_trxFpgaDelay_1_1.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" cellpadding="0" onsubmit="return FrontPage_Form1_Validator(this)" name="FrontPage_Form1">
+
+<h2 align="center">Radio Resource&nbsp; Config Parameters</h2>
+
+<div align="center">
+ <center>
+ <table border="1" width="60%" height="643">
+  <tr>
+   <td width="50%" rowspan="4" valign="top" height="612">
+   <table border="1" width="100%">
+    <tr>
+     <td width="100%" colspan="2" align="center"><b>Resource Config Data</b></td>
+    </tr>
+    <tr>
+     <td width="50%"><span style="mso-ansi-language: FR" lang="FR">T</span><span lang="FR" style="mso-ansi-language:FR">3L01</span></td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_t3L2" size="6" value="$%rm_t3L01#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%"><span lang="FR" style="mso-ansi-language:FR">bsCcChans</span></td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_bsCcChans" size="6" value="$%rm_bsCcChans#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%"><span lang="FR" style="mso-ansi-language:FR">bsCcchSdcchComb</span></td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_bsCcchSdcchComb" size="6" value="$%rm_bsCcchSdcchComb#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%"><span lang="FR" style="mso-ansi-language:FR">sysInfoOnOffMap</span></td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_sysInfoOnOffMap" size="6" value="$%rm_sysInfoOnOffMap#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%"><span lang="FR" style="mso-ansi-language:FR">airInterface</span></td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_airInterface" size="6" value="$%rm_airInterface#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%"><span lang="FR" style="mso-ansi-language:FR">viperCellTsc</span></td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_viperCellTsc" size="6" value="$%rm_viperCellTsc#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%"><span lang="FR" style="mso-ansi-language:FR">maxSlotPerTrx</span></td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_maxSlotPerTrx" size="6" value="$%rm_maxSlotPerTrx#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%"><span lang="FR" style="mso-ansi-language:FR">maxTrxs</span></td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_maxTrxs" size="6" value="$%rm_maxTrxs#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%">maxTchfs</td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_maxTchfs" size="6" value="$%rm_maxTchfs#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%">maxSdcch4s</td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_maxSdcch4s" size="6" value="$%rm_maxSdcch4s#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%">trxOnOffMap</td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_trxOnOffMap" size="6" value="$%rm_trxOnOffMap#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%">networkIfConfig</td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_networkIfConfig" size="6" value="$%rm_networkIfConfig#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%">bcchTrx</td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_bcchTrx" size="6" value="$%rm_bcchTrx#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%">preAlphaTrx</td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_preAlphaTrx" size="6" value="$%rm_preAlphaTrx#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%">ccchBcchComb</td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_ccchBcchComb" size="6" value="$%rm_ccchBcchComb#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%">ccchConf</td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_ccchConf" size="6" value="$%rm_ccchConf#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="50%">rm_synchChanInfo</td>
+     <td width="50%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_synchChanInfo" size="6" value="$%rm_synchChanInfo#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="100%" colspan="2">
+     <table border="1" cellspacing="1" width="100%">
+      <tr>
+       <td width="100%" colspan="3">
+       <p align="center"><b>Static Gain Control Setting</b></td>
+      </tr>
+      <tr>
+       <td width="18%">Link</td>
+       <td width="26%">TRX 0</td>
+       <td width="56%">TRX 1</td>
+      </tr>
+      <tr>
+       <td width="18%">UL</td>
+       <td width="26%"><font size="1"><!--webbot bot="Validation"
+        s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+        i-maximum-length="6" --><input type="text" name="rm_SGainCtrlSetting_0_0" size="6" value="$%rm_SGainCtrlSetting_0_0#$" maxlength="6"></font></td>
+       <td width="56%"><font size="1"><!--webbot bot="Validation"
+        s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+        i-maximum-length="6" --><input type="text" name="rm_SGainCtrlSetting_1_0" size="6" value="$%rm_SGainCtrlSetting_1_0#$" maxlength="6"></font></td>
+      </tr>
+      <tr>
+       <td width="18%">DL</td>
+       <td width="26%"><font size="1"><!--webbot bot="Validation"
+        s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+        i-maximum-length="6" --><input type="text" name="rm_SGainCtrlSetting_0_1" size="6" value="$%rm_SGainCtrlSetting_0_1#$" maxlength="6"></font></td>
+       <td width="56%"><font size="1"><!--webbot bot="Validation"
+        s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+        i-maximum-length="6" --><input type="text" name="rm_SGainCtrlSetting_1_1" size="6" value="$%rm_SGainCtrlSetting_1_1#$" maxlength="6"></font></td>
+      </tr>
+     </table>
+     </td>
+    </tr>
+   </table>
+   </td>
+   <td width="50%" valign="top" height="311">
+   <table border="1" width="100%">
+    <tr>
+     <td width="100%" colspan="3">
+     <p align="center"><b>Network Interface Mapping</b></td>
+    </tr>
+    <tr>
+     <td width="18%">Time Slot</td>
+     <td width="37%">TRX 0</td>
+     <td width="45%">TRX 1</td>
+    </tr>
+    <tr>
+     <td width="18%">1</td>
+     <td width="37%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_0_0" size="6" value="$%rm_nim_0_0#$" maxlength="6"></font></td>
+     <td width="45%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_1_0" size="6" value="$%rm_nim_1_0#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="18%">2</td>
+     <td width="37%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_0_1" size="6" value="$%rm_nim_0_1#$" maxlength="6"></font></td>
+     <td width="45%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_1_1" size="6" value="$%rm_nim_1_1#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="18%">3</td>
+     <td width="37%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_0_2" size="6" value="$%rm_nim_0_2#$" maxlength="6"></font></td>
+     <td width="45%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_1_2" size="6" value="$%rm_nim_1_2#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="18%">4</td>
+     <td width="37%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_0_3" size="6" value="$%rm_nim_0_3#$" maxlength="6"></font></td>
+     <td width="45%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_1_3" size="6" value="$%rm_nim_1_3#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="18%">5</td>
+     <td width="37%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_0_4" size="6" value="$%rm_nim_0_4#$" maxlength="6"></font></td>
+     <td width="45%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_1_4" size="6" value="$%rm_nim_1_4#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="18%">6</td>
+     <td width="37%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_0_5" size="6" value="$%rm_nim_0_5#$" maxlength="6"></font></td>
+     <td width="45%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_1_5" size="6" value="$%rm_nim_1_5#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="18%">7</td>
+     <td width="37%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_0_6" size="6" value="$%rm_nim_0_6#$" maxlength="6"></font></td>
+     <td width="45%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_1_6" size="6" value="$%rm_nim_1_6#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="18%">8</td>
+     <td width="37%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_0_7" size="6" value="$%rm_nim_0_7#$" maxlength="6"></font></td>
+     <td width="45%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_nim_1_7" size="6" value="$%rm_nim_1_7#$" maxlength="6"></font></td>
+    </tr>
+   </table>
+   </td>
+  </tr>
+  <tr>
+   <td width="50%" valign="top" height="120">
+   <table border="1" cellspacing="1" width="100%">
+    <tr>
+     <td width="100%" colspan="3">
+     <p align="center"><b>&nbsp;TRX Synthesizer&nbsp; Tuning Setting</b></td>
+    </tr>
+    <tr>
+     <td width="18%">#</td>
+     <td width="28%">TRX1</td>
+     <td width="54%">TRX0</td>
+    </tr>
+    <tr>
+     <td width="18%">1</td>
+     <td width="28%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_trxSynthSetting_0_0" size="6" value="$%rm_trxSynthSetting_0_0#$" maxlength="6"></font></td>
+     <td width="54%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_trxSynthSetting_1_0" size="6" value="$%rm_trxSynthSetting_1_0#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="18%">2</td>
+     <td width="28%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_trxSynthSetting_0_1" size="6" value="$%rm_trxSynthSetting_0_1#$" maxlength="6"></font></td>
+     <td width="54%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_trxSynthSetting_1_1" size="6" value="$%rm_trxSynthSetting_1_1#$" maxlength="6"></font></td>
+    </tr>
+   </table>
+   </td>
+  </tr>
+  <tr>
+   <td width="50%" valign="top" height="118">
+   <table border="1" cellspacing="1" width="100%">
+    <tr>
+     <td width="100%" colspan="3">
+     <p align="center"><b>TRX FPGA Delay</b></td>
+    </tr>
+    <tr>
+     <td width="18%">Link</td>
+     <td width="38%">TRX 0</td>
+     <td width="44%">TRX 1</td>
+    </tr>
+    <tr>
+     <td width="18%">UL</td>
+     <td width="38%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_trxFpgaDelay_0_0" size="6" value="$%rm_trxFpgaDelay_0_0#$" maxlength="6"></font></td>
+     <td width="44%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_trxFpgaDelay_1_0" size="6" value="$%rm_trxFpgaDelay_1_0#$" maxlength="6"></font></td>
+    </tr>
+    <tr>
+     <td width="18%">DL</td>
+     <td width="38%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_trxFpgaDelay_0_1" size="6" value="$%rm_trxFpgaDelay_0_1#$" maxlength="6"></font></td>
+     <td width="44%"><font size="1"><!--webbot bot="Validation"
+      s-data-type="Integer" s-number-separators="x" b-value-required="TRUE"
+      i-maximum-length="6" --><input type="text" name="rm_trxFpgaDelay_1_1" size="6" value="$%rm_trxFpgaDelay_1_1#$" maxlength="6"></font></td>
+    </tr>
+   </table>
+   </td>
+  </tr>
+  <tr>
+   <td width="50%" valign="top" height="35"></td>
+  </tr>
+ </table>
+ </center>
+</div>
+
+<p align="center"><input name="B1" type="submit" value="Submit" onclick="parseButtons(window.document.forms[0])"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"></p>
+</form>
+
+</body>
+

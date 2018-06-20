@@ -1,0 +1,82 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GP10 Reboot Screen</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT >
+
+function PresetForm(theForm)
+{
+
+	return true;
+} 
+
+
+function ParseForm(theForm)
+{	
+		var status = false;
+		theForm.oamCommand.value = "64";
+		if (theForm.oamCommand.value != "0")
+		{
+			status = confirm("Are you sure you want to reboot the GP10?")
+		}
+		return status
+
+} 
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="Reboot">
+
+  <input type="HIDDEN" name="oamCommand" value="$%oamCommand#$">
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="557">
+      <tr>
+        <td width="541">
+        <h2 align="center">Reboot GP10</h2>
+        </center>
+        <div align="center">
+          <table border="0" width="82%">
+            <tr>
+              <td width="100%">
+              <p align="left">This screen allows you to reboot $%viperCellName#$ (IP: $%viperCellIPAddress#$).&nbsp; </p>
+              <p align="left"><font color="#FF0000"><blink>WARNING: Rebooting a GP10 will bring the GP10 to its initial default state (based on MIB settings).  All the existing calls through this GP10 will be terminated and Mobile Stations registered(location updated) to this GP10 will be deregistered.  Since rebooting GP10 stops the HTTP server, please use refresh button to reconnect back to the GP10 after GP10 completes the reboot procedure (about 2 minutes). </blink></font></p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <center>
+        <table border="0">
+          <tr>
+            <td width="362" nowrap>
+
+            </select>
+          </tr>
+        </table>
+        <div align="center">
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Reboot" title="Click this button to reboot the GP10."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+            </tr>
+          </table>
+        </div>
+        </center>
+      </td>
+    </tr>
+    </table>
+  </div>
+</form>
+
+</body>

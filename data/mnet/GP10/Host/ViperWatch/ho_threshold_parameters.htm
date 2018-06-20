@@ -1,0 +1,852 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Handover Control Package</title>
+</head>
+
+<body onload="$%reloadTopframe#$">
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+  if (theForm.hoThresholdDistParamTimeadv.value == "")
+  {
+    alert("Please enter a value for the \"Timeing Advance (MS_RANGE_MAX)\" field.");
+    theForm.hoThresholdDistParamTimeadv.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdDistParamTimeadv.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Timeing Advance (MS_RANGE_MAX)\" field.");
+    theForm.hoThresholdDistParamTimeadv.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoThresholdDistParamTimeadv.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Timeing Advance (MS_RANGE_MAX)\" field.");
+    theForm.hoThresholdDistParamTimeadv.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "99"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"99\" in the \"Timeing Advance (MS_RANGE_MAX)\" field.");
+    theForm.hoThresholdDistParamTimeadv.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdDistParamP8.value == "")
+  {
+    alert("Please enter a value for the \"Number of distance grater than max distance  (P8)\" field.");
+    theForm.hoThresholdDistParamP8.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdDistParamP8.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Number of distance grater than max distance  (P8)\" field.");
+    theForm.hoThresholdDistParamP8.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoThresholdDistParamP8.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Number of distance grater than max distance  (P8)\" field.");
+    theForm.hoThresholdDistParamP8.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Number of distance grater than max distance  (P8)\" field.");
+    theForm.hoThresholdDistParamP8.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdDistParamN8.value == "")
+  {
+    alert("Please enter a value for the \"Number of total distance measurements (N8)\" field.");
+    theForm.hoThresholdDistParamN8.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdDistParamN8.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Number of total distance measurements (N8)\" field.");
+    theForm.hoThresholdDistParamN8.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoThresholdDistParamN8.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Number of total distance measurements (N8)\" field.");
+    theForm.hoThresholdDistParamN8.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Number of total distance measurements (N8)\" field.");
+    theForm.hoThresholdDistParamN8.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdInterfaceParamRxLevelUL.value == "")
+  {
+    alert("Please enter a value for the \"Threshold level for handover, reason interference (RXLEV_UL_IH)\" field.");
+    theForm.hoThresholdInterfaceParamRxLevelUL.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdInterfaceParamRxLevelUL.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Threshold level for handover, reason interference (RXLEV_UL_IH)\" field.");
+    theForm.hoThresholdInterfaceParamRxLevelUL.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoThresholdInterfaceParamRxLevelUL.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Threshold level for handover, reason interference (RXLEV_UL_IH)\" field.");
+    theForm.hoThresholdInterfaceParamRxLevelUL.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"Threshold level for handover, reason interference (RXLEV_UL_IH)\" field.");
+    theForm.hoThresholdInterfaceParamRxLevelUL.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdInterfaceParamRxLevelDL.value == "")
+  {
+    alert("Please enter a value for the \"Threshold level for handover, reason interference (RXLEV_DL_IH)\" field.");
+    theForm.hoThresholdInterfaceParamRxLevelDL.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdInterfaceParamRxLevelDL.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Threshold level for handover, reason interference (RXLEV_DL_IH)\" field.");
+    theForm.hoThresholdInterfaceParamRxLevelDL.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoThresholdInterfaceParamRxLevelDL.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Threshold level for handover, reason interference (RXLEV_DL_IH)\" field.");
+    theForm.hoThresholdInterfaceParamRxLevelDL.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"Threshold level for handover, reason interference (RXLEV_DL_IH)\" field.");
+    theForm.hoThresholdInterfaceParamRxLevelDL.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdInterfaceParamPx.value == "")
+  {
+    alert("Please enter a value for the \"Number of total distance measurements (P7)\" field.");
+    theForm.hoThresholdInterfaceParamPx.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdInterfaceParamPx.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Number of total distance measurements (P7)\" field.");
+    theForm.hoThresholdInterfaceParamPx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoThresholdInterfaceParamPx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Number of total distance measurements (P7)\" field.");
+    theForm.hoThresholdInterfaceParamPx.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Number of total distance measurements (P7)\" field.");
+    theForm.hoThresholdInterfaceParamPx.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdInterfaceParamNx.value == "")
+  {
+    alert("Please enter a value for the \"Number of total distance measurements (N7)\" field.");
+    theForm.hoThresholdInterfaceParamNx.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdInterfaceParamNx.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Number of total distance measurements (N7)\" field.");
+    theForm.hoThresholdInterfaceParamNx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoThresholdInterfaceParamNx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Number of total distance measurements (N7)\" field.");
+    theForm.hoThresholdInterfaceParamNx.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Number of total distance measurements (N7)\" field.");
+    theForm.hoThresholdInterfaceParamNx.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdLevParamRxLevelUL.value == "")
+  {
+    alert("Please enter a value for the \"Threshold level for handover, reason uplink signal strength (L_R\" field.");
+    theForm.hoThresholdLevParamRxLevelUL.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdLevParamRxLevelUL.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Threshold level for handover, reason uplink signal strength (L_R\" field.");
+    theForm.hoThresholdLevParamRxLevelUL.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoThresholdLevParamRxLevelUL.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Threshold level for handover, reason uplink signal strength (L_R\" field.");
+    theForm.hoThresholdLevParamRxLevelUL.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"Threshold level for handover, reason uplink signal strength (L_R\" field.");
+    theForm.hoThresholdLevParamRxLevelUL.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdLevParamRxLevelDL.value == "")
+  {
+    alert("Please enter a value for the \"Threshold level for handover, reason downlink signal strength (L\" field.");
+    theForm.hoThresholdLevParamRxLevelDL.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdLevParamRxLevelDL.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Threshold level for handover, reason downlink signal strength (L\" field.");
+    theForm.hoThresholdLevParamRxLevelDL.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoThresholdLevParamRxLevelDL.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Threshold level for handover, reason downlink signal strength (L\" field.");
+    theForm.hoThresholdLevParamRxLevelDL.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"Threshold level for handover, reason downlink signal strength (L\" field.");
+    theForm.hoThresholdLevParamRxLevelDL.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdLevParamPx.value == "")
+  {
+    alert("Please enter a value for the \"hoThresholdLevParamPx\" field.");
+    theForm.hoThresholdLevParamPx.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdLevParamPx.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"hoThresholdLevParamPx\" field.");
+    theForm.hoThresholdLevParamPx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoThresholdLevParamPx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"hoThresholdLevParamPx\" field.");
+    theForm.hoThresholdLevParamPx.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"hoThresholdLevParamPx\" field.");
+    theForm.hoThresholdLevParamPx.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdLevParamNx.value == "")
+  {
+    alert("Please enter a value for the \"Number of out of range averages\" field.");
+    theForm.hoThresholdLevParamNx.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdLevParamNx.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Number of out of range averages\" field.");
+    theForm.hoThresholdLevParamNx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoThresholdLevParamNx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Number of out of range averages\" field.");
+    theForm.hoThresholdLevParamNx.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Number of out of range averages\" field.");
+    theForm.hoThresholdLevParamNx.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdQualParamRxQualUL.value == "")
+  {
+    alert("Please enter a value for the \"Threshold level for handover, reason uplink signal quality (L_RX\" field.");
+    theForm.hoThresholdQualParamRxQualUL.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdQualParamRxQualUL.value.length > 1)
+  {
+    alert("Please enter at most 1 characters in the \"Threshold level for handover, reason uplink signal quality (L_RX\" field.");
+    theForm.hoThresholdQualParamRxQualUL.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoThresholdQualParamRxQualUL.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Threshold level for handover, reason uplink signal quality (L_RX\" field.");
+    theForm.hoThresholdQualParamRxQualUL.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "7"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"7\" in the \"Threshold level for handover, reason uplink signal quality (L_RX\" field.");
+    theForm.hoThresholdQualParamRxQualUL.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdQualParamRxQualDL.value == "")
+  {
+    alert("Please enter a value for the \"Threshold level for handover, reason downlink signal quality (L_\" field.");
+    theForm.hoThresholdQualParamRxQualDL.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdQualParamRxQualDL.value.length > 1)
+  {
+    alert("Please enter at most 1 characters in the \"Threshold level for handover, reason downlink signal quality (L_\" field.");
+    theForm.hoThresholdQualParamRxQualDL.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoThresholdQualParamRxQualDL.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Threshold level for handover, reason downlink signal quality (L_\" field.");
+    theForm.hoThresholdQualParamRxQualDL.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "7"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"7\" in the \"Threshold level for handover, reason downlink signal quality (L_\" field.");
+    theForm.hoThresholdQualParamRxQualDL.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdQualParamPx.value == "")
+  {
+    alert("Please enter a value for the \"The number of out of range averages ( P6)\" field.");
+    theForm.hoThresholdQualParamPx.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdQualParamPx.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"The number of out of range averages ( P6)\" field.");
+    theForm.hoThresholdQualParamPx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoThresholdQualParamPx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"The number of out of range averages ( P6)\" field.");
+    theForm.hoThresholdQualParamPx.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"The number of out of range averages ( P6)\" field.");
+    theForm.hoThresholdQualParamPx.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdQualParamNx.value == "")
+  {
+    alert("Please enter a value for the \"The number of averages to be considered (N6)\" field.");
+    theForm.hoThresholdQualParamNx.focus();
+    return (false);
+  }
+
+  if (theForm.hoThresholdQualParamNx.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"The number of averages to be considered (N6)\" field.");
+    theForm.hoThresholdQualParamNx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoThresholdQualParamNx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"The number of averages to be considered (N6)\" field.");
+    theForm.hoThresholdQualParamNx.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"The number of averages to be considered (N6)\" field.");
+    theForm.hoThresholdQualParamNx.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" onsubmit="return FrontPage_Form1_Validator(this)" name="FrontPage_Form1">
+
+<div align="center">
+ <center>
+ <table border="0" cellpadding="0" cellspacing="0" height="342" width="678">
+  <tr>
+   <th align="center" valign="top" colspan="3" height="22" width="678">Handover Threshold Parameters</th>
+  </tr>
+  <tr>
+   <td align="right" valign="top" height="59" rowspan="2" width="7"></td>
+   <td valign="top" height="5" align="center" width="297">
+   <table border="1" cellspacing="1" width="291">
+    <tr>
+     <th colspan="2">
+      <p align="center">Distance Parameters</th>
+    </tr>
+    <tr>
+     <td>&nbsp;Timing advance (MS_RANGE_MAX)</td>
+     <td><!--webbot bot="Validation" s-display-name="Timeing Advance (MS_RANGE_MAX)" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="99" --><input type="text" name="hoThresholdDistParamTimeadv" size="2" value="$%hoThresholdDistParamTimeadv#$" maxlength="2">
+     &nbsp;</td>
+    </tr>
+    <tr>
+     <td>P8</td>
+     <td><!--webbot bot="Validation" S-Display-Name="Number of distance grater than max distance  (P8)" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="hoThresholdDistParamP8" size="2" value="$%hoThresholdDistParamP8#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td>N8</td>
+     <td><!--webbot bot="Validation" S-Display-Name="Number of total distance measurements (N8)" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="hoThresholdDistParamN8" size="2" value="$%hoThresholdDistParamN8#$" maxlength="2"></td>
+    </tr>
+   </table>
+   </td>
+   <td valign="top" height="5" align="center" width="368">
+   <table border="1" cellspacing="1" width="100%">
+    <tr>
+     <th colspan="2">
+      <p align="center">Interference Parameters</th>
+    </tr>
+    <tr>
+     <td>RxLevelUL (RXLEV_UL_IH)</td>
+     <td><!--webbot bot="Validation" s-display-name="Threshold level for handover, reason interference (RXLEV_UL_IH)" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="63" --><input type="text" name="hoThresholdInterfaceParamRxLevelUL" size="2" value="$%hoThresholdInterfaceParamRxLevelUL#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td>RxLevelDL (RXLEV_DL_IH)</td>
+     <td><!--webbot bot="Validation" s-display-name="Threshold level for handover, reason interference (RXLEV_DL_IH)" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="63" --><input type="text" name="hoThresholdInterfaceParamRxLevelDL" size="2" value="$%hoThresholdInterfaceParamRxLevelDL#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td>&nbsp;P7</td>
+     <td><!--webbot bot="Validation" s-display-name="Number of total distance measurements (P7)" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="31" --><input type="text" name="hoThresholdInterfaceParamPx" size="2" value="$%hoThresholdInterfaceParamPx#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td>&nbsp;N7</td>
+     <td><!--webbot bot="Validation" S-Display-Name="Number of total distance measurements (N7)" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="hoThresholdInterfaceParamNx" size="2" value="$%hoThresholdInterfaceParamNx#$" maxlength="2"></td>
+    </tr>
+   </table>
+   </td>
+  </tr>
+  <tr>
+   <td align="center" valign="top" height="54" width="297">
+   <table border="1" cellspacing="1" width="98%">
+    <tr>
+     <th colspan="2" height="15">
+      <p align="center">Level Parameters (Signal Strength)</th>
+    </tr>
+    <tr>
+     <td height="24">RxLevelUL</td>
+     <td height="24"><!--webbot bot="Validation" s-display-name="Threshold level for handover, reason uplink signal strength (L_RXLEV_UL_H)." s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="63" --><input type="text" name="hoThresholdLevParamRxLevelUL" size="2" value="$%hoThresholdLevParamRxLevelUL#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td height="24">RxLevelDL</td>
+     <td height="24"><!--webbot bot="Validation" s-display-name="Threshold level for handover, reason downlink signal strength (L_RXLEV_DL_H)" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="63" --><input type="text" name="hoThresholdLevParamRxLevelDL" size="2" value="$%hoThresholdLevParamRxLevelDL#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td height="24">Px</td>
+     <td height="24"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="hoThresholdLevParamPx" size="2" value="$%hoThresholdLevParamPx#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td height="24">Nx</td>
+     <td height="24"><!--webbot bot="Validation" s-display-name="Number of out of range averages" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="31" --><input type="text" name="hoThresholdLevParamNx" size="2" value="$%hoThresholdLevParamNx#$" maxlength="2"></td>
+    </tr>
+   </table>
+   </td>
+   <td align="center" valign="top" height="54" width="368">
+   <table border="1" cellspacing="1" width="100%">
+    <tr>
+     <th colspan="2">
+      <p align="center">Quality Parameters (Signal Quality)</th>
+    </tr>
+    <tr>
+     <td>RxQualUL&nbsp; (L_RXQUAL_UL_H)</td>
+     <td><!--webbot bot="Validation" S-Display-Name="Threshold level for handover, reason uplink signal quality (L_RXQUAL_UL_H)" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="1" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="7" --><input type="text" name="hoThresholdQualParamRxQualUL" size="1" value="$%hoThresholdQualParamRxQualUL#$" maxlength="1"></td>
+    </tr>
+    <tr>
+     <td>RxQualDL (L_RXQUAL_DL_H)</td>
+     <td><!--webbot bot="Validation" S-Display-Name="Threshold level for handover, reason downlink signal quality (L_RXQUAL_DL_H)" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="1" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="7" --><input type="text" name="hoThresholdQualParamRxQualDL" size="1" value="$%hoThresholdQualParamRxQualDL#$" maxlength="1"></td>
+    </tr>
+    <tr>
+     <td>P6</td>
+     <td><!--webbot bot="Validation" s-display-name="The number of out of range averages ( P6)" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="31" --><input type="text" name="hoThresholdQualParamPx" size="2" value="$%hoThresholdQualParamPx#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td>N6</td>
+     <td><!--webbot bot="Validation" s-display-name="The number of averages to be considered (N6)" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="31" --><input type="text" name="hoThresholdQualParamNx" size="2" value="$%hoThresholdQualParamNx#$" maxlength="2"></td>
+    </tr>
+   </table>
+   </td>
+  </tr>
+ </table>
+ </center>
+</div>
+
+<p align="center"><input name="B1" type="submit" value="Submit" >   <input name="Recall" type="button" value="Recall" onclick="window.location.reload()"> <input name="Reset" type="reset" value="Reset"> </p>
+</form>
+
+</body>
+
+</html>

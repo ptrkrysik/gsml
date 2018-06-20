@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+<title>Detail Alarm Information</title>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
+<meta content="noIndex, Follow" name="Robots">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<style>body         { margin: 0px }
+</style>
+<script >
+
+var time, severity, module, detail, got
+function displayTopic(alarmText)
+{
+	var re = /%20/gi;
+	var newText = alarmText.replace(re, " ");
+	var aAlarm = newText.split("|")
+		
+	if (aAlarm.length < 6)
+	{
+		document.write("Error: Alarm Could not be retrieved");
+		return;
+	}
+	if (aAlarm[5])
+	{ 
+		document.write(aAlarm[5]);
+	} else {
+		document.write("Error: Alarm Could not be retrieved");
+		return;
+	}
+	got = "true";			
+	time = aAlarm[1];
+	severity = aAlarm[2];
+	module= aAlarm[4];
+
+	// Replace module
+	re = /%module/gi;
+	detail = aAlarm[6].replace(re, module);
+
+	// Replace Arguments
+	if (aAlarm.length > 7)
+	re = /%1/gi;
+	detail = detail.replace(re, aAlarm[7]);
+		
+}
+
+function getSeverityText(theSeverity)
+{
+	var textState = "";
+	var Color = "";
+	var help = ""
+
+	switch(theSeverity)
+	{
+	case  "0":  
+		// Critical
+		textState = "Critical";
+		break;
+	case  "1":  
+		// Major
+		textState = "Major";
+		break;	
+	case  "2":  
+		// Minor
+		textState = "Minor";
+		break;
+	case  "3":  
+		// Alarm Cleared
+		textState = "Information";
+		break;
+
+	default:
+		textState = "Invalid";
+		break;
+	}
+	
+	return textState;
+	
+}
+
+
+function displayTime(utctime)
+{
+
+	var gmtDate = new Date(utctime*1000);
+	return gmtDate.toLocaleString();
+}
+
+
+function DisplayDetail()
+{   
+if ( got == "true")
+	{
+	document.write("Reporting Module: " + module);
+	document.write("<br>Reported time: " + displayTime(time));
+	document.write("<br>Severity: "  + getSeverityText(severity));
+	document.write("<p>Message: " + detail);
+	}
+}
+
+
+
+</script>
+
+</head>
+
+<body alink="#006699" bgcolor="#FFFFCC" link="#006699" vlink="#006699" marginwidth="0" marginheight="0" onload="$%reloadTopframe#$">
+
+<center>
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+  <tbody>
+    <tr>
+      <td bgcolor="#cccccc" valign="center" width="90%"><b><font face="arial,helvetica" size="3">
+<script>
+displayTopic("$%AlarmDetail#$")
+</script>
+      
+      </font></b></td>
+      <td bgcolor="#cccccc" width="10">&nbsp;&nbsp;&nbsp;</td>
+      <td align="right" bgcolor="#cccccc" valign="center"><a href="javascript:window.close()"><img alt="Close this window and continue" border="0"
+      height="19" name="sp_close" src="Images/sp_close.gif" vspace="20" width="103"></a>
+    <tr>
+      <td colspan="3" valign="top" width="*" bgcolor="#FFFFCC"><br>
+      <font face="arial,helvetica" size="2"><b> 
+      <script> DisplayDetail() </script>
+      </b></font></td>
+    </tr>
+  </tbody>
+</table>
+</center>
+
+</body>
+
+</html>

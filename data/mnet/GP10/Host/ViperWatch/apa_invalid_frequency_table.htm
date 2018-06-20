@@ -1,0 +1,69 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Automatic Parameter Allocation Invalid Frequency Table </title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" >
+
+var index = 1;
+function displayIndex()
+{
+	document.write(" " + index++ + " ");
+}
+
+</Script>
+
+
+<body  onload="$%reloadTopframe#$">
+<form method="POST" cellpadding="0" name="apaClockSourceFrequencyTable">
+
+<div align="center">
+  <table border="4" bgcolor="#D6D3CE" width="90">
+    <tr>
+      <td width="583">
+    <h3 align="center">
+      &nbsp;Invalid Frequency List</h3>
+    <div align="center">
+      <center>
+      <table border="1" width="80%">
+        <tr>
+   <td height="19" align="center">Index&nbsp;</td>
+   <td height="19" align="center">ARFCN</td>
+  </tr>
+  <! $%createTable(apaInvalidFrequencyIndex,*,,,,,apaInvalidFrequencyIndex,apaInvalidFrequencyArfcn)#$ >
+  <! $%REPEAT(apaInvalidFrequencyIndex,1,64)#$ >   
+  <tr>
+  <td align="center"><script> displayIndex() </script> </td>
+  <td align="center">$%apaInvalidFrequencyArfcn#$</td>
+  </tr>  
+    
+  <! $%endRow(apaInvalidFrequencyIndex)#$ >
+  <! $%REPEAT(END)#$ >
+  <! $%endTable(apaInvalidFrequencyIndex)#$>    
+
+  </table>
+   </center>
+   </div>
+  <center>
+  <div align="center">
+    <table border="0" cellpadding="3">
+      <tr>
+        <td align="center"><input name="B2" type="submit" value="Submit" title="Click to commit the Change">  </td>
+        <td align="center">  <input name="Recall" type="button" value="Recall" onclick="window.location.reload()" title="Click to reload the page""></td>
+      </tr>
+    </table>
+  </div>
+    </td>
+    </tr>
+  </table>
+</div>
+
+</form>
+
+</body>
+</html>

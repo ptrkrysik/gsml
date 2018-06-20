@@ -1,0 +1,143 @@
+# defs.bsp - bsp default makefile definitions
+#
+# Copyright 1984-1997, Wind River Systems, Inc.
+#
+# modification history
+# --------------------
+# 02g,20jan97,yp   added -P to CFLAGS_AS to suppress "#line" directives
+# 02f,06dec97,yp   moved soft-float back to CFLAGS
+# 02e,02jan97,dat  added DOC_FLAGS, EXTRA_DOC_FLAGS
+# 02d,17dec96,yp   moved soft-float to OPTIM macros so drvs get built without it
+# 02c,04oct96,yp   added .cxx sufix
+# 02b,31oct96,yp   added definition for GCC_EXEC_PREFIX. added TCL def.
+#		   added CFLAGS_AS. redid CFLAGS and C++FLAGS for new build
+# 02a,31oct96,kkk  fixed typo in C++FLAGS line.
+# 01z,21jun96,dat  added -traditional to COMPILE_SYMTBL (#6517),
+#		   added copyright
+# 01y,01apr96,srh  added Rogue Wave multithread defns.
+# 01x,13nov95,jeh  added CF define, changed CXX define to $(CC).
+# 01w,13nov95,jeh  renamed C++ define to be CXX.
+# 01v,11nov95,jeh  fixed typo in C++FLAGS define (missing $ in $(C++_COMPILER))
+# 01u,07nov95,p_m  Removed previous change
+# 01t,04nov95,p_m  Added sysSerial to DOC_FILES
+# 01s,01nov95,yp   Added rules for C++ support
+# 01r,24oct95,dat  recovered CONFIG_ALL and changed CC_INCLUDE, moved LIB_EXTRA
+# 01q,20jun95,yp   removed -pedatic flag. added machros for bin tool names
+# 01p,15jun95,yp   removed defintions for CPU and TOOL.
+# 01o,01jun95,yp   derived from make.defaults
+#
+# DESCRIPTION
+# This file is included into bsp makefiles to define the default makefile
+# definitions.  After the include the Makefile may customize the definitions
+# found here to suit the circumstance.
+#
+# Redefinitions of make variables earlier than the include of this file will
+# have no affect.
+#
+
+.SUFFIXES:  .cpp .out .cxx
+
+## exe target is the cannonical starting point.
+
+default : exe
+
+## TARGET_DIR still used for backward compatibility
+
+BSP_NAME	= $(TARGET_DIR)
+
+## default flags
+
+CFLAGS		= $(CC_ARCH_SPEC) $(CC_COMPILER) $(CC_OPTIM) $(CC_WARNINGS) \
+			$(CC_INCLUDE) $(CC_DEFINES) $(ADDED_CFLAGS)  \
+			$(CC_SOFT_FLOAT)
+
+C++FLAGS	= $(CC_ARCH_SPEC) $(C++_COMPILER) $(CC_OPTIM) $(C++_WARNINGS) \
+			$(CC_INCLUDE) $(CC_DEFINES) $(ADDED_C++FLAGS) \
+			$(CC_SOFT_FLOAT)
+
+CASFLAGS	= -E $(CC_INCLUDE) $(CC_DEFINES)
+# We now call the compiler driver to precrocess and assemble .s file
+CFLAGS_AS	= $(CC_ARCH_SPEC) $(CC_COMPILER) $(CC_OPTIM) $(CC_INCLUDE) \
+                        $(CC_DEFINES) $(ADDED_CFLAGS) -P -x assembler-with-cpp
+CC_WARNINGS	= $(CC_WARNINGS_ALL)
+CC_OPTIM	= $(CC_OPTIM_TARGET)
+CC_INCLUDE	= -I$(UP)/h $(INCLUDE_CC) $(EXTRA_INCLUDE) \
+		  -I. -I$(CONFIG_ALL) -I$(TGT_DIR)/h -I$(TGT_DIR)/src/config \
+		  -I$(TGT_DIR)/src/drv
+CC_DEFINES	= -DCPU=$(CPU) $(DEFINE_CC) $(EXTRA_DEFINE)
+
+# Current cpp compiler generates symbols with $ signs.  Need -traditional
+# to accept such names as valid symbols. - dat, 6/96 (SPR #6517)
+COMPILE_SYMTBL	= $(CC) -c $(CFLAGS)
+
+
+## only customize things below this point
+
+RELEASE		= vxWorks vxWorks.st bootrom.hex
+
+## toolchain flags
+
+CC_WARNINGS_ALL	= -Wall
+CC_WARNINGS_NONE=
+C++_WARNINGS    = $(CC_WARNINGS_NONE)
+
+# We now define GCC_EXEC_PREFIX so that we can call the compiler with
+# the -B flag suggesting where support tools may be found. Previously
+# we required the user to set GCC_EXEC_PREFIX as an environment variable
+
+
+GCC_EXEC_PREFIX=$(WIND_BASE)/host/$(WIND_HOST_TYPE)/lib/gcc-lib/
+
+CC_OPTIM_DRIVER	=
+CC_OPTIM_NORMAL	= -O -fstrength-reduce -fcombine-regs
+CC_OPTIM_TARGET	= -O -fvolatile
+
+CC_COMPILER	=  -nostdinc
+#CC_COMPILER	= -ansi -pedantic -nostdinc
+
+# RW_MULTI_THREAD and _REENTRANT required for WFC
+C++_COMPILER	= -ansi -nostdinc -DRW_MULTI_THREAD -D_REENTRANT
+
+## toolchain binaries
+
+AR              = ar
+AS              = as
+CC              = cc
+CF				= CC
+CXX				= $(CC)
+LD              = ld
+MUNCH		= munch
+NM		= nm
+RANLIB          = ranlib
+CPP		= cpp
+TCL		= wtxtcl
+
+## bsp flags
+
+LD_LOW_FLAGS    = -Ttext $(RAM_LOW_ADRS)
+LD_HIGH_FLAGS   = -Ttext $(RAM_HIGH_ADRS)
+RES_LOW_FLAGS   = -Ttext $(ROM_TEXT_ADRS) -Tdata $(RAM_LOW_ADRS)
+RES_HIGH_FLAGS  = -Ttext $(ROM_TEXT_ADRS) -Tdata $(RAM_HIGH_ADRS)
+
+ROM_ENTRY       = _romInit
+SYS_ENTRY       = _sysInit
+USR_ENTRY       = _usrInit
+
+LDFLAGS         = -X -N
+LD_PARTIAL_FLAGS= -X -r
+
+MACH_DEP	= sysALib.o sysLib.o $(MACH_EXTRA) $(ADDED_MODULES)
+
+## libraries
+
+LIBS		=  $(LIB_EXTRA) $(TGT_DIR)/lib/lib$(CPU)$(TOOL)vx.a
+
+## documentation files
+
+DOC_FILES	= sysLib tyCoDrv 
+DOC_FLAGS	= -DDOC -DINCLUDE_SCSI -DINCLUDE_SHOW_ROUTINES \
+		$(EXTRA_DOC_FLAGS)
+
+EXTRACT_BIN_NAME        = aoutToBin
+BINXSYM_NAME            = xsym
+BINHEX_NAME             = hex

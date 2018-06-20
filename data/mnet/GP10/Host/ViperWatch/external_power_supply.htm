@@ -1,0 +1,109 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Parameter</title>
+</head>
+
+<SCRIPT >
+
+
+function selectOption(theSelect, valueHolder)
+{
+	if (valueHolder.value < 0 && valueHolder.value >= theSelect.length)
+	{ 
+		window.alert("Incorrect MIB value for " + valueHolder.name + "  "+ valueHolder.value + "Corrected to 0");
+		valueHolder.value = 0;
+	}
+	for (var i = 0; i < theSelect.length; i++)
+	{
+		if (theSelect.options[i].value == valueHolder.value) 
+		{
+			theSelect.options[i].selected = true;
+			break;
+		}
+	}
+			
+}
+
+function presetButtons(theForm)
+{
+
+	return true;
+} 
+
+function parseSelect(theSelect, valueHolder)
+{
+	for (var i = 0; i < theSelect.length; i++)
+	{
+		if (theSelect.options[i].selected) 
+		{
+			valueHolder.value = theSelect.options[i].value;
+			break;
+		}
+	}
+}
+
+function parseButtons(theForm)
+{	
+	return true;	
+} 
+
+</SCRIPT>
+
+<body onload="presetButtons(this.document.forms[0]);$%reloadTopframe#$">
+<form method="POST" cellpadding="0" onsubmit="return FrontPage_Form1_Validator(this)" name="FrontPage_Form1">
+
+<input type="hidden" name="powerSupplyType" value="$%powerSupplyType#$"><input type="hidden" name="powerSupplyStatus"  value="$%powerSupplyStatus#$">
+
+<div align="center">
+  <center>
+  <table border="4" bgcolor="#D6D3CE" width="368">
+    <tr>
+      <td width="430">
+    <h2 align="center">External Power Supply</h2>
+        <div align="center">
+          <table border="0">
+            <tr>
+   <td height="23"><font COLOR="#000000">Type</font></td>
+   <td height="23">
+   <p style="padding-top: 0px; padding-bottom: 0px"><select name="powerSupplyTypeSelect" size="1">
+      <option selected value="0">A1</option>
+      <option value="1">A2</option>
+   </select></td>
+            </tr>
+            <tr>
+   <td height="22"><font COLOR="#000000">Status</font></td>
+   <td height="22"><select name="powerSupplyStatusSelect" size="1">
+      <option selected value="0">Normal</option>
+      <option value="1">Not Working</option>
+    </select></td>
+            </tr>
+            <tr>
+   <td height="21" width="107"></td>
+   <td height="21" width="300"></td>
+            </tr>
+          </table>
+        </div>
+
+    <div align="center">
+      <table border="0" cellpadding="3">
+        <tr>
+          <td align="center"><input name="B2" type="submit" value="Submit">  </td>
+          <td align="center">  <input name="Recall1" type="button" value="Recall" onclick="window.location.reload()"></td>
+          <td align="center"><input name="Reset1" type="reset" value="Reset"></td>
+        </tr>
+      </table>
+    </div>
+      </td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+</form>
+
+</body>
+

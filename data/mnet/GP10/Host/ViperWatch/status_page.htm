@@ -1,0 +1,51 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GP10 OAM Operation Status Page</title>
+</head>
+
+<script Language="JavaScript">
+function displayStatus(theStatus)
+{
+	document.write( "<B>");
+	switch (theStatus)
+	{
+		case "1": 
+			document.write( "IN PROGESS");
+			break;
+		case "2": 
+			document.write( "SUCCESSFUL");
+			break;
+		case "3": 
+			document.write( "FAILED");
+			document.write( "<p> <a href=/last_error.htm title='Click here to see the error message'> Reason of failure </a></p>")			
+			break;
+		default:
+			window.alert("Unknown");
+			break;
+	}
+	document.write( "</B>");
+	
+}
+
+</script>
+
+<body onload="$%reloadTopframe#$">
+<h2 align="left">OA&amp;M Operation Status
+</h2>
+
+&nbsp;
+  <p>The OA&amp;M operation you just&nbsp; initiated: 
+  
+  <script Language="JavaScript">
+   displayStatus("$%oamCommandExecutionStatus#$");
+  </script>
+  
+  <p>Please click<a href="javascript:history.go(-1)" title="Click to go back to the previous page.  This operation will not reload the page">
+  here</a> to go back to the previous page.</p>
+  <p>&nbsp;</p>
+</body>
+

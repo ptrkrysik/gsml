@@ -1,0 +1,232 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GPRS BSSGP Parameters</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+
+
+
+<SCRIPT language="JavaScript">
+
+function PresetForm(theForm)
+{
+	// for TEST elements
+	theForm.blockTimer.defaultValue	= 1;				// set def value!
+	theForm.resetTimer.defaultValue	= 1;				// set def value!
+	theForm.suspendTimer.defaultValue	= 1;			// set def value!
+	theForm.resumeTimer.defaultValue	= 1;			// set def value!
+	theForm.capUpdateTimer.defaultValue	= 1;			// set def value!
+	theForm.blockRetries.defaultValue	= 3;
+	theForm.unBlockRetries.defaultValue	= 3;
+	theForm.resetRetries.defaultValue	= 3;
+	theForm.suspendRetries.defaultValue	= 3;
+	theForm.resumeRetries.defaultValue	= 3;
+	theForm.raCapUpdateRetries.defaultValue	= 3;
+	theForm.timeInterval.defaultValue	= 5;			// set def value!
+	theForm.networkPort.defaultValue	= 22240;
+
+	return true;
+} 
+
+function ParseForm(theForm)
+{	
+	if (isValidInt(theForm.blockTimer, 1, 30)==false)
+		return false;
+	if (isValidInt(theForm.resetTimer, 1, 120)==false)
+		return false;
+	if (isValidInt(theForm.suspendTimer, 1, 10)==false)
+		return false;
+	if (isValidInt(theForm.resumeTimer, 1, 10)==false)
+		return false;
+	if (isValidInt(theForm.capUpdateTimer, 1, 30)==false)
+		return false;
+	if (isValidInt(theForm.blockRetries, 0, 65535)==false)
+		return false;
+	if (isValidInt(theForm.unBlockRetries, 0, 65535)==false)
+		return false;
+	if (isValidInt(theForm.resetRetries, 0, 65535)==false)
+		return false;
+	if (isValidInt(theForm.suspendRetries, 0, 65535)==false)
+		return false;
+	if (isValidInt(theForm.resumeRetries, 0, 65535)==false)
+		return false;
+	if (isValidInt(theForm.raCapUpdateRetries, 0, 65535)==false)
+		return false;
+	if (isValidInt(theForm.timeInterval, 5, 6000)==false)
+		return false;
+	if (isValidInt(theForm.networkPort, 1024, 65535)==false)
+		return false;
+
+	return true;
+} 
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="gprs_interface_rlcmac">
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="340">
+      <tr>
+        <td >
+        <h2 align="center">GPRS BSSGP Parameters</h2>
+        <div align="center">
+          <center>
+          <table border="1" cellpadding="2">
+			<!-- Text blockTimer -->
+            <tr>
+              <td width="180" valign="middle" title="Timer Value that guards the blocking or unblocking procedures.">
+									Block Timer
+								</td>
+              <td width="100" valign="middle" align="left" title="INTEGER (1..30)">
+								<input name="blockTimer" value="$%blockTimer#$" maxlength="2" size="4" onchange="return isValidInt(this,1,30);"></td>
+            </tr>
+
+			<!-- Text resetTimer -->
+            <tr>
+              <td valign="middle" title="Timer Value that guards the reset procedure.">
+									Reset Timer
+								</td>
+              <td valign="middle" align="left" title="(1..120)">
+								<input name="resetTimer" value="$%resetTimer#$" maxlength="3" size="5" onchange="return isValidInt(this,1,120);"></td>
+            </tr>
+
+			<!-- Text suspendTimer -->
+            <tr>
+              <td valign="middle" title="Timer Value that guards the suspend procedure.">
+									Suspend Timer
+								</td>
+              <td valign="middle" align="left" title="INTEGER (1..10)">
+								<input name="suspendTimer" value="$%suspendTimer#$" maxlength="2" size="4" onchange="return isValidInt(this,1,10);"></td>
+            </tr>
+
+			<!-- Text resumeTimer -->
+            <tr>
+              <td valign="middle" title="Timer Value that guards the resume procedure.">
+									Resume Timer
+								</td>
+              <td valign="middle" align="left" title="INTEGER (1..10)">
+								<input name="resumeTimer" value="$%resumeTimer#$" maxlength="2" size="4" onchange="return isValidInt(this,1,10);"></td>
+            </tr>
+
+			<!-- Text capUpdateTimer -->
+            <tr>
+              <td valign="middle" title="Timer Value that guards the RA_CAPABILITY_UPDATE procedure.">
+									Capability Update Timer
+								</td>
+              <td valign="middle" align="left" title="INTEGER (1..30)">
+								<input name="capUpdateTimer" value="$%capUpdateTimer#$" maxlength="2" size="4" onchange="return isValidInt(this,1,30);"></td>
+            </tr>
+
+			<!-- Text blockRetries -->
+            <tr>
+              <td valign="middle" title="Number of BSSGP Virtual Connection	(BVC) Block Retries.">
+									Block Retries
+								</td>
+              <td valign="middle" align="left" title="INTEGER">
+								<input name="blockRetries" value="$%blockRetries#$" maxlength="5" size="7" onchange="return isValidInt(this,0,65535);"></td>
+            </tr>
+
+			<!-- Text unBlockRetries -->
+            <tr>
+              <td valign="middle" title="Number of BSSGP Virtual Connection (BVC) UnBlock Retries.">
+									UnBlock Retries
+								</td>
+              <td valign="middle" align="left" title="INTEGER">
+								<input name="unBlockRetries" value="$%unBlockRetries#$" maxlength="5" size="7" onchange="return isValidInt(this,0,65535);"></td>
+            </tr>
+
+			<!-- Text resetRetries -->
+            <tr>
+              <td valign="middle" title="Number of BSSGP Virtual Connection (BVC) Reset Retries.">
+									Reset Retries
+								</td>
+              <td valign="middle" align="left" title="INTEGER">
+								<input name="resetRetries" value="$%resetRetries#$" maxlength="5" size="7" onchange="return isValidInt(this,0,65535);"></td>
+            </tr>
+
+			<!-- Text suspendRetries -->
+            <tr>
+              <td valign="middle" title="Number of BSSGP Virtual Connection	(BVC) Suspend Retries.">
+									Suspend Retries
+								</td>
+              <td valign="middle" align="left" title="INTEGER">
+								<input name="suspendRetries" value="$%suspendRetries#$" maxlength="5" size="7" onchange="return isValidInt(this,0,65535);"></td>
+            </tr>
+
+			<!-- Text resumeRetries -->
+            <tr>
+              <td valign="middle" title="Number of BSSGP Virtual Connection	(BVC) Resume Retries.">
+									Resume Retries
+								</td>
+              <td valign="middle" align="left" title="INTEGER">
+								<input name="resumeRetries" value="$%resumeRetries#$" maxlength="5" size="7" onchange="return isValidInt(this,0,65535);"></td>
+            </tr>
+
+			<!-- Text raCapUpdateRetries -->
+            <tr>
+              <td valign="middle" title="Number of BSSGP Virtual Connection	(BVC) RA-CAPABILITY-UPDATE Retries.">
+									RA Capability Update Retries
+								</td>
+              <td valign="middle" align="left" title="INTEGER">
+								<input name="raCapUpdateRetries" value="$%raCapUpdateRetries#$" maxlength="5" size="7" onchange="return isValidInt(this,0,65535);"></td>
+            </tr>
+
+			<!-- Text timeInterval -->
+            <tr>
+              <td valign="middle" title="Interval after Flow Control MS before SGSN may use SGSN generated Bmax and R.">
+									Time Interval
+								</td>
+              <td valign="middle" align="left" title="INTEGER (5..6000)">
+								<input name="timeInterval" value="$%timeInterval#$" maxlength="4" size="6" onchange="return isValidInt(this,5,6000);"></td>
+            </tr>
+
+			<!-- Text networkPort -->
+            <tr>
+              <td valign="middle" title="Base UDP port for Network QOS levels.">
+									Network Port
+								</td>
+              <td valign="middle" align="left" title="INTEGER (1024..65535)">
+								<input name="networkPort" value="$%networkPort#$" maxlength="5" size="7" onchange="return isValidInt(this,1024,65535);"></td>
+            </tr>
+
+          </table>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <table height="50" border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        </td>
+      </tr>
+    </table>
+    </center>
+  </div>
+  <p align="center">&nbsp;
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>
+

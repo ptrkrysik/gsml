@@ -1,0 +1,4 @@
+ld < test.o
+ld < msg1.o
+initL1
+newInitDsp

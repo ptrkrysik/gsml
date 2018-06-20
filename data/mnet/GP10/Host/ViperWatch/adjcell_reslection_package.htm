@@ -1,0 +1,155 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Adjacent Cell Reselection Package</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+
+<SCRIPT language="JavaScript">
+var noCols = 3;
+var index = 1;
+function displayIndex()
+{
+	document.write(" " + index++ + " ");
+}
+
+function PresetForm(theForm)
+{
+  
+	 for (var i = 0; i < 16; i++)
+	{
+		if(theForm.elements[(i+1)*noCols-1].value > 0)
+		{
+			theForm.elements[(i*noCols)].checked = true;
+			theForm.elements[(i*noCols)].defaultChecked = true;
+		}
+		ZeroOutRow(theForm.elements[(i*noCols)])
+	}
+	return true;
+} 
+	
+function validateRow(theForm, theIndex)
+{
+	if (theForm.elements[theIndex*noCols].checked)
+	{
+		if (theForm.elements[(theIndex*noCols)+1].value == 0)
+		{
+			if (!confirm("You are trying to save a neighbouring cell with a zero BCCH frequency at row " + Number(theIndex+1) + ".\n Though zero is a legitimate ARFCN frequency it should be used sparingly.\n Are you sure you want to save this parameter."))
+		 	{
+		 		theForm.elements[(theIndex*noCols)+1].focus();	
+		   		return false;
+		 	} else {
+		   		return true;
+		 	}
+		
+		}
+	}
+	return true;
+} 
+	
+	
+function ParseForm(theForm)
+{
+    for (var i = 0; i < 16; i++)
+	{
+		if (!validateRow(theForm, i))
+		 return false;
+	}
+	return true;
+} 
+
+function ZeroOutRow(theCheck)
+{
+	var theIndex = Number(theCheck.value);
+	if (theCheck.checked)
+	 {	 
+    	theCheck.form.elements[(theIndex*noCols)+noCols-1].value = theIndex+1;
+	 } else {
+	  	for (var i = 1; i < noCols;  i++)
+		{
+			theCheck.form.elements[(theIndex*noCols)+i].value = 0;
+	   }
+	}		
+	return true;
+} 
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="adjcell_handover">
+
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="381">
+      <tr>
+        <td width="365">
+        <h2 align="center">Adjacent Cell Reselection Package</h2>
+        <div align="center">
+          <table border="1" cellpadding="2">
+            <tr>
+              <td width="42" height="22" align="center" >
+              <p align="center">Index</td>
+              <td width="51" height="22" align="center" >
+              <p align="center">Selected</td>
+              <td width="107" height="22" align="center" >
+              <p align="center">BCCH Frequency</td>
+            </tr>
+
+            <!$%createTable(adjCell_reselectionIndex,*,,,,,adjCell_reselectionIndex,adjCell_reselectionCellID,adjCell_reselectionBCCHFrequency)#$>
+            <!$%REPEAT(adjCell_reselectionIndex,1,16)#$>
+            <tr>
+              <td width="42" align="center"><font face="Arial, Helvetica"><script> displayIndex() </script></font></td>
+              <td width="51" align="center">
+              <p align="center">
+               <input type="checkbox" name="used.$%getInstance(adjCell_reselectionIndex)#$" value="$%getInstance(adjCell_reselectionIndex)#$" onClick="ZeroOutRow(this);">
+              </p>
+              </td>
+              <td width="107" align="center">
+              <p align="center"><input type="text" name="adjCell_reselectionBCCHFrequency.$%getInstance(adjCell_reselectionIndex)#$"
+              value="$%adjCell_reselectionBCCHFrequency#$" size="4" maxlength="4" onchange="return isValidInt(this,0,1023);"></p>
+              </td>
+            </tr>
+            <input type="hidden" name="adjCell_reselectionCellID.$%getInstance(adjCell_reselectionIndex)#$" value="$%adjCell_reselectionCellID#$">
+            <!$%endRow(adjCell_reselectionIndex)#$>
+            <!$%REPEAT(END)#$>
+            <!$%endTable(adjCell_reselectionIndex)#$>
+
+  
+          </table>
+        </div>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        </center>
+      </td>
+    </tr>
+    </table>
+  </div>
+  <p align="center">&nbsp;</p>
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

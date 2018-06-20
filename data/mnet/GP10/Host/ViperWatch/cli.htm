@@ -1,0 +1,80 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>CLI Session Status</title>
+</head>
+
+<script>
+
+function PresetForm(theForm)
+{
+	if (theForm.CliStatus.value.substr(0,1) == 0)
+	{
+		// disable termination button 
+		theForm.terminate.disabled = true;
+	}
+	else
+	{
+		// enable termination button
+		theForm.terminate.disabled = false;
+	}
+
+	return true;
+} 
+
+function ParseForm(theForm)
+{
+	if (theForm.terminate.disabled)
+	{
+		alert("There is no active CLI session!");
+		return false;
+	}
+	else
+	{
+		theForm.CliTerminate.value = "TERMINATE";
+		return true;
+	}
+} 
+
+
+</script>
+
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" onsubmit="return ParseForm(this)">
+  <input type="hidden" name="CliTerminate" value="">
+  <input type="hidden" name="CliStatus" value ="$%CliStatus#$">
+  <table bgcolor="#D6D3CE" align="CENTER" border="4" width="549">
+    <tr>
+      <td width="533"><div align="center"><center><h2>CLI Session Status</h2>
+      </center></div>
+	  <table align="CENTER" width="496" border>
+        <tr>
+          <td width="120"><b>Session Status</b></td>
+          <td><script>document.write(document.forms[0].CliStatus.value.substr(1));</script></td>
+        </tr>
+      </table>
+      <table align="CENTER">
+        <tr>
+          <td height="10"></td>
+        </tr>
+        <tr>
+          <td><input type="submit" name="terminate" value=" Terminate Session " title="Click this button to commit the change.">
+          </td>
+          <td height="60"><input type="button" value=" Recall " onclick="window.location.reload()"
+          title="Click this button to refresh the form."> </td>
+        </tr>
+      </table>
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+
+<!-- password -->

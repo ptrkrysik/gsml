@@ -1,0 +1,582 @@
+# rules.bsp - makefile target rules for BSP
+#
+# modification history
+# --------------------
+# 01v,04mar97,tpr  changed bootrom_res_res_high.hex by bootrom_res_high.hex
+#		   (SPR 8095)
+# 01u,13dec96,map  Remove symTbl.c in target rule `clean' [SPR# 2637]
+# 01t,09dec96,tpr  Added rule to remove ctdt.c for the 'clean' target. 
+# 01s,04oct96,yp   Added rules for building files with cxx extentions
+# 01r,23oct96,yp   redid treatment of .s files so we don't create tmp
+# 01q,26sep96,dat  removed edit 01k, was harming sparc & 960 BSPs. (SPR 7238)
+# 01p,19sep96,tpr  merge PPC to tor1_0_1 release.
+# 01o,29aug96,ms   removed "-f -b 15" after $(COMPRESS).
+# 01n,22aug96,map  added romInit.o dependency to romInit_res* rules to fix
+#                  SPR# 7063
+# 01m,25jul96,tam  replaced mips specific rom resident targets by ppc ones. 
+# 01l,23jul96,kkk  fixed build rules for romInit_res*.o for.
+# 01k,22jul96,tam  added $(BOOT_EXTRA) where it was missing.
+# 01j,04apr96,srh  added munching.
+# 01i,08mar96,yp   added -P in implicite .s.o rule.
+# 01h,06mar96,dat  new rules for version.o
+# 01g,13nov95,jeh  restored .cpp.o implicit rule
+# 01f,08nov95,jeh  removed .cpp.o implicit rule
+# 01e,01nov95,p_m  added LIB to rom_res build command
+# 01d,01nov95,yp   added implicit rules for C++
+# 01c,30oct95,dat  added targets vxWorks.res_rom_nosym and 
+#		   vxWorks.res_rom_nosym_mips
+# 01b,27jun95,kkk  added VXSIZE.
+# 01a,12jun95,yp   created from makeTarget2 v03d.
+#
+# DESCRIPTION
+# This file contains rules used in building targets.
+#
+# VARIABLES
+# The following variables must be defined (or not, as appropriate):
+#
+#     ROM_SIZE          number of bytes of ROM space as in config.h
+#     LOCAL_MEM_SIZE	target RAM size as in config.h
+#     BINHEX		binary->hex file conversion program
+#     HEX_FLAGS         BINHEX program options
+#     LD_LOW_FLAGS	ld(1) options for code in low memory
+#     LD_HIGH_FLAGS	ld options for code in high memory
+#     LD_PARTIAL_FLAGS  ld flags for linking partially complete objects
+#     LDDEPS		host-specific dependencies prerequisite to linking
+#     LDOUT_CONV	hpToBsd, coffToBsd, gswab, /bin/cat, etc.
+#     COMPILE_SYMTBL	hide flags needed to get compiler to swallow symTbl.c
+#     ROM_ENTRY		rom entry point (typically &romInit)
+#     SYS_ENTRY		system entry point (typically &sysInit)
+#     USR_ENTRY		compressed system entry point (typically &usrInit)
+#
+# The following variables are optionally defined:
+#
+#     LDFLAGS		standard ld flags for vxWorks & ROMs.
+#     ROM_LDFLAGS	ld flags specific to ROM image
+#     MACH_EXTRA	extra modules for all boot/vxWorks images
+#     BOOT_EXTRA	extra modules for compressed images only
+#     RELEASE		images made as part of WRS release step
+#
+# CONSTANTS
+#     CPU               cpu type
+#*/
+
+
+################################################################################
+#
+# meta build targets
+#
+
+## make will default to "exe"
+
+exe	: vxWorks
+
+release : $(RELEASE)
+
+clean   :
+	- $(RM) *.o 
+	- $(RM) vxWorks* 
+	- $(RM) bootrom* 
+	- $(RM) ctdt.c 
+	- $(RM) symTbl.c
+	- $(RM) depend.$(TARGET_DIR)
+
+.s.o :
+	@ $(RM) $@
+	$(CC) $(CFLAGS_AS) -c -o $@ $< 
+
+.c.o :
+	@ $(RM) $@
+	$(CC) $(CFLAGS) -c $<
+
+# rule for munchless C++ compiles
+.cpp.o :
+	@ $(RM) $@
+	$(CXX) $(C++FLAGS) -c $<
+
+.cxx.o :
+	@ $(RM) $@
+	$(CXX) $(C++FLAGS) -c $<
+
+# C++ compile and munch
+.cpp.out :
+	@ $(RM) $@
+	$(CXX) $(C++FLAGS) -c $<
+	@ $(RM) $@ ctdt.c
+	$(NM) $*.o | munch > ctdt.c
+	$(MAKE) CC_COMPILER="-traditional" ctdt.o
+	$(LD) $(LD_PARTIAL_FLAGS) -o $@ $*.o ctdt.o
+	@ $(RM) ctdt.c ctdt.o
+
+.cxx.out :
+	@ $(RM) $@
+	$(CXX) $(C++FLAGS) -c $<
+	@ $(RM) $@ ctdt.c
+	$(NM) $*.o | munch > ctdt.c
+	$(MAKE) CC_COMPILER="-traditional" ctdt.o
+	$(LD) $(LD_PARTIAL_FLAGS) -o $@ $*.o ctdt.o
+	@ $(RM) ctdt.c ctdt.o
+
+
+################################################################################
+#
+# machine dependent targets
+
+romInit_res.o: depend.$(BSP_NAME) romInit.s romInit.o
+	- @ $(RM) $@
+	$(CC) $(CFLAGS_AS) -DROM_RESIDENT -c -o $@ romInit.s
+
+romInit_res_low.o: depend.$(BSP_NAME) romInit.s romInit.o
+	- @ $(RM) $@
+	$(CC) $(CFLAGS_AS) -DROM_RESIDENT \
+	    -DRAM_DST_ADRS=0x$(RAM_LOW_ADRS) -c -o $@ romInit.s
+
+romInit_res_high.o: depend.$(BSP_NAME) romInit.s romInit.o
+	- @ $(RM) $@
+	$(CC) $(CFLAGS_AS) -DROM_RESIDENT \
+	    -DRAM_DST_ADRS=0x$(RAM_HIGH_ADRS) -c -o $@ romInit.s
+
+usrConfig.o : depend.$(BSP_NAME) $(USRCONFIG)
+	- @ $(RM) $@
+	$(CC) -c $(CFLAGS) $(USRCONFIG) -o $@
+
+usrConfig_st.o : depend.$(BSP_NAME) $(USRCONFIG) usrConfig.o
+	- @ $(RM) $@
+	$(CP) $(USRCONFIG) usrConfig_st.c
+	$(CC) -c $(CFLAGS) -DSTANDALONE usrConfig_st.c
+	- @ $(RM) usrConfig_st.c
+
+bootConfig.o : depend.$(BSP_NAME) $(BOOTCONFIG)
+	- @ $(RM) $@
+	$(CC) -c $(CFLAGS) $(BOOTCONFIG)
+
+bootInit.o : depend.$(BSP_NAME) $(BOOTINIT)
+	- @ $(RM) $@
+	$(CC) -c $(CFLAGS) $(BOOTINIT)
+
+bootInit_res.o : depend.$(BSP_NAME) $(BOOTINIT) bootInit.o
+	- @ $(RM) $@
+	$(CP) $(BOOTINIT) bootInit_res.c
+	$(CC) -c $(CFLAGS) -DROM_RESIDENT bootInit_res.c
+	- @ $(RM) bootInit_res.c
+
+bootInit_res_low.o : depend.$(BSP_NAME) $(BOOTINIT)
+	- @ $(RM) $@
+	$(CP) $(BOOTINIT) bootInit_res_low.c
+	$(CC) -c $(CFLAGS) -DROM_RESIDENT \
+	    -DRAM_DST_ADRS=0x$(RAM_LOW_ADRS) bootInit_res_low.c
+	- @ $(RM) bootInit_res_low.c
+
+bootInit_res_high.o : depend.$(BSP_NAME) $(BOOTINIT)
+	- @ $(RM) $@
+	$(CP) $(BOOTINIT) bootInit_res_high.c
+	$(CC) -c $(CFLAGS) -DROM_RESIDENT \
+	    -DRAM_DST_ADRS=0x$(RAM_HIGH_ADRS) bootInit_res_high.c
+	- @ $(RM) bootInit_res_high.c
+
+bootInit_uncmp.o : depend.$(BSP_NAME) $(BOOTINIT) bootInit.o
+	- @ $(RM) $@
+	$(CP) $(BOOTINIT) bootInit_uncmp.c
+	$(CC) -c $(CFLAGS) -DUNCOMPRESS bootInit_uncmp.c
+	- @ $(RM) bootInit_uncmp.c
+
+bootInit_st.o : depend.$(BSP_NAME) $(BOOTINIT) bootInit.o
+	- @ $(RM) $@
+	$(CP) $(BOOTINIT) bootInit_st.c
+	$(CC) -c $(CFLAGS) -DRAM_DST_ADRS=0x$(RAM_LOW_ADRS) bootInit_st.c
+	- @ $(RM) bootInit_st.c
+
+
+bootInit_uncmp_res.o : depend.$(BSP_NAME) $(BOOTINIT) bootInit.o
+	- @ $(RM) $@
+	$(CP) $(BOOTINIT) bootInit_uncmp_res.c
+	$(CC) -c $(CFLAGS) -DROM_RESIDENT -DUNCOMPRESS bootInit_uncmp_res.c
+	- @ $(RM) bootInit_uncmp_res.c
+
+dataSegPad.o: depend.$(BSP_NAME) $(DATASEGPAD) $(CONFIG_ALL_H) config.h
+	- @ $(RM) $@
+	$(CC) -c $(CFLAGS) $(DATASEGPAD) -o $@
+
+################################## vxWorks #####################################
+#
+# vxWorks     - normal vxWorks system
+# vxWorks.sym - symbol table of vxWorks
+
+vxWorks vxWorks.sym : depend.$(BSP_NAME) usrConfig.o dataSegPad.o \
+		$(MACH_DEP) $(LDDEPS) $(LIBS)
+	- @ $(RM) vxWorks vxWorks.sym
+	- @ $(RM) version.o
+	- @ $(RM) vxWorks.tmp ctdt.c ctdt.o
+	$(CC) -c $(CFLAGS) -o version.o $(CONFIG_ALL)/version.c
+	$(LD) $(LDFLAGS) $(LD_PARTIAL_FLAGS) \
+	    -o vxWorks.tmp $(MACH_DEP) usrConfig.o version.o $(LIBS)
+	$(NM) vxWorks.tmp | $(MUNCH) >ctdt.c
+	$(MAKE) CC_COMPILER="-traditional" ctdt.o
+	$(LD) $(LDFLAGS) -e $(SYS_ENTRY) $(LD_LOW_FLAGS) \
+	    -o vxWorks dataSegPad.o vxWorks.tmp ctdt.o
+	- @ $(RM) vxWorks.tmp
+	$(LDOUT_HOST) vxWorks
+	$(LDOUT_CONV) vxWorks
+	$(BINXSYM) < vxWorks > vxWorks.sym
+	$(LDOUT_SYMS) vxWorks.sym
+	$(VXSIZEPROG) -v $(RAM_HIGH_ADRS) $(RAM_LOW_ADRS) vxWorks
+
+# vxWorks_rom - rommable version of VxWorks (without standalone symbol table)
+#   This is typically used when making an application in ROM that doesn't
+#   include the shell and the symbol table.  Since these applications are
+#   usually smaller, this version doesn't use ROM compression.
+
+vxWorks_rom : depend.$(BSP_NAME) bootInit_uncmp.o romInit.o \
+		dataSegPad.o usrConfig.o $(MACH_DEP) $(LDDEPS) $(LIBS)
+	- @ $(RM) $@ 
+	- @ $(RM) $(IMI) 
+	- @ $(RM) $(IBR)
+	- @ $(RM) version.o
+	- @ $(RM) ctmp.o ctdt.c ctdt.o
+	$(CC) -c $(CFLAGS) -o version.o $(CONFIG_ALL)/version.c
+	$(LD) $(LDFLAGS) $(LD_PARTIAL_FLAGS) \
+	    -o ctmp.o usrConfig.o \
+	    $(MACH_DEP) version.o $(LIBS)
+	$(NM) ctmp.o | $(MUNCH) > ctdt.c
+	$(MAKE) CC_COMPILER="-traditional" ctdt.o
+	$(LD) $(LDFLAGS) -e $(ROM_ENTRY) $(LD_LOW_FLAGS) \
+	    -o $@ romInit.o bootInit_uncmp.o dataSegPad.o \
+	    ctmp.o ctdt.o
+	- @ $(RM) ctmp.o
+	$(LDOUT_HOST) $@
+	$(ROMSIZEPROG) -b $(ROM_SIZE) $@
+	$(LDOUT_CONV) $@
+
+vxWorks_rom.hex : depend.$(BSP_NAME) vxWorks_rom $(IMI)
+	- @ $(RM) $@
+	$(BINHEX) $(HEX_FLAGS) $(SECT_SPEC)vxWorks_rom$(TXT_OFFSET) \
+		$(IMI_SPEC)$(IMI)$(IMI_OFFSET) > $@$(MAP_EXT)
+	-@ $(MV_BIN)
+
+# vxWorks.st - standalone VxWorks with symbol table linked in
+#   This builds a VxWorks image that contains the symbol table linked in,
+#   instead of loading it over the network.
+
+vxWorks.st : depend.$(BSP_NAME) usrConfig_st.o dataSegPad.o \
+		$(MACH_DEP) $(LDDEPS) $(LIBS)
+	- @ $(RM) $@ 
+	- @ $(RM) symTbl.c 
+	- @ $(RM) symTbl.o 
+	- @ $(RM) tmp.o 
+	- @ $(RM) tmp.2
+	- @ $(RM) version.o
+	- @ $(RM) ctdt.c ctdt.o
+	$(CC) -c $(CFLAGS) -o version.o $(CONFIG_ALL)/version.c
+	$(LD) -o tmp.o $(LD_PARTIAL_FLAGS) dataSegPad.o $(MACH_DEP) \
+	    usrConfig_st.o version.o $(LIBS)
+	$(NM) tmp.o | $(MUNCH) >ctdt.c
+	$(MAKE) CC_COMPILER="-traditional" ctdt.o
+	$(CP) tmp.o tmp.2
+	$(LDOUT_SYMS) tmp.o
+	$(MKSYMTBL) tmp.o > symTbl.c
+	$(COMPILE_SYMTBL) symTbl.c
+	$(LD) $(LDFLAGS) -e $(SYS_ENTRY) $(LD_LOW_FLAGS) \
+	    -o $@ tmp.2 symTbl.o ctdt.o
+	$(LDOUT_SYMS) $@
+	$(LDOUT_CONV) $@
+	$(VXSIZEPROG) -v $(RAM_HIGH_ADRS) $(RAM_LOW_ADRS) vxWorks.st
+	- @ $(RM) tmp.?	 
+
+# vxWorks.st_rom - rommable standalone version using ROM compression
+#   This builds a standalone VxWorks image that can be put in ROM.
+#   It includes a linked in symbol table so that a complete VxWorks with
+#   shell and symbol table can be put in ROM.  Since these systems tend to
+#   be larger, ROM compression is used.
+#   Note: this uses larger EEPROMs, the user is advised to check the
+#   macros for ROM sizes and offsets for compatibility.
+
+vxWorks.st.Z.s : depend.$(BSP_NAME) usrConfig_st.o dataSegPad.o \
+			$(MACH_DEP) $(LDDEPS) $(LIBS)
+	- @ $(RM) $@ 
+	- @ $(RM) tmp.o 
+	- @ $(RM) tmp.1 
+	- @ $(RM) tmp.2 
+	- @ $(RM) tmp.Z 
+	- @ $(RM) symTbl.c 
+	- @ $(RM) symTbl.o
+	- @ $(RM) version.o
+	- @ $(RM) ctdt.c ctdt.o
+	$(CC) -c $(CFLAGS) -o version.o $(CONFIG_ALL)/version.c
+	$(LD) -o tmp.1 $(LD_PARTIAL_FLAGS) dataSegPad.o $(MACH_DEP) \
+	    usrConfig_st.o version.o $(LIBS)
+	$(NM) tmp.1 | $(MUNCH) >ctdt.c
+	$(MAKE) CC_COMPILER="-traditional" ctdt.o
+	$(CP) tmp.1 tmp.o
+	$(LDOUT_SYMS) tmp.o
+	$(MKSYMTBL) tmp.o >symTbl.c
+	$(COMPILE_SYMTBL) symTbl.c
+	$(LD) -o tmp.2 $(LDFLAGS) $(ROM_LDFLAGS) -e $(SYS_ENTRY) \
+	    $(LD_LOW_FLAGS) tmp.1 symTbl.o ctdt.o
+	$(LDOUT_HOST) tmp.2
+	$(LDOUT_CONV) tmp.2
+	$(EXTRACT_BIN) < tmp.2 | $(COMPRESS) >tmp.Z
+	$(BINTOASM) tmp.Z > $@
+	- @ $(RM) tmp.?
+
+vxWorks.st_rom : depend.$(BSP_NAME) bootInit_st.o romInit.o \
+			vxWorks.st.Z.o $(LDDEPS) $(LIBS) $(BOOT_EXTRA)
+	- @ $(RM) $(IMI) 
+	- @ $(RM) $(IBR)
+	- @ $(RM) version.o
+	$(CC) -c $(CFLAGS) -o version.o $(CONFIG_ALL)/version.c
+	$(LD) $(LDFLAGS) -e $(ROM_ENTRY) $(LD_HIGH_FLAGS) \
+	    -o $@ romInit.o bootInit_st.o version.o $(BOOT_EXTRA) \
+		$(LIBS) vxWorks.st.Z.o
+	$(ROMSIZEPROG) -b $(ROM_SIZE) $@
+	$(LDOUT_CONV) $@
+
+vxWorks.st_rom.hex : depend.$(BSP_NAME) vxWorks.st_rom $(IMI)
+	- @ $(RM) $@
+	$(BINHEX) $(HEX_FLAGS) $(SECT_SPEC)vxWorks.st_rom$(TXT_OFFSET) \
+		$(IMI_SPEC)$(IMI)$(IMI_OFFSET) > $@$(MAP_EXT)
+	-@ $(MV_BIN)
+
+# vxWorks.res_rom - rommable standalone version without compression
+#   This builds a standalone VxWorks image that can be put in ROM.
+#   It includes a linked in symbol table so that a complete VxWorks with
+#   shell and symbol table can be put in ROM. Only the data segment
+#   of this ROM image is copied into RAM.
+
+vxWorks.res_rom: depend.$(BSP_NAME) bootInit_res.o romInit_res.o \
+			usrConfig_st.o $(MACH_DEP) $(LDDEPS) $(LIBS)
+	- @ $(RM) $@ tmp.o 
+	- @ $(RM) tmp.1 
+	- @ $(RM) symTbl.c 
+	- @ $(RM) symTbl.o 
+	- @ $(RM) $(IMI) 
+	- @ $(RM) $(IBR)
+	- @ $(RM) version.o
+	- @ $(RM) ctdt.c ctdt.o
+	$(CC) -c $(CFLAGS) -o version.o $(CONFIG_ALL)/version.c
+	$(LD) -o tmp.o $(LD_PARTIAL_FLAGS) \
+	    $(MACH_DEP) usrConfig_st.o version.o $(LIBS)
+	$(NM) tmp.o | $(MUNCH) >ctdt.c
+	$(MAKE) CC_COMPILER="-traditional" ctdt.o
+	$(CP) tmp.o tmp.1
+	$(LDOUT_SYMS) tmp.1
+	$(MKSYMTBL) tmp.1 > symTbl.c
+	$(COMPILE_SYMTBL) symTbl.c
+	$(LD) -o $@ $(LDFLAGS) $(ROM_LDFLAGS) -e $(ROM_ENTRY) \
+	    $(RES_LOW_FLAGS) romInit_res.o bootInit_res.o symTbl.o \
+	    tmp.o $(LIBS) ctdt.o
+	$(LDOUT_HOST) $@
+	$(ROMSIZEPROG) -b $(ROM_SIZE) $@
+	$(LDOUT_CONV) $@
+	- @ $(RM) tmp.? 
+
+vxWorks.res_rom_res_low: depend.$(BSP_NAME) bootInit_res_low.o \
+		romInit_res_low.o usrConfig_st.o $(MACH_DEP) $(LDDEPS) $(LIBS)
+	- @ $(RM) $@ 
+	- @ $(RM) tmp.o 
+	- @ $(RM) tmp.1 
+	- @ $(RM) symTbl.c 
+	- @ $(RM) symTbl.o 
+	- @ $(RM) $(IMI) 
+	- @ $(RM) $(IBR)
+	- @ $(RM) version.o
+	- @ $(RM) ctdt.c ctdt.o
+	$(CC) -c $(CFLAGS) -o version.o $(CONFIG_ALL)/version.c
+	$(LD) -o tmp.o $(LD_PARTIAL_FLAGS) \
+	    $(MACH_DEP) usrConfig_st.o version.o $(LIBS)
+	$(NM) tmp.o | $(MUNCH) >ctdt.c
+	$(MAKE) CC_COMPILER="-traditional" ctdt.o
+	$(CP) tmp.o tmp.1
+	$(LDOUT_SYMS) tmp.1
+	$(MKSYMTBL) tmp.1 > symTbl.c
+	$(COMPILE_SYMTBL) symTbl.c
+	$(LD) -o $@ $(LDFLAGS) $(ROM_LDFLAGS) -e $(ROM_ENTRY) \
+	    $(RES_LOW_FLAGS) romInit_res_low.o bootInit_res_low.o \
+	    symTbl.o tmp.o ctdt.o
+	$(LDOUT_HOST) $@
+	$(ROMSIZEPROG) -b $(ROM_SIZE) $@
+	$(LDOUT_CONV) $@
+	- @ $(RM) tmp.? 
+
+vxWorks.res_rom.hex: depend.$(BSP_NAME) vxWorks.res_rom $(IMI)
+	- @ $(RM) $@
+	$(BINHEX) $(HEX_FLAGS) vxWorks.res_rom$(TXT_OFFSET) \
+		$(IMI_SPEC)$(IMI)$(IMI_OFFSET) > $@$(MAP_EXT)
+	-@ $(MV_BIN)
+
+vxWorks.res_rom_res_low.hex: depend.$(BSP_NAME) vxWorks.res_rom_res_low $(IMI)
+	- @ $(RM) $@
+	$(BINHEX) $(HEX_FLAGS) vxWorks.res_rom_res_low$(TXT_OFFSET) \
+		$(IMI_SPEC)$(IMI)$(IMI_OFFSET) > $@$(MAP_EXT)
+	-@ $(MV_BIN)
+
+# vxWorks.res_rom_nosym - rommable standalone version without symbol table
+#   This builds a standalone VxWorks image that can be put in ROM.
+#   There is no symbol table. Only the data segment
+#   of this ROM image is copied into RAM.
+
+vxWorks.res_rom_nosym: depend.$(BSP_NAME) bootInit_res.o romInit_res.o \
+			usrConfig.o $(MACH_DEP) $(LDDEPS) $(LIBS)
+	- @ $(RM) $@ tmp.o 
+	- @ $(RM) tmp.1 
+	- @ $(RM) symTbl.c 
+	- @ $(RM) symTbl.o 
+	- @ $(RM) $(IMI) 
+	- @ $(RM) $(IBR)
+	- @ $(RM) version.o
+	- @ $(RM) ctmp.o ctdt.c ctdt.o
+	$(CC) -c $(CFLAGS) -o version.o $(CONFIG_ALL)/version.c
+	$(LD) -o ctmp.o $(LDFLAGS) $(LD_PARTIAL_FLAGS) usrConfig.o \
+	    $(MACH_DEP) version.o $(LIBS)
+	$(NM) ctmp.o | $(MUNCH) ctmp.o >ctdt.c
+	$(MAKE) CC_COMPILER="-traditional" ctdt.o
+	$(LD) -o $@ $(LDFLAGS) $(ROM_LDFLAGS) -e $(ROM_ENTRY) \
+	    $(RES_LOW_FLAGS) romInit_res.o bootInit_res.o \
+	    ctmp.o ctdt.o
+	- @ $(RM) ctmp.o
+	$(LDOUT_HOST) $@
+	$(ROMSIZEPROG) -b $(ROM_SIZE) $@
+	$(LDOUT_CONV) $@
+
+vxWorks.res_rom_nosym.hex: depend.$(BSP_NAME) vxWorks.res_rom_nosym $(IMI)
+	- @ $(RM) $@
+	$(BINHEX) $(HEX_FLAGS) vxWorks.res_rom_nosym$(TXT_OFFSET) \
+		$(IMI_SPEC)$(IMI)$(IMI_OFFSET) > $@$(MAP_EXT)
+	-@ $(MV_BIN)
+
+vxWorks.res_rom_nosym_res_low: depend.$(BSP_NAME) bootInit_res_low.o \
+		romInit_res_low.o usrConfig.o $(MACH_DEP) $(LDDEPS) $(LIBS)
+	- @ $(RM) $@ 
+	- @ $(RM) tmp.o 
+	- @ $(RM) tmp.1 
+	- @ $(RM) symTbl.c 
+	- @ $(RM) symTbl.o 
+	- @ $(RM) $(IMI) 
+	- @ $(RM) $(IBR)
+	- @ $(RM) version.o
+	- @ $(RM) ctmp.o ctdt.c ctdt.o
+	$(CC) -c $(CFLAGS) -o version.o $(CONFIG_ALL)/version.c
+	$(LD) -o ctmp.o $(LDFLAGS) $(LD_PARTIAL_FLAGS) usrConfig.o \
+	    $(MACH_DEP) version.o $(LIBS)
+	$(NM) ctmp.o | $(MUNCH) >ctdt.c
+	$(MAKE) CC_COMPILER="-traditional" ctdt.o
+	$(LD) -o $@ $(LDFLAGS) $(ROM_LDFLAGS) -e $(ROM_ENTRY) \
+	    $(RES_LOW_FLAGS) romInit_res_low.o bootInit_res_low.o \
+	    ctmp.o ctdt.o
+	- @ $(RM) ctmp.o
+	$(ROMSIZEPROG) -b $(ROM_SIZE) $@
+	$(LDOUT_CONV) $@
+	- @ $(RM) tmp.? 
+
+vxWorks.res_rom_nosym_res_low.hex: depend.$(BSP_NAME) \
+		vxWorks.res_rom_nosym_res_low $(IMI)
+	- @ $(RM) $@
+	$(BINHEX) $(HEX_FLAGS) vxWorks.res_rom_nosym_res_low$(TXT_OFFSET) \
+		$(IMI_SPEC)$(IMI)$(IMI_OFFSET) > $@$(MAP_EXT)
+	-@ $(MV_BIN)
+
+################################# bootrom ######################################
+#
+# bootrom		- compressed bootrom object module
+# bootrom.hex		- compressed bootrom hex format
+# bootrom_uncmp		- noncompressed bootrom object module
+# bootrom_uncmp.hex	- noncompressed bootrom hex format
+#
+# Bootroms do not normally contain static C++ objects. Therefore, the
+# rules below do not contain steps to munch VxWorks. If you add static
+# objects to your bootrom configuration, you will need to munch your
+# bootrom image. See the rules for the vxWorks image, above, for an example.
+#
+
+bootrom.Z.s : depend.$(BSP_NAME) bootConfig.o $(MACH_DEP) $(LDDEPS) \
+			$(LIBS)
+	- @ $(RM) $@ 
+	- @ $(RM) tmp.o 
+	- @ $(RM) tmp.Z
+	- @ $(RM) version.o
+	$(CC) -c $(CFLAGS) -o version.o $(CONFIG_ALL)/version.c
+	$(LD) -o tmp.o $(LDFLAGS) $(ROM_LDFLAGS) -e $(USR_ENTRY) \
+	    $(LD_HIGH_FLAGS) bootConfig.o version.o $(MACH_DEP) $(LIBS)
+	$(LDOUT_HOST) tmp.o
+	$(EXTRACT_BIN) < tmp.o | $(COMPRESS) > tmp.Z
+	$(BINTOASM) tmp.Z >bootrom.Z.s
+	- @ $(RM) tmp.o 
+	- @ $(RM) tmp.Z 
+
+bootrom : depend.$(BSP_NAME) bootInit.o romInit.o bootrom.Z.o \
+		$(LDDEPS) $(LIBS) $(BOOT_EXTRA)
+	- @ $(RM) $@ 
+	- @ $(RM) $(IMI) 
+	- @ $(RM) $(IBR)
+	- @ $(RM) version.o
+	$(CC) -c $(CFLAGS) -o version.o $(CONFIG_ALL)/version.c
+	$(LD) $(LDFLAGS) -e $(ROM_ENTRY) $(LD_LOW_FLAGS) \
+	    -o $@ romInit.o bootInit.o version.o $(BOOT_EXTRA) \
+	    $(LIBS) bootrom.Z.o
+	$(ROMSIZEPROG) -b $(ROM_SIZE) $@
+	$(LDOUT_CONV) $@
+
+bootrom_uncmp : depend.$(BSP_NAME) bootInit_uncmp.o romInit.o \
+			bootConfig.o $(MACH_DEP) $(LDDEPS) $(LIBS)
+	- @ $(RM) $@ 
+	- @ $(RM) $(IMI) 
+	- @ $(RM) $(IBR)
+	- @ $(RM) version.o
+	$(CC) -c $(CFLAGS) -o version.o $(CONFIG_ALL)/version.c
+	$(LD) $(LDFLAGS) $(ROM_LDFLAGS) -e $(ROM_ENTRY) $(LD_HIGH_FLAGS) \
+	    -o $@ romInit.o bootInit_uncmp.o version.o bootConfig.o \
+	    $(MACH_DEP) $(LIBS)
+	$(ROMSIZEPROG) -b $(ROM_SIZE) $@
+	$(LDOUT_CONV) $@
+
+bootrom_res : depend.$(BSP_NAME) bootInit_res.o romInit_res.o \
+			bootConfig.o $(MACH_DEP) $(LDDEPS) $(LIBS)
+	- @ $(RM) $@
+	- @ $(RM) $(IMI)
+	- @ $(RM) $(IBR)
+	- @ $(RM) version.o
+	$(CC) -c $(CFLAGS) -o version.o $(CONFIG_ALL)/version.c
+	$(LD) $(LDFLAGS) $(ROM_LDFLAGS) -e $(ROM_ENTRY) \
+	    $(RES_HIGH_FLAGS) -o $@ romInit_res.o bootInit_res.o \
+	    version.o bootConfig.o $(MACH_DEP) $(LIBS)
+	$(ROMSIZEPROG) -b $(ROM_SIZE) $@
+	$(LDOUT_CONV) $@
+
+bootrom_res_high : depend.$(BSP_NAME) bootInit_res_high.o \
+			romInit_res_high.o bootConfig.o $(MACH_DEP) \
+			$(LDDEPS) $(LIBS)
+	- @ $(RM) $@ 
+	- @ $(RM) $(IMI) 
+	- @ $(RM) $(IBR)
+	- @ $(RM) version.o
+	$(CC) -c $(CFLAGS) -o version.o $(CONFIG_ALL)/version.c
+	$(LD) $(LDFLAGS) $(ROM_LDFLAGS) -e $(ROM_ENTRY) \
+	    $(RES_HIGH_FLAGS) -o $@ romInit_res_high.o \
+	    bootInit_res_high.o version.o bootConfig.o $(MACH_DEP) $(LIBS)
+	$(ROMSIZEPROG) -b $(ROM_SIZE) $@
+	$(LDOUT_CONV) $@
+
+bootrom.hex : depend.$(BSP_NAME) bootrom $(IMI)
+	- @ $(RM) $@
+	$(BINHEX) $(HEX_FLAGS) $(SECT_SPEC)bootrom$(TXT_OFFSET) \
+		$(IMI_SPEC)$(IMI)$(IMI_OFFSET) > $@$(MAP_EXT)
+	-@ $(MV_BIN)
+
+imi :	$(IBR)
+	$(LD) -o $@ -Ttext $(IMI_TEXT_ADRS) -Tdata $(IMI_DATA_ADRS) $(IBR)
+
+bootrom_uncmp.hex : depend.$(BSP_NAME) bootrom_uncmp $(IMI)
+	- @ $(RM) $@
+	$(BINHEX) $(HEX_FLAGS) $(SECT_SPEC)bootrom_uncmp$(TXT_OFFSET) \
+		$(IMI_SPEC)$(IMI)$(IMI_OFFSET) > $@$(MAP_EXT)
+	-@ $(MV_BIN)
+
+bootrom_res.hex : depend.$(BSP_NAME) bootrom_res $(IMI)
+	- @ $(RM) $@
+	$(BINHEX) $(HEX_FLAGS) bootrom_res$(TXT_OFFSET) \
+		$(IMI_SPEC)$(IMI)$(IMI_OFFSET) > $@$(MAP_EXT)
+	-@ $(MV_BIN)
+
+bootrom_res_high.hex : depend.$(BSP_NAME) bootrom_res_high $(IMI)
+	- @ $(RM) $@
+	$(BINHEX) $(HEX_FLAGS) bootrom_res_high$(TXT_OFFSET) \
+		$(IMI_SPEC)$(IMI)$(IMI_OFFSET) > $@$(MAP_EXT)
+	-@ $(MV_BIN)

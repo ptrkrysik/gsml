@@ -1,0 +1,95 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>BTS Package Cell Allocaiton Table</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+
+<SCRIPT language="JavaScript">
+
+function copyValue(src, dst)
+{
+    src.value = dst.value
+	return true;
+} 
+
+</SCRIPT>
+
+<body onload="$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" name="btsPackageCellAllocationTable">
+<input type="hidden" name="carrierFrequency_0.0" value="$%carrierFrequency_0#$">
+<input type="hidden" name="carrierFrequency_1.0" value="$%carrierFrequency_1#$">
+
+
+  <div align="center">
+    <table border="4" bgcolor="#D6D3CE" width="354">
+      <tr>
+        <td width="847">
+        <h3 align="center">&nbsp;BTS Package&nbsp;<br>
+        Cell Allocation Table</h3>
+        <div align="center">
+          <center>
+          <table border="1" width="283"
+          title="This table defines the set of radio frequencies allocated and available to the current GP10. The first element sets the BCCH frequency.">
+            <tr>
+              <td height="19" align="center" width="171">Radio Carrier</td>
+              <td height="19" align="center" width="96">ARFCN</td>
+            </tr>
+            <! $%createTable(cellAllocation,*,,,,,cellAllocationIndex,cellAllocation)#$ >
+            <tr>
+              <td align="center" width="171"> <p align="left"> First Radio Carrier&nbsp;</p> </td>
+             <td align="center" title="Cell Allocation frequency entry -- INTEGER(0..1023)" width="96">
+               <input type="text" name="cellAllocation.$%getInstance(cellAllocation)#$" value="$%cellAllocation#$" size="4" maxlength="4"
+                onchange="return isValidInt(this,0,1023) && copyValue(this.form.elements[0], this);">
+              </td>
+            </tr>
+            <! $%endRow(cellAllocation)#$ >
+     
+             <tr>
+              <td align="center" width="171">  <p align="left"> Second Radio Carrier
+                </p> </td>   
+              <td align="center" title="Cell Allocation frequency entry -- INTEGER(0..1023)" width="96">
+               <input type="text" name="cellAllocation.$%getInstance(cellAllocation)#$" value="$%cellAllocation#$" size="4" maxlength="4"
+                onchange="return isValidInt(this,0,1023)&& copyValue(this.form.elements[1], this);">
+              </td>
+            </tr>
+            <! $%endRow(cellAllocation)#$ >
+            <! $%endTable(cellAllocation)#$>    
+
+          </table>
+          </center>
+        </div>
+        <center>
+        <div align="center">
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+        </div>
+        </center>
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>
+
+</body>
+
+</html>

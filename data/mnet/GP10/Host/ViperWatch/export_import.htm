@@ -1,0 +1,142 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Export/Import MIB</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT >
+function validateFileName(theFileName)
+{
+
+  if (theFileName.value== "")
+  {
+    alert("Please enter a value for the \"oam Alternate mibFileName\" field.");
+    theFileName.focus();
+    return (false);
+  }
+
+  if (theFileName.value.length < 5)
+  {
+    alert("Please enter at least 5 characters in the file name field.");
+	 theFileName.focus();
+    return (false);
+  }
+
+  var checkOK = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_./";
+  var checkStr = theFileName.value;
+  var allValid = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Invalid characters in file name field.");
+    theFileName.focus();
+    return (false);
+  }
+  return (true);
+}
+
+function PresetForm(theForm)
+{
+
+	return true;
+} 
+
+
+function ParseForm(theForm)
+{	
+	parseSelect(theForm.oamCommandSelect, theForm.oamCommand);
+	
+	if (theForm.oamCommand.value == "4")
+	{
+		alert("You must reboot the system once the load MIB operation is successful.")
+	} 
+	return validateFileName(theForm.oamAlternateMibFileName);	
+	
+
+} 
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" onsubmit="return ParseForm(this)" name="mib_flush">
+      <div align="center">
+        <center>
+
+        <table border="4" bgcolor="#D6D3CE" width="500">
+        <tr>
+        	<td width="552">
+            <h2 align="center">Load/Save Mib</h2>
+            <table border="0" width="529">
+              <tr>
+                <td width="170" nowrap valign="middle">Alternate MIB File Name:</td>
+                <td width="362" nowrap valign="middle">
+                <p ><input type="text" name="oamAlternateMibFileName" size="40" value="$%oamAlternateMibFileName#$" maxlength="120">
+              </tr>
+              <tr>
+                <td width="170" nowrap valign="middle">Operation:</td>
+                <td width="362" nowrap valign="middle"><select name="oamCommandSelect" size="1"
+                title="The file name is only valid for importing and exporting of MIB ascii file.">
+                  <option value="4">Load MIB from the Alternate Mib File</option>
+                  <option value="8" selected>Save MIB to the Alternate Mib File</option>
+                  </select></td>
+              </tr>
+              <tr>
+                <td width="170" nowrap valign="middle">&nbsp;&nbsp;</td>
+                <td width="362" nowrap valign="middle">&nbsp;&nbsp;</td>
+              </tr>
+              <tr>
+                <td width="170" nowrap valign="middle">
+                  <p align="center"><font color="#000080">Note</font></p>
+                </td>
+            <center>
+                <td width="362" nowrap valign="middle">
+                  <p><font color="#000080">The path name of the specified
+                  file must exist on the compact flash, otherwise the operation
+                  will fail.</font></p>
+            </td>
+             <input type="HIDDEN" name="oamCommand" value="0">
+             </tr> 
+            </table>
+            <div align="center">
+              <table border="0" cellpadding="3" width="150">
+                <tr>
+                  <td align="center" width="62">&nbsp;</td>
+                  <td align="center" width="63">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td align="center" width="62"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+                  <td align="center" width="63"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+                  title="Click this button to refresh the form."></td>
+                </tr>
+                <tr>
+                  <td align="center" width="62"></td>
+                  <td align="center" width="63"></td>
+                </tr>
+              </table>
+              </center>
+            </div>
+          </td>
+        </tr>
+        </table>
+        </center>
+      </div>
+</form>
+
+</body>

@@ -1,0 +1,153 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GP10 Configuration Data</title>
+</head>
+
+<SCRIPT >
+
+function selectOption(theSelect, valueHolder)
+{
+	if (valueHolder.value < 0 && valueHolder.value >= theSelect.length)
+	{ 
+		window.alert("Incorrect MIB value for " + valueHolder.name + "  "+ valueHolder.value + "Corrected to 0");
+		valueHolder.value = 0;
+	}
+	for (var i = 0; i < theSelect.length; i++)
+	{
+		if (theSelect.options[i].value == valueHolder.value) 
+		{
+			theSelect.options[i].selected = true;
+			break;
+		}
+	}
+			
+}
+
+
+function presetButtons(theForm)
+{
+
+	selectOption(theForm.oam_operationSelect, theForm.oam_operation);
+	return true;
+} 
+
+
+function parseSelect(theSelect, valueHolder)
+{
+	for (var i = 0; i < theSelect.length; i++)
+	{
+		if (theSelect.options[i].selected) 
+		{
+			valueHolder.value = theSelect.options[i].value;
+			break;
+		}
+	}
+}
+
+function parseButtons(theForm)
+{	
+		parseSelect(theForm.oam_operationSelect, theForm.oam_operation);
+		//window.alert("Successfully parsed");
+} 
+
+</SCRIPT>
+
+<body onload="presetButtons(this.document.forms[0]);$%reloadTopframe#$">
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+  if (theForm.oam_mibFileName1.value == "")
+  {
+    alert("Please enter a value for the \"oam mibFileName\" field.");
+    theForm.oam_mibFileName1.focus();
+    return (false);
+  }
+
+  if (theForm.oam_mibFileName1.value.length < 5)
+  {
+    alert("Please enter at least 5 characters in the \"oam mibFileName\" field.");
+    theForm.oam_mibFileName1.focus();
+    return (false);
+  }
+
+  if (theForm.oam_mibFileName1.value.length > 30)
+  {
+    alert("Please enter at most 30 characters in the \"oam mibFileName\" field.");
+    theForm.oam_mibFileName1.focus();
+    return (false);
+  }
+
+  var checkOK = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzƒŠŒŽšœžŸÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ0123456789-_-.";
+  var checkStr = theForm.oam_mibFileName1.value;
+  var allValid = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("Please enter only letter, digit and \"_-.\" characters in the \"oam mibFileName\" field.");
+    theForm.oam_mibFileName1.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" cellpadding="0" onsubmit="return FrontPage_Form1_Validator(this)" name="FrontPage_Form1">
+
+  <input type="HIDDEN" name="oam_operation" value="$%oam_operation#$">
+<h2 align="center">MIB Export-Import GP10 MIB<br>
+</h2>
+
+<div align="center">
+  <center>
+  <table border="2" width="60%" cellspacing="3" cellpadding="3">
+    <tr>
+      <td width="100%">This screen will allow you to export or import GP10
+        MIB of $%viperCellName#$ (IP: $%viperCellIPAddress#$)&nbsp;
+        to and from the specified ASCII file.&nbsp;<br>
+        &nbsp;
+
+<div align="left">
+ <table border="0">
+  <tr>
+   <td>MIB File Name:</td>
+   <td>
+   <p style=" padding-top: 0px; padding-bottom: 0px"><!--webbot bot="Validation"
+   s-display-name="oam mibFileName" s-data-type="String" b-allow-letters="TRUE"
+   b-allow-digits="TRUE" s-allow-other-chars="_-." b-value-required="TRUE"
+   i-minimum-length="5" i-maximum-length="30" --><input type="text" name="oam_mibFileName1" size="30" value="$%oam_mibFileName#$" maxlength="30">
+  </tr>
+  <tr>
+   <td>Operation:</td>
+   <td><select name="oam_operationSelect" size="1" title="The file name is only valid for importing and exporting of MIB ascii file.">
+    <option value="5">Import MIB from the ASCII file</option>
+    <option value="6">Export Mib to the ASCII file</option>
+    <option selected value="0">None</option>
+   </select></td>
+ </table>
+</div>
+
+        <p align="center"><input name="Submit" type="submit" value="Submit" onclick="parseButtons(window.document.forms[0])" title="Press this button to commit the change in this page."></td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+<p align="center">&nbsp; </p>
+</form>
+
+</body>
+

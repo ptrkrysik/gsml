@@ -1,0 +1,119 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Clock Card Parameters</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+
+<script language="JavaScript" >
+
+function ParseForm(theForm)
+{
+	return true;
+}
+
+function PresetForm(theForm)
+{
+	return true;
+}
+
+function displayClkCardAlarm(theState)
+{
+	var textState = "";
+	var Color = "";
+
+	switch(theState)
+	{
+	case  "0":  
+		textState = "No Alarm Condition";
+		Color += "Green";
+		break;
+	case  "1":  
+		textState = "Burst Alarm Active";
+		Color += "Red";
+		break;	
+	case  "2":  
+		textState = "Frame Alarm Active";
+		Color += "Red";
+		break;
+	case  "3":  
+		textState = "Both Burst and Frame Alarm Active";
+		Color += "Green";
+		break;	
+
+	default:
+		textState = "Invalid Mib Data";
+		Color += "Yellow";
+		break;
+	}
+	document.write(" <font Color=\"" + Color + "\" >"  + textState +  "</font> </td>");
+}
+	
+</script>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this);" name="clock_card">
+
+  <input type="hidden" name="clockCardStatus" value="$%clockCardStatus#$">
+  <p align="center">&nbsp;</p>
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="443" height="278">
+      <tr>
+        <td width="505" height="272">
+        <h2 align="center">Clock Card</h2>
+        <div align="center">
+          <table border="1" width="383" height="149">
+            <tr>
+              <td height="19" width="156">Serial Number</td>
+              <td height="19" width="213">$%clockCardCrystalUpTime#$&nbsp;&nbsp; </td>
+            </tr>
+            <tr>
+              <td height="19" width="156"><font color="#000000">Software Revision&nbsp;</font></td>
+              <td height="19" width="213">$%clockCardSoftwareVersion#$&nbsp; </td>
+            </tr>
+            <tr>
+              <td height="9" width="156"> <font color="#000000">Alarm (Interrupt) Status</font></td>
+              <td height="9" width="213">
+              <SCRIPT language="JavaScript"> displayClkCardAlarm("$%clockCardStatus#$") </script>
+             </td>
+            </tr>
+            <tr>
+              <td height="28" width="156"><font color="#000000">Days Since Tune-Up</font></td>
+              <td height="28" width="213">$%clockCardType#$&nbsp; </td>
+            </tr>
+            <tr>
+              <td height="19" width="156"><font color="#000000">Days Since Power on</font></td>
+              <td height="19" width="213">$%clockCardDAC#$&nbsp; </td>
+            </tr>
+          </table>
+        </div>
+        <div align="center">
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+            </tr>
+          </table>
+        </div>
+        </td>
+      </tr>
+    </table>
+    </center>
+  </div>
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

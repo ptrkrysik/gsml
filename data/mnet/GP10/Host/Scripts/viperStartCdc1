@@ -1,0 +1,59 @@
+# startup script
+# viperStartCdc1
+# Set the TIMEZONE variable here
+putenv("TIMEZONE=PST:PST:480:040102:100102")
+
+# Lower the priority for tShell task, tTelnetOutTask, tTelnetInTask
+shellTaskPriority=100
+telnetTaskPriority=100
+
+snmp_initialize(0)
+
+# load viperLoad, viperLoadList functions
+load_path = malloc(150);
+strcpy(load_path, getenv("VIPERCALL_BASE"))
+strcat(load_path, "/Bin/load_module.out")
+ld(0, 0, load_path)
+
+taskDelay(10)
+
+# load applications
+viperLoadList("Scripts/module_list", getenv("VIPERCALL_BASE"), 1)
+
+cdcInit("fpga/fpgaCdc1.rbf", getenv("VIPERCALL_BASE"))
+
+# sync time with the server
+time_syncTime()
+
+# load http server
+http_taskCreate()
+
+# Bring Up RootTask
+taskDelay(400)
+rootTaskInit
+rootNoReboot
+
+# load DSP
+initDsp(0)
+initDsp(1)
+initInt()
+ldCoff("bin/dsp.out", getenv("VIPERCALL_BASE"))
+taskDelay(500)
+
+# start DSP runs
+go 1
+go 0
+
+taskDelay(100)
+
+disableAgc 0
+disableAgc 1
+intg_SetUlSG(0, 0x280)
+intg_SetUlSG(1, 0x280)
+
+intg_SendChanActivation(0,1)
+intg_SendChanDeActivation(0,1)
+intg_SendChanActivation(1,1)
+intg_SendChanDeActivation(1,1)
+
+

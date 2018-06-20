@@ -1,0 +1,117 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>ARFCN&nbsp; RSSI Function</title>
+</head>
+<SCRIPT language="JavaScript" src="./js/common.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+
+<SCRIPT language="JavaScript">
+
+function ParseForm(theForm)
+{
+	ParseSelect(theForm.arfcnRssiControlModeSelect, theForm.arfcnRssiControlMode);
+	ParseSelect(theForm.clockRecoveryControlModeSelect, theForm.clockRecoveryControlMode);
+}
+
+function PresetForm(theForm)
+{
+	selectOption(theForm.arfcnRssiControlModeSelect, theForm.arfcnRssiControlMode);
+	selectOption(theForm.clockRecoveryControlModeSelect, theForm.clockRecoveryControlMode);
+}
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this);" name="arfcn_rssi_function" >
+
+<input type="hidden" name="arfcnRssiControlMode" value="$%arfcnRssiControlMode#$" >
+<input type="hidden" name="clockRecoveryControlMode" value="$%clockRecoveryControlMode#$" >
+
+<div align="center">
+  <table border="4" bgcolor="#D6D3CE" width="336">
+    <tr>
+      <td width="504">
+    <h2 align="center">ARFCN&nbsp; RSSI Function</h2>
+  <center>
+        <div align="center">
+          <center>
+          <table border="0">
+            <tr>
+   <td height="23">ARFCN RSSI Control Mode</td>
+   <td height="23"><select name="arfcnRssiControlModeSelect" size="1">
+      <option value="1">ON</option>
+      <option value="0" selected>OFF</option>
+    </select>
+    </td>
+   </tr>
+   <tr>
+   <td height="23">Clock Recovery Control Mode</td>
+   <td height="23"><select name="clockRecoveryControlModeSelect" size="1">
+      <option value="1">ON</option>
+      <option value="0" selected>OFF</option>
+    </select></td>
+            </tr>
+            <tr>
+   <td height="23"></td>
+   <td height="23"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+  <div align="center">
+    <center>
+    <table border="1">
+      <tr>
+        <td colspan="3" align="center">
+          <p align="center"><b>ARFCN RSSI Clock Control Table</b></td>
+      </tr>
+      <tr>
+        <td align="center">Index</td>
+        <td align="center">ARFCN</td>
+        <td align="center">Recovery Mode</td>
+      </tr>
+      <! $%createTable(arfcnRssiClockControlIndex,*,,,,,arfcnRssiClockControlIndex,arfcnRssiClockControlArfcn,arfcnRssiClockRecoveryMode)#$ >
+      <! $%REPEAT(arfcnRssiClockControlIndex,1,64)#$ >   
+      <tr>
+        <td align="center">$%arfcnRssiClockControlIndex#$</td>
+        <td align="center">$%arfcnRssiClockControlArfcn#$</td>
+        <td aline="center"> <SCRIPT language="JavaScript"> printOnOffMode($%arfcnRssiClockRecoveryMode#$) </script> </td>
+      </tr>  
+      
+      <! $%endRow(arfcnRssiClockControlIndex)#$ >
+      <! $%REPEAT(END)#$ >
+      <! $%endTable(arfcnRssiClockControlIndex)#$>    
+     </table>
+    </center>
+  </div>
+  <div align="center">
+    <center>
+    <table border="0" cellpadding="3">
+      <tr>
+        <td align="center"></td>
+        <td align="center"></td>
+      </tr>
+      <tr>
+        <td align="center"><input name="B1" type="submit" value="Submit">  </td>
+        <td align="center">  <input name="Recall" type="button" value="Recall" onclick="window.location.reload()"></td>
+      </tr>
+      <tr>
+        <td align="center"></td>
+        <td align="center"></td>
+      </tr>
+    </table>
+    </center>
+  </div>
+    </td>
+    </tr>
+  </table>
+</div>
+
+</form>
+
+</body>
+

@@ -1,0 +1,31 @@
+# startup script
+# DSPTest
+
+# Lower the priority for tShell task, tTelnetOutTask, tTelnetInTask
+shellTaskPriority=255
+telnetTaskPriority=255
+
+# load viperLoad, viperLoadList functions
+load_path = malloc(150);
+strcpy(load_path, getenv("VIPERCALL_BASE"))
+strcat(load_path, "/Bin/load_module.out")
+ld(0, 0, load_path)
+
+taskDelay(10)
+
+# load applications
+viperLoadList("Scripts/module_list", getenv("VIPERCALL_BASE"), 1)
+
+cdcTestInit("fpga/fpga.rbf", getenv("VIPERCALL_BASE"))
+
+# Bring up Required Tasks
+SysCommand_Log(1)
+SysCommand_MCH(1)
+SysCommand_L1Proxy(1)
+
+LoadDSPCode("bin/manuDsp.out", getenv("VIPERCALL_BASE"))
+
+#Done executing startup script ltrav/scripts/DSPTest
+
+
+

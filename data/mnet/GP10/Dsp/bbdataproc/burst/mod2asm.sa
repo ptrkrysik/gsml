@@ -1,0 +1,373 @@
+;****************************************************************************
+;   (c) Copyright Cisco 2000
+;   All Rights Reserved
+;****************************************************************************
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; GMSK Modulator in linear assembly
+;
+; based on Frontier Design's table modulator
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;Description:
+; Look-up-table based GSM GMSK 2 samples per bit modulator.
+;
+;Method:
+; This function generates a GSM GMSK modulated waveform from a sequence
+; of bits.  Power ramping is performed outside this routine by placing
+; samples at the beginning and end of the burst buffer that aren't modified
+; here.
+;
+; 148 bits are input: The whole burst including tail bits but excluding
+; guard period bits.
+;
+; Output is 148 bits of the burst centered within the burst data buffer.
+;
+;Limitations: 
+;
+; The output buffer pointed to, and the modulator table, modLUT2x MUST
+; be 32-bit aligned.
+;
+; It is necessary to unroll the inner loop over samples per bit in
+; order to software pipeline the outer loop. This means that we can't
+; easily use the SAMPLES_PER_BIT symbol to vary the number of bits
+; per sample. Instead this code is written for 2 samples per bit
+; specifically. SAMPLES_PER_BIT must be defined as 2 if this routine
+; is called, or its associated sample table (mod2spb_tab.h) is used.
+;
+; Assuming that the number of bits modulated is always even leads
+; to a significant optimization in the calculation of the samples
+; and updating of the relative phase per bit. This means that both
+; NB_BITS_TO_MOD and AB_BITS_TO_MOD must be even for this routine
+; to work properly.
+;
+;Input/Output:
+;
+; The interface to this routine consists of a pointer to the output
+; sample buffer, and a flag indicating the type of burst. Any value
+; but RACH is modulated as a normal burst, RACH is an access burst.
+; Since local arrays can't be created from linear assembly, a pointer
+; to one created in the C stub that calls this routine is passed. In
+; order to use the #define CONSTANTS in C, they are passed to this
+; routine via a pointer to an int array.
+;
+; C call: GMSKModulate                      register names here
+;         (
+;           t_DLComplexSamp *outBurstPtr,       obptr
+;           t_ChanSel chansel,                  chsel
+;           UChar *diff,                        dfptr
+;           Int *c_constants                    ccptr
+;         )
+;
+; obptr -- Register containing the address samples are written to.
+;          Two 12 bit samples, I and Q, are packed in the lower 24 bits
+;          of a 32 bit word, with I the lowest 12 bits. For some, no
+;          doubt good historical reason, the output buffer actually
+;          consists of structures containing two 16 bit samples. It
+;          is treated here like an array of Int.
+;
+; chsel -- Type of burst to modulate, if equal to RACH -- an access burst.
+;          If equal to anything else, a normal burst. Controls the number
+;          of bits that are modulated primarily.
+;
+; dfptr -- Pointer to an array to be filled with the differentially encoded
+;          bits to be modulated. Need to create it in C because linear 
+;          assembly does not allow the stack pointer to be manipulated to
+;          create local variables.
+;
+; ccptr -- Pointer to an array filled with #define constants from C, in
+;          order to avoid having to redefine them here. Avoids the danger
+;          of being modified in C and left the same here.
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+           .def _GMSKModLoop            ; declare the function global
+
+           .ref _modLUT2x               ; import addresses from C
+           .ref _g_DLBurstData
+
+; define index names in array of constants passed from C
+    
+C_NUM_MOD_BITS_IN    .set    0  ; import symbol values from C
+C_AB_BITS_TO_MOD     .set    1  ; values are integer indices in the
+C_NB_BITS_TO_MOD     .set    2  ; ccptr array passed
+C_RAMP_OFFSET        .set    3
+C_RACH               .set    4
+
+_GMSKModLoop .cproc  obptr, chsel, dfptr, ccptr
+
+;          declare the local registers used
+
+           .reg tbptr                   ; address of modulator table
+           .reg mtptr                   ; working modulator table pointer
+           .reg index                   ; current row in modulator table
+           .reg iloop                   ; index into differential bits array
+           .reg loopcnt                 ; loop iteration downcounter
+           .reg itemp                   ; i sample register, temp storage
+           .reg qtemp                   ; q sample register, temp storage
+           .reg itemp1                   ; i sample register, temp storage
+           .reg qtemp1                   ; q sample register, temp storage
+           .reg itemp2                  ; i sample register, temp storage
+           .reg qtemp2                  ; q sample register, temp storage
+           .reg itemp3                  ; i sample register, temp storage
+           .reg qtemp3                  ; q sample register, temp storage
+           .reg phtest                  ; 0 iff phase == -1
+           .reg nbits                   ; number of bits to modulate
+           .reg bdata                   ; pointer to burst data
+
+           MVK _modLUT2x, tbptr         ; address modulator lookup table
+           MVKH _modLUT2x, tbptr
+
+           MVK _g_DLBurstData, bdata    ; address modulator burst data buffer
+           MVKH _g_DLBurstData, bdata
+
+      ;
+      ; Number of bits to modulate depends on the burst type
+      ;
+           LDW *ccptr[C_NB_BITS_TO_MOD],nbits  ; normal bits to modulate    
+           LDW *ccptr[C_RACH],itemp
+           SUB chsel,itemp,chsel               ; test for RACH
+  [!chsel] LDW *ccptr[C_AB_BITS_TO_MOD],nbits  ; use access burst length
+
+      ;
+      ; Transmission is enabled, clear flag then perform modulation.
+      ;
+      ; g_DLBurstData.tx = FALSE;
+
+           ZERO qtemp                   ; qtemp is 0
+           STB qtemp,*bdata++           ; clear burst tx flag, bdata->data
+      ;
+      ; Differentially encode input bit stream.  The input bit stream is
+      ; effectively pre-pended with two 1's and post-pended with one 1. 
+      ; The differentially encoded array is 150 bits long, and modulated
+      ; samples corresponding to only the center 146 bits are generated. 
+      ; The samples corresponding to bits before and after these 146 bits
+      ; are known a-priori and have been pre-computed.
+
+      ; diff[0] = 1;
+
+           MV dfptr,itemp               ; address diff array, itemp->diff[0]
+           MVK 1,qtemp                  ; qtemp is 1
+           STB qtemp,*itemp++           ; diff[0] = 1
+
+      ; diff[1] = g_DLBurstData.data[0];
+
+           LDB *bdata,qtemp             ; qtemp is g_DLBurstData.data[0]
+           STB qtemp,*itemp             ; diff[1] = qtemp
+
+      ; diff[MOD_NUM_BITS_IN + 1] = g_DLBurstData.data[MOD_NUM_BITS_IN - 1];
+
+           LDW *ccptr[C_NUM_MOD_BITS_IN],iloop ; iloop = _NUM_MOD_BITS_IN
+           ADD iloop,bdata,qtemp        ; qtemp -> g_DLBurstData[NUM_MOD...IN]
+           LDB *-qtemp[1],qtemp         ; qtemp = g_DLBurstData[NUM_MOD...-1]
+           ADD itemp,iloop,itemp        ; itemp -> diff[NUM_MOD...+1]
+           STB qtemp,*itemp             ; diff[NUM_MOD...+1] = qtemp
+
+      ; for (i=1; i<(MOD_NUM_BITS_IN+1); i++)
+      ; {
+      ;   diff[i+1] = (g_DLBurstData.data[i] == g_DLBurstData.data[i-1]);
+      ; }
+
+           MV iloop,loopcnt             ; loop count = NUM_MOD_BITS_IN
+
+           LDB *bdata++,itemp           ; itemp = g_DLBurstData[0]
+           ADD 2,dfptr,mtptr            ; mtptr => diff[2]
+           MV  bdata,chsel              ; chsel => g_DLBurstData[1]
+
+diffloop:  .trip 100
+
+           LDB.D    *chsel++,qtemp          ; qtemp = g_DLBurstData[iloop]
+           CMPEQ.L  itemp,qtemp,phtest      ; phtest = (itemp==qtemp)
+           STB.D    phtest,*mtptr++         ; save differentially encoded bit
+           MV       qtemp,itemp             ; save g_DLBurstData[iloop] for next
+           SUB.S    loopcnt,1,loopcnt       ; downcount
+ [loopcnt] B.S      diffloop                ; test and loop
+           
+      ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+      ;; Use look-up table to convert bits into a waveform
+      ;; Accumulate the integer phase and modify the waveform accordingly
+      ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+      
+           ;
+           ; quadrant phase is indicated by a complex number 
+           ;
+           ; (integerPhase.I,integerPhase.Q)
+           ;
+           ; where one of I,Q is +/-1 and the other is zero. Since
+           ; the phase always rotates +/-90 degrees each bit, Q is
+           ; zero on even bits and I is zero on odd bits. Doing two
+           ; bits per loop iteration allows phase to be stored in one
+           ; register, phase, which represents Q on odd bits and I
+           ; on even bits. It is always 1 or -1, reflected by phtest
+           ; being 1 or 0, resp.
+           ;
+
+           MVK      1, phtest           ; init phasor as I=1, Q=0 for even bit
+   
+           LDW      *ccptr[C_RAMP_OFFSET],itemp
+           ADD      obptr,itemp,obptr   ; skip ramp samples in output buffer
+
+           ZERO     bdata               ; use this as constant zero below
+
+           ; initialize the modulator loop count
+
+           ADD      dfptr, 2, iloop     ; set i variable in loop
+           SHR      nbits, 1, loopcnt   ; loop iteration downcounter
+           
+           ; calculate initial table index = 
+           ;
+           ; 16*diff[0] + 8*diff[1] + 4*diff[2] + 2*diff[3] + diff[4]
+
+           ZERO     index
+           ADD      dfptr,4,qtemp       ; qtemp->diff[4]
+
+           LDBU     *qtemp--,itemp      ; itemp: diff[4]
+ [itemp]   ADD      1,index,index
+           LDBU     *qtemp--,itemp      ; itemp: diff[3]
+ [itemp]   ADD      2,index,index
+           LDBU     *qtemp--,itemp      ; itemp: diff[2]
+ [itemp]   ADD      4,index,index
+           LDBU     *qtemp--,itemp      ; itemp: diff[1]
+ [itemp]   ADD      8,index,index
+           LDBU     *qtemp,itemp        ; itemp: diff[0]
+ [itemp]   ADD      16,index,index      
+
+           SHL      index,3,chsel       ; index is 8 * row of modulator table
+           ADD      tbptr,chsel,mtptr   ; mtptr points to index-th row now
+
+modloop:   .trip 50
+
+           ; top of each loop thru a pair of bits to be modulated
+
+           ;
+           ; even bit, phase IntegerPhase.I = +/-1, IntegerPhase.Q = 0
+           ;
+           ; *(Int16 *) & (outBurstPtr[outputIndex].I) = 
+           ;    (integerPhase.I * modLUT2x[index][splno].I -
+           ;     integerPhase.Q * modLUT2x[index][splno].Q);
+           ;
+           ; *(Int16 *) & (outBurstPtr[outputIndex].Q) =
+           ;    (integerPhase.I * modLUT2x[index][splno].Q +
+           ;     integerPhase.Q * modLUT2x[index][splno].I) >> 4;
+           ;
+           ; *(Int32 *) & (outBurstPtr[outputIndex]) = 
+           ;     *(Int32 *) & (outBurstPtr[outputIndex++]) >> 4;
+           ;
+           ; simplified for even bit case:
+           ;
+           ; out.I = phase * modLUT2x[index][splno].I
+           ; out.Q = phase * modLUT2x[index][splno].Q
+           ; *obptr++ = (signext 24:31 out.Q 12:23, out.I 0:11)
+           ; 
+
+           ; first sample for bit
+           
+           LDW      *mtptr++,qtemp      ; qtemp hi: q sample qtemp lo: i sample
+ [!phtest] SUB2     bdata,qtemp,qtemp   ; negate both upper and lower halfword
+           EXTU     qtemp,16,20,itemp   ; itemp is zero ext 12 bits for isamp
+           SHR      qtemp,8,qtemp       ; qtemp aligned for 24 bit packing
+           CLR      qtemp,0,11,qtemp    ; prepare to combine
+           ADD      qtemp,itemp,itemp   ; packed 12 bit samples in itemp
+           STW      itemp,*obptr++      ; store it at output pointer
+           
+           ; second sample for even bit
+
+           LDW      *mtptr++,qtemp1     ; qtemp1 hi: q sample qtemp1 lo: i sample
+ [!phtest] SUB2     bdata,qtemp1,qtemp1 ; negate both upper and lower
+           EXTU     qtemp1,16,20,itemp1 ; itemp1 is zero ext low 12 bits
+           SHR      qtemp1,8,qtemp1     ; qtemp1 aligned for 24 bit packing
+           CLR      qtemp1,0,11,qtemp1  ; prepare to combine
+           ADD      qtemp1,itemp1,itemp1; packed 12 bit samples in itemp1
+           STW      itemp1,*obptr++     ; store it at output pointer
+
+           ; Note: to create a 4 sample per bit modulator, simply duplicate
+           ; the sections for first and second sample, and use a 4 sample
+           ; per bit table.
+
+           ; update the phasor for transition from even to odd bit
+
+           LDB      *-iloop[2], qtemp   ; chsel is diff[i-2]
+ [!qtemp]  SUB.L    1,phtest,phtest     ; if diff[i-2] is 0, flip phase sign
+
+           ; update the table index for the new row
+
+           LDBU     *iloop[3], nbits    ; nbits is diff[i+3]
+           SHL      index,1,index       ; index shifted left 1
+           ADD      index,nbits,index   ; put new bit in at LSB
+           CLR      index,5,31,index    ; clear upper bits
+           SHL      index,3,chsel       ; make nbits index mod table rows
+           ADD      tbptr,chsel,mtptr   ; mtptr addresses index-th row
+
+           ;
+           ; odd bit, IntegerPhase.I = 0, IntegerPhase.Q = +/-1
+           ;
+           ; *(Int16 *) & (outBurstPtr[outputIndex].I) = 
+           ;    (integerPhase.I * modLUT2x[index][splno].I -
+           ;     integerPhase.Q * modLUT2x[index][splno].Q);
+           ;
+           ; *(Int16 *) & (outBurstPtr[outputIndex].Q) =
+           ;    (integerPhase.I * modLUT2x[index][splno].Q +
+           ;     integerPhase.Q * modLUT2x[index][splno].I) >> 4;
+           ;
+           ; *(Int32 *) & (outBurstPtr[outputIndex]) = 
+           ;     *(Int32 *) & (outBurstPtr[outputIndex++]) >> 4;
+           ;
+           ; simplified for odd bit case:
+           ;
+           ; out.I = -phase * modLUT2x[index][splno].Q
+           ; out.Q =  phase * modLUT2x[index][splno].I
+           ; *obptr++ = (signext 24:31, out.Q 12:23, out.I 0:11)
+
+           ; first sample for bit
+           
+           LDW      *mtptr++,qtemp2     ; qtemp2 hi: q samp qtemp2 lo: i samp
+           EXT      qtemp2,16,16,itemp2 ; itemp2 is bits 4-15 of i, sgn ext  
+ [!phtest] NEG.L    itemp2,itemp2       ; if phase -1, negate i sample
+ [phtest]  NEG.L    qtemp2,qtemp2       ; if phase 1, negate q sample
+           SHRU     qtemp2,20,qtemp2    ; qtemp2 bits 0-11 now q sample msb
+		   SHL      itemp2,8,itemp2
+		   CLR      itemp2,0,11,itemp2
+           ADD      itemp2,qtemp2,itemp2; itemp2 now packed 12 bit
+           STW      itemp2, *obptr++    ; store at output ptr
+
+           ; second sample for odd bit
+           
+           LDW      *mtptr++,qtemp3     ; qtemp3 hi: q sample qtemp3 lo: i samp
+           EXT      qtemp3,16,16,itemp3 ; itemp3 is bits 4-15 of i, sgn ext  
+ [!phtest] NEG.L    itemp3,itemp3       ; if phase -1, negate i sample
+ [phtest]  NEG.L    qtemp3,qtemp3       ; if phase 1, negate q sample
+           SHRU     qtemp3,20,qtemp3    ; qtemp3 bits 0-11 now q sample msb
+		   SHL      itemp3,8,itemp3
+		   CLR      itemp3,0,11,itemp3
+           ADD      itemp3,qtemp3,itemp3; itemp3 now packed 12 bit
+           STW      itemp3, *obptr++    ; store at output ptr
+
+           ; Note: to create a 4 sample per bit modulator, simply duplicate
+           ; the sections for first and second sample, and use a 4 sample
+           ; per row table.
+
+           ; update the phasor
+
+           LDB      *-iloop[1], chsel   ; qtemp is diff[i-2] for i+1
+ [chsel]   SUB.L    1,phtest,phtest     ; if diff[i-2] is 1, flip phase sign
+
+           ; update the table index for the new row
+
+           LDBU     *iloop[4], nbits    ; nbits is diff[i+3] for i+1
+           MPY      2,index,index       ; index shifted left 1
+           ADD      index,nbits,index   ; put new bit in at LSB
+           CLR      index,5,31,index    ; clear upper bits
+           SHL      index,3,chsel       ; make nbits index mod table rows
+           ADD      tbptr,chsel,mtptr   ; mtptr points to index-th row now
+
+           ; test for end of loop and branch if not
+
+           ADD      iloop,2,iloop       ; advance pointer in diff array 2 bits
+           SUB      loopcnt,1,loopcnt   ; downcount loop counter
+ [loopcnt] B        modloop
+
+           .return
+
+           .endproc
+

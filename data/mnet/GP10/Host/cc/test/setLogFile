@@ -1,0 +1,8 @@
+# Send logs to a file under pre-alpha
+# open the log file
+logFile = open("K:/Workdirs/integration/Pre-Alpha/mmcc-log.txt", 2, 0)
+# Go to the end to append the new logs
+lseek(logFile, 0, 2)
+# Set the file as the new log file
+logFdSet(logFile)
+

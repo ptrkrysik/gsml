@@ -1,0 +1,783 @@
+	JETCELL-VIPERCELL-MIB
+
+-- Title	JetCell ViperCell MIB version 1.0
+
+-- Necessary Wind Riverism's to make the mib compiler work properly
+
+--FORCE-INCLUDE <mib.h>
+--FORCE-INCLUDE <snmpdefs.h>
+--FORCE-INCLUDE "mibhand.h"
+
+	DEFINITIONS ::= BEGIN
+
+IMPORTS
+	MODULE-IDENTITY, OBJECT-TYPE
+		FROM SNMPv2-SMI
+	enterprises
+		FROM RFC1155-SMI
+	;
+
+jetcell MODULE-IDENTITY
+	LAST-UPDATED "9904010000Z"
+	ORGANIZATION "JetCell, Inc."
+	CONTACT-INFO
+		"	Technical Support
+			Postal: JetCell, Inc.
+				173 Constitution Drive
+				Menlo Park, CA  94025
+				USA
+
+			Tel:	+1 650 330 2800
+			Fax:	+1 650 330 ????
+
+			Email:	support@jetcell.com"
+	DESCRIPTION
+		"This is the MIB definition for the JetCell ViperCell
+		wireless base station. This includes leafs for the GSM,
+		H.323, configuration and other MIB variables."
+	::= {enterprises 3583}
+
+viperCellMib		OBJECT IDENTIFIER ::= { jetcell 1 }
+viperCellGsmMib		OBJECT IDENTIFIER ::= { viperCellMib 1 }
+viperCellH323Mib	OBJECT IDENTIFIER ::= { viperCellMib 2 }
+viperCellConfigMib	OBJECT IDENTIFIER ::= { viperCellMib 3 }
+
+Boolean			::= INTEGER { bfalse(0), btrue(1) }
+
+--
+--	ViperCell Configuration Information
+--
+
+callConfigData OBJECT IDENTIFIER
+-- 	DESCRIPTION
+--		"Call Control Configuration Data"
+	::= {viperCellConfigMib 1}
+
+	cc-max-L3-msgs	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Maximum number of silmultaneous messages"
+	    DEFVAL
+		{32}
+	    ::= {callConfigData 1}
+
+	cc-l3-msg-q-priority	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"VxWorks priority for the msg Q."
+	    DEFVAL
+		{10}
+	    ::= {callConfigData 2}
+
+	cc-task-priority	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Call Control Task Priority."
+	    DEFVAL
+		{100}
+	    ::= {callConfigData 3}
+
+	cc-task-stack-size	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Task stack size."
+	    DEFVAL
+		{10000}
+	    ::= {callConfigData 4}
+
+	cc-mm-conn-est-T999	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"MM Connection Established."
+	    DEFVAL
+		{2000}
+	    ::= {callConfigData 5}
+
+	cc-alerting-T301	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Alerting received Timer."
+	    DEFVAL
+		{2000}
+	    ::= {callConfigData 6}
+
+	cc-setup-T303	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Setup sent."
+	    DEFVAL
+		{2000}
+	    ::= {callConfigData 7}
+
+	cc-call-confirmed-T310	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Call Confirmed received Timer."
+	    DEFVAL
+		{2000}
+	    ::= {callConfigData 8}
+
+	cc-connect-T313	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Connect sent Timer."
+	    DEFVAL
+		{2000}
+	    ::= {callConfigData 9}
+
+	cc-disconnect-T305	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Disconnect sent Timer."
+	    DEFVAL
+		{2000}
+	    ::= {callConfigData 10}
+
+	cc-release-T308	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Release sent Timer."
+	    DEFVAL
+		{2000}
+	    ::= {callConfigData 11}
+
+	cc-safety-timer	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Call Task running too long."
+	    DEFVAL
+		{1000}
+	    ::= {callConfigData 12}
+
+	cc-max-calls	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Maximum # of Calls allowed."
+	    DEFVAL
+		{7}
+	    ::= {callConfigData 13}
+
+mobilityConfigData OBJECT IDENTIFIER
+-- 	DESCRIPTION
+--		"Mobility Management Configuration Data"
+	::= {viperCellConfigMib 2}
+
+	mm-max-mm-connections	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Maximum number of MM Connections allowed."
+	    DEFVAL
+		{10}
+	    ::= {mobilityConfigData 1}
+
+	mm-max-L3-msgs	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Defines the size of VxWorks Message queue
+		 The value of this parameter is system dependent"
+	    DEFVAL
+		{32}
+	    ::= {mobilityConfigData 2}
+
+
+	mm-L3-msg-Q-priority	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"defines the priority of the VxWorks message queue"
+	    DEFVAL
+		{10}
+	    ::= {mobilityConfigData 3}
+
+	task-priority	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Mobility Management Task Priority."
+	    DEFVAL
+		{100}
+	    ::= {mobilityConfigData 4}
+
+	task-stack-size	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Task stack size."
+	    DEFVAL
+		{20000}
+	    ::= {mobilityConfigData 5}
+
+	mm-paging-t3113	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Paging Response Timer - Network"
+	    DEFVAL
+		{3000}
+	    ::= {mobilityConfigData 6}
+
+	mm-authenticationRequired	OBJECT-TYPE
+	    SYNTAX	Boolean
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Authentication Required."
+	    DEFVAL
+		{bfalse}
+	    ::= {mobilityConfigData 7}
+
+	mm-cipheringRequired	OBJECT-TYPE
+	    SYNTAX	Boolean
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"CipheringRequired"
+	    DEFVAL
+		{bfalse}
+	    ::= {mobilityConfigData 8}
+
+	mm-IMEICheckRequired	OBJECT-TYPE
+	    SYNTAX	Boolean
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"Mobility Confirmed received Timer."
+	    DEFVAL
+		{bfalse}
+	    ::= {mobilityConfigData 9}
+
+resourceConfigData OBJECT IDENTIFIER
+-- 	DESCRIPTION
+--		"Resource Management Configuration Data"
+	::= {viperCellConfigMib 3}
+
+	rm-t3L01	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm t3L01"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 1}
+
+	rm-bsCcChans	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm bsCcChans"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 2}
+
+	rm-bsCcchSdcchComb	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm bsCcchSdcchComb"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 3}
+
+	rm-sysInfoOnOffMap	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm sysInfoOnOffMap"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 4}
+
+	rm-airInterface	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm airInterface"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 5}
+
+	rm-viperCellTsc	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm viperCellTsc"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 6}
+
+	rm-maxSlotPerTrx	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm maxSlotPerTrx"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 7}
+
+	rm-maxTrxs	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm maxTrxs"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 8}
+
+	rm-maxTchfs	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm maxTchfs"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 9}
+
+	rm-maxSdcch4s	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm maxSdcch4s"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 10}
+
+	rm-trxOnOffMap	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm trxOnOffMap"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 11}
+
+	rm-networkIfConfig	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm networkIfConfig"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 12}
+
+	rm-bcchTrx	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm bcchTrx"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 13}
+
+	rm-preAlphaTrx	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm preAlphaTrx"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 14}
+
+	rm-ccchBcchComb	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm ccchBcchComb"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 15}
+
+	rm-ccchConf	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm ccchConf"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 16}
+--
+-- The following is actually a 2x8 array. That is 2 transmitters x 8 channels
+-- In the C code, this is defined as "int rm_nim[2][8]" which has an identical
+-- layout to the following:
+--
+	rm-nim-0-0	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-0-0"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 17}
+
+	rm-nim-0-1	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-0-1"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 18}
+
+	rm-nim-0-2	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-0-2"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 19}
+
+	rm-nim-0-3	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-0-3"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 20}
+
+	rm-nim-0-4	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-0-4"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 21}
+
+	rm-nim-0-5	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-0-5"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 22}
+
+	rm-nim-0-6	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-0-6"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 23}
+
+	rm-nim-0-7	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-0-7"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 24}
+
+	rm-nim-1-0	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-1-0"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 25}
+
+	rm-nim-1-1	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-1-1"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 26}
+
+	rm-nim-1-2	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-1-2"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 27}
+
+	rm-nim-1-3	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-1-3"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 28}
+
+	rm-nim-1-4	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-1-4"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 29}
+
+	rm-nim-1-5	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-1-5"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 30}
+
+	rm-nim-1-6	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-1-6"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 31}
+
+	rm-nim-1-7	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm nim-1-7"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 32}
+
+	rm-trxSynthSetting-0-0	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm trxSynthSetting-0-0"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 33}
+
+	rm-trxSynthSetting-0-1	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm trxSynthSetting-0-1"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 34}
+
+	rm-trxSynthSetting-0-2	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm trxSynthSetting-0-2"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 35}
+
+	rm-trxSynthSetting-0-3	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm trxSynthSetting-0-3"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 36}
+
+	rm-trxSynthSetting-1-0	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm trxSynthSetting-1-0"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 37}
+
+	rm-trxSynthSetting-1-1	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm trxSynthSetting-1-1"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 38}
+
+	rm-trxSynthSetting-1-2	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm trxSynthSetting-1-2"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 39}
+
+	rm-trxSynthSetting-1-3	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm trxSynthSetting-1-3"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 40}
+
+	rm-trxFpgaDelay-0-0	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm trxFpgaDelay-0-0 Trx 0 Uplink"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 41}
+
+	rm-trxFpgaDelay-0-1	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm trxFpgaDelay-0-1 Trx 0 Downlink"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 42}
+
+	rm-trxFpgaDelay-1-0	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm trxFpgaDelay-1-0 Trx 1 Uplink"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 43}
+
+	rm-trxFpgaDelay-1-1	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm trxFpgaDelay-1-1 Trx 1 Downlink"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 44}
+
+	rm-SGainCtrlSetting-0-0		OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm SGainCtrlSetting-0-0 Trx 0 Uplink"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 45}
+
+	rm-SGainCtrlSetting-0-1		OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm SGainCtrlSetting-0-1 Trx 0 Downlink"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 46}
+
+	rm-SGainCtrlSetting-1-0		OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm SGainCtrlSetting-1-0 Trx 1 Uplink"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 47}
+
+	rm-SGainCtrlSetting-1-1		OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm SGainCtrlSetting-1-1 Trx 1 Downlink"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 48}
+
+	rm-synchChanInfo	OBJECT-TYPE
+	    SYNTAX	INTEGER
+	    MAX-ACCESS	read-write
+	    STATUS	current
+	    DESCRIPTION
+		"rm synchChanInfo"
+	    DEFVAL
+		{0}
+	    ::= {resourceConfigData 49}
+
+
+END

@@ -1,0 +1,27 @@
+#             
+termSoftMobInit()
+
+# Page Response - T
+#          IRT EntryId                   JCCL3Prim     Msg. Type
+fromRRtoMM(termSoftMobEntryId,           13,           11)
+
+
+# Call Confirmed to CC - T
+#      Soft Mobile Index         L1L2Prim  PD        Msg. Type
+fromMS(termSoftMobIndex,         4,        3,        0x08)
+
+# Chann Assigned - T 
+#          IRT EntryId                   JCCL3Prim     Msg. Type    O/T
+fromRRtoCC(termSoftMobEntryId,           0,            2,           termSoftMobIndex)
+
+# Alerting to CC - T
+#      Soft Mobile Index         L1L2Prim  PD        Msg. Type
+fromMS(termSoftMobIndex,         4,        3,        0x01)
+
+# Connect to CC - T
+#      Soft Mobile Index         L1L2Prim  PD        Msg. Type
+fromMS(termSoftMobIndex,         4,        3,        0x07)
+
+
+
+

@@ -1,0 +1,18 @@
+#Disconnect Terminator
+
+# Disconnect to CC - T
+#      Soft Mobile Index                 L1L2Prim  PD        Msg. Type
+fromMS(termSoftMobIndex,                 4,        3,        0x25)
+
+
+# Release Complete to CC - T
+#      Soft Mobile Index         L1L2Prim  PD        Msg. Type
+fromMS(termSoftMobIndex,         4,        3,        0x2a)
+
+# Make sure that all resource data is back in idle state
+
+tmmPrint
+
+tccPrint
+
+irtDataPrint

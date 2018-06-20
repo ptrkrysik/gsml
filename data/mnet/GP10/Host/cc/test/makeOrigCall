@@ -1,0 +1,23 @@
+#               LUDB Index for Terminating Mobile
+origSoftMobInit(1                                )
+
+
+# CM Service Request to MM - O 
+#      Soft Mobile Index         L1L2Prim  PD        Msg. Type
+fromMS(origSoftMobIndex,         1,        5,        0x24)
+
+# Setup to CC - O
+#      Soft Mobile Index         L1L2Prim  PD        Msg. Type
+fromMS(origSoftMobIndex,         4 ,       3,        5)
+
+# Chann Assigned - O 
+#          IRT EntryId                   JCCL3Prim     Msg. Type    O/T
+fromRRtoCC(origSoftMobEntryId,           0,            2,           origSoftMobIndex)
+
+# Connect Ack to CC - O
+#      Soft Mobile Index         L1L2Prim  PD        Msg. Type
+fromMS(origSoftMobIndex,         4,        3,        0x0f)
+
+
+
+

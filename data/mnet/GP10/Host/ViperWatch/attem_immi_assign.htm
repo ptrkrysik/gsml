@@ -1,0 +1,88 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Automatic Parameter Allocation Invalid Frequency Table</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/perCause.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/common.js"></SCRIPT>
+
+
+
+<body onload="$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" name="apaClockSourceFrequencyTable">
+
+  <div align="center">
+    <table border="4" bgcolor="#D6D3CE" width="466">
+      <tr>
+        <td width="996">
+        <h3 align="center">&nbsp;Attempted Immediate Assignment<br>
+        &nbsp;Procedures, per cause</h3>
+        <div align="center">
+            <center>
+              <table border="0">
+                <tr>
+                  <td align="left">
+                  <p align="left"><b> Start Time:</b></td>
+                  <td>
+                  <i>
+                  <script> displayTime("$%meanPCHAGCHQueueLength#$") </script>
+                  </i>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="left"><b>Duration:</b></td>
+                  <td><i>Last Completed 15-MinuteMeasurement Interval</i></td>
+                </tr>
+              </table>
+            </center>
+        </div>
+        <div align="center">
+          <center>
+          <table border="1" width="83%">
+            <tr>
+              <td height="19" align="left" width="80%"><font face="&#12;charset0Courier" size="3"><b>Channel
+                Assignment Cause</b></font></td>
+              <td height="19" align="center" width="20%">
+                <p align="center"><font face="&#12;charset0Courier" size="2"><b>Attempt
+                Count</b></font></p>
+              </td>
+            </tr>
+            <! $%createTable(attImmediateAssingProcsCause,*,,,,,attImmediateAssingProcsCause,attImmediateAssingProcsValue)#$ >
+            <! $%REPEAT(attImmediateAssingProcsCause,1,8)#$ >   
+            <tr>
+              <td align="left" width="80%"> <script> displayCause("$%attImmediateAssingProcsCause#$")</script></td>
+              <td align="center" width="20%">$%attImmediateAssingProcsValue#$</td>
+            </tr>
+    
+            <! $%endRow(attImmediateAssingProcsCause)#$ >
+            <! $%REPEAT(END)#$ >
+            <! $%endTable(attImmediateAssingProcsCause)#$>    
+
+          </table>
+          </center>
+        </div>
+        <center>
+        <div align="center">
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"><input name="Recall1" type="button" value="Recall" onclick="window.location.reload()"></td>
+            </tr>
+          </table>
+        </div>
+        </center>
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>
+
+</body>
+
+</html>

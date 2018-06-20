@@ -1,0 +1,297 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GPRS Option Package</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+
+
+
+<SCRIPT language="JavaScript">
+
+function PresetForm(theForm)
+{
+	// for TEXT elements
+	theForm.t3168.defaultValue			= 4;
+	theForm.bsCvMax.defaultValue		= 7;
+	theForm.panDec.defaultValue			= 1;
+	theForm.panInc.defaultValue			= 1;
+	theForm.raColour.defaultValue		= 0;
+	theForm.cbchTrxSlot.defaultValue		= 0;
+	theForm.siChangeField.defaultValue	= 0;
+
+	// for select element
+	selectOption(theForm.nmoSelect,						theForm.nmo);
+	selectOption(theForm.t3192Select,					theForm.t3192);
+	selectOption(theForm.drxTimerMaxSelect,		theForm.drxTimerMax);
+	selectOption(theForm.accessBurstTypeSelect,theForm.accessBurstType);
+	selectOption(theForm.controlAckTypeSelect,theForm.controlAckType);
+	selectOption(theForm.panMaxSelect,				theForm.panMax);
+	selectOption(theForm.si13PositionSelect,	theForm.si13Position);
+	selectOption(theForm.cbchTrxSelect,				theForm.cbchTrx);
+	selectOption(theForm.bcchChangeMarkSelect,theForm.bcchChangeMark);
+
+	return true;
+} 
+
+function ParseForm(theForm)
+{	
+	// for select element
+	parseSelect(theForm.nmoSelect,						theForm.nmo);
+	parseSelect(theForm.t3192Select,					theForm.t3192);
+	parseSelect(theForm.drxTimerMaxSelect,		theForm.drxTimerMax);
+	parseSelect(theForm.accessBurstTypeSelect,theForm.accessBurstType);
+	parseSelect(theForm.controlAckTypeSelect,	theForm.controlAckType);
+	parseSelect(theForm.panMaxSelect,					theForm.panMax);
+	parseSelect(theForm.si13PositionSelect,		theForm.si13Position);
+	parseSelect(theForm.cbchTrxSelect,				theForm.cbchTrx);
+	parseSelect(theForm.bcchChangeMarkSelect,	theForm.bcchChangeMark);
+	
+	return true;
+} 
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="gprs_options_package">
+
+
+  <input type="hidden" name="nmo"				value="$%nmo#$">
+  <input type="hidden" name="t3192"				value="$%t3192#$">
+  <input type="hidden" name="drxTimerMax"		value="$%drxTimerMax#$">
+  <input type="hidden" name="accessBurstType"	value="$%accessBurstType#$">
+  <input type="hidden" name="controlAckType"	value="$controlAckType%#$">
+  <input type="hidden" name="panMax"			value="$%panMax#$">
+  <input type="hidden" name="si13Position"		value="$%si13Position#$">
+  <input type="hidden" name="cbchTrx"			value="$%cbchTrx#$">
+  <input type="hidden" name="bcchChangeMark"	value="$%bcchChangeMark#$">
+  
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="440">
+      <tr>
+        <td >
+        <h2 align="center">GPRS Option Package</h2>
+        <div align="center">
+          <center>
+          <table border="1" height="345" cellpadding="2">
+						<!-- Select nmo -->
+            <tr>
+              <td valign="middle" title="The maximum TX power level an MS may use when accessing the system.">
+								NMO
+							</td>
+              <td valign="middle" align="left" nowrap><select name="nmoSelect" size="1">
+                <option value="0">0</option>
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select></td>
+            </tr>
+						<!-- Text t3168 -->
+            <tr>
+              <td valign="middle" title="TimeOut value for t3168, The timeout value is given as the value plus one, in units of 500 msecs.">
+								T3168 (500mS unit)
+								</td>
+              <td valign="middle" align="left" title="INTEGER (0..7) 500mS Unit">
+								<input maxlength="1" name="t3168" size="2" value="$%t3168#$" onchange="return isValidInt(this,0,7);"></td>
+            </tr>
+						<!-- Select t3192 -->
+            <tr>
+              <td valign="middle" title="TimeOut value for t3192, The timeout values are 500, 1000, 1500, 0, 80, 120, 160, 200. In case of 0 msec the timer is not started.">
+								T3192
+							</td>
+              <td valign="middle" align="left" nowrap><select name="t3192Select" size="1">
+                <option value="0">500</option>
+                <option value="1">1000</option>
+                <option value="2">1500</option>
+                <option selected value="3">0</option>
+                <option value="4">80</option>
+                <option value="5">120</option>
+                <option value="6">160</option>
+                <option value="7">200</option>
+              </select></td>
+            </tr>
+						<!-- Select drxTimerMax -->
+            <tr>
+              <td valign="middle" title="The field is a binary representation of the parameter DRX_TIMER_MAX. The parameter value is given as two taken to the power of the binary value minus one (2^n - 1).i.e. 0,1,2,4,8,16,32,64 secs">
+								Drx Timer Max
+							</td>
+              <td valign="middle" align="left" nowrap><select name="drxTimerMaxSelect" size="1">
+                <option value="0">0 Sec</option>
+                <option value="1">1 Sec</option>
+                <option value="2">2 Sec</option>
+                <option value="3">4 Sec</option>
+                <option value="4">8 Sec</option>
+                <option value="5">16 Sec</option>
+                <option value="6">32 Sec</option>
+                <option selected value="7">64 Sec</option>
+              </select></td>
+            </tr>
+						<!-- Select accessBurstType -->
+            <tr>
+              <td valign="middle" title="Indicates if 8 or 11 bit access burst shall be used on PRACH, PTCCH/U and in the PACKET CONTROL ACKNOWLEDGEMENT message when the format is four access bursts.
+0 - 8 bit access burst shall be used
+1 - 11 bit access burst shall be used.">
+								Access Burst Type
+							</td>
+              <td valign="middle" align="left" nowrap><select name="accessBurstTypeSelect" size="1">
+                <option selected value="0">8 bit access burst shall be used</option>
+                <option value="1">11 bit access burst shall be used</option>
+              </select></td>
+            </tr>
+						<!-- Select controlAckType -->
+            <tr>
+              <td valign="middle" title="Represents the default format of the PACKET CONTROL ACKNOWLEDGEMENT message.
+0 - format is four access bursts
+1 - format is RLC/MAC control block.">
+								Control Ack Type
+							</td>
+              <td valign="middle" align="left" nowrap><select name="controlAckTypeSelect" size="1">
+                <option selected value="0">Format is four access bursts</option>
+                <option value="1">Format is RLC/MAC control block</option>
+              </select></td>
+            </tr>
+						<!-- Text bsCvMax -->
+            <tr>
+              <td valign="middle" title="Represents the parameter BS_CV_MAX. The value BS_CV_MAX = 0 shall be interpreted as value BS_CV_MAX=1 for claculation of T3198, T3200 and N3104max Values.">
+								Bs Cv Max
+							</td>
+              <td valign="middle" align="left" title="INTEGER (0..15)">
+								<input maxlength="2" name="bsCvMax" size="2" value="$%bsCvMax#$" onchange="return isValidInt(this,0,15);"></td>
+            </tr>
+						<!-- Text panDec -->
+            <tr>
+              <td valign="middle" title="Represents the parameter PAN_DEC.">
+								Pan Dec
+							</td>
+              <td valign="middle" align="left" title="INTEGER (0..7)">
+								<input maxlength="1" name="panDec" size="2" value="$%panDec#$" onchange="return isValidInt(this,0,7);"></td>
+            </tr>
+						<!-- Text panInc -->
+            <tr>
+              <td valign="middle" title="Represents the parameter PAN_INC.">
+								Pan Inc
+							</td>
+              <td valign="middle" align="left" title="INTEGER (0..7)">
+								<input maxlength="1" name="panInc" size="2" value="$%panInc#$" onchange="return isValidInt(this,0,7);"></td>
+            </tr>
+						<!-- Select panMax -->
+            <tr>
+              <td valign="middle" title="Represents the maximum value allowed for counter N3102.
+0 - 4
+1 - 8
+2 - 12
+3 - 16
+4 - 20
+5 - 24
+6 - 28
+7 - 32.">
+								Pan Max
+							</td>
+              <td valign="middle" align="left" nowrap><select name="panMaxSelect" size="1">
+                <option value="0">4</option>
+                <option value="1">8</option>
+                <option value="2">12</option>
+                <option value="3">16</option>
+                <option selected value="4">20</option>
+                <option value="5">24</option>
+                <option value="6">28</option>
+                <option value="7">32</option>
+              </select></td>
+            </tr>
+						<!-- Text raColour -->
+            <tr>
+              <td valign="middle" title="If the mobile station receives different values of the RA COLOUR field in different cell, the mobile station shall interpret the cell re-selection information as if the two cells belong to different routing areas.">
+								RA Colour
+							</td>
+              <td valign="middle" align="left" title="INTEGER (0..7)">
+								<input maxlength="1" name="raColour" size="2" value="$%raColour#$" onchange="return isValidInt(this,0,7);"></td>
+            </tr>
+						<!-- Select si13Position -->
+            <tr>
+              <td valign="middle" title="The SI13 POSITION indicates the minimum schedule for where the SYSTEM INFORMATION TYPE 13 message is sent on BCCH.">
+								SI13 Position
+							</td>
+              <td valign="middle" align="left" nowrap><select name="si13PositionSelect" size="1">
+                <option selected value="0">0</option>
+                <option value="1">1</option>
+              </select></td>
+            </tr>
+						<!-- Text cbchTrxSlot -->
+            <tr>
+              <td valign="middle" title="This value indicates the Timeslot Number for TN field of SI4 message">
+								CBCH Trx Slot
+							</td>
+              <td valign="middle" align="left" title="INTEGER (0..7)">
+								<input maxlength="1" name="cbchTrxSlot" size="2" value="$%cbchTrxSlot#$" onchange="return isValidInt(this,0,7);"></td>
+            </tr>
+						<!-- Select cbchTrx -->
+            <tr>
+              <td valign="middle" title="This value  means the logical number for carrier frequency. The ARFCN field of SI4 message is coded as binary representation of the absolute RF channel number by this value.">
+								CBCH Trx
+							</td>
+              <td valign="middle" align="left" nowrap><select name="cbchTrxSelect" size="1">
+                <option selected value="0">0</option>
+                <option value="1">1</option>
+              </select></td>
+            </tr>
+						<!-- Select bcchChangeMark -->
+            <tr>
+              <td valign="middle" title="This value indicates the status of the information on BCCH. This value shall be changed each time the information on BCCH, except for the contents of the SI-13 message, is changed.">
+								BCCH Change Mark
+							</td>
+              <td valign="middle" align="left" nowrap><select name="bcchChangeMarkSelect" size="1">
+                <option selected value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select></td>
+            </tr>
+						<!-- Text siChangeField -->
+            <tr>
+              <td valign="middle" title="This value means the representation of which information was changed at the last indication in BCCH_CHANGE_MARK.">
+								SI Change Field
+							</td>
+              <td valign="middle" align="left" title="INTEGER (0..15)">
+								<input maxlength="2" name="siChangeField" size="2" value="$%siChangeField#$" onchange="return isValidInt(this,0,15);"></td>
+            </tr>
+
+          </table>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <table height="50" border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        </td>
+      </tr>
+    </table>
+    </center>
+  </div>
+  <p align="center">&nbsp;
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>
+

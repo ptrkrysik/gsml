@@ -1,0 +1,572 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Handover Control Package</title>
+</head>
+
+<SCRIPT >
+
+function selectOption(theSelect, valueHolder)
+{
+	if (valueHolder.value < 0 && valueHolder.value >= theSelect.length)
+	{ 
+		window.alert("Incorrect MIB value for " + valueHolder.name + "  "+ valueHolder.value + "Corrected to 0");
+		valueHolder.value = 0;
+	}
+	for (var i = 0; i < theSelect.length; i++)
+	{
+		if (theSelect.options[i].value == valueHolder.value) 
+		{
+			theSelect.options[i].selected = true;
+			break;
+		}
+	}
+			
+}
+
+function presetButtons(theForm)
+{
+	selectOption(theForm.hoAveragingAdjCellParamWeightingSelect, theForm.hoAveragingAdjCellParamWeighting);
+	selectOption(theForm.hoAveragingLevParamWeightingSelect, theForm.hoAveragingLevParamWeighting);	
+	selectOption(theForm.hoAveragingQualParamWeightingSelect, theForm.hoAveragingQualParamWeighting);
+	return true;
+} 
+	
+function parseSelect(theSelect, valueHolder)
+{
+	for (var i = 0; i < theSelect.length; i++)
+	{
+		if (theSelect.options[i].selected) 
+		{
+			valueHolder.value = theSelect.options[i].value;
+			break;
+		}
+	}
+}
+function parseButtons(theForm)
+{
+	parseSelect(theForm.hoAveragingAdjCellParamWeightingSelect, theForm.hoAveragingAdjCellParamWeighting);
+	parseSelect(theForm.hoAveragingLevParamWeightingSelect, theForm.hoAveragingLevParamWeighting);	
+	parseSelect(theForm.hoAveragingQualParamWeightingSelect, theForm.hoAveragingQualParamWeighting);
+	return true;
+} 
+</SCRIPT>
+
+<body onload="presetButtons(this.document.forms[0]);$%reloadTopframe#$">
+
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+  if (theForm.hoAveragingAdjCellParamHreqave.value == "")
+  {
+    alert("Please enter a value for the \"Handover Averaging Adjacent  Cell Hreqave\" field.");
+    theForm.hoAveragingAdjCellParamHreqave.focus();
+    return (false);
+  }
+
+  if (theForm.hoAveragingAdjCellParamHreqave.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Handover Averaging Adjacent  Cell Hreqave\" field.");
+    theForm.hoAveragingAdjCellParamHreqave.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoAveragingAdjCellParamHreqave.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Handover Averaging Adjacent  Cell Hreqave\" field.");
+    theForm.hoAveragingAdjCellParamHreqave.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Handover Averaging Adjacent  Cell Hreqave\" field.");
+    theForm.hoAveragingAdjCellParamHreqave.focus();
+    return (false);
+  }
+
+  if (theForm.hoAveragingAdjCellParamHreqt.value == "")
+  {
+    alert("Please enter a value for the \"Handover Averaging Adjacent Cell Hreqt\" field.");
+    theForm.hoAveragingAdjCellParamHreqt.focus();
+    return (false);
+  }
+
+  if (theForm.hoAveragingAdjCellParamHreqt.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Handover Averaging Adjacent Cell Hreqt\" field.");
+    theForm.hoAveragingAdjCellParamHreqt.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoAveragingAdjCellParamHreqt.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Handover Averaging Adjacent Cell Hreqt\" field.");
+    theForm.hoAveragingAdjCellParamHreqt.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Handover Averaging Adjacent Cell Hreqt\" field.");
+    theForm.hoAveragingAdjCellParamHreqt.focus();
+    return (false);
+  }
+
+  if (theForm.hoAveragingDistParamHreqave.value == "")
+  {
+    alert("Please enter a value for the \"Handover Averaging Distance Hreqave\" field.");
+    theForm.hoAveragingDistParamHreqave.focus();
+    return (false);
+  }
+
+  if (theForm.hoAveragingDistParamHreqave.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Handover Averaging Distance Hreqave\" field.");
+    theForm.hoAveragingDistParamHreqave.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoAveragingDistParamHreqave.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Handover Averaging Distance Hreqave\" field.");
+    theForm.hoAveragingDistParamHreqave.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Handover Averaging Distance Hreqave\" field.");
+    theForm.hoAveragingDistParamHreqave.focus();
+    return (false);
+  }
+
+  if (theForm.hoAveragingDistParamHreqt.value == "")
+  {
+    alert("Please enter a value for the \"Handover Averaging Distance  Hreqt\" field.");
+    theForm.hoAveragingDistParamHreqt.focus();
+    return (false);
+  }
+
+  if (theForm.hoAveragingDistParamHreqt.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Handover Averaging Distance  Hreqt\" field.");
+    theForm.hoAveragingDistParamHreqt.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoAveragingDistParamHreqt.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Handover Averaging Distance  Hreqt\" field.");
+    theForm.hoAveragingDistParamHreqt.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Handover Averaging Distance  Hreqt\" field.");
+    theForm.hoAveragingDistParamHreqt.focus();
+    return (false);
+  }
+
+  if (theForm.hoAveragingLevParamHreqave.value == "")
+  {
+    alert("Please enter a value for the \"Handover Averaging Level Hreqave\" field.");
+    theForm.hoAveragingLevParamHreqave.focus();
+    return (false);
+  }
+
+  if (theForm.hoAveragingLevParamHreqave.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Handover Averaging Level Hreqave\" field.");
+    theForm.hoAveragingLevParamHreqave.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoAveragingLevParamHreqave.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Handover Averaging Level Hreqave\" field.");
+    theForm.hoAveragingLevParamHreqave.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Handover Averaging Level Hreqave\" field.");
+    theForm.hoAveragingLevParamHreqave.focus();
+    return (false);
+  }
+
+  if (theForm.hoAveragingLevParamHreqt.value == "")
+  {
+    alert("Please enter a value for the \"Handover Averaging Level  Hreqt\" field.");
+    theForm.hoAveragingLevParamHreqt.focus();
+    return (false);
+  }
+
+  if (theForm.hoAveragingLevParamHreqt.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Handover Averaging Level  Hreqt\" field.");
+    theForm.hoAveragingLevParamHreqt.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoAveragingLevParamHreqt.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Handover Averaging Level  Hreqt\" field.");
+    theForm.hoAveragingLevParamHreqt.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Handover Averaging Level  Hreqt\" field.");
+    theForm.hoAveragingLevParamHreqt.focus();
+    return (false);
+  }
+
+  if (theForm.hoAveragingQualParamHreqave.value == "")
+  {
+    alert("Please enter a value for the \"Handover Averaging Signal Quality Hreqave\" field.");
+    theForm.hoAveragingQualParamHreqave.focus();
+    return (false);
+  }
+
+  if (theForm.hoAveragingQualParamHreqave.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Handover Averaging Signal Quality Hreqave\" field.");
+    theForm.hoAveragingQualParamHreqave.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoAveragingQualParamHreqave.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Handover Averaging Signal Quality Hreqave\" field.");
+    theForm.hoAveragingQualParamHreqave.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Handover Averaging Signal Quality Hreqave\" field.");
+    theForm.hoAveragingQualParamHreqave.focus();
+    return (false);
+  }
+
+  if (theForm.hoAveragingQualParamHreqt.value == "")
+  {
+    alert("Please enter a value for the \"Handover Averaging Quality Hreqt\" field.");
+    theForm.hoAveragingQualParamHreqt.focus();
+    return (false);
+  }
+
+  if (theForm.hoAveragingQualParamHreqt.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Handover Averaging Quality Hreqt\" field.");
+    theForm.hoAveragingQualParamHreqt.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.hoAveragingQualParamHreqt.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Handover Averaging Quality Hreqt\" field.");
+    theForm.hoAveragingQualParamHreqt.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Handover Averaging Quality Hreqt\" field.");
+    theForm.hoAveragingQualParamHreqt.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" onsubmit="return FrontPage_Form1_Validator(this)" name="FrontPage_Form1">
+
+<div align="center">
+ <center>
+ <table border="0" cellpadding="0" cellspacing="0" height="291" width="587">
+  <tr>
+   <td align="right" valign="top" colspan="2" height="20" width="669">
+   <p align="center"><font size="4">Handover Package Averaging Parameters</font></td>
+  </tr>
+  <tr>
+   <td align="right" valign="top" height="8" width="7">
+
+   <div align="center">
+    <center>
+    <table border="1" cellspacing="1" width="301">
+     <tr>
+      <th colspan="2" height="15" align="left" width="291">
+       <p align="center">Adjacent Cell Parameters</p>
+      </th>
+     </tr>
+     <tr>
+      <td height="24" align="left" width="199">Hreqave</td>
+      <td height="24" align="left" width="86"><!--webbot bot="Validation" S-Display-Name="Handover Averaging Adjacent  Cell Hreqave" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="hoAveragingAdjCellParamHreqave" size="2" value="$%hoAveragingAdjCellParamHreqave#$" maxlength="2"></td>
+     </tr>
+     <tr>
+      <td height="24" align="left" width="199">Hreqt</td>
+      <td height="24" align="left" width="86"><!--webbot bot="Validation" S-Display-Name="Handover Averaging Adjacent Cell Hreqt" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="hoAveragingAdjCellParamHreqt" size="2" value="$%hoAveragingAdjCellParamHreqt#$" maxlength="2"></td>
+     </tr>
+     <tr>
+      <td height="24" align="left" width="199">Weighting</td>
+      <td height="24" align="left" width="86"><select size="1" name="hoAveragingAdjCellParamWeightingSelect">
+       <option value="1">1</option>
+       <option value="2" selected>2</option>
+       <option value="3">3</option>
+      </select></td>
+      <input type="hidden" name="hoAveragingAdjCellParamWeighting" value="$%hoAveragingAdjCellParamWeighting#$">
+     </tr>
+    </table>
+    </center>
+   </div>
+
+   </td>
+   <td valign="top" height="1" align="center" width="290">
+   <table border="1" cellspacing="1" width="363">
+    <tr>
+     <th colspan="2" height="15" width="353">
+      <p align="center">&nbsp;Distance&nbsp;&nbsp; Parameters</th>
+    </tr>
+    <tr>
+     <td height="22" width="279">Hreqave</td>
+     <td height="22" width="68"><!--webbot bot="Validation" S-Display-Name="Handover Averaging Distance Hreqave" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="hoAveragingDistParamHreqave" size="2" value="$%hoAveragingDistParamHreqave#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td height="24" width="279">Hreqt</td>
+     <td height="24" width="68"><!--webbot bot="Validation" S-Display-Name="Handover Averaging Distance  Hreqt" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="hoAveragingDistParamHreqt" size="2" value="$%hoAveragingDistParamHreqt#$" maxlength="2"></td>
+    </tr>
+   </table>
+   </td>
+  </tr>
+  <tr>
+   <td align="center" valign="top" height="95" width="297">
+   <table border="1" cellspacing="1" width="295">
+    <tr>
+     <th colspan="2" height="15" width="285">
+      <p align="center">Level Parameters (signal Strength)</th>
+    </tr>
+    <tr>
+     <td height="22" width="196">Hreqave</td>
+     <td height="22" width="83"><!--webbot bot="Validation" S-Display-Name="Handover Averaging Level Hreqave" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="hoAveragingLevParamHreqave" size="2" value="$%hoAveragingLevParamHreqave#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td height="30" width="196">Hreqt</td>
+     <td height="30" width="83"><!--webbot bot="Validation" S-Display-Name="Handover Averaging Level  Hreqt" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="hoAveragingLevParamHreqt" size="2" value="$%hoAveragingLevParamHreqt#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td height="24" width="196">Weighting</td>
+     <td height="24" width="83"><select size="1" name="hoAveragingLevParamWeightingSelect">
+      <option value="1">1</option>
+      <option value="2" selected>2</option>
+      <option value="3">3</option>
+     </select></td>
+    <input type="hidden" name="hoAveragingLevParamWeighting" value="$%hoAveragingLevParamWeighting#$">
+
+    </tr>
+   </table>
+   </td>
+   <td align="center" valign="top" height="95" width="361">
+   <table border="1" cellspacing="1" width="98%">
+    <tr>
+     <th colspan="2" width="286">
+      <p align="center">Quality&nbsp; Parameters (signal Quality)</th>
+    </tr>
+    <tr>
+     <td height="22" width="223">Hreqave</td>
+     <td height="22" width="57"><!--webbot bot="Validation" S-Display-Name="Handover Averaging Signal Quality Hreqave" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="hoAveragingQualParamHreqave" size="2" value="$%hoAveragingQualParamHreqave#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td height="30" width="223">Hreqt</td>
+     <td height="30" width="57"><!--webbot bot="Validation" S-Display-Name="Handover Averaging Quality Hreqt" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="hoAveragingQualParamHreqt" size="2" value="$%hoAveragingQualParamHreqt#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td height="24" width="223">Weighting</td>
+     <td height="24" width="57"><select size="1" name="hoAveragingQualParamWeightingSelect">
+      <option value="1">1</option>
+      <option value="2" selected>2</option>
+      <option value="3">3</option>
+     </select></td>
+    </tr>
+  <input type="hidden" name="hoAveragingQualParamWeighting" value="$%hoAveragingQualParamWeighting#$">
+
+   </table>
+   </td>
+  </tr>
+ </table>
+ </center>
+</div>
+
+<p align="center"><input name="B1" type="submit" value="Submit" onclick="parseButtons(window.document.forms[0])">   <input name="Recall" type="button" value="Recall" onclick="window.location.reload()"> <input name="Reset" type="reset" value="Reset" onclick="presetButtons(window.document.forms[0])"> </p>
+</form>
+
+</body>
+
+</html>

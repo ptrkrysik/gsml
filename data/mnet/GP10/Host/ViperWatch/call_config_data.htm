@@ -1,0 +1,100 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Layer 3 (CCM) Timers</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+
+<SCRIPT Language="JavaScript">
+
+function PresetButtons(theForm)
+{
+	return true
+
+}
+
+function ParseForm(theForm)
+{	
+	return true
+
+} 
+
+</SCRIPT>
+
+<body onload="PresetButtons(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this);" name="rm_config_data">
+
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="384">
+      <tr>
+        <td width="446">
+        <h2 align="center">Layer 3 (CCM) Timers</h2>
+        <div align="center">
+          <table border="1" width="316">
+            <tr>
+              <td height="23" width="215" align="center"><b>Timer Name</b></td>
+              <td height="23" width="85" align="center">
+              <p style="padding-top: 0px; padding-bottom: 0px"><b>Value<br>
+              <font size="1">(in 10ms Units)</font></b></td>
+            </tr>
+            <tr>
+              <td height="23" width="215">Alerting received Timer<br>
+              (T301)</td>
+              <td height="23" width="85"><font face="Times New Roman"><input type="text" name="cc_alerting_T301" size="5" maxlenght="5"
+              value="$%cc_alerting_T301#$"></font></td>
+            </tr>
+            <tr>
+              <td height="20" width="215">Setup sent Timer<br>
+              (T303)</td>
+              <td height="20" width="85"><font face="Times New Roman"><input type="text" name="cc_setup_T303" size="5" maxlenght="5"
+              value="$%cc_setup_T303#$"></font></td>
+            </tr>
+            <tr>
+              <td height="23" width="215">Call Confirmed received Timer (T310)</td>
+              <td height="23" width="85"><font face="Times New Roman"><input type="text" name="cc_call_confirmed_T310" size="5" maxlenght="5"
+              value="$%cc_call_confirmed_T310#$"></font></td>
+            </tr>
+            <tr>
+              <td height="23" width="215">Connect sent Timer<br>
+              (T313)</td>
+              <td height="23" width="85"><font face="Times New Roman"><input type="text" name="cc_connect_T313" size="5" maxlenght="5"
+              value="$%cc_connect_T313#$"></font></td>
+            </tr>
+            <tr>
+              <td height="23" width="215">Disconnect sent Time<br>
+              (T305)</td>
+              <td height="23" width="85"><font face="Times New Roman"><input type="text" name="cc_disconnect_T305" size="5" maxlenght="5"
+              value="$%cc_disconnect_T305#$"></font></td>
+            </tr>
+            <tr>
+              <td height="23" width="215">Release sent Timer<br>
+              (T308)</td>
+              <td height="23" width="85"><font face="Times New Roman"><input type="text" name="cc_release_T308" size="5" maxlenght="5"
+              value="$%cc_release_T308#$"></font></td>
+            </tr>
+          </table>
+        </div>
+        <div align="center">
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"><input name="B2" type="submit" value="Submit"></td>
+              <td align="center"><input name="Recall1" type="button" value="Recall" onclick="window.location.reload()"></td>
+            </tr>
+          </table>
+        </div>
+        </td>
+      </tr>
+    </table>
+    </center>
+  </div>
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

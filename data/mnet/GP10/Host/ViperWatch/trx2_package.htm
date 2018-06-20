@@ -1,0 +1,213 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Second Transceiver Configuration</title>
+<base target="_self">
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/common.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/state.js"></SCRIPT>
+
+<SCRIPT language="JavaScript">
+function PresetForm(theForm)
+{
+   selectOption(theForm.basebandAdministrativeState_1Select, theForm.basebandAdministrativeState_1);
+   var j = "1"  // skip the first one
+   for (var i = "0"; i < theForm.channelCombination_1Select.length; i++)
+   {
+        j++  // Channel ID is not used
+        selectOption(theForm.channelCombination_1Select[i], theForm.elements[j++]);
+        selectOption(theForm.channelTsc_1Select[i], theForm.elements[j++]);
+        selectOption(theForm.channelAdministrativeState_1Select[i], theForm.elements[j++]);
+        j = j+3  // Operational State is not used
+    }
+    if (theForm.btsState.value == "0")
+    { 
+        disableAllAdminState(theForm);
+    } else if (theForm.basebandAdministrativeState_1Select.selectedIndex == "0") {
+        disableAllTimeSlotAdminState(theForm);
+    }
+    return true;
+} 
+
+function disableAllAdminState(theForm)
+{
+   theForm.basebandAdministrativeState_1Select.disabled = true;
+   disableAllTimeSlotAdminState(theForm);
+  
+}
+function disableAllTimeSlotAdminState(theForm)
+{
+   for (var i = 0; i < theForm.channelAdministrativeState_1Select.length; i++)
+   {
+      theForm.channelAdministrativeState_1Select[i].disabled = true;
+   }
+}
+function ParseForm(theForm)
+{
+   parseSelect(theForm.basebandAdministrativeState_1Select, theForm.basebandAdministrativeState_1);
+   var j = "1"
+   for (var i = 0; i < theForm.channelCombination_1Select.length; i++)
+   {
+       j++  // Channel ID is not used
+       parseSelect(theForm.channelCombination_1Select[i], theForm.elements[j++]);
+       parseSelect(theForm.channelTsc_1Select[i], theForm.elements[j++]);
+       parseSelect(theForm.channelAdministrativeState_1Select[i], theForm.elements[j++]);
+       j = j+3  // Operational State is not used
+   }
+   return true;
+} 
+function ChangeAll(theSelect, valueHolder, changeUnit, effectiveUnit, theParent, theParentName)
+{
+   var status = ConfirmAdminState(theSelect, valueHolder,  changeUnit, effectiveUnit, theParent, theParentName);
+   if (status)
+   {
+       theSelect.form.basebandAdministrativeState_1Select.options[theSelect.selectedIndex].selected = true;    
+       for (var i = 0; i < theSelect.form.channelAdministrativeState_1Select.length; i++)
+       {
+           theSelect.form.channelAdministrativeState_1Select[i].options[theSelect.selectedIndex].selected = true;
+           if(theSelect.selectedIndex == "1")
+           {
+             theSelect.form.channelAdministrativeState_1Select[i].disabled = false;
+           } else {
+              theSelect.form.channelAdministrativeState_1Select[i].disabled = true;
+           }
+                
+       }
+    } else {
+         theSelect.form.reset()  
+    } 
+    return true;
+} 
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form name="trx2_package" method="post" onsubmit="return ParseForm(this);">
+  <center>
+  <table border="4" bgcolor="#D6D3CE" width="569">
+    <tr>
+      <td width="553">
+        <h2 align="center">Second Transceiver Configuration</h2>
+        <center>
+        <table border="1">
+          <tr>
+            <td><b>Current State:</b>
+              <table border="0">
+                <tr>
+                  <td height="23" align="left">Administrative State:</td>
+                  <td height="23" align="left"><select name="basebandAdministrativeState_1Select" size="1" onchange="ChangeAll(this, this.form.basebandAdministrativeState_1, 'the second TRX', 'TRX', this.form.btsState.value, 'GP10 at BTS Basic Package');">
+                      <option value="0">Locked</option>
+                      <option value="1" selected>Unlocked</option>
+                      <option value="2">Shutting Down</option>
+                    </select></td>
+                </tr>
+                <tr>
+                  <td height="23" align="left">Operational State:</td>
+                  <td height="23" align="left">
+   						<script> displayState("$%basebandOperationalState_1#$") </script>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        </center><center>
+        <table border="1" width="100%">
+          <tr>
+            <th width="46" align="center" height="38"><strong>Time<br>
+              Slot</strong></th>
+            <th width="150" align="center" height="38"><strong>Channel<br>
+              Combination</strong></th>
+            <th width="95" align="center" height="38"><strong>Training Sequence</strong></th>
+            <th width="132" height="38">&nbsp;<strong>Administration<br>
+              State</strong></th>
+            <th width="97" height="38"><strong>Operational<br>
+              State</strong></th>
+          </tr>
+            <!$%createTable(channelIndex_1,*,,,,,channelIndex_1,channelID_1,channelCombination_1,channelFrequencyUsage_1,channelTsc_1,channelAdministrativeState_1,channelOperationalState_1)#$>
+
+          <input type="hidden" name="channelID_1.$%getInstance(channelIndex_1)#$" value="$%getInstance(channelIndex_1)#$"><input type="hidden" name="channelCombination_1.$%getInstance(channelIndex_1)#$" value="$%channelCombination_1#$"><input type="hidden" name="channelTsc_1.$%getInstance(channelIndex_1)#$" value="$%channelTsc_1#$"><input type="hidden" name="channelAdministrativeState_1.$%getInstance(channelIndex_1)#$" value="$%channelAdministrativeState_1#$">
+          <tr>
+            <td width="46" height="38">
+              <p align="center">$%getInstance(channelIndex_1)#$</td>
+            <td width="150" height="38"><select name="channelCombination_1Select" size="1">
+                <option value="1">TCH Full</option>
+                <option value="13">PDTCH</option>
+              </select></td>
+            <td width="95" height="38"><select name="channelTsc_1Select" size="1">
+                <option selected value="0">Use BCC</option>
+              </select></td>
+            <td width="132" height="38"><select name="channelAdministrativeState_1Select" size="1" onchange="ConfirmAdminState(this, this.form.elements[$%getInstance(channelIndex_1)#$*7+4], 'this time slot', 'time slot', this.form.basebandAdministrativeState_1Select.selectedIndex, 'second TRX');">
+                <option value="0">Locked</option>
+                <option value="1" selected>Unlocked</option>
+                <option value="2">Shutting Down</option>
+              </select></td>
+            <td width="97" height="38">
+  				<script language="JavaScript"> displayState("$%channelOperationalState_1#$") </script>
+            </td>
+          </tr>
+            <!$%endRow(channelIndex_1)#$>
+            <!$%REPEAT(channelIndex_1,2,8)#$>
+          <input type="hidden" name="channelID_1.$%getInstance(channelIndex_1)#$" value="$%getInstance(channelIndex_1)#$"><input type="hidden" name="channelCombination_1.$%getInstance(channelIndex_1)#$" value="$%channelCombination_1#$"><input type="hidden" name="channelTsc_1.$%getInstance(channelIndex_1)#$" value="$%channelTsc_1#$"><input type="hidden" name="channelAdministrativeState_1.$%getInstance(channelIndex_1)#$" value="$%channelAdministrativeState_1#$">
+          <tr>
+            <td width="46" height="38">
+              <p align="center">$%getInstance(channelIndex_1)#$</p>
+            </td>
+            <td width="150" height="38"><select name="channelCombination_1Select" size="1">
+                <option value="1">TCH Full</option>
+                <option value="13">PDTCH</option>
+              </select></td>
+            <td width="95" height="38"><select name="channelTsc_1Select" size="1">
+                <option selected value="0">Use BCC</option>
+              </select></td>
+            <td width="132" height="38"><select name="channelAdministrativeState_1Select" size="1" onchange="ConfirmAdminState(this, this.form.elements[$%getInstance(channelIndex_1)#$*7+4], 'this time slot', 'time slot', this.form.basebandAdministrativeState_1Select.selectedIndex, 'second TRX');">
+                <option value="0">Locked</option>
+                <option value="1" selected>Unlocked</option>
+                <option value="2">Shutting Down</option>
+              </select></td>
+            <td width="97" height="38">
+  				<script language="JavaScript"> displayState("$%channelOperationalState_1#$") </script>
+            </td>
+          </tr>
+            <!$%endRow(channelIndex_1)#$>
+
+            <!$%REPEAT(END)#$>
+            <!$%endTable(channelIndex_1)#$>
+
+          <input type="hidden" name="basebandAdministrativeState_1" value="$%basebandAdministrativeState_1#$">
+            
+            <!-- Fixed value -->
+          <input type="hidden" name="basebandTransceiverID_1" value="1"><input type="hidden" name="relatedRadioCarrier_1" value="1"><input type="hidden" name="btsState" value="$%bts_administrativeState#$">
+        </table>
+        </center><center>
+        <table border="0">
+          <tr>
+            <td align="center"></td>
+            <td align="center"></td>
+          </tr>
+          <tr>
+            <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+            <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()" title="Click this button to refresh the form."></td>
+          </tr>
+          <tr>
+            <td align="center"></td>
+            <td align="center"></td>
+          </tr>
+        </table>
+        </center>
+        </form>
+
+      </td>
+    </tr>
+  </table>
+  </center>
+
+</body>
+
+</html>

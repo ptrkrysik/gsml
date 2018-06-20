@@ -1,0 +1,54 @@
+
+The following files were 'scrubbed' from the archived Cisco codebase due to questions about re-distribution rights.
+
+
+Common\apm\include\msgDefs.h:// (c) Copyright JetCell 2000
+Common\apm\include\msgProc.h:// (c) Copyright JetCell 1998
+Common\apm\src\debug.cpp:// (c) Copyright JetCell 1998
+Common\bssgp\win32test\dbgout.cpp: *			Copyright JetCell, Inc. 1999-2000 All rights reserved						*
+Common\bssgp\win32test\dbgout.h: *			Copyright JetCell, Inc. 1999-2000 All rights reserved						*
+Common\cdr\include\FTClient.h:// (c) Copyright JetCell 2000
+Common\cdr\src_server\FTClient.cpp:// (c) Copyright JetCell 2000
+Common\Pm\src\socketutil.cpp:// (c) Copyright JetCell 1998 
+GP10\Dsp\Driver\Drv6x.c:/*  (C) Copyright 1997,1998 by DNA Enterprises, Inc.                          */
+GP10\Dsp\include\COMMON.H:/*  (C) Copyright 1997,1998 by DNA Enterprises, Inc.                          */
+GP10\Dsp\include\DMA_UTIL.H:/*  (C) Copyright 1997,1998 by DNA Enterprises, Inc.                          */
+GP10\Dsp\include\MCBSPDRV.H:/*  (C) Copyright 1997,1998 by DNA Enterprises, Inc.                          */
+GP10\Host\Alarm\Test\alarm_test.cpp:*  (C) Copyright 1999 JetCell Inc., CA, USA http://www.jetcell.com/
+GP10\Host\Cdc_bsp\ads860.h:/* Copyright 1984-1997 Wind River Systems, Inc. */
+GP10\Host\Cdc_bsp\ataDrv.c:/* Copyright 1989-1998 Wind River Systems, Inc. */
+GP10\Host\Cdc_bsp\cdcim.h:/* Copyright 1984-1997 Wind River Systems, Inc. */
+GP10\Host\Cdc_bsp\config.h:/* Copyright 1984-1997 Wind River Systems, Inc. */
+GP10\Host\Cdc_bsp\configdb.h: * Copyright 1984-1996 Wind River Systems, Inc.
+GP10\Host\Cdc_bsp\configNet.h:/* Copyright 1984-1998 Wind River Systems, Inc. */
+GP10\Host\Cdc_bsp\motfecend.c:/* Copyright 1989-1998 Wind River Systems, Inc. */
+GP10\Host\Cdc_bsp\sysLib.c:/* Copyright 1984-1997 Wind River Systems, Inc. */
+GP10\Host\Cdc_bsp\sysSerial.c:/* Copyright 1984-1996 Wind River Systems, Inc. */
+GP10\Host\Common_To_Host\include\logmodules.h: *            Copyright JetCell, Inc. 1999-2000 All rights reserved                     *
+GP10\Host\Common_To_Host\Logging\VCLOGGING.H: *	Copyright JetCell, Inc. All rights reserved											*
+GP10\Host\Common_To_Host\Logging\VcModules.h: *            Copyright JetCell, Inc. 1999-2000 All rights reserved                     *
+GP10\Host\Common_To_Host\TcpServer\TcpSrvApi.h:*  (C) Copyright 1999 JetCell Inc., CA, USA http://www.jetcell.com/
+GP10\Host\Http\include\enum_tab.h: *  Copyright (C) 1998 Rapid Logic, Inc.
+GP10\Host\Http\include\http_feedback.h:*  (C) Copyright 1999 JetCell Inc., CA, USA http://www.jetcell.com/
+GP10\Host\Http\include\options.h: *  Copyright (C) 1998 Rapid Logic, Inc.
+GP10\Host\Http\src\http_event.c:*  (C) Copyright 1999 JetCell Inc., CA, USA http://www.jetcell.com/
+GP10\Host\Http\src\http_feedback.c:*  (C) Copyright 1999 JetCell Inc., CA, USA http://www.jetcell.com/
+GP10\Host\Http\src\http_main.c:*  (C) Copyright 1999 JetCell Inc., CA, USA http://www.jetcell.com/
+GP10\Host\Http\src\http_oamOperation.c:*  (C) Copyright 1999 JetCell Inc., CA, USA http://www.jetcell.com/
+GP10\Host\Http\src\http_post.c:*  (C) Copyright 1999 JetCell Inc., CA, USA http://www.jetcell.com/
+GP10\Host\Http\src\http_security.c:*  (C) Copyright 1999 JetCell Inc., CA, USA http://www.jetcell.com/
+GP10\Host\Http\src\ignition.c: *  Copyright (C) 1999 Rapid Logic, Inc.
+GP10\Host\Http\src\main.c:*  Copyright (C) 1998 Rapid Logic, Inc.
+GP10\Host\l1proxy\include\cdcim.h:/* Copyright 1984-1997 Wind River Systems, Inc. */
+GP10\Host\logging\src\l3MsLog.cpp:// (c) Copyright JetCell 1998
+GP10\Host\TcpServer\Include\queue.h:*  (C) Copyright 1999 JetCell Inc., CA, USA http://www.jetcell.com/
+GP10\Host\TcpServer\Src\queue.cpp:*  (C) Copyright 1999 JetCell Inc., CA, USA http://www.jetcell.com/
+GP10\Host\TcpServer\Src\TcpServer.cpp:*  (C) Copyright 1999 JetCell Inc., CA, USA http://www.jetcell.com/
+GP10\Host\TimeSync\src\time_userTime.cpp:*  (C) Copyright 1999 JetCell Inc., CA, USA http://www.jetcell.com/
+GP10\Host\voip\include\gkadd.h:* Copyright RADVision 1998.                                                     *
+GP10\Host\voip\include\gkcci.h:* Copyright RADVision 1998.                                                     *
+GP10\Host\voip\include\gklrqi.h:* Copyright RADVision 1998.                                                     *
+GP10\Host\voip\include\gkmain.h:* Copyright RADVision 1998.                                                     *
+GP10\Host\voip\include\gkrgi.h:* Copyright RADVision 1998.                                                     *
+GP10\Host\voip\include\gkstorage.h:* Copyright RADVision 1998.                                                     *
+GP10\Host\voip\include\gkTypes.h:* Copyright RADVision 1998.                                                     *

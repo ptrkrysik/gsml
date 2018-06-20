@@ -1,0 +1,69 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Clock Source Frequencies</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" >
+
+var index = 1;
+function displayIndex()
+{
+	document.write(" " + index++ + " ");
+}
+
+</Script>
+
+
+<body onload="$%reloadTopframe#$" >
+<form method="POST" cellpadding="0" name="apaClockSourceFrequencyTable">
+
+<div align="center">
+  <table border="4" bgcolor="#D6D3CE">
+    <tr>
+      <td>
+    <h3 align="center">
+      &nbsp;Clock Source Frequencies</h3>
+    <div align="center">
+      <center>
+      <table border="1" width="97%">
+        <tr>
+   <td height="19" align="center" >Index&nbsp;</td>
+   <td height="19" align="center" >ARFCN</td>
+  </tr>
+  <! $%createTable(apaClockSourceFrequencyIndex,*,,,,,apaClockSourceFrequencyIndex,apaClockSourceFrequencyArfcn)#$ >
+  <! $%REPEAT(apaClockSourceFrequencyIndex,1,64)#$ >   
+  <tr>
+  <td align="center"><script> displayIndex() </script> </td>
+  <td align="center">$%apaClockSourceFrequencyArfcn#$</td>
+  </tr>  
+    
+  <! $%endRow(apaClockSourceFrequencyIndex)#$ >
+  <! $%REPEAT(END)#$ >
+  <! $%endTable(apaClockSourceFrequencyIndex)#$>    
+
+  </table>
+   </center>
+   </div>
+  <center>
+  <div align="center">
+    <table border="0" cellpadding="3">
+      <tr>
+        <td align="center"><input name="B2" type="submit" value="Submit">  </td>
+        <td align="center">  <input name="Recall1" type="button" value="Recall" onclick="window.location.reload()"></td>
+      </tr>
+    </table>
+  </div>
+    </td>
+    </tr>
+  </table>
+</div>
+
+</form>
+
+</body>
+

@@ -1,0 +1,217 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Cell Control Measurement Parameters</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/common.js"></SCRIPT>
+<script language="JavaScript">
+
+function displayTime(utctime)
+{
+
+	var gmtDate = new Date(utctime*1000);
+	document.write(gmtDate.toLocaleString());
+}
+
+
+function PresetForm(theForm)
+{
+	// clickCheckBox(theForm.apaEnableCheck, theForm.apaEnable);
+}
+
+function ParseForm(theForm)
+{
+	// parseCheckBox(theForm.apaEnableCheck, theForm.apaEnable);
+}
+</script>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" name="ApaParameters">
+
+  <input name="apaEnable" type="hidden" value="$%apaEnable#$">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="491">
+      <tr>
+        <td height="10" valign="middle" width="945">
+        <h2 align="center">Cell Control Measurement Parameters</h2>
+    </center>
+        <table border="0" width="100%">
+          <tr>
+            <td width="100%">
+            <div align="center">
+              <table border="0">
+                <tr>
+                  <td align="left">
+                  <p align="left"><b>Start Time:</b></td>
+    <center>
+                  <td>
+                  <i>
+                  <script> displayTime("$%meanPCHAGCHQueueLength#$") </script>
+                  </i>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="left"><b>Duration:</b></td>
+                  <td><i>Last Completed 15-Minute Measurement Interval</i></td>
+                </tr>
+              </table>
+            </div>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%">
+            <div align="center">
+              <table border="1" cellspacing="0" cellpadding="0" width="90%">
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap><b>Parameters</b></td>
+                  <td valign="middle" align="left" width="20%" nowrap><b>Values</b></td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Attempted transmission of paging messages :</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%attTransOfPagingMessagesThePCH#$</td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Unsuccessful transmission of paging messages:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%unsuccTransOfPagingMessagesThePCH#$</td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Attempted
+                    immediate assignment procedures:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%attImmediateAssingProcs#$</td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Successful
+                    immediate assignment procedures:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%succImmediateAssingProcs#$</td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Mean duration of a successful paging procedure:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>
+                    <script language="JavaScript"> cvtTicks2Sec("$%meanDurationOfSuccPagingProcs#$"); </script>
+                </td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Number of available TCHs:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%nbrOfAvailableTCHs#$</td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Mean number of busy
+                    TCHs:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%meanNbrOfBusyTCHs#$</td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Maximum number of busy
+                    TCHs:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%maxNbrOfBusyTCHs#$</td>
+                </tr>
+                <!---------------- Not Used
+                <tr>
+                  <td valign="middle" align="left" height="10" width="80%"><font size="2">Mean number of idle TCHs per interference band:</font></td>
+                  <td valign="middle" align="center" width="20%">$%meanNbrOfIdleTCHsPerInterferenceBand#$</td>
+                </tr>
+                ---------------------->
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Attempted TCH seizures:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%attTCHSeizures#$</td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Successful TCH seizures:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%succTCHSeizures#$</td>
+                </tr>
+                 <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Attempted TCH seizures meeting<br>
+                  an TCH blocked state:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%attTCHSeizuresMeetingTCHBlockedState#$</td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>All available TCH allocated time:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>
+                   <script language="JavaScript"> cvtTicks2Sec("$%allAvailableTCHAllocatedTime#$"); </script>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Mean TCH busy
+                    time</td>
+                  <td valign="middle" align="left" width="20%" nowrap>
+                    <script language="JavaScript"> cvtTicks2Sec("$%meanTCHBusyTime#$"); </script>
+                 </td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Number of lost radio links while using a
+                    TCH:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%nbrOfLostRadioLinksTCH#$</td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Number of available SDCCHs:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%nbrOfAvailableSDCCHs#$</td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Mean number of busy
+                    SDCCHs:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%meanNbrOfBusySDCCHs#$</td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Maximum number of busy
+                    SDCCHs:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%maxNbrOfBusySDCCHs#$</td>
+                </tr>
+                <tr> 
+                  <td valign="middle" align="left" width="80%" nowrap>Attempted SDCCH seizures meeting<br>
+                  an SDCCH blocked state:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%attSDCCHSeizuresMeetingSDCCHBlockedState#$</td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>All available SDCCH allocated time:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>
+                     <script language="JavaScript"> cvtTicks2Sec("$%allAvailableSDCCHAllocatedTime#$"); </script>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" width="80%" nowrap>Number of lost radio links while using an
+                    SDCCH:</td>
+                  <td valign="middle" align="left" width="20%" nowrap>$%nbrOfLostRadioLinksSDCCH#$</td>
+                </tr>
+                <!------------------- Not used
+                <tr>
+                  <td valign="middle" align="left" height="10" width="80%"><font size="2">Relative time downlink power control at maximum:</font></td>
+                  <td valign="middle" align="center" width="20%">$%relativeTimeDLPowerControlAtMax#$</td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" height="10" width="80%"><font size="2">Relative time uplink power control at maximum:</font></td>
+                  <td valign="middle" align="center" width="20%">$%relativeTimeULPowerControlAtMax#$</td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" height="10" width="80%"><font size="2">Successful Internal Handovers, intra-CELL:</font></td>
+                  <td valign="middle" align="center" width="20%">$%succInternalHDOsIntraCell#$</td>
+                </tr>
+                <tr>
+                  <td valign="middle" align="left" height="10" width="80%"><font size="2">Unsuccessful Internal Handovers, intra-CELL:</font></td>
+                  <td valign="middle" align="center" width="20%">$%unsuccInternalHDOsIntraCell#$</td>
+                </tr>
+                --------------------------->
+              </table>
+            </div>
+            </td>
+          </tr>
+        </table>
+        <div align="center">
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"></td>
+            </tr>
+          </table>
+        </div>
+        </td>
+      </tr>
+    </table>
+</form>
+
+</body>

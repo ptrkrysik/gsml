@@ -1,0 +1,1230 @@
+
+      /////   /////   /////   /////   /////       |
+     /////   /////   /////   /////   /////        |
+    /////   /////   /////   /////   /////         |
+    /////   /////   /////   /////   /////         |
+   //////  //////  //////  //////  //////         |     
+   //////  //////  //////  //////  //////         |     T  O  R  N  A  D  O 
+    /////   /////   /////   /////   /////         |                        
+    /////   /////   /////   /////   /////         |   	                   
+     /////   /////   /////   /////   /////        |   	Development  System
+      ////    ////    ////    ////    ////        |                        
+       ////    ////    ////    ////    ////       |   	                   
+        ////    ////    ////    ////    ////      |   	Host  Based   Shell
+         ////    ////    ////    ////    ////     |   	                   
+          ////    ////    ////    ////    ////    |   	                   
+           ///     ///     ///     ///     ///    |   	Version  1.0.1
+           ///     ///     ///     ///     ///    |	
+            //      //      //      //      //    |
+            //      //      //      //      //    |
+            //      //      //      //      //    |
+           //      //      //      //      //     |
+
+      Copyright Wind River Systems, Inc., 1995-1997
+
+C++ Constructors/Destructors Strategy is AUTOMATIC
+
+-> reboot
+Rebooting...
+Waiting to attach to target agent............
+
+      /////   /////   /////   /////   /////       |
+     /////   /////   /////   /////   /////        |
+    /////   /////   /////   /////   /////         |
+    /////   /////   /////   /////   /////         |
+   //////  //////  //////  //////  //////         |     
+   //////  //////  //////  //////  //////         |     T  O  R  N  A  D  O 
+    /////   /////   /////   /////   /////         |                        
+    /////   /////   /////   /////   /////         |   	                   
+     /////   /////   /////   /////   /////        |   	Development  System
+      ////    ////    ////    ////    ////        |                        
+       ////    ////    ////    ////    ////       |   	                   
+        ////    ////    ////    ////    ////      |   	Host  Based   Shell
+         ////    ////    ////    ////    ////     |   	                   
+          ////    ////    ////    ////    ////    |   	                   
+           ///     ///     ///     ///     ///    |   	Version  1.0.1
+           ///     ///     ///     ///     ///    |	
+            //      //      //      //      //    |
+            //      //      //      //      //    |
+            //      //      //      //      //    |
+           //      //      //      //      //     |
+
+      Copyright Wind River Systems, Inc., 1995-1997
+
+C++ Constructors/Destructors Strategy is AUTOMATIC
+
+-> pwd
+K:/Workdirs/Integration/RIL3/src
+value = 0 = 0x0
+-> cd "../../pre-alpha"
+value = 0 = 0x0
+-> 
+-> 
+-> i
+  NAME        ENTRY       TID    PRI   STATUS      PC       SP     ERRNO  DELAY
+---------- ------------ -------- --- ---------- -------- -------- ------- -----
+tLogTask   _logTask      1fc08fc   0 PEND         167bdb  1fc0868       0     0
+tExcTask   _excTask      1fc3214   0 PEND         167bdb  1fc3184       0     0
+tShell     _shell        1f99740   1 PEND         11582c  1f99420       0     0
+tWdbTask   0x14e284      1f9a8e8   3 READY        16780d  1f9a7d8       0     0
+tNetTask   _netTask      1fbb664  50 READY        12a037  1fbb5fc       0     0
+value = 0 = 0x0
+-> pwd
+K:/Workdirs/Integration/pre-alpha
+value = 0 = 0x0
+-> <redirect
+vf0=open("/vio/0", 2, 0)
+new symbol "vf0" added to symbol table.
+vf0 = 0x3956fc: value = 6 = 0x6
+ioGlobalStdSet(0, vf0)
+value = 0 = 0x0
+ioGlobalStdSet(1, vf0)
+value = 1 = 0x1
+ioGlobalStdSet(2, vf0)
+value = 2 = 0x2
+-> <integ
+#
+# load all the module-init files (with global variables)
+#
+ld < K:/Workdirs/integration/l1proxy/I80486/l1proxy_init.out
+value = 27848716 = 0x1a8f00c
+ld < K:/Workdirs/integration/lapdm/I80486/lapdm_init.out
+value = 27849328 = 0x1a8f270
+ld < K:/Workdirs/integration/mm/I80486/mmm_init.out
+value = 27849940 = 0x1a8f4d4
+ld < K:/Workdirs/integration/cc/I80486/ccm_init.out
+value = 27850552 = 0x1a8f738
+ld < K:/Workdirs/integration/rm/I80486/rm_init.out
+value = 27851164 = 0x1a8f99c
+
+#
+# load all the module-api files (used by other modules)
+#
+ld < K:/Workdirs/integration/lapdm/I80486/lapdm_api.out
+value = 27851776 = 0x1a8fc00
+ld < K:/Workdirs/integration/rm/I80486/rm_api.out
+value = 12192372 = 0xba0a74
+
+#
+# load all the core module files next
+#
+ld < K:/Workdirs/integration/l1proxy/I80486/l1proxy.out
+value = 12192984 = 0xba0cd8
+ld < K:/Workdirs/integration/lapdm/I80486/lapdm.out
+value = 12193596 = 0xba0f3c
+ld < K:/Workdirs/integration/ril3/I80486/ril3.out
+value = 12233552 = 0xbaab50
+ld < K:/Workdirs/integration/jcc/I80486/jcc.out
+value = 12234164 = 0xbaadb4
+ld < K:/Workdirs/integration/mm/I80486/mmm.out
+value = 12234776 = 0xbab018
+ld < K:/Workdirs/integration/cc/I80486/ccm.out
+value = 12239856 = 0xbac3f0
+ld < K:/Workdirs/integration/rm/I80486/rm.out
+value = 12257972 = 0xbb0ab4
+
+
+#
+# Initialization of all modules
+#
+CNI_LAPDM_Initialization 
+value = 33050968 = 0x1f85158
+#cni_testInit
+
+#create a lapdm instance channel type 0, trx 0, channel num 1, link 1
+#CNI_LAPDM_Create_Instance(0, 0 , 0x2000, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x2800, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x3000, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x3800, 0)
+
+
+#L3 register a lapdm instance oid 0, sapi 0, layer3_id 10, and a call back function
+#CNI_LAPDM_Instance_Registration(0, 0, 0x20, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(1, 0, 0x28, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(2, 0, 0x30, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(3, 0, 0x38, cni_l3CallBack)
+
+# Start MM Task and print its data
+mmInit
+value = 33029640 = 0x1f7fe08
+mmDataPrint
+MM Entry: -1, -1, 0, 0, 0 
+MM Entry: 0, 0, 0, 0, 0 
+MM Entry: 0, 1, 33050944, 65535, 255 
+MM Entry: 0, 0, 0, 0, 0 
+MM Entry: 0, 0, 0, 0, 1 
+MM Entry: -1, -1, 0, 0, 0 
+MM Entry: 0, 0, 0, 0, 0 
+MM Entry: 0, 1, 33050816, 65535, 255 
+MM Entry: 0, 0, 0, 0, 0 
+MM Entry: 0, 0, 0, 0, 1 
+value = 25 = 0x19
+
+
+# Start RRM Task
+rm_Task
+ENTER-rm_Go
+ENTER-rm_Main
+ENTER-rm_InitAll
+ENTER-sys_Init
+ENTER-sys_CreateMsgQs
+ENTER-sys_StartTasks
+ENTER-rm_WaitForL1Bootstrap: Entering...
+ENTER-rm_WaitForL1Rsp
+value = 33040848 = 0x1f829d0
+
+# 
+initL1
+value = 32771356 = 0x1f40d1c
+newInitDsp
+value = 589833 = 0x90009
+#hpi2dsp(&cx6,0,0x3800)
+newGo
+value = -125829120 = 0xf8800000
+
+-> From DSP
+01f48e58: 10 20 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+ENTER-rm_RetrvConfigFromOam
+ENTER-rm_PopulateSI2
+ENTER-rm_PopulateSI3
+ENTER-rm_PopulateSI4
+ENTER-rm_PopulateSI5
+ENTER-rm_PopulateSI6
+ENTER-rm_InitRm
+ENTER-rm_InitLAPDm
+CNI_LAPDM_Create_Instance: channelType 4, trx 0, channel 32768, link 32
+T_CNI_LAPDM_Channel::Assign , oid 0, gsmChannelType
+CNI_LAPDM_Instance_Registration: oid 0, sapi, 0, layer3_id 0, p_callback_function 368dbc
+CNI_LAPDM_Create_Instance: channelType 7, trx 0, channel 34816, link CNI_LAPDM_Find_LAPDM_ 
+OID: LAPDm OID not found (trx=0x320
+,channel=0xT_CNI_LAPDM_Channel::Assign , oid 20001,link=0x, gsmChannelType
+0CNI_LAPDM_Instance_Registration: oid )
+1CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x, sapi, 00, channel 0x, layer3_id 20000, l 
+ink 0x, p_callback_function 0368dbc
+
+0CNI_LAPDM_Create_Instance: channelType 72 , trx 000, channel  25600, link 00 
+0T_CNI_LAPDM_Channel::Assign , oid 02 , gsmChannelType
+0CNI_LAPDM_Create_Instance: channelType 21 , trx 003, channel  25600, lin0k  640
+0T_CNI_LAPDM_Channel::Assign , oid  320, gsmChannelType
+ CNI_LAPDM_Instance_Registration: oid 020, sapi,  00, layer3_id 00 , p_callback_function 
+368dbc
+
+CNI_LAPDM_Instance_Registration: oid 3, sapi, 0, layer3_id 0, p_callback_function 368dbc
+CNI_LAPDM_Instance_Registration: oid 3, sapi, 3, layer3_id 0, p_callback_function 368dbc
+CNI_LAPDM_Create_Instance: channelType 2, trx 0, channel 3072, link 0
+T_CNI_LAPDM_Channel::Assign , oid 4, gsmChannelType
+CNI_LAPDM_Create_Instance: channelType 1, trx 0, channel CNI_LAPDM_Find_LAPDM_OID: LAPDm O 
+ID not found (trx=0x30720, link ,channel=0x642800
+,link=0xT_CNI_LAPDM_Channel::Assign , oid 05)
+, gsmChannelType
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0xCNI_LAPDM_Instance_Registration: oid 04, ch 
+annel 0x, sapi, 28000, link 0x, layer3_id 00
+, p_callback_function 0368dbc7
+ CNI_LAPDM_Instance_Registration: oid 050, sapi,  00, layer3_id 00 , p_callback_function 0 
+368dbc0
+ CNI_LAPDM_Instance_Registration: oid 052, sapi,  30, layer3_id 30 , p_callback_function 0 
+368db0c 
+0CNI_LAPDM_Create_Instance: channelType 00 , trx 280 , channel 081920, link  00
+0T_CNI_LAPDM_Channel::Assign , oid  6
+, gsmChannelType
+
+CNI_LAPDM_Create_Instance: channelType CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx= 
+0x10, trx ,channel=0x03000, channel ,link=0x81920, link )
+64CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x
+0T_CNI_LAPDM_Channel::Assign , oid , channel 0x73000, gsmChannelType
+, link 0xCNI_LAPDM_Instance_Registration: oid 06
+, sapi, 007, layer3_id  00, p_callback_function 0368dbc 
+0CNI_LAPDM_Instance_Registration: oid 06 , sapi, 030, layer3_id  00, p_callback_function 2 
+368dbc 
+0CNI_LAPDM_Instance_Registration: oid 37 , sapi, 000, layer3_id  00, p_callback_function 0 
+368dbc 
+30CNI_LAPDM_Create_Instance: channelType  00, trx 00 , channel 0102400, link  0
+
+
+T_CNI_LAPDM_Channel::Assign , oid CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x80, 
+ gsmChannelType
+,channel=0xCNI_LAPDM_Create_Instance: channelType 38001,link=0x, trx 00)
+, channel CNI_LAPDM_Ph_Callback lapdm oid is null, trx10240 0x, link 064, channel 0x
+3800T_CNI_LAPDM_Channel::Assign , oid , link 0x90, gsmChannelType
+
+CNI_LAPDM_Instance_Registration: oid 087, sapi,  00, layer3_id 00 , p_callback_function 03 
+68dbc0
+ CNI_LAPDM_Instance_Registration: oid 080, sapi,  30, layer3_id 20 , p_callback_function 0 
+368dbc3
+ CNI_LAPDM_Instance_Registration: oid 090, sapi,  00, layer3_id 00 , p_callback_function 3 
+8368dbc 
+0CNI_LAPDM_Create_Instance: channelType 00 , trx 000, channel  12288
+, link 
+0CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not fo
+und (trx=0xT_CNI_LAPDM_Channel::Assign , oid 010,channel=0x, gsmChannelType
+3000CNI_LAPDM_Create_Instance: channelType ,link=0x10, trx )
+0CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x, channel 012288, channel 0x, link 300064, 
+ link 0x
+0T_CNI_LAPDM_Channel::Assign , oid 
+110, gsmChannelType
+7CNI_LAPDM_Instance_Registration: oid  100, sapi, 00 , layer3_id 000, p_callback_function  
+ 368dbc0
+0CNI_LAPDM_Instance_Registration: oid  100, sapi, 23 , layer3_id 003, p_callback_function  
+ 368dbc0
+0CNI_LAPDM_Instance_R egistration: oid 0110, sapi,  030, layer3_id  00, p_callback_functio 
+n 0368dbc 
+0CNI_LAPDM_Create_Instance: channelType 00 , trx 
+0
+, channel CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x143360, link ,channel=0x038 
+00
+,link=0xT_CNI_LAPDM_Channel::Assign , oid 012)
+, gsmChannelType
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0xCNI_LAPDM_Create_Instance: channelType 01,  
+channel 0x, trx 38000, link 0x, channel 014336
+, link 0647
+ T_CNI_LAPDM_Channel::Assign , oid 0130, gsmChannelType
+ CNI_LAPDM_Instanc0e_Registration: oid 012 , sapi, 000, layer3_id  00, p_callback_function 
+ 2368dbc 
+0CNI_LAPDM_Instance_Registration: oid 312 , sapi, 030, layer3_id  00, p_callback_function  
+0368dbc 
+38CNI_LAPDM_Instance_Registration: oid  130, sapi, 00 , layer3_id 000, p_callback_function 
+  368dbc
+
+
+ENTER-rm_InitIRT
+ENTER-rm_InitL1
+ENTER-rm_ConfigTrx
+ENTER-rm_SendTrxConfigToTrx: Entering...
+ENTER-rm_WaitForL1Rsp
+send to dsp:
+01f408ac: 07 00 00 00 10 15 00 00 02 00 00 ee ee ee ee ee 
+01f408bc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f408cc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f408dc: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+sending 1 messages
+From DSP
+01f48e58: 10 16 00 00 3a 01 01 00 40 00 00 00 07 00 00 00 
+ENTER-rm_SendSlotActivateToTrx: Entering...
+ENTER-rm_WaitForSlotActivateRsp: Entering...
+ENTER-rm_WaitForL1Rsp
+send to dsp:
+01f408ac: 06 00 00 00 10 17 00 00 00 05 00 ee ee ee ee ee 
+01f408bc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f408cc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f408dc: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 20 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 28 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 30 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 38 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 20 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 28 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 30 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 38 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 80 00 20 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 88 00 20 
+
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x9000,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x9000, link 0x20
+07 00 00 00 02 01 00 00 90 00 20 
+
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x9000,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x9000, link 0x20
+07 00 00 00 02 01 00 00 90 00 20 
+
+From DSP
+01f48e58: 10 18 00 00 00 01 01 00 40 00 00 00 05 00 00 00 
+ENTER-rm_SendSlotActivateToTrx: Entering...
+ENTER-rm_WaitForSlotActivateRsp: Entering...
+send to dsp:ENTER-rm_WaitForL1Rsp
+
+01f408ac: 06 00 00 00 10 17 00 00 02 01 00 ee ee ee ee ee 
+01f408bc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f408cc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f408dc: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0a 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0a 00 40 
+
+From DSP
+01f48e58: 10 18 00 00 02 01 01 00 47 00 00 00 07 00 00 00 
+ENTER-rm_SendSlotActivateToTrx: Entering...
+ENTER-rm_WaitForSlotActivateRsp: Entering...
+ENTER-rm_WaitForL1Rsp
+send to dsp:
+01f408ac: 06 00 00 00 10 17 00 00 04 01 00 ee ee ee ee ee 
+01f408bc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f408cc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f408dc: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0c 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0c 00 40 
+
+From DSP
+01f48e58: 10 18 00 00 04 d8 00 02 02 00 00 00 80 00 00 00 
+SLOT ACTIVATION FINISHED
+ENTER-rm_SendSetUGainToTrx: Entering...
+ENTER-rm_SendSetDGainToTrx: Entering...
+ENTER-rm_SendTuneSynthToTrx: Entering...
+ENTER-rm_SendConfigFpgaDelayToTrx: Entering...
+CONFIG TRX/SLOTS FINISHED
+End of rm_SendSynchInfoToBcchTrx()
+ENTER-rm_SendAllSystemInfosToBcchTrx
+ENTER-rm_SendSystemInfo2ToBcchTrx
+ENTER-rm_SendSystemInfo3ToBcchTrx
+send to dsp:ENTER-rm_SendSystemInfo4ToBcchTrx
+
+End of rm_SendAllSystemInfosToBcchTrx, bcchTrx=001f408ac
+: ENTER-rm_SendSacchFillingToTrx
+0ENTER-rm_SendSacchFillingToTrx
+5End of rm_SendSacchFillingSI5 and SI6
+ STAY in RM_MAIN while(1) loop
+00 00 00 10 10 00 00 00 01 00 ee ee ee ee ee 
+01f408bc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f408cc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f408dc: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f408ec: 05 00 00 00 10 11 00 00 00 01 00 ee ee ee ee ee 
+01f408fc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f4090c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f4091c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f4092c: 07 00 00 00 10 12 00 00 00 00 00 ee ee ee ee ee 
+01f4093c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f4094c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f4095c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f4096c: 07 00 00 00 10 12 00 00 01 00 00 ee ee ee ee ee 
+01f4097c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f4098c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f4099c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f409ac: 07 00 00 00 10 12 00 00 02 00 00 ee ee ee ee ee 
+01f409bc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f409cc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f409dc: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f409ec: 07 00 00 00 10 12 00 00 03 00 00 ee ee ee ee ee 
+01f409fc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f40a0c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f40a1c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f40a2c: 08 00 00 00 10 14 00 00 00 00 00 00 ee ee ee ee 
+01f40a3c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f40a4c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f40a5c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f40a6c: 22 00 00 00 0c 00 11 00 80 00 02 17 16 06 1a 8e 
+01f40a7c: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 
+01f40a8c: 01 04 08 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+01f40a9c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+sending 8 messages
+
+-> 
+-> <kill
+td lapdm_phserver
+value = 0 = 0x0
+td lapdm_dlserver
+value = 0 = 0x0
+td mmMain
+value = 0 = 0x0
+td rmTask
+value = 0 = 0x0
+td tDspUp
+undefined symbol: tDspUp
+-> i
+  NAME        ENTRY       TID    PRI   STATUS      PC       SP     ERRNO  DELAY
+---------- ------------ -------- --- ---------- -------- -------- ------- -----
+tLogTask   _logTask      1fc08fc   0 PEND         167bdb  1fc0868       0     0
+tExcTask   _excTask      1fc3214   0 PEND         167bdb  1fc3184       0     0
+tShell     _shell        1f99740   1 PEND         11582c  1f99420       0     0
+tWdbTask   0x14e284      1f9a8e8   3 READY        16780d  1f9a7d8       0     0
+tNetTask   _netTask      1fbb664  50 READY        12a037  1fbb5fc       0     0
+L1TaskDn   taskDspDn(vo  1f40d1c 100 PEND         167bdb  1f4085c       0     0
+L1TaskUp   taskDspUp(vo  1f48ec4 100 PEND         11582c  1f48e30       0     0
+value = 0 = 0x0
+-> td L1TaskDn
+value = 0 = 0x0
+-> td L1TaskUp
+value = 0 = 0x0
+-> <integ 
+#
+# load all the module-init files (with global variables)
+#
+ld < K:/Workdirs/integration/l1proxy/I80486/l1proxy_init.out
+value = 27848716 = 0x1a8f00c
+ld < K:/Workdirs/integration/lapdm/I80486/lapdm_init.out
+value = 27849328 = 0x1a8f270
+ld < K:/Workdirs/integration/mm/I80486/mmm_init.out
+value = 27849940 = 0x1a8f4d4
+ld < K:/Workdirs/integration/cc/I80486/ccm_init.out
+value = 27850552 = 0x1a8f738
+ld < K:/Workdirs/integration/rm/I80486/rm_init.out
+value = 27851164 = 0x1a8f99c
+
+#
+# load all the module-api files (used by other modules)
+#
+ld < K:/Workdirs/integration/lapdm/I80486/lapdm_api.out
+value = 27851776 = 0x1a8fc00
+ld < K:/Workdirs/integration/rm/I80486/rm_api.out
+value = 12192372 = 0xba0a74
+
+#
+# load all the core module files next
+#
+ld < K:/Workdirs/integration/l1proxy/I80486/l1proxy.out
+value = 12192984 = 0xba0cd8
+ld < K:/Workdirs/integration/lapdm/I80486/lapdm.out
+value = 12193596 = 0xba0f3c
+ld < K:/Workdirs/integration/ril3/I80486/ril3.out
+value = 12233552 = 0xbaab50
+ld < K:/Workdirs/integration/jcc/I80486/jcc.out
+value = 12234164 = 0xbaadb4
+ld < K:/Workdirs/integration/mm/I80486/mmm.out
+value = 32045856 = 0x1e8fb20
+ld < K:/Workdirs/integration/cc/I80486/ccm.out
+value = 32046468 = 0x1e8fd84
+ld < K:/Workdirs/integration/rm/I80486/rm.out
+value = 12251360 = 0xbaf0e0
+
+
+#
+# Initialization of all modules
+#
+CNI_LAPDM_Initialization 
+value = 33065660 = 0x1f88abc
+#cni_testInit
+
+#create a lapdm instance channel type 0, trx 0, channel num 1, link 1
+#CNI_LAPDM_Create_Instance(0, 0 , 0x2000, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x2800, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x3000, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x3800, 0)
+
+
+#L3 register a lapdm instance oid 0, sapi 0, layer3_id 10, and a call back function
+#CNI_LAPDM_Instance_Registration(0, 0, 0x20, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(1, 0, 0x28, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(2, 0, 0x30, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(3, 0, 0x38, cni_l3CallBack)
+
+# Start MM Task and print its data
+mmInit
+value = 32763220 = 0x1f3ed54
+mmDataPrint
+MM Entry: -1, -1, 0, 0, 0 
+MM Entry: 0, 0, 0, 0, 0 
+MM Entry: 0, 1, 32784524, 65535, 255 
+MM Entry: 0, 0, 0, 0, 0 
+MM Entry: 0, 0, 0, 0, 1 
+MM Entry: -1, -1, 0, 0, 0 
+MM Entry: 0, 0, 0, 0, 0 
+MM Entry: 0, 1, 32784396, 65535, 255 
+MM Entry: 0, 0, 0, 0, 0 
+MM Entry: 0, 0, 0, 0, 1 
+value = 25 = 0x19
+
+
+# Start RRM Task
+rm_Task
+ENTER-rm_Go
+ENTER-rm_Main
+ENTER-rm_InitAll
+ENTER-sys_Init
+ENTER-sys_CreateMsgQs
+ENTER-sys_StartTasks
+ENTER-rm_WaitForL1Bootstrap: Entering...
+ENTER-rm_WaitForL1Rsp
+value = 32774428 = 0x1f4191c
+
+# 
+initL1
+value = 32657804 = 0x1f2518c
+newInitDsp
+value = 589833 = 0x90009
+#hpi2dsp(&cx6,0,0x3800)
+newGo
+value = -125829120 = 0xf8800000
+
+-> From DSP
+01f2d2c8: 10 20 00 00 20 00 00 01 01 00 00 00 00 00 01 01 
+ENTER-rm_RetrvConfigFromOam
+ENTER-rm_PopulateSI2
+ENTER-rm_PopulateSI3
+ENTER-rm_PopulateSI4
+ENTER-rm_PopulateSI5
+ENTER-rm_PopulateSI6
+ENTER-rm_InitRm
+ENTER-rm_InitLAPDm
+CNI_LAPDM_Create_Instance: channelType 4, trx 0, channel 32768, link 32
+T_CNI_LAPDM_Channel::Assign , oid 0, gsmChannelType
+CNI_LAPDM_Instance_Registration: oid 0, sapi, 0, layer3_id 0, p_callback_function 368dbc
+CNI_LAPDM_Create_Instance: channelType 7, trx 0, channel 34816, link CNI_LAPDM_Find_LAPDM_ 
+OID: LAPDm OID not found (trx=0x320
+,channel=0xT_CNI_LAPDM_Channel::Assign , oid 20001,link=0x, gsmChannelType
+0CNI_LAPDM_Instance_Registration: oid )
+1CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x, sapi, 00, channel 0x, layer3_id 20000, l 
+ink 0x, p_callback_function 0368dbc
+
+0CNI_LAPDM_Create_Instance: channelType 72 , trx 000, channel  25600, link 00 
+0T_CNI_LAPDM_Channel::Assign , oid 02 , gsmChannelType
+0CNI_LAPDM_Create_Instance: channelType 21 , trx 003, channel  25600, lin0k  640
+0T_CNI_LAPDM_Channel::Assign , oid  320, gsmChannelType
+ CNI_LAPDM_Instance_Registration: oid 020, sapi,  00, layer3_id 00 , p_callback_function 
+368dbc
+
+CNI_LAPDM_Instance_Registration: oid 3, sapi, 0, layer3_id 0, p_callback_function 368dbc
+CNI_LAPDM_Instance_Registration: oid 3, sapi, 3, layer3_id 0, p_callback_function 368dbc
+CNI_LAPDM_Create_Instance: channelType 2, trx 0, channel 3072, link 0
+T_CNI_LAPDM_Channel::Assign , oid 4, gsmChannelType
+CNI_LAPDM_Create_Instance: channelType 1, trx 0, channel CNI_LAPDM_Find_LAPDM_OID: LAPDm O 
+ID not found (trx=0x30720, link ,channel=0x642800
+,link=0xT_CNI_LAPDM_Channel::Assign , oid 05)
+, gsmChannelType
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0xCNI_LAPDM_Instance_Registration: oid 04, ch 
+annel 0x, sapi, 28000, link 0x, layer3_id 00
+, p_callback_function 0368dbc7
+ CNI_LAPDM_Instance_Registration: oid 050, sapi,  00, layer3_id 00 , p_callback_function 0 
+368dbc0
+ CNI_LAPDM_Instance_Registration: oid 052, sapi,  30, layer3_id 30 , p_callback_function 0 
+368db0c 
+0CNI_LAPDM_Create_Instance: channelType 00 , trx 280 , channel 081920, link  00
+0T_CNI_LAPDM_Channel::Assign , oid  6
+, gsmChannelType
+
+CNI_LAPDM_Create_Instance: channelType CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx= 
+0x10, trx ,channel=0x03000, channel ,link=0x81920, link )
+64CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x
+0T_CNI_LAPDM_Channel::Assign , oid , channel 0x73000, gsmChannelType
+, link 0xCNI_LAPDM_Instance_Registration: oid 06
+, sapi, 007, layer3_id  00, p_callback_function 0368dbc 
+0CNI_LAPDM_Instance_Registration: oid 06 , sapi, 030, layer3_id  00, p_callback_function 2 
+368dbc 
+0CNI_LAPDM_Instance_Registration: oid 37 , sapi, 000, layer3_id  00, p_callback_function 0 
+368dbc 
+30CNI_LAPDM_Create_Instance: channelType  00, trx 00 , channel 0102400, link  0
+
+
+T_CNI_LAPDM_Channel::Assign , oid CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x80, 
+ gsmChannelType
+,channel=0xCNI_LAPDM_Create_Instance: channelType 38001,link=0x, trx 00)
+, channel CNI_LAPDM_Ph_Callback lapdm oid is null, trx10240 0x, link 064, channel 0x
+3800T_CNI_LAPDM_Channel::Assign , oid , link 0x90, gsmChannelType
+
+CNI_LAPDM_Instance_Registration: oid 087, sapi,  00, layer3_id 00 , p_callback_function 03 
+68dbc0
+ CNI_LAPDM_Instance_Registration: oid 080, sapi,  30, layer3_id 20 , p_callback_function 0 
+368dbc3
+ CNI_LAPDM_Instance_Registration: oid 090, sapi,  00, layer3_id 00 , p_callback_function 3 
+8368dbc 
+0CNI_LAPDM_Create_Instance: channelType 00 , trx 000, channel  12288
+, link 
+0CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not fo
+und (trx=0xT_CNI_LAPDM_Channel::Assign , oid 010,channel=0x, gsmChannelType
+3000CNI_LAPDM_Create_Instance: channelType ,link=0x10, trx )
+0CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x, channel 012288, channel 0x, link 300064, 
+ link 0x
+0T_CNI_LAPDM_Channel::Assign , oid 
+110, gsmChannelType
+7CNI_LAPDM_Instance_Registration: oid  100, sapi, 00 , layer3_id 000, p_callback_function  
+ 368dbc0
+0CNI_LAPDM_Instance_Registration: oid  100, sapi, 23 , layer3_id 003, p_callback_function  
+ 368dbc0
+0CNI_LAPDM_Instance_R egistration: oid 0110, sapi,  030, layer3_id  00, p_callback_functio 
+n 0368dbc 
+0CNI_LAPDM_Create_Instance: channelType 00 , trx 
+0
+, channel CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x143360, link ,channel=0x038 
+00
+,link=0xT_CNI_LAPDM_Channel::Assign , oid 012)
+, gsmChannelType
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0xCNI_LAPDM_Create_Instance: channelType 01,  
+channel 0x, trx 38000, link 0x, channel 014336
+, link 0647
+ T_CNI_LAPDM_Channel::Assign , oid 0130, gsmChannelType
+ CNI_LAPDM_Instanc0e_Registration: oid 012 , sapi, 000, layer3_id  00, p_callback_function 
+ 2368dbc 
+0CNI_LAPDM_Instance_Registration: oid 312 , sapi, 030, layer3_id  00, p_callback_function  
+0368dbc 
+38CNI_LAPDM_Instance_Registration: oid  130, sapi, 00 , layer3_id 000, p_callback_function 
+  368dbc
+
+
+ENTER-rm_InitIRT
+ENTER-rm_InitL1
+ENTER-rm_ConfigTrx
+ENTER-rm_SendTrxConfigToTrx: Entering...
+ENTER-rm_WaitForL1Rsp
+send to dsp:
+01f24d1c: 07 00 00 00 10 15 00 00 02 00 00 ee ee ee ee ee 
+01f24d2c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24d3c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24d4c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+sending 1 messages
+From DSP
+01f2d2c8: 10 16 00 00 00 00 00 00 f4 cc 00 02 01 00 00 00 
+ENTER-rm_SendSlotActivateToTrx: Entering...
+ENTER-rm_WaitForSlotActivateRsp: Entering...
+ENTER-rm_WaitForL1Rsp
+send to dsp:
+01f24d1c: 06 00 00 00 10 17 00 00 00 05 00 ee ee ee ee ee 
+01f24d2c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24d3c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24d4c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 20 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 28 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 30 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 38 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 20 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 28 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 30 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 38 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 80 00 20 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 88 00 20 
+
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x9000,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x9000, link 0x20
+07 00 00 00 02 01 00 00 90 00 20 
+
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x9000,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x9000, link 0x20
+07 00 00 00 02 01 00 00 90 00 20 
+
+From DSP
+01f2d2c8: 10 18 00 00 00 01 01 00 40 00 00 00 07 00 00 00 
+ENTER-rm_SendSlotActivateToTrx: Entering...
+ENTER-rm_WaitForSlotActivateRsp: Entering...
+send to dsp:ENTER-rm_WaitForL1Rsp
+
+01f24d1c: 06 00 00 00 10 17 00 00 02 01 00 ee ee ee ee ee 
+01f24d2c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24d3c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24d4c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0a 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0a 00 40 
+
+From DSP
+01f2d2c8: 10 18 00 00 02 f6 bf 01 bc cb 00 02 00 00 00 00 
+ENTER-rm_SendSlotActivateToTrx: Entering...
+ENTER-rm_WaitForSlotActivateRsp: Entering...
+ENTER-rm_WaitForL1Rsp
+send to dsp:
+01f24d1c: 06 00 00 00 10 17 00 00 04 01 00 ee ee ee ee ee 
+01f24d2c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24d3c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24d4c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0c 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0c 00 40 
+
+From DSP
+01f2d2c8: 10 18 00 00 04 00 00 00 47 00 00 00 00 00 00 00 
+SLOT ACTIVATION FINISHED
+ENTER-rm_SendSetUGainToTrx: Entering...
+ENTER-rm_SendSetDGainToTrx: Entering...
+ENTER-rm_SendTuneSynthToTrx: Entering...
+ENTER-rm_SendConfigFpgaDelayToTrx: Entering...
+CONFIG TRX/SLOTS FINISHED
+End of rm_SendSynchInfoToBcchTrx()
+ENTER-rm_SendAllSystemInfosToBcchTrx
+ENTER-rm_SendSystemInfo2ToBcchTrx
+ENTER-rm_SendSystemInfo3ToBcchTrx
+send to dsp:ENTER-rm_SendSystemInfo4ToBcchTrx
+
+End of rm_SendAllSystemInfosToBcchTrx, bcchTrx=001f24d1c
+: ENTER-rm_SendSacchFillingToTrx
+0ENTER-rm_SendSacchFillingToTrx
+5End of rm_SendSacchFillingSI5 and SI6
+ STAY in RM_MAIN while(1) loop
+00 00 00 10 10 00 00 00 01 00 ee ee ee ee ee 
+01f24d2c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24d3c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24d4c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f24d5c: 05 00 00 00 10 11 00 00 00 01 00 ee ee ee ee ee 
+01f24d6c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24d7c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24d8c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f24d9c: 07 00 00 00 10 12 00 00 00 00 00 ee ee ee ee ee 
+01f24dac: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24dbc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24dcc: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f24ddc: 07 00 00 00 10 12 00 00 01 00 00 ee ee ee ee ee 
+01f24dec: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24dfc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24e0c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f24e1c: 07 00 00 00 10 12 00 00 02 00 00 ee ee ee ee ee 
+01f24e2c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24e3c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24e4c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f24e5c: 07 00 00 00 10 12 00 00 03 00 00 ee ee ee ee ee 
+01f24e6c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24e7c: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24e8c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f24e9c: 08 00 00 00 10 14 00 00 00 00 00 00 ee ee ee ee 
+01f24eac: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24ebc: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f24ecc: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f24edc: 22 00 00 00 0c 00 11 00 80 00 02 17 16 06 1a 8e 
+01f24eec: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 
+01f24efc: 01 04 08 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+01f24f0c: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+sending 8 messages
+
+-> 
+-> 
+-> <kil
+can't open input 'kil'
+  errno = 0x2
+-> <kill
+td lapdm_phserver
+value = 0 = 0x0
+td lapdm_dlserver
+value = 0 = 0x0
+td mmMain
+value = 0 = 0x0
+td rmTask
+value = 0 = 0x0
+td tDspUp
+undefined symbol: tDspUp
+-> i
+  NAME        ENTRY       TID    PRI   STATUS      PC       SP     ERRNO  DELAY
+---------- ------------ -------- --- ---------- -------- -------- ------- -----
+tLogTask   _logTask      1fc08fc   0 PEND         167bdb  1fc0868       0     0
+tExcTask   _excTask      1fc3214   0 PEND         167bdb  1fc3184       0     0
+tShell     _shell        1f99740   1 PEND         11582c  1f99420       0     0
+tWdbTask   0x14e284      1f9a8e8   3 READY        16780d  1f9a7d8       0     0
+tNetTask   _netTask      1fbb664  50 READY        12a037  1fbb5fc       0     0
+L1TaskDn   taskDspDn(vo  1f2518c 100 PEND         167bdb  1f24ccc       0     0
+L1TaskUp   taskDspUp(vo  1f2d334 100 PEND         167bdb  1f2d1ac       0     0
+value = 0 = 0x0
+-> <kill
+td lapdm_phserver
+Task not found.
+value = -1 = 0xffffffff
+td lapdm_dlserver
+Task not found.
+value = -1 = 0xffffffff
+td mmMain
+Cannot kill a task which is safe from deletion
+value = -1 = 0xffffffff
+td rmTask
+undefined symbol: rmTask
+-> i
+  NAME        ENTRY       TID    PRI   STATUS      PC       SP     ERRNO  DELAY
+---------- ------------ -------- --- ---------- -------- -------- ------- -----
+tLogTask   _logTask      1fc08fc   0 PEND         167bdb  1fc0868       0     0
+tExcTask   _excTask      1fc3214   0 PEND         167bdb  1fc3184       0     0
+tShell     _shell        1f99740   1 PEND         11582c  1f99420       0     0
+tWdbTask   0x14e284      1f9a8e8   3 READY        16780d  1f9a7d8       0     0
+tNetTask   _netTask      1fbb664  50 READY        12a037  1fbb5fc       0     0
+L1TaskDn   taskDspDn(vo  1f2518c 100 PEND         167bdb  1f24ccc       0     0
+L1TaskUp   taskDspUp(vo  1f2d334 100 PEND         167bdb  1f2d1ac       0     0
+value = 0 = 0x0
+-> td L1TaskDn
+value = 0 = 0x0
+-> td L1TaskUp
+value = 0 = 0x0
+-> pwd
+K:/Workdirs/Integration/pre-alpha
+value = 0 = 0x0
+-> <integ
+#
+# load all the module-init files (with global variables)
+#
+ld < K:/Workdirs/integration/l1proxy/I80486/l1proxy_init.out
+value = 27848716 = 0x1a8f00c
+ld < K:/Workdirs/integration/lapdm/I80486/lapdm_init.out
+value = 27849328 = 0x1a8f270
+ld < K:/Workdirs/integration/mm/I80486/mmm_init.out
+value = 27849940 = 0x1a8f4d4
+ld < K:/Workdirs/integration/cc/I80486/ccm_init.out
+value = 27850552 = 0x1a8f738
+ld < K:/Workdirs/integration/rm/I80486/rm_init.out
+value = 27851164 = 0x1a8f99c
+
+#
+# load all the module-api files (used by other modules)
+#
+ld < K:/Workdirs/integration/lapdm/I80486/lapdm_api.out
+value = 13237656 = 0xc9fd98
+ld < K:/Workdirs/integration/rm/I80486/rm_api.out
+value = 12192372 = 0xba0a74
+
+#
+# load all the core module files next
+#
+ld < K:/Workdirs/integration/l1proxy/I80486/l1proxy.out
+value = 12192984 = 0xba0cd8
+ld < K:/Workdirs/integration/lapdm/I80486/lapdm.out
+value = 32045232 = 0x1e8f8b0
+ld < K:/Workdirs/integration/ril3/I80486/ril3.out
+value = 12233552 = 0xbaab50
+ld < K:/Workdirs/integration/jcc/I80486/jcc.out
+value = 12234164 = 0xbaadb4
+ld < K:/Workdirs/integration/mm/I80486/mmm.out
+value = 32045856 = 0x1e8fb20
+ld < K:/Workdirs/integration/cc/I80486/ccm.out
+value = 32046468 = 0x1e8fd84
+ld < K:/Workdirs/integration/rm/I80486/rm.out
+value = 27851776 = 0x1a8fc00
+
+
+#
+# Initialization of all modules
+#
+CNI_LAPDM_Initialization 
+value = 32756824 = 0x1f3d458
+#cni_testInit
+
+#create a lapdm instance channel type 0, trx 0, channel num 1, link 1
+#CNI_LAPDM_Create_Instance(0, 0 , 0x2000, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x2800, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x3000, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x3800, 0)
+
+
+#L3 register a lapdm instance oid 0, sapi 0, layer3_id 10, and a call back function
+#CNI_LAPDM_Instance_Registration(0, 0, 0x20, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(1, 0, 0x28, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(2, 0, 0x30, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(3, 0, 0x38, cni_l3CallBack)
+
+# Start MM Task and print its data
+mmInit
+value = 32690596 = 0x1f2d1a4
+mmDataPrint
+MM Entry: -1, -1, 0, 0, 0 
+MM Entry: 0, 0, 0, 0, 0 
+MM Entry: 0, 1, 32747104, 65535, 255 
+MM Entry: 0, 0, 0, 0, 0 
+MM Entry: 0, 0, 0, 0, 1 
+MM Entry: -1, -1, 0, 0, 0 
+MM Entry: 0, 0, 0, 0, 0 
+MM Entry: 0, 1, 32746976, 65535, 255 
+MM Entry: 0, 0, 0, 0, 0 
+MM Entry: 0, 0, 0, 0, 1 
+value = 25 = 0x19
+
+
+# Start RRM Task
+rm_Task
+ENTER-rm_Go
+ENTER-rm_Main
+ENTER-rm_InitAll
+ENTER-sys_Init
+ENTER-sys_CreateMsgQs
+ENTER-sys_StartTasks
+ENTER-rm_WaitForL1Bootstrap: Entering...
+ENTER-rm_WaitForL1Rsp
+value = 32928164 = 0x1f671a4
+
+# 
+initL1
+value = 32587556 = 0x1f13f24
+newInitDsp
+value = 589833 = 0x90009
+#hpi2dsp(&cx6,0,0x3800)
+newGo
+value = -125829120 = 0xf8800000
+
+-> From DSP
+01f1c060: 10 20 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+ENTER-rm_RetrvConfigFromOam
+ENTER-rm_PopulateSI2
+ENTER-rm_PopulateSI3
+ENTER-rm_PopulateSI4
+ENTER-rm_PopulateSI5
+ENTER-rm_PopulateSI6
+ENTER-rm_InitRm
+ENTER-rm_InitLAPDm
+CNI_LAPDM_Create_Instance: channelType 4, trx 0, channel 32768, link 32
+T_CNI_LAPDM_Channel::Assign , oid 0, gsmChannelType
+CNI_LAPDM_Instance_Registration: oid 0, sapi, 0, layer3_id 0, p_callback_function 368dbc
+CNI_LAPDM_Create_Instance: channelType 7, trx 0, channel 34816, link 32
+T_CNI_LAPDM_Channel::Assign , oid 1, gsmChannelType
+CNI_LAPDM_Instance_Registration: oid 1, sapi, 0, layer3_id 0, p_callback_function 368dbc
+CNI_LAPDM_Create_Instance: channelType 2, trx 0, channel 2560, link 0
+T_CNI_LAPDM_Channel::Assign , oid 2, gsmChannelType
+CNI_LAPDM_Create_Instance: channelType 1, trx 0, channel 2560, link 64
+T_CNI_LAPDM_Channel::Assign , oid 3, gsmChannelType
+CNI_LAPDM_Instance_Registration: oid 2, sapi, 0, layer3_id 0, p_callback_function 368dbc
+CNI_LAPDM_Instance_Registration: oid CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x 
+30, sapi, ,channel=0x02000, layer3_id ,link=0x00, p_callback_function )
+368dbcCNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x
+0CNI_LAPDM_Instance_Registration: oid , channel 0x32000, sapi, , link 0x30, layer3_id 
+00, p_callback_function 7368dbc 
+0CNI_LAPDM_Create_Instance: channelType 02 , trx 000, channel  30720, link 00 
+0T_CNI_LAPDM_Channel::Assign , oid 24 , gsmChannelType
+0CNI_LAPDM_Create_Instance: channelType 31 , trx 000, channel  30720, 0link  6420
+ T_CNI_LAPDM_Channel::Assign , oid 050, gsmChannelType
+ CNI_LAPDM_Instance_Registration: oid 040, sapi,  0
+, layer3_id 
+0, p_callback_function 368dbc
+CNI_LAPDM_Instance_Registration: oid 5, sapi, 0, layer3_id 0, p_callback_function 368dbc
+CNI_LAPDM_Instance_Registration: oid 5, sapi, 3, layer3_id 0, p_callback_function 368dbc
+CNI_LAPDM_Create_Instance: channelType 0, trx 0, channel 8192, link 0
+T_CNI_LAPDM_Channel::Assign , oid 6, gsmChannelType
+CNI_LAPDM_Create_Instance: channelType 1, trx 0, channel CNI_LAPDM_Find_LAPDM_OID: LAPDm O 
+ID not found (trx=0x81920, link ,channel=0x642800
+,link=0xT_CNI_LAPDM_Channel::Assign , oid 07)
+, gsmChannelType
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0xCNI_LAPDM_Instance_Registration: oid 06, ch 
+annel 0x, sapi, 28000, link 0x, layer3_id 00
+, p_callback_function 0368dbc7
+ CNI_LAPDM_Instance_Registration: oid 060, sapi,  30, layer3_id 00 , p_callback_function 0 
+368dbc0
+ CNI_LAPDM_Instance_Registration: oid 072, sapi,  00, layer3_id 30 , p_callback_function 0 
+368db0c 
+0CNI_LAPDM_Create_Instance: channelType 00 , trx 280 , channel 0102400, link  00
+0T_CNI_LAPDM_Channel::Assign , oid  8
+, gsmChannelType
+
+CNI_LAPDM_Create_Instance: channelType CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx= 
+0x10, trx ,channel=0x03000, channel ,link=0x102400, link )
+64CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x
+0T_CNI_LAPDM_Channel::Assign , oid , channel 0x93000, gsmChannelType
+, link 0xCNI_LAPDM_Instance_Registration: oid 08
+, sapi, 007, layer3_id  00, p_callback_function 0368db c0
+0CNI_LAPDM_Instance_Registration: oid  80, sapi, 03 , layer3_id 002, p_callback_function   
+368dbc0
+3CNI_LAPDM_Instance_Registration: oid  90, sapi, 00 , layer3_id 000, p_callback_function   
+368dbc30
+ CNI_LAPDM_Create_Instance: channelType 000, trx  00, channel 012288 , link 
+0
+
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0xT_CNI_LAPDM_Channel::Assign , oid 010 
+,channel=0x, gsmChannelType
+3800CNI_LAPDM_Create_Instance: channelType ,link=0x10, trx )
+0CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x, ch0annel , channel 0x122883800, link , l 
+ink 0x640
+
+T_CNI_LAPDM_Channel::Assign , oid 0117, gsmChannelType
+ CNI_LAPDM_Instance_Registration: oid 0100, sapi,  00, layer3_id 00 , p_callback_function  
+0368dbc0
+ CNI_LAPDM_Instance_Registration: oid 0102, sapi,  30, layer3_id 30 , p_callback_function  
+0368dbc0
+ CNI_LAPDM_Instance_Registration: oid 0110, sapi,  038, layer3_id  00, p_callback_function 
+ 0368dbc 
+0CNI_LAPDM_Create_Instance: channelType 00 , trx 
+0
+, channel CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (t14336rx=0x, link 00,channel=0x
+3800T_CNI_LAPDM_Channel::Assign , oid ,link=0x120, gsmChannelType
+)
+CNI_LAPDM_Create_Instance: channelType CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x10,  
+trx , channel 0x03800, channel , link 0x143360, link 
+640
+7T_CNI_LAPDM_Channel::Assign , oid  130, gsmChannelType
+0CNI_LAPDM_Instance_Registration: oid  120, sapi, 00 , layer3_id 000, p_callback_function  
+ 368dbc0
+2CNI_LAPDM_Instance_Registration: oid  120, sapi, 33 , layer3_id 000, p_callback_function  
+ 368dbc0
+0CNI_LAPDM_ Instance_Registration: oid 3813 , sapi, 000, layer3_id  00, p_callback_functio 
+n 0368dbc 
+
+ENTER-rm_InitIRT
+
+ENTER-rm_InitL1
+ENTER-rm_ConfigTrx
+ENTER-rm_SendTrxConfigToTrx: Entering...
+ENTER-rm_WaitForL1Rsp
+send to dsp:
+01f13ab4: 07 00 00 00 10 15 00 00 02 00 00 ee ee ee ee ee 
+01f13ac4: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13ad4: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13ae4: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+sending 1 messages
+From DSP
+01f1c060: 10 16 00 00 3a 01 01 00 40 00 00 00 07 00 00 00 
+ENTER-rm_SendSlotActivateToTrx: Entering...
+ENTER-rm_WaitForSlotActivateRsp: Entering...
+ENTER-rm_WaitForL1Rsp
+send to dsp:
+01f13ab4: 06 00 00 00 10 17 00 00 00 05 00 ee ee ee ee ee 
+01f13ac4: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13ad4: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13ae4: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 20 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 28 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 30 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 38 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 20 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 28 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 30 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 38 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 80 00 20 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 88 00 20 
+
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x9000,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x9000, link 0x20
+07 00 00 00 02 01 00 00 90 00 20 
+
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x9000,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x9000, link 0x20
+07 00 00 00 02 01 00 00 90 00 20 
+
+From DSP
+01f1c060: 10 18 00 00 00 01 01 00 40 00 00 00 03 00 00 00 
+ENTER-rm_SendSlotActivateToTrx: Entering...
+ENTER-rm_WaitForSlotActivateRsp: Entering...
+ENTER-rm_WaitForL1Rsp
+send to dsp:
+01f13ab4: 06 00 00 00 10 17 00 00 02 01 00 ee ee ee ee ee 
+01f13ac4: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13ad4: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13ae4: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0a 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0a 00 40 
+
+From DSP
+01f1c060: 10 18 00 00 02 00 00 00 06 00 00 00 04 06 00 00 
+ENTER-rm_SendSlotActivateToTrx: Entering...
+ENTER-rm_WaitForSlotActivateRsp: Entering...
+ENTER-rm_WaitForL1Rsp
+send to dsp:
+01f13ab4: 06 00 00 00 10 17 00 00 04 01 00 ee ee ee ee ee 
+01f13ac4: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13ad4: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13ae4: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0c 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0c 00 40 
+
+From DSP
+01f1c060: 10 18 00 00 04 f6 bf 01 04 cc 00 02 00 00 00 00 
+SLOT ACTIVATION FINISHED
+ENTER-rm_SendSetUGainToTrx: Entering...
+ENTER-rm_SendSetDGainToTrx: Entering...
+ENTER-rm_SendTuneSynthToTrx: Entering...
+ENTER-rm_SendConfigFpgaDelayToTrx: Entering...
+CONFIG TRX/SLOTS FINISHED
+End of rm_SendSynchInfoToBcchTrx()
+ENTER-rm_SendAllSystemInfosToBcchTrx
+ENTER-rm_SendSystemInfo2ToBcchTrx
+ENTER-rm_SendSystemInfo3ToBcchTrx
+ENTER-rm_SendSystemInfo4ToBcchTrx
+End of rm_SendAllSystemInfosToBcchTrx, bcchTrx=0
+ENTER-rm_SendSacchFillingToTrx
+ENTER-rm_SendSacchFillingToTrx
+End of rm_SendSacchFillingSI5 and SI6
+send to dsp:STAY in RM_MAIN while(1) loop
+
+01f13ab4: 05 00 00 00 10 10 00 00 00 01 00 ee ee ee ee ee 
+01f13ac4: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13ad4: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13ae4: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f13af4: 05 00 00 00 10 11 00 00 00 01 00 ee ee ee ee ee 
+01f13b04: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13b14: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13b24: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f13b34: 07 00 00 00 10 12 00 00 00 00 00 ee ee ee ee ee 
+01f13b44: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13b54: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13b64: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f13b74: 07 00 00 00 10 12 00 00 01 00 00 ee ee ee ee ee 
+01f13b84: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13b94: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13ba4: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f13bb4: 07 00 00 00 10 12 00 00 02 00 00 ee ee ee ee ee 
+01f13bc4: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13bd4: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13be4: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f13bf4: 07 00 00 00 10 12 00 00 03 00 00 ee ee ee ee ee 
+01f13c04: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13c14: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13c24: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f13c34: 08 00 00 00 10 14 00 00 00 00 00 00 ee ee ee ee 
+01f13c44: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13c54: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+01f13c64: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00
+ 
+
+01f13c74: 22 00 00 00 0c 00 11 00 80 00 02 17 16 06 1a 8e 
+01f13c84: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 
+01f13c94: 01 04 08 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+01f13ca4: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f13cb4: 22 00 00 00 0c 00 11 00 80 00 03 17 12 06 1b 00 
+01f13cc4: 01 13 f0 71 00 01 01 02 00 23 07 00 01 04 00 2b 
+01f13cd4: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+01f13ce4: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f13cf4: 22 00 00 00 0c 00 11 00 80 00 04 17 0c 06 1c 13 
+01f13d04: f0 71 00 01 07 00 01 06 00 2b 2b 2b 2b 2b 2b 2b 
+01f13d14: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+01f13d24: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f13d34: 1b 00 00 00 10 00 1a 00 05 12 06 1d 8e 00 00 00 
+01f13d44: 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 2b 
+01f13d54: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+01f13d64: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+01f13d74: 1b 00 00 00 10 00 1a 00 06 12 06 1e 00 01 13 f0 
+01f13d84: 71 00 01 23 01 2b 2b 2b 2b 2b 2b 2b 01 00 00 2b 
+01f13d94: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+01f13da4: ee ee ee ee ee ee ee ee ee ee ee ee ac 2c 16 00 
+sending 12 messages
+

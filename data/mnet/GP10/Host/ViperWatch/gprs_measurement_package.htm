@@ -1,0 +1,152 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GPRS Measurement Package</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/common.js"></SCRIPT>
+
+
+<script language="JavaScript">
+
+function PresetForm(theForm)
+{
+}
+
+function ParseForm(theForm)
+{
+}
+</script>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" name="gprs_measurements">
+
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="630">
+      <tr>
+        <td valign="middle">
+        <h2 align="center">GPRS Measurement Package</h2>
+        <div align="center">
+            <center>
+              <table border="0">
+                <tr>
+                  <td align="left">
+                  <p align="left"><b> Start Time:</b></td>
+                  <td>
+                  <i>
+                  <script> displayTime("$%meanPacketQueueLength#$") </script>
+                  </i>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="left"><b>Duration:</b></td>
+                  <td><i>Last Completed 15-Minute Measurement Interval</i></td>
+                </tr>
+              </table>
+            </center>
+        </div>
+        <div align="center">
+            <center>
+          <table border="1" cellspacing="0" cellpadding="0" width="90%">
+            <tr>
+              <th valign="middle" align="left"  width="80%" nowrap>Parameters</th>
+              <th valign="middle" align="left" width="17%" >Value</th>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Total number of flush request messages:</td>
+              <td valign="middle" align="left" width="17%" >$%flushReqRecvd#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Total number of PAGING messages:</td>
+              <td valign="middle" align="left" width="17%" >$%pagingReqRecvd#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Mean time interval between consecutive mobile <br>
+																   originating packet channel access request:</td>
+              <td valign="middle" align="left" width="17%" >$%meanPsInterArrivalTime#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Current number of available PDCHs:</td>
+              <td valign="middle" align="left" width="17%" >$%availablePdch#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Mean number of available PDCHs:</td>
+              <td valign="middle" align="left" width="17%" >$%meanAvailablePdch#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Maximum number of available PDCHs:</td>
+              <td valign="middle" align="left" width="17%" >$%maxAvailablePdch#$</td>
+            </tr>
+           <tr>           
+              <td valign="middle" align="left"  width="80%" nowrap>Minimum number of available PDCHs:</td>
+              <td valign="middle" align="left" width="17%" >$%minAvailablePdch#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Mean number of occupied PDCHs:</td>
+              <td valign="middle" align="left" width="17%" >$%meanOccupiedPdch#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Highest recorded number of occupied PDCHs:</td>
+              <td valign="middle" align="left" width="17%" >$%maxOccupiedPdch#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Lowest recorded number of occupied PDCHs:</td>
+              <td valign="middle" align="left" width="17%" >$%minOccupiedPdch#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Total amount of time in the granularity period of PDCH:</td>
+              <td valign="middle" align="left" width="17%" >$%availablePdchAllocTime#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Number of Paging messages transmitted over PCCCH:</td>
+              <td valign="middle" align="left" width="17%" >$%packetPagingMessages#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Mean of PPCH-PAGCH queue length:</td>
+              <td valign="middle" align="left" width="17%" >$%pagchQueueLength#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Number of discarded Paging messages:</td>
+              <td valign="middle" align="left" width="17%" >$%pagesDiscardedFromPpch#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Number of channel assignment request:</td>
+              <td valign="middle" align="left" width="17%" >$%assignmentRequest#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Successful number of channel assignment request:</td>
+              <td valign="middle" align="left" width="17%" >$%succAssignmentProc#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Successful number of PDTCH seizures:</td>
+              <td valign="middle" align="left" width="17%" >$%succPdtchSeizures#$</td>
+            </tr>
+            <tr>
+              <td valign="middle" align="left"  width="80%" nowrap>Number of service upgrades and downgrades:</td>
+              <td valign="middle" align="left" width="17%" >$%serviceChanges#$</td>
+            </tr>
+          </table>
+            </center>
+        </div>
+        <div align="center">
+            <center>
+          <table height="50" border="0" cellpadding="3">
+            <tr>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"></td>
+            </tr>
+          </table>
+            </center>
+        </div>
+        </td>
+      </tr>
+    </table>
+</form>
+
+</body>

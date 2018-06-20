@@ -1,0 +1,65 @@
+
+                 README: Motorola MPC821/860ADS &  MPC8xxFADS
+
+This file contains board-specific information for the Motorola MPC821/860ADS
+and MPC8xxFADS target boards.  Specifically, this file contains information
+on any BSP interface changes from previous software or hardware versions, and
+contains caveats that the user must be aware of before using this BSP.
+Additionally, the target board's manual page entry (i.e., man ads860)
+provides board-specific information necessary to run VxWorks, and
+should be read before this BSP is used.
+-------------------------------------------------------------------------------
+RELEASE 1.1/3  Apr 98, re-release
+	Added support for the MPC8xxFADS mother/daughter boards.  Uses SCC2
+	for 823/850 daughterboards.
+
+RELEASE 1.1/2  Jan 97, Tornado 1.0.1 re-release
+	Added a macro DEFAULT_POWER_MGT_MODE to select the default
+	power mode.  Turned off cache when EDO dram is selected.
+
+RELEASE 1.1/1  FCS, Nov 1996,  (ADS860_1_1_1)
+	
+	This release is the first FCS release of the ads860 BSP against
+	Tornado 1.0 PPC (FCS). The same BSP is used by the PowerPC 821
+	and PowerPC 860.
+
+	The default BSP configuration is for a MPC821/860ADS REV A
+	board with either a MPC821 REV A.1 or MPC860 REV A.2 and DRAM
+	NO EDO.
+
+	For the MPC821/860ADS REV A board with EDO DRAM the macro EDO_DRAM
+	located in config.h should be changed from #undef to #define. 
+	The EDO DRAM hangs the CPU when the caches are turned on.
+	Consequently the instruction  and data cache are turned off when
+	the EDO DRAM is selected.  The EDO DRAM is not supported by 
+	the MPC821/860ADS REV PILOT or ENG boards. 
+
+	The MPC821/860ADS REV PILOT or ENG boards are detected dynamically
+	and VxWorks performs the initialization according the board revision.
+
+	With the MPC821/860 REV 0.2 or 0.3 CPUs, caches and MMUs should be
+	disabled; otherwise, VxWorks hangs the board.
+
+	The UPM (User Programmable Machine) is initialized according the
+	SPLL frequency, the DRAM speed (60 or 70 ns), and whether EDO
+	capability is supported or not. The UPM is initialized once by
+	the romInit() function located in romInit.s.
+	Two sets of UPM initialization tables are provided: one for a
+	SPLL frequency of 25MHz and one for 50MHz. Select the 25MHz set
+	only when the SPLL frequency is 25MHz. If the SPLL
+	frequency is different from 25MHz (for example, 24 MHz), VxWorks 
+	is not reliable when cache is enabled.  For all other frequencies,
+	select the UPM table for 50MHz.  Performance is optimized only
+	for 50MHz, but VxWorks is reliable.
+
+RELEASE 1.1/0  Beta, Jun 1996,  (ADS860_1_1_0)
+
+	This release is the first release of the ads860 BSP against
+	Tornado 1.0 PPC (Beta). The same BSP is used by the PowerPC 821
+	and PowerPC 860. 
+	
+
+        CAVEATS:
+
+        1) Due to different silicon bugs the data and instruction cache is
+	   turned off.

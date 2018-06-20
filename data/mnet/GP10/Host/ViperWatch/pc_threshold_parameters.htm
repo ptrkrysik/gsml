@@ -1,0 +1,908 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Handover Control Package</title>
+</head>
+
+<body onload="$%reloadTopframe#$">
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+  if (theForm.pcLowerThresholdLevParamRxLevelUL.value == "")
+  {
+    alert("Please enter a value for the \"pcLowerThresholdLevParamRxLevelUL\" field.");
+    theForm.pcLowerThresholdLevParamRxLevelUL.focus();
+    return (false);
+  }
+
+  if (theForm.pcLowerThresholdLevParamRxLevelUL.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"pcLowerThresholdLevParamRxLevelUL\" field.");
+    theForm.pcLowerThresholdLevParamRxLevelUL.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcLowerThresholdLevParamRxLevelUL.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"pcLowerThresholdLevParamRxLevelUL\" field.");
+    theForm.pcLowerThresholdLevParamRxLevelUL.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"pcLowerThresholdLevParamRxLevelUL\" field.");
+    theForm.pcLowerThresholdLevParamRxLevelUL.focus();
+    return (false);
+  }
+
+  if (theForm.pcLowerThresholdLevParamRxLevelDL.value == "")
+  {
+    alert("Please enter a value for the \"pcLowerThresholdLevParamRxLevelDL\" field.");
+    theForm.pcLowerThresholdLevParamRxLevelDL.focus();
+    return (false);
+  }
+
+  if (theForm.pcLowerThresholdLevParamRxLevelDL.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"pcLowerThresholdLevParamRxLevelDL\" field.");
+    theForm.pcLowerThresholdLevParamRxLevelDL.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcLowerThresholdLevParamRxLevelDL.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"pcLowerThresholdLevParamRxLevelDL\" field.");
+    theForm.pcLowerThresholdLevParamRxLevelDL.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"pcLowerThresholdLevParamRxLevelDL\" field.");
+    theForm.pcLowerThresholdLevParamRxLevelDL.focus();
+    return (false);
+  }
+
+  if (theForm.pcLowerThresholdLevParamPx.value == "")
+  {
+    alert("Please enter a value for the \"pcLowerThresholdLevParamPx\" field.");
+    theForm.pcLowerThresholdLevParamPx.focus();
+    return (false);
+  }
+
+  if (theForm.pcLowerThresholdLevParamPx.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"pcLowerThresholdLevParamPx\" field.");
+    theForm.pcLowerThresholdLevParamPx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcLowerThresholdLevParamPx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"pcLowerThresholdLevParamPx\" field.");
+    theForm.pcLowerThresholdLevParamPx.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"pcLowerThresholdLevParamPx\" field.");
+    theForm.pcLowerThresholdLevParamPx.focus();
+    return (false);
+  }
+
+  if (theForm.pcLowerThresholdLevParamNx.value == "")
+  {
+    alert("Please enter a value for the \"pcLowerThresholdLevParamNx\" field.");
+    theForm.pcLowerThresholdLevParamNx.focus();
+    return (false);
+  }
+
+  if (theForm.pcLowerThresholdLevParamNx.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"pcLowerThresholdLevParamNx\" field.");
+    theForm.pcLowerThresholdLevParamNx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcLowerThresholdLevParamNx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"pcLowerThresholdLevParamNx\" field.");
+    theForm.pcLowerThresholdLevParamNx.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"pcLowerThresholdLevParamNx\" field.");
+    theForm.pcLowerThresholdLevParamNx.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdLevParamRxLevelUL.value == "")
+  {
+    alert("Please enter a value for the \"pcUpperThresholdLevParamRxLevelUL\" field.");
+    theForm.pcUpperThresholdLevParamRxLevelUL.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdLevParamRxLevelUL.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"pcUpperThresholdLevParamRxLevelUL\" field.");
+    theForm.pcUpperThresholdLevParamRxLevelUL.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcUpperThresholdLevParamRxLevelUL.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"pcUpperThresholdLevParamRxLevelUL\" field.");
+    theForm.pcUpperThresholdLevParamRxLevelUL.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"pcUpperThresholdLevParamRxLevelUL\" field.");
+    theForm.pcUpperThresholdLevParamRxLevelUL.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdLevParamRxLevelDL.value == "")
+  {
+    alert("Please enter a value for the \"pcUpperThresholdLevParamRxLevelDL\" field.");
+    theForm.pcUpperThresholdLevParamRxLevelDL.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdLevParamRxLevelDL.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"pcUpperThresholdLevParamRxLevelDL\" field.");
+    theForm.pcUpperThresholdLevParamRxLevelDL.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcUpperThresholdLevParamRxLevelDL.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"pcUpperThresholdLevParamRxLevelDL\" field.");
+    theForm.pcUpperThresholdLevParamRxLevelDL.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "63"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"63\" in the \"pcUpperThresholdLevParamRxLevelDL\" field.");
+    theForm.pcUpperThresholdLevParamRxLevelDL.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdLevParamPx.value == "")
+  {
+    alert("Please enter a value for the \"pcUpperThresholdLevParamPx\" field.");
+    theForm.pcUpperThresholdLevParamPx.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdLevParamPx.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"pcUpperThresholdLevParamPx\" field.");
+    theForm.pcUpperThresholdLevParamPx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcUpperThresholdLevParamPx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"pcUpperThresholdLevParamPx\" field.");
+    theForm.pcUpperThresholdLevParamPx.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"pcUpperThresholdLevParamPx\" field.");
+    theForm.pcUpperThresholdLevParamPx.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdLevParamNx.value == "")
+  {
+    alert("Please enter a value for the \"Number of out of range averages\" field.");
+    theForm.pcUpperThresholdLevParamNx.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdLevParamNx.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Number of out of range averages\" field.");
+    theForm.pcUpperThresholdLevParamNx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcUpperThresholdLevParamNx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Number of out of range averages\" field.");
+    theForm.pcUpperThresholdLevParamNx.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Number of out of range averages\" field.");
+    theForm.pcUpperThresholdLevParamNx.focus();
+    return (false);
+  }
+
+  if (theForm.pcLowerThresholdQualParamRxQualUL.value == "")
+  {
+    alert("Please enter a value for the \"pcLowerThresholdQualParamRxQualUL\" field.");
+    theForm.pcLowerThresholdQualParamRxQualUL.focus();
+    return (false);
+  }
+
+  if (theForm.pcLowerThresholdQualParamRxQualUL.value.length > 1)
+  {
+    alert("Please enter at most 1 characters in the \"pcLowerThresholdQualParamRxQualUL\" field.");
+    theForm.pcLowerThresholdQualParamRxQualUL.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcLowerThresholdQualParamRxQualUL.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"pcLowerThresholdQualParamRxQualUL\" field.");
+    theForm.pcLowerThresholdQualParamRxQualUL.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "7"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"7\" in the \"pcLowerThresholdQualParamRxQualUL\" field.");
+    theForm.pcLowerThresholdQualParamRxQualUL.focus();
+    return (false);
+  }
+
+  if (theForm.pcLowerThresholdQualParamRxQualDL.value == "")
+  {
+    alert("Please enter a value for the \"pcLowerThresholdQualParamRxQualDL\" field.");
+    theForm.pcLowerThresholdQualParamRxQualDL.focus();
+    return (false);
+  }
+
+  if (theForm.pcLowerThresholdQualParamRxQualDL.value.length > 1)
+  {
+    alert("Please enter at most 1 characters in the \"pcLowerThresholdQualParamRxQualDL\" field.");
+    theForm.pcLowerThresholdQualParamRxQualDL.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcLowerThresholdQualParamRxQualDL.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"pcLowerThresholdQualParamRxQualDL\" field.");
+    theForm.pcLowerThresholdQualParamRxQualDL.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "7"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"7\" in the \"pcLowerThresholdQualParamRxQualDL\" field.");
+    theForm.pcLowerThresholdQualParamRxQualDL.focus();
+    return (false);
+  }
+
+  if (theForm.pcLowerThresholdQualParamPx.value == "")
+  {
+    alert("Please enter a value for the \"Number of total distance measurements (N8)\" field.");
+    theForm.pcLowerThresholdQualParamPx.focus();
+    return (false);
+  }
+
+  if (theForm.pcLowerThresholdQualParamPx.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Number of total distance measurements (N8)\" field.");
+    theForm.pcLowerThresholdQualParamPx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcLowerThresholdQualParamPx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Number of total distance measurements (N8)\" field.");
+    theForm.pcLowerThresholdQualParamPx.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Number of total distance measurements (N8)\" field.");
+    theForm.pcLowerThresholdQualParamPx.focus();
+    return (false);
+  }
+
+  if (theForm.pcLowerThresholdQualParamNx.value == "")
+  {
+    alert("Please enter a value for the \"Number of distance grater than max distance  (P8)\" field.");
+    theForm.pcLowerThresholdQualParamNx.focus();
+    return (false);
+  }
+
+  if (theForm.pcLowerThresholdQualParamNx.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Number of distance grater than max distance  (P8)\" field.");
+    theForm.pcLowerThresholdQualParamNx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcLowerThresholdQualParamNx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Number of distance grater than max distance  (P8)\" field.");
+    theForm.pcLowerThresholdQualParamNx.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Number of distance grater than max distance  (P8)\" field.");
+    theForm.pcLowerThresholdQualParamNx.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdQualParamRxQualUL.value == "")
+  {
+    alert("Please enter a value for the \"Threshold level for handover, reason uplink signal quality (L_RX\" field.");
+    theForm.pcUpperThresholdQualParamRxQualUL.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdQualParamRxQualUL.value.length > 1)
+  {
+    alert("Please enter at most 1 characters in the \"Threshold level for handover, reason uplink signal quality (L_RX\" field.");
+    theForm.pcUpperThresholdQualParamRxQualUL.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcUpperThresholdQualParamRxQualUL.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Threshold level for handover, reason uplink signal quality (L_RX\" field.");
+    theForm.pcUpperThresholdQualParamRxQualUL.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "7"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"7\" in the \"Threshold level for handover, reason uplink signal quality (L_RX\" field.");
+    theForm.pcUpperThresholdQualParamRxQualUL.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdQualParamRxQualDL.value == "")
+  {
+    alert("Please enter a value for the \"Threshold level for handover, reason downlink signal quality (L_\" field.");
+    theForm.pcUpperThresholdQualParamRxQualDL.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdQualParamRxQualDL.value.length > 1)
+  {
+    alert("Please enter at most 1 characters in the \"Threshold level for handover, reason downlink signal quality (L_\" field.");
+    theForm.pcUpperThresholdQualParamRxQualDL.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcUpperThresholdQualParamRxQualDL.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Threshold level for handover, reason downlink signal quality (L_\" field.");
+    theForm.pcUpperThresholdQualParamRxQualDL.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "7"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"7\" in the \"Threshold level for handover, reason downlink signal quality (L_\" field.");
+    theForm.pcUpperThresholdQualParamRxQualDL.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdQualParamPx.value == "")
+  {
+    alert("Please enter a value for the \"The number of averages to be considered (N6)\" field.");
+    theForm.pcUpperThresholdQualParamPx.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdQualParamPx.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"The number of averages to be considered (N6)\" field.");
+    theForm.pcUpperThresholdQualParamPx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcUpperThresholdQualParamPx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"The number of averages to be considered (N6)\" field.");
+    theForm.pcUpperThresholdQualParamPx.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"The number of averages to be considered (N6)\" field.");
+    theForm.pcUpperThresholdQualParamPx.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdQualParamNx.value == "")
+  {
+    alert("Please enter a value for the \"The number of out of range averages ( P6)\" field.");
+    theForm.pcUpperThresholdQualParamNx.focus();
+    return (false);
+  }
+
+  if (theForm.pcUpperThresholdQualParamNx.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"The number of out of range averages ( P6)\" field.");
+    theForm.pcUpperThresholdQualParamNx.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcUpperThresholdQualParamNx.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"The number of out of range averages ( P6)\" field.");
+    theForm.pcUpperThresholdQualParamNx.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"The number of out of range averages ( P6)\" field.");
+    theForm.pcUpperThresholdQualParamNx.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" onsubmit="return FrontPage_Form1_Validator(this)" name="FrontPage_Form1">
+
+<p align="center"><font size="5">Power Control Threshold Parameters</font></p>
+
+<div align="center">
+ <center>
+ <table border="1" cellpadding="0" cellspacing="0" height="383" width="678">
+  <tr>
+   <th align="center" valign="top" colspan="2" height="22" width="308">Lower Threshold</th>
+   <td align="right" valign="top" height="22" width="370">
+   <p align="center"><font size="4">Upper Threshold</font></td>
+  </tr>
+  <tr>
+   <td align="right" valign="top" height="100" rowspan="2" width="7"></td>
+   <td valign="top" height="5" align="center" width="297">
+   <table border="1" cellspacing="1" width="291">
+    <tr>
+     <th colspan="2" width="281">
+      <p align="center">Level Parameters (Signal Strength)</th>
+    </tr>
+    <tr>
+     <td width="186">RxLevelUL</td>
+     <td width="89"><!--webbot bot="Validation" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="63" --><input type="text" name="pcLowerThresholdLevParamRxLevelUL" size="2" value="$%pcLowerThresholdLevParamRxLevelUL#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td width="186">RxLevelDL</td>
+     <td width="89"><!--webbot bot="Validation" s-data-type="Integer" s-number-separators="x" b-value-required="TRUE" i-maximum-length="2" s-validation-constraint="Greater than or equal to" s-validation-value="0" s-validation-constraint="Less than or equal to" s-validation-value="63" --><input type="text" name="pcLowerThresholdLevParamRxLevelDL" size="2" value="$%pcLowerThresholdLevParamRxLevelDL#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td width="186">Px</td>
+     <td width="89"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="pcLowerThresholdLevParamPx" size="2" value="$%pcLowerThresholdLevParamPx#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td width="186">&nbsp;Nx</td>
+     <td width="89"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="pcLowerThresholdLevParamNx" size="2" value="$%pcLowerThresholdLevParamNx#$" maxlength="2"></td>
+    </tr>
+   </table>
+   </td>
+   <td valign="top" height="5" align="center" width="368">
+   <table border="1" cellspacing="1" width="100%">
+    <tr>
+     <th colspan="2" height="15">
+      <p align="center">Level Parameters (Signal Strength)</th>
+    </tr>
+    <tr>
+     <td height="24">RxLevelUL</td>
+     <td height="24"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="63" --><input type="text" name="pcUpperThresholdLevParamRxLevelUL" size="2" value="$%pcUpperThresholdLevParamRxLevelUL#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td height="24">RxLevelDL</td>
+     <td height="24"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="63" --><input type="text" name="pcUpperThresholdLevParamRxLevelDL" size="2" value="$%pcUpperThresholdLevParamRxLevelDL#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td height="24">Px</td>
+     <td height="24"><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="pcUpperThresholdLevParamPx" size="2" value="$%pcUpperThresholdLevParamPx#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td height="24">Nx</td>
+     <td height="24"><!--webbot bot="Validation" S-Display-Name="Number of out of range averages" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="pcUpperThresholdLevParamNx" size="2" value="$%pcUpperThresholdLevParamNx#$" maxlength="2"></td>
+    </tr>
+   </table>
+   </td>
+  </tr>
+  <tr>
+   <td align="center" valign="top" height="95" width="297">
+   <table border="1" cellspacing="1" width="98%">
+    <tr>
+     <th colspan="2">
+      <p align="center">Quality Parameters (Signal Quality)</th>
+    </tr>
+    <tr>
+     <td>RxQualUL</td>
+     <td><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="1" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="7" --><input type="text" name="pcLowerThresholdQualParamRxQualUL" size="1" value="$%pcLowerThresholdQualParamRxQualUL#$" maxlength="1">
+     &nbsp;</td>
+    </tr>
+    <tr>
+     <td>RxQualDL</td>
+     <td><!--webbot bot="Validation" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="1" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="7" --><input type="text" name="pcLowerThresholdQualParamRxQualDL" size="1" value="$%pcLowerThresholdQualParamRxQualDL#$" maxlength="1"></td>
+    </tr>
+    <tr>
+     <td>Px</td>
+     <td><!--webbot bot="Validation" S-Display-Name="Number of total distance measurements (N8)" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="pcLowerThresholdQualParamPx" size="2" value="$%pcLowerThresholdQualParamPx#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td>Nx</td>
+     <td><!--webbot bot="Validation" S-Display-Name="Number of distance grater than max distance  (P8)" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="pcLowerThresholdQualParamNx" size="2" value="$%pcLowerThresholdQualParamNx#$" maxlength="2"></td>
+    </tr>
+   </table>
+   </td>
+   <td align="center" valign="top" height="95" width="368">
+   <table border="1" cellspacing="1" width="100%">
+    <tr>
+     <th colspan="2" height="19">
+      <p align="center">Quality Parameters (Signal Quality)</th>
+    </tr>
+    <tr>
+     <td height="21">RxQualUL</td>
+     <td height="21"><!--webbot bot="Validation" S-Display-Name="Threshold level for handover, reason uplink signal quality (L_RXQUAL_UL_H)" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="1" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="7" --><input type="text" name="pcUpperThresholdQualParamRxQualUL" size="1" value="$%pcUpperThresholdQualParamRxQualUL#$" maxlength="1"></td>
+    </tr>
+    <tr>
+     <td height="23">RxQualDL</td>
+     <td height="23"><!--webbot bot="Validation" S-Display-Name="Threshold level for handover, reason downlink signal quality (L_RXQUAL_DL_H)" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="1" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="7" --><input type="text" name="pcUpperThresholdQualParamRxQualDL" size="1" value="$%pcUpperThresholdQualParamRxQualDL#$" maxlength="1"></td>
+    </tr>
+    <tr>
+     <td height="23">Px</td>
+     <td height="23"><!--webbot bot="Validation" S-Display-Name="The number of averages to be considered (N6)" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="pcUpperThresholdQualParamPx" size="2" value="$%pcUpperThresholdQualParamPx#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td height="23">Nx</td>
+     <td height="23"><!--webbot bot="Validation" S-Display-Name="The number of out of range averages ( P6)" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="pcUpperThresholdQualParamNx" size="2" value="$%pcUpperThresholdQualParamNx#$" maxlength="2"></td>
+    </tr>
+   </table>
+   </td>
+  </tr>
+ </table>
+ </center>
+</div>
+
+<p align="center"><input name="B1" type="submit" value="Submit" >   <input name="Recall" type="button" value="Recall" onclick="window.location.reload()"> <input name="Reset" type="reset" value="Reset"> </p>
+</form>
+
+</body>
+
+</html>

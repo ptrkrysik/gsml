@@ -1,0 +1,1080 @@
+
+      /////   /////   /////   /////   /////       |
+     /////   /////   /////   /////   /////        |
+    /////   /////   /////   /////   /////         |
+    /////   /////   /////   /////   /////         |
+   //////  //////  //////  //////  //////         |     
+   //////  //////  //////  //////  //////         |     T  O  R  N  A  D  O 
+    /////   /////   /////   /////   /////         |                        
+    /////   /////   /////   /////   /////         |   	                   
+     /////   /////   /////   /////   /////        |   	Development  System
+      ////    ////    ////    ////    ////        |                        
+       ////    ////    ////    ////    ////       |   	                   
+        ////    ////    ////    ////    ////      |   	Host  Based   Shell
+         ////    ////    ////    ////    ////     |   	                   
+          ////    ////    ////    ////    ////    |   	                   
+           ///     ///     ///     ///     ///    |   	Version  1.0.1
+           ///     ///     ///     ///     ///    |	
+            //      //      //      //      //    |
+            //      //      //      //      //    |
+            //      //      //      //      //    |
+           //      //      //      //      //     |
+
+      Copyright Wind River Systems, Inc., 1995-1997
+
+C++ Constructors/Destructors Strategy is AUTOMATIC
+
+-> 
+-> 
+-> cd "../../pre-alpha"
+value = 0 = 0x0
+-> pwd
+//Astro/Archive/Workdirs/Integration/pre-alpha
+value = 0 = 0x0
+-> i
+  NAME        ENTRY       TID    PRI   STATUS      PC       SP     ERRNO  DELAY
+---------- ------------ -------- --- ---------- -------- -------- ------- -----
+tLogTask   _logTask      3fce8fc   0 PEND         167ddb  3fce868       0     0
+tExcTask   _excTask      3fd1214   0 PEND         167ddb  3fd1184       0     0
+tShell     _shell        3fa7704   1 PEND         11583c  3fa73e4       0     0
+tWdbTask   0x14e294      3fa88ac   3 READY        167a0d  3fa879c       0     0
+lapdm_phserlapdm_phserv  3f569c8  10 PEND         167ddb  3f56930       0     0
+lapdm_dlserlapdm_dlserv  3f8c2e8  10 PEND         167ddb  3f8c16c       0     0
+mmMain     mmMain(void)  3e90bd0  10 PEND         167ddb  3e907f4       0     0
+tNetTask   _netTask      3fc9664  50 READY        12a047  3fc95fc       0     0
+L1TaskUp   taskDspUp(vo  3e7a950 100 PEND         11583c  3e7a8bc       0     0
+L1TaskDn   taskDspDn(vo  3e727a8 100 PEND         167ddb  3e722e4       0     0
+rmTask     rm_Main(void  3e93798 100 PEND         167ddb  3e93704       0     0
+value = 0 = 0x0
+-> <kill
+td lapdm_phserver
+value = 0 = 0x0
+td lapdm_dlserver
+value = 0 = 0x0
+td mmMain
+value = 0 = 0x0
+td rmTask
+value = 0 = 0x0
+td L1TaskUp
+value = 0 = 0x0
+td L1TaskDn
+value = 0 = 0x0
+
+unld "l1proxy_init.out"  
+value = 0 = 0x0
+unld "lapdm_init.out"
+value = 0 = 0x0
+unld "mmm_init.out"
+value = 0 = 0x0
+unld "ccm_init.out"
+value = 0 = 0x0
+unld "rm_init.out"
+value = 0 = 0x0
+unld "lapdm_api.out"
+value = 0 = 0x0
+unld "rm_api.out"
+value = 0 = 0x0
+unld "l1proxy.out"
+value = 0 = 0x0
+unld "lapdm.out"
+value = 0 = 0x0
+unld "ril3.out"
+value = 0 = 0x0
+unld "jcc.out"
+value = 0 = 0x0
+unld "mmm.out"
+value = 0 = 0x0
+unld "ccm.out"
+value = 0 = 0x0
+unld "rm.out"
+value = 0 = 0x0
+
+i
+  NAME        ENTRY       TID    PRI   STATUS      PC       SP     ERRNO  DELAY
+---------- ------------ -------- --- ---------- -------- -------- ------- -----
+tLogTask   _logTask      3fce8fc   0 PEND         167ddb  3fce868       0     0
+tExcTask   _excTask      3fd1214   0 PEND         167ddb  3fd1184       0     0
+tShell     _shell        3fa7704   1 PEND         11583c  3fa73e4       0     0
+tWdbTask   0x14e294      3fa88ac   3 READY        167a0d  3fa879c       0     0
+tNetTask   _netTask      3fc9664  50 READY        12a047  3fc95fc       0     0
+value = 0 = 0x0
+
+-> i
+  NAME        ENTRY       TID    PRI   STATUS      PC       SP     ERRNO  DELAY
+---------- ------------ -------- --- ---------- -------- -------- ------- -----
+tLogTask   _logTask      3fce8fc   0 PEND         167ddb  3fce868       0     0
+tExcTask   _excTask      3fd1214   0 PEND         167ddb  3fd1184       0     0
+tShell     _shell        3fa7704   1 PEND         11583c  3fa73e4       0     0
+tWdbTask   0x14e294      3fa88ac   3 READY        167a0d  3fa879c       0     0
+tNetTask   _netTask      3fc9664  50 READY        12a047  3fc95fc       0     0
+value = 0 = 0x0
+-> <integ
+#
+# load all the module-init files (with global variables)
+#
+ld < K:/Workdirs/integration/l1proxy/I80486/l1proxy_init.out
+value = 15658280 = 0xeeed28
+ld < K:/Workdirs/integration/lapdm/I80486/lapdm_init.out
+value = 15633672 = 0xee8d08
+ld < K:/Workdirs/integration/mm/I80486/mmm_init.out
+value = 15649024 = 0xeec900
+ld < K:/Workdirs/integration/cc/I80486/ccm_init.out
+value = 15649640 = 0xeecb68
+ld < K:/Workdirs/integration/rm/I80486/rm_init.out
+value = 15722680 = 0xefe8b8
+
+#
+# load all the module-api files (used by other modules)
+#
+ld < K:/Workdirs/integration/lapdm/I80486/lapdm_api.out
+value = 15723296 = 0xefeb20
+ld < K:/Workdirs/integration/rm/I80486/rm_api.out
+value = 15723912 = 0xefed88
+
+#
+# load all the core module files next
+#
+ld < K:/Workdirs/integration/l1proxy/I80486/l1proxy.out
+value = 15749128 = 0xf05008
+ld < K:/Workdirs/integration/lapdm/I80486/lapdm.out
+value = 3209032 = 0x30f748
+ld < K:/Workdirs/integration/ril3/I80486/ril3.out
+value = 3209648 = 0x30f9b0
+ld < K:/Workdirs/integration/jcc/I80486/jcc.out
+value = 15638536 = 0xeea008
+ld < K:/Workdirs/integration/mm/I80486/mmm.out
+value = 15904096 = 0xf2ad60
+ld < K:/Workdirs/integration/cc/I80486/ccm.out
+value = 15639152 = 0xeea270
+ld < K:/Workdirs/integration/rm/I80486/rm.out
+value = 15639768 = 0xeea4d8
+
+
+#
+# Initialization of all modules
+#
+CNI_LAPDM_Initialization 
+value = 65598164 = 0x3e8f2d4
+#cni_testInit
+
+#create a lapdm instance channel type 0, trx 0, channel num 1, link 1
+#CNI_LAPDM_Create_Instance(0, 0 , 0x2000, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x2800, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x3000, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x3800, 0)
+
+
+#L3 register a lapdm instance oid 0, sapi 0, layer3_id 10, and a call back function
+#CNI_LAPDM_Instance_Registration(0, 0, 0x20, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(1, 0, 0x28, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(2, 0, 0x30, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(3, 0, 0x38, cni_l3CallBack)
+
+# Start MM Task and print its data
+mmInit
+value = 65493384 = 0x3e75988
+mmDataPrint
+MM Entry: -1, -1, 0, 0, 1 
+MM Entry: -1, -1, 0, 0, 1 
+MM Entry: -1, -1, 0, 0, 1 
+MM Entry: -1, -1, 0, 0, 1 
+MM Entry: -1, -1, 0, 0, 1 
+MM Entry: -1, -1, 0, 0, 1 
+MM Entry: -1, -1, 0, 0, 1 
+MM Entry: -1, -1, 0, 0, 1 
+MM Entry: -1, -1, 0, 0, 1 
+MM Entry: -1, -1, 0, 0, 1 
+value = 27 = 0x1b
+
+
+# Start RRM Task
+rm_Task
+ENTER-rm_Go
+ENTER-rm_Main
+ENTER-rm_InitAll
+ENTER-sys_Init
+ENTER-sys_CreateMsgQs
+value = 66539400 = 0x3f74f88
+ENTER-sys_StartTasks
+ENTER-rm_WaitForL1Bootstrap: Entering...
+ENTER-rm_WaitForL1Rsp
+
+# 
+initL1
+value = 65390344 = 0x3e5c708
+newInitDsp
+value = 589833 = 0x90009
+#hpi2dsp(&cx6,0,0x3800)
+newGo
+value = -4260864 = 0xffbefc00
+
+#
+i
+  NAME        ENTRY       TID    PRI   STATUS      PC       SP     ERRNO  DELAY
+---------- ------------ -------- --- ---------- -------- -------- ------- -----
+tLogTask   _logTask      3fce8fc   0 PEND         167ddb  3fce868       0     0
+tExcTask   _excTask      3fd1214   0 PEND         167ddb  3fd1184       0     0
+tShell     _shell        3fa7704   1 PEND         11583c  3fa73e4       0     0
+tWdbTask   0x14e294      3fa88ac   3 READY        167a0d  3fa879c       0     0
+lapdm_phserlapdm_phserv  3f569c8  10 PEND         167ddb  3f56930       0     0
+lapdm_dlserlapdm_dlserv  3e7a950  10 PEND         167ddb  3e7a7d4       0     0
+mmMain     mmMain(void)  3e75988  10 PEND         167ddb  3e755ac       0     0
+tNetTask   _netTask      3fc9664  50 READY        12a047  3fc95fc       0     0
+L1TaskUp   taskDspUp(vo  3e648b0 100 PEND         11583c  3e6481c       0     0
+L1TaskDn   taskDspDn(vo  3e5c708 100 PEND         167ddb  3e5c244       0     0
+rmTask     rm_Main(void  3f74f88 100 PEND         167ddb  3f74eb8       0     0
+value = 0 = 0x0
+
+-> From DSP
+03e64844: 10 20 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+ENTER-rm_RetrvConfigFromOam
+ENTER-rm_PopulateSI2
+ENTER-rm_PopulateSI3
+ENTER-rm_PopulateSI4
+ENTER-rm_PopulateSI5
+ENTER-rm_PopulateSI6
+ENTER-rm_InitRm
+ENTER-rm_InitLAPDm
+CNI_LAPDM_Create_Instance: channelType 4, trx 0, channel 32768, link 32
+T_CNI_LAPDM_Channel::Assign , oid 0, gsmChannelType 4
+CNI_LAPDM_Instance_Registration: oid 0, sapi, 0, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Create_Instance: channelType 7, trx 0, channel 34816, link 32
+T_CNI_LAPDM_Channel::Assign , oid 1, gsmChannelType 7
+CNI_LAPDM_Instance_Registration: oid 1, sapi, 0, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Create_Instance: channelType 2, trx 0, channel 2560, link 0
+T_CNI_LAPDM_Channel::Assign , oid 2, gsmChannelType 2
+CNI_LAPDM_Create_Instance: channelType 1, trx 0, channel 2560, link 64
+T_CNI_LAPDM_Channel::Assign , oid 3, gsmChannelType 1
+CNI_LAPDM_Instance_Registration: oid 2, sapi, 0, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Instance_Registration: oid 3, sapi, 0, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Instance_Registration: oid 3, sapi, 3, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Create_Instance: channelType 2, trx 0, channel 3072, link 0
+T_CNI_LAPDM_Channel::Assign , oid 4, gsmChannelType 2
+CNI_LAPDM_Create_Instance: channelType 1, trx 0, channel 3072, link 64
+T_CNI_LAPDM_Channel::Assign , oid 5, gsmChannelType 1
+CNI_LAPDM_Instance_Registration: oid 4, sapi, 0, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Instance_Registration: oid 5, sapi, 0, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Instance_Registration: oid 5, sapi, 3, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Create_Instance: channelType 0, trx 0, channel 8192, link 0
+T_CNI_LAPDM_Channel::Assign , oid 6, gsmChannelType 0
+CNI_LAPDM_Create_Instance: channelType 1, trx 0, channel 8192, link 64
+T_CNI_LAPDM_Channel::Assign , oid 7, gsmChannelType 1
+CNI_LAPDM_Instance_Registration: oid 6, sapi, 0, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Instance_Registration: oid 6, sapi, 3, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Instance_Registration: oid 7, sapi, 0, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Create_Instance: channelType 0, trx 0, channel 10240, link 0
+T_CNI_LAPDM_Channel::Assign , oid 8, gsmChannelType 0
+CNI_LAPDM_Create_Instance: channelType 1, trx 0, channel 10240, link 64
+T_CNI_LAPDM_Channel::Assign , oid 9, gsmChannelType 1
+CNI_LAPDM_Instance_Registration: oid 8, sapi, 0, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Instance_Registration: oid 8, sapi, 3, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Instance_Registration: oid 9, sapi, 0, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Create_Instance: channelType 0, trx 0, channel 12288, link 0
+T_CNI_LAPDM_Channel::Assign , oid 10, gsmChannelType 0
+CNI_LAPDM_Create_Instance: channelType 1, trx 0, channel 12288, link 64
+T_CNI_LAPDM_Channel::Assign , oid 11, gsmChannelType 1
+CNI_LAPDM_Instance_Registration: oid 10, sapi, 0, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Instance_Registration: oid 10, sapi, 3, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Instance_Registration: oid 11, sapi, 0, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Create_Instance: channelType 0, trx 0, channel 14336, link 0
+T_CNI_LAPDM_Channel::Assign , oid 12, gsmChannelType 0
+CNI_LAPDM_Create_Instance: channelType 1, trx 0, channel 14336, link 64
+T_CNI_LAPDM_Channel::Assign , oid 13, gsmChannelType 1
+CNI_LAPDM_Instance_Registration: oid 12, sapi, 0, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Instance_Registration: oid 12, sapi, 3, layer3_id 0, p_callback_function 5901c4
+CNI_LAPDM_Instance_Registration: oid 13, sapi, 0, layer3_id 0, p_callback_function 5901c4
+ENTER-rm_InitIRT
+0th TCHF entryId data: iEntryId=2 ,entryId=1
+1th TCHF entryId data: iEntryId=4 ,entryId=3
+0th SDCCH4 entryId data: iEntryId=0,entryId=5
+1th SDCCH4 entryId data: iEntryId=1,entryId=7
+2th SDCCH4 entryId data: iEntryId=2,entryId=9
+3th SDCCH4 entryId data: iEntryId=3,entryId=11
+ENTER-rm_InitL1
+ENTER-rm_ConfigTrx
+ENTER-rm_SendTrxConfigToTrx: Entering...
+ENTER-rm_WaitForL1Rsp
+send to dsp:
+03e5c298: 07 00 00 00 10 15 00 00 02 2d 00 ee ee ee ee ee 
+03e5c2a8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c2b8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 1 messages
+From DSP
+03e64844: 10 16 00 00 78 07 00 02 00 00 00 00 ff fe ff ff 
+ENTER-rm_SendSlotActivateToTrx: Entering...
+ENTER-rm_WaitForSlotActivateRsp: Entering...
+ENTER-rm_WaitForL1Rsp
+send to dsp:
+03e5c298: 06 00 00 00 10 17 00 00 00 05 00 ee ee ee ee ee 
+03e5c2a8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c2b8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 20 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 28 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 30 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 38 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 20 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 28 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 30 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 38 00 40 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 80 00 20 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 88 00 20 
+
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x9000,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x9000, link 0x20
+07 00 00 00 02 01 00 00 90 00 20 
+
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x9000,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x9000, link 0x20
+07 00 00 00 02 01 00 00 90 00 20 
+
+From DSP
+03e64844: 10 18 00 00 00 00 00 00 00 00 00 00 ff fe ff ff 
+ENTER-rm_SendSlotActivateToTrx: Entering...
+ENTER-rm_WaitForSlotActivateRsp: Entering...
+ENTER-rm_WaitForL1Rsp
+send to dsp:
+03e5c298: 06 00 00 00 10 17 00 00 02 01 00 ee ee ee ee ee 
+03e5c2a8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c2b8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0a 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0a 00 40 
+
+From DSP
+03e64844: 10 18 00 00 02 00 00 00 01 00 00 00 00 00 00 00 
+ENTER-rm_SendSlotActivateToTrx: Entering...
+ENTER-rm_WaitForSlotActivateRsp: Entering...
+ENTER-rm_WaitForL1Rsp
+send to dsp:
+03e5c298: 06 00 00 00 10 17 00 00 04 01 00 ee ee ee ee ee 
+03e5c2a8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c2b8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0c 00 00 
+
+CNI_LAPDM_Ph_Callback received PH-CONNECT-IND, length 11
+07 00 00 00 02 01 00 00 0c 00 40 
+
+From DSP
+03e64844: 10 18 00 00 04 00 00 00 bc d5 00 80 ff fe ff ff 
+SLOT ACTIVATION FINISHED
+ENTER-rm_SendSetUGainToTrx: Entering...
+ENTER-rm_SendSetDGainToTrx: Entering...
+ENTER-rm_SendTuneSynthToTrx: Entering...
+ENTER-rm_SendConfigFpgaDelayToTrx: Entering...
+CONFIG TRX/SLOTS FINISHED
+TRACE-rm_InitL1: bcchTrx=0, i=0
+End of rm_SendSynchInfoToBcchTrx()
+ENTER-rm_SendAllSystemInfosToBcchTrx
+ENTER-rm_SendSystemInfo2ToBcchTrx
+ENTER-rm_SendSystemInfo3ToBcchTrx
+ENTER-rm_SendSystemInfo4ToBcchTrx
+End of rm_SendAllSystemInfosToBcchTrx, bcchTrx=0
+ENTER-rm_SendSacchFillingToTrx
+ENTER-rm_SendSacchFillingToTrx
+End of rm_SendSacchFillingSI5 and SI6
+STAY in RM_MAIN while(1) loop
+send to dsp:
+03e5c298: 05 00 00 00 10 10 00 00 00 01 00 ee ee ee ee ee 
+03e5c2a8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c2b8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+03e5c2d8: 05 00 00 00 10 11 00 00 00 01 00 ee ee ee ee ee 
+03e5c2e8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c2f8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c308: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+03e5c318: 07 00 00 00 10 12 00 00 00 00 00 ee ee ee ee ee 
+03e5c328: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c338: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c348: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+03e5c358: 07 00 00 00 10 12 00 00 01 00 00 ee ee ee ee ee 
+03e5c368: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c378: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c388: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+03e5c398: 07 00 00 00 10 12 00 00 02 00 00 ee ee ee ee ee 
+03e5c3a8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c3b8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c3c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+03e5c3d8: 07 00 00 00 10 12 00 00 03 00 00 ee ee ee ee ee 
+03e5c3e8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c3f8: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c408: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+03e5c418: 08 00 00 00 10 14 00 00 00 00 00 00 ee ee ee ee 
+03e5c428: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c438: ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee ee 
+03e5c448: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+03e5c458: 22 00 00 00 0c 00 11 00 80 00 02 17 59 06 1a 8e 
+03e5c468: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 21 
+03e5c478: 01 04 00 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c488: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+03e5c498: 22 00 00 00 0c 00 11 00 80 00 03 17 49 06 1b 00 
+03e5c4a8: 01 00 f1 10 00 02 41 01 00 23 07 00 01 04 00 2b 
+03e5c4b8: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c4c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+03e5c4d8: 22 00 00 00 0c 00 11 00 80 00 04 17 31 06 1c 00 
+03e5c4e8: f1 10 00 02 07 00 01 04 00 2b 2b 2b 2b 2b 2b 2b 
+03e5c4f8: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c508: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+03e5c518: 1b 00 00 00 10 00 1a 00 05 12 06 1d 8e 00 00 00 
+03e5c528: 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 2b 
+03e5c538: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c548: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+03e5c558: 1b 00 00 00 10 00 1a 00 06 12 06 1e 00 01 00 f1 
+03e5c568: 10 00 02 23 21 2b 2b 2b 2b 2b 2b 2b 01 00 00 2b 
+03e5c578: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c588: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 12 messages
+
+-> 
+-> 
+-> CNI_LAPDM_Ph_Callback received PH-RANDOM-ACCESS-IND, length 17
+0d 00 00 00 02 02 00 00 88 00 20 19 21 f5 00 00 
+00 
+
+RIL3MD ==> RRM
+RIL3_MD Dump RRM Message ------------BEGIN
+    Module_ID = 1
+    l3_id = 65442488
+    entry_id = 0
+    lapdm_oid = 1
+    primitive_type = 10
+    sapi = 0
+    channel_type = 7
+    error_cause = 0
+    unserved_data_after_release = 0
+    l3_data.msgLength = 8
+l3data hex dump
+19 21 f5 00 00 00 2b 2b 
+
+RIL3_MD Dump RRM Message ------------END
+RM_MAIN:MD prim=0x010a,entryID=0,sapi=0, OId=1
+ENTER-rm_Despatch
+Entering rm_DlRaInd=0x010a
+ENTER-rm_DlRaInd
+TRACK-rm_DlRaInd: neci=0,cos=0,ref=25
+ENTER-rm_ChanReq
+ENTER-rm_AllocateSmCtxt
+TRACK-rm_AllocSmCtxt: Assigned SDCCH4 = 0
+ENTER-rm_SendChanActivation
+STAY in RM_MAIN while(1) loop
+send to dsp:
+03e5c298: 19 00 00 00 08 00 21 00 20 00 00 00 03 01 00 01 
+03e5c2a8: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2b 
+03e5c2b8: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 1 messages
+From DSP
+03e64844: 08 00 22 00 20 00 24 4e 21 f5 00 00 00 2b 2b 2b 
+ENTER-rm_GetIrtEntryId
+TRACK-rm_GetIrtEntryId: Idx=0, entryId=5
+Rx L1 primitive= 0x0001,entryID=5
+ENTER-rm_Despatch
+ENTER-rm_S2ActivatingSigTrafficChan
+ENTER-rm_SendImmAssign
+RM_SENDIMMASSIGN: l3_data.length=23
+ENTER-rm_StartTimer: entry ID=5, timer ID=0
+STAY in RM_MAIN while(1) loop
+send to dsp:
+03e5c298: 1e 00 00 00 02 00 01 00 90 00 20 2d 06 3f 03 20 
+03e5c2a8: a2 95 19 21 f5 00 00 2b 2b 2b 2b 2b 2b 2b 2b 2b 
+03e5c2b8: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-DATA-IND, length 36
+20 00 00 00 02 00 02 00 20 00 00 21 f5 01 3f 49 
+05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 
+24 01 2b 2b 
+
+T_CNI_LAPDM_Frame_Decoder:: 
+	frame format is 1 frame type is 4, frame control type is 1
+	01 3f 49 05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 24 01 2b 2b 
+RIL3MD ==> RRM
+RIL3_MD Dump RRM Message ------------BEGIN
+    Module_ID = 1
+    l3_id = 65442488
+    entry_id = 5
+    lapdm_oid = 6
+    primitive_type = 1
+    sapi = 0
+    channel_type = 0
+    error_cause = 0
+    unserved_data_after_release = 0
+    l3_data.msgLength = 18
+l3data hex dump
+05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 
+24 01 
+
+CNI_LAPDM_Ph_Callback received PH-DATA-IND, length RIL3_MD Dump RRM Message ------------EN 
+D
+RIL3MD ==> MM
+RIL3_MD Dump CCMM Message ------------BEGIN
+    Module_ID = 1
+    l3_id = 65534800
+    entry_id = 5
+    lapdm_oid = 6
+    primitive_type = 1
+    sapi = 0
+    l3_data.msgLength = 18
+l3data hex dump
+05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 
+24 01 
+
+RIL3_MD Dump CCMM Message ------------END
+CNI_LAPDM_Ph_Data_Request send a frame, length=23
+03 73 49 05 08 70 32 f4 03 ff fe 20 08 29 43 03 
+75 47 00 24 MM Log: Received Message from MD, Msg Type: 081
+ MM Log: Sent Message to LAPDm, Msg Type: 2b2 
+2bMM Log: Sent Message to RR, Prim. Type, Msg Type:  11
+ 
+0
+36
+20 00 00 00 02 00 02 00 20 00 00 21 f5 01 3f 49 
+05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 
+24 01 2b 2b 
+
+T_CNI_LAPDM_Frame_Decoder:: 
+	frame format is 1 frame type is 4, frame control type is 1
+	01 3f 49 05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 24 01 2b 2b 
+RIL3MD ==> RRM
+RIL3_MD Dump RRM Message ------------BEGIN
+    Module_ID = 1
+    l3_id = 65442488
+    entry_id = 5
+    lapdm_oid = 6
+    primitive_type = 11
+    sapi = 0
+    channel_type = 0
+    error_cause = 14
+    unserved_data_after_release = 0
+    l3_data.msgLength = 0
+l3data hex dump
+
+RIL3_MD Dump RRM Message ------------END
+Set timer for 60000, timeout in 10000
+CNI_LAPDM_Ph_Data_Request send a frame, length=23
+03 00 1d 05 02 00 f1 10 00 02 2b 2b 2b 2b 2b 2b 
+2b 2b 2b 2b 2b 2b 2b 
+
+RM_MAIN:MD prim=0x0101,entryID=5,sapi=0, OId=6
+ENTER-rm_Despatch
+ENTER-rm_S3SigChanActivated
+ENTER-rm_StopTimer: entryID=5, timerID=0
+ENTER--rm_ProcClassMarkIE: entryID=5
+LUP===========: PD=5,MT=
+LUP:Type IE: present=1,forBit=0,type=0
+LUP:CipherKey IE: present=1,keySeq=7
+LUP:LAI IE---------------------------
+LUP:Classmark1 IE: present=1,revLevel=1,esInd=0,a51=0,rfPowerCap=66538760
+LUP:MobileID IE---------------------------
+STAY in RM_MAIN while(1) loop
+RM_MAIN:MM prim=0x030b,entryID=5
+ENTER-rm_Despatch
+ENTER-rm_S5SigModeEstablished
+ENTER-rm_SendChanRelease:entryId=5
+rm_SendChanRelease: mOId=6,entryId=5,sapi=0
+ENTER-rm_SendDeactivateSacch
+ENTER-rm_StartTimer: entry ID=5, timer ID=2
+STAY in RM_MAIN while(1) loop
+RM_MAIN:MD prim=0x010b,entryID=5,sapi=0, OId=6
+ENTER-rm_Despatch
+ENTER-rm_S7ReleasingSigTrafficChan
+ERROR-rm_S7SigChanActivated: LAPDm message:11
+STAY in RM_MAIN while(1) loop
+send to dsp:
+03e5c298: 1e 00 00 00 02 00 01 00 20 00 00 03 73 49 05 08 
+03e5c2a8: 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 24 01 
+03e5c2b8: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+03e5c2d8: 1e 00 00 00 02 00 01 00 20 00 00 03 00 1d 05 02 
+03e5c2e8: 00 f1 10 00 02 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 
+03e5c2f8: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c308: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+03e5c318: 06 00 00 00 08 00 25 00 20 00 00 03 00 1d 05 02 
+03e5c328: 00 f1 10 00 02 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 
+03e5c338: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c348: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 3 messages
+CNI_LAPDM_Ph_Callback received PH-RANDOM-ACCESS-IND, length 17
+0d 00 00 00 02 02 00 00 88 00 20 0d 2c 41 00 00 
+00 
+
+RIL3MD ==> RRM
+RIL3_MD Dump RRM Message ------------BEGIN
+    Module_ID = 1
+    l3_id = 65442488
+    entry_id = 0
+    lapdm_oid = 1
+    primitive_type = 10
+    sapi = 0
+    channel_type = 7
+    error_cause = 0
+    unserved_data_after_release = 0
+    l3_data.msgLength = 8
+l3data hex dump
+0d 2c 41 00 00 00 08 70 
+
+RIL3_MD Dump RRM Message ------------END
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x0,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x0, link 0x20
+07 00 00 00 02 03 00 00 00 00 20 
+
+RM_MAIN:MD prim=0x010a,entryID=0,sapi=0, OId=1
+ENTER-rm_Despatch
+Entering rm_DlRaInd=0x010a
+ENTER-rm_DlRaInd
+TRACK-rm_DlRaInd: neci=0,cos=0,ref=13
+ENTER-rm_ChanReq
+ENTER-rm_AllocateSmCtxt
+TRACK-rm_AllocSmCtxt: Assigned SDCCH4 = 1
+ENTER-rm_SendChanActivation
+STAY in RM_MAIN while(1) loop
+send to dsp:
+03e5c298: 19 00 00 00 08 00 21 00 28 00 00 00 03 01 00 01 
+03e5c2a8: 00 00 00 00 00 00 00 00 00 00 00 00 00 2b 2b 2b 
+03e5c2b8: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 1 messages
+From DSP
+03e64844: 08 00 22 00 28 00 2d 6e 2c 41 00 00 00 08 70 32 
+ENTER-rm_GetIrtEntryId
+TRACK-rm_GetIrtEntryId: Idx=1, entryId=7
+Rx L1 primitive= 0x0001,entryID=7
+ENTER-rm_Despatch
+ENTER-rm_S2ActivatingSigTrafficChan
+ENTER-rm_SendImmAssign
+RM_SENDIMMASSIGN: l3_data.length=23
+ENTER-rm_StartTimer: entry ID=7, timer ID=0
+STAY in RM_MAIN while(1) loop
+send to dsp:
+03e5c298: 1e 00 00 00 02 00 01 00 90 01 20 2d 06 3f 03 28 
+03e5c2a8: a2 95 0d 2c 41 00 00 2b 2b 2b 2b 2b 2b 2b 2b 2b 
+03e5c2b8: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-DATA-IND, length 36
+20 00 00 00 02 00 02 00 28 00 00 2c 41 01 3f 49 
+05 08 78 32 f4 03 ff fe 20 08 29 43 03 75 47 00 
+24 01 2b 2b 
+
+T_CNI_LAPDM_Frame_Decoder:: 
+	frame format is 1 frame type is 4, frame control type is 1
+	01 3f 49 05 08 78 32 f4 03 ff fe 20 08 29 43 03 75 47 00 24 01 2b 2b 
+RIL3MD ==> RRM
+RIL3_MD Dump RRM Message ------------BEGIN
+    Module_ID = 1
+    l3_id = 65442488
+    entry_id = 7
+    lapdm_oid = 8
+    primitive_type = 1
+    sapi = 0
+    channel_type = 0
+    error_cause = 0
+    unserved_data_after_release = 0
+    l3_data.msgLength = 18
+l3data hex dump
+05 08 78 32 f4 03 ff fe 20 08 29 43 03 75 47 00 
+24 01 
+
+RIL3_MD Dump RRM Message ------------END
+RIL3MD ==> MM
+RIL3_MD Dump CCMM Message ------------BEGIN
+    Module_ID = 1
+    l3_id = 65534800
+    entry_id = 7
+    lapdm_oid = 8
+    primitive_type = 1
+    sapi = 0
+    l3_data.msgLength = 18
+l3data hex dump
+05 08 78 32 f4 03 ff fe 20 08 29 43 03 75 47 00 
+24 01 
+
+RIL3_MD Dump CCMM Message ------------END
+MM Log: Received Message from MD, Msg Type: 8
+MM Log: Sent Message to LAPDm, Msg Type: 2
+MM Log: Sent Message to RR, Prim. Type, Msg Type: 11 0
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x0,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x0, link 0x20
+07 00 00 00 02 03 00 00 00 00 20 
+
+RM_MAIN:MD prim=0x0101,entryID=7,sapi=0, OId=8
+ENTER-rm_Despatch
+ENTER-rm_S3SigChanActivated
+ENTER-rm_StopTimer: entryID=7, timerID=0
+ENTER--rm_ProcClassMarkIE: entryID=7
+LUP===========: PD=5,MT=
+LUP:Type IE: present=1,forBit=1,type=0
+LUP:CipherKey IE: present=1,keySeq=7
+LUP:LAI IE---------------------------
+LUP:Classmark1 IE: present=1,revLevel=1,esInd=0,a51=0,rfPowerCap=66538760
+LUP:MobileID IE---------------------------
+STAY in RM_MAIN while(1) loop
+RM_MAIN:MM prim=0x030b,entryID=7
+ENTER-rm_Despatch
+ENTER-rm_S5SigModeEstablished
+ENTER-rm_SendChanRelease:entryId=7
+rm_SendChanRelease: mOId=8,entryId=7,sapi=0
+ENTER-rm_SendDeactivateSacch
+ENTER-rm_StartTimer: entry ID=7, timer ID=2
+STAY in RM_MAIN while(1) loop
+send to dsp:
+03e5c298: 06 00 00 00 08 00 25 00 28 00 20 2d 06 3f 03 28 
+03e5c2a8: a2 95 0d 2c 41 00 00 2b 2b 2b 2b 2b 2b 2b 2b 2b 
+03e5c2b8: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-RANDOM-ACCESS-IND, length 17
+0d 00 00 00 02 02 00 00 88 00 20 1c 42 4e 00 00 
+00 
+
+RIL3MD ==> RRM
+RIL3_MD Dump RRM Message ------------BEGIN
+    Module_ID = 1
+    l3_id = 65442488
+    entry_id = 0
+    lapdm_oid = 1
+    primitive_type = 10
+    sapi = 0
+    channel_type = 7
+    error_cause = 0
+    unserved_data_after_release = 0
+    l3_data.msgLength = 8
+l3data hex dump
+1c 42 4e 00 00 00 08 78 
+
+RIL3_MD Dump RRM Message ------------END
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x0,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x0, link 0x20
+07 00 00 00 02 03 00 00 00 00 20 
+
+RM_MAIN:MD prim=0x010a,entryID=0,sapi=0, OId=1
+ENTER-rm_Despatch
+Entering rm_DlRaInd=0x010a
+ENTER-rm_DlRaInd
+TRACK-rm_DlRaInd: neci=0,cos=0,ref=28
+ENTER-rm_ChanReq
+ENTER-rm_AllocateSmCtxt
+TRACK-rm_AllocSmCtxt: Assigned SDCCH4 = 2
+ENTER-rm_SendChanActivation
+STAY in RM_MAIN while(1) loop
+send to dsp:
+03e5c298: 19 00 00 00 08 00 21 00 30 00 00 00 03 01 00 01 
+03e5c2a8: 00 00 00 00 00 00 00 00 00 00 00 00 00 2b 2b 2b 
+03e5c2b8: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 1 messages
+From DSP
+03e64844: 08 00 22 00 30 00 45 4c 42 4e 00 00 00 08 78 32 
+ENTER-rm_GetIrtEntryId
+TRACK-rm_GetIrtEntryId: Idx=2, entryId=9
+Rx L1 primitive= 0x0001,entryID=9
+ENTER-rm_Despatch
+ENTER-rm_S2ActivatingSigTrafficChan
+ENTER-rm_SendImmAssign
+RM_SENDIMMASSIGN: l3_data.length=23
+ENTER-rm_StartTimer: entry ID=9, timer ID=0
+STAY in RM_MAIN while(1) loop
+send to dsp:
+03e5c298: 1e 00 00 00 02 00 01 00 90 02 20 2d 06 3f 03 30 
+03e5c2a8: a2 95 1c 42 4e 00 00 2b 2b 2b 2b 2b 2b 2b 2b 2b 
+03e5c2b8: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-DATA-IND, length 36
+20 00 00 00 02 00 02 00 30 00 00 42 4e 01 3f 49 
+05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 
+24 01 2b 2b 
+
+T_CNI_LAPDM_Frame_Decoder:: 
+	frame format is 1 frame type is 4, frame control type is 1
+	01 3f 49 05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 24 01 2b 2b 
+RIL3MD ==> RRM
+RIL3_MD Dump RRM Message ------------BEGIN
+    Module_ID = 1
+    l3_id = 65442488
+    entry_id = 9
+    lapdm_oid = 10
+    primitive_type = 1
+    sapi = 0
+    channel_type = 0
+    error_cause = 0
+    unserved_data_after_release = 0
+    l3_data.msgLength = 18
+l3data hex dump
+05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 
+24 01 
+
+RIL3_MD Dump RRM Message ------------END
+RIL3MD ==> MM
+RIL3_MD Dump CCMM Message ------------BEGIN
+    Module_ID = 1
+    l3_id = 65534800
+    entry_id = 9
+    lapdm_oid = 10
+    primitive_type = 1
+    sapi = 0
+    l3_data.msgLength = 18
+l3data hex dump
+05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 
+24 01 
+
+RIL3_MD Dump CCMM Message ------------END
+MM Log: Received Message from MD, Msg Type: 8
+MM Log: Sent Message to LAPDm, Msg Type: 2
+MM Log: Sent Message to RR, Prim. Type, Msg Type: 11 0
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x0,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x0, link 0x20
+07 00 00 00 02 03 00 00 00 00 20 
+
+RM_MAIN:MD prim=0x0101,entryID=9,sapi=0, OId=10
+ENTER-rm_Despatch
+ENTER-rm_S3SigChanActivated
+ENTER-rm_StopTimer: entryID=9, timerID=0
+ENTER--rm_ProcClassMarkIE: entryID=9
+LUP===========: PD=5,MT=
+LUP:Type IE: present=1,forBit=0,type=0
+LUP:CipherKey IE: present=1,keySeq=7
+LUP:LAI IE---------------------------
+LUP:Classmark1 IE: present=1,revLevel=1,esInd=0,a51=0,rfPowerCap=66538760
+LUP:MobileID IE---------------------------
+STAY in RM_MAIN while(1) loop
+RM_MAIN:MM prim=0x030b,entryID=9
+ENTER-rm_Despatch
+ENTER-rm_S5SigModeEstablished
+ENTER-rm_SendChanRelease:entryId=9
+rm_SendChanRelease: mOId=10,entryId=9,sapi=0
+ENTER-rm_SendDeactivateSacch
+ENTER-rm_StartTimer: entry ID=9, timer ID=2
+STAY in RM_MAIN while(1) loop
+send to dsp:
+03e5c298: 06 00 00 00 08 00 25 00 30 00 20 2d 06 3f 03 30 
+03e5c2a8: a2 95 1c 42 4e 00 00 2b 2b 2b 2b 2b 2b 2b 2b 2b 
+03e5c2b8: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 1 messages
+CNI_LAPDM_Ph_Callback received PH-DATA-IND, length 36
+20 00 00 00 02 00 02 00 30 00 00 42 4e 01 3f 49 
+05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 
+24 01 2b 2b 
+
+T_CNI_LAPDM_Frame_Decoder:: 
+	frame format is 1 frame type is 4, frame control type is 1
+	01 3f 49 05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 24 01 2b 2b 
+RIL3MD ==> RRM
+RIL3_MD Dump RRM Message ------------BEGIN
+    Module_ID = 1
+    l3_id = 65442488
+    entry_id = 9
+    lapdm_oid = 10
+    primitive_type = 11
+    sapi = 0
+    channel_type = 0
+    error_cause = 14
+    unserved_data_after_release = 0
+    l3_data.msgLength = 0
+l3data hex dump
+
+RIL3_MD Dump RRM Message ------------END
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x0,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x0, link 0x20
+07 00 00 00 02 03 00 00 00 00 20 
+
+RM_MAIN:MD prim=0x010b,entryID=9,sapi=0, OId=10
+ENTER-rm_Despatch
+ENTER-rm_S7ReleasingSigTrafficChan
+ERROR-rm_S7SigChanActivated: LAPDm message:11
+STAY in RM_MAIN while(1) loop
+CNI_LAPDM_Ph_Callback received PH-DATA-IND, length 36
+20 00 00 00 02 00 02 00 30 00 00 42 4e 01 3f 49 
+05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 
+24 01 2b 2b 
+
+T_CNI_LAPDM_Frame_Decoder:: 
+	frame format is 1 frame type is 4, frame control type is 1
+	01 3f 49 05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 24 01 2b 2b 
+RIL3MD ==> RRM
+RIL3_MD Dump RRM Message ------------BEGIN
+    Module_ID = 1
+    l3_id = 65442488
+    entry_id = 9
+    lapdm_oid = 10
+    primitive_type = 11
+    sapi = 0
+    channel_type = 0
+    error_cause = 14
+    unserved_data_after_release = 0
+    l3_data.msgLength = 0
+l3data hex dump
+
+RIL3_MD Dump RRM Message ------------END
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x0,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x0, link 0x20
+07 00 00 00 02 03 00 00 00 00 20 
+
+RM_MAIN:MD prim=0x010b,entryID=9,sapi=0, OId=10
+ENTER-rm_Despatch
+ENTER-rm_S7ReleasingSigTrafficChan
+ERROR-rm_S7SigChanActivated: LAPDm message:11
+STAY in RM_MAIN while(1) loop
+CNI_LAPDM_Ph_Callback received PH-DATA-IND, length 36
+20 00 00 00 02 00 02 00 30 00 00 42 4e 01 3f 49 
+05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 
+24 01 2b 2b 
+
+T_CNI_LAPDM_Frame_Decoder:: 
+	frame format is 1 frame type is 4, frame control type is 1
+	01 3f 49 05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 24 01 2b 2b 
+RIL3MD ==> RRM
+RIL3_MD Dump RRM Message ------------BEGIN
+    Module_ID = 1
+    l3_id = 65442488
+    entry_id = 9
+    lapdm_oid = 10
+    primitive_type = 11
+    sapi = 0
+    channel_type = 0
+    error_cause = 14
+    unserved_data_after_release = 0
+    l3_data.msgLength = 0
+l3data hex dump
+
+RIL3_MD Dump RRM Message ------------END
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x0,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x0, link 0x20
+07 00 00 00 02 03 00 00 00 00 20 
+
+RM_MAIN:MD prim=0x010b,entryID=9,sapi=0, OId=10
+ENTER-rm_Despatch
+ENTER-rm_S7ReleasingSigTrafficChan
+ERROR-rm_S7SigChanActivated: LAPDm message:11
+STAY in RM_MAIN while(1) loop
+CNI_LAPDM_Ph_Callback received PH-DATA-IND, length 36
+20 00 00 00 02 00 02 00 30 00 00 42 4e 01 3f 49 
+05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 
+24 01 2b 2b 
+
+T_CNI_LAPDM_Frame_Decoder:: 
+	frame format is 1 frame type is 4, frame control type is 1
+	01 3f 49 05 08 70 32 f4 03 ff fe 20 08 29 43 03 75 47 00 24 01 2b 2b 
+RIL3MD ==> RRM
+RIL3_MD Dump RRM Message ------------BEGIN
+    Module_ID = 1
+    l3_id = 65442488
+    entry_id = 9
+    lapdm_oid = 10
+    primitive_type = 11
+    sapi = 0
+    channel_type = 0
+    error_cause = 14
+    unserved_data_after_release = 0
+    l3_data.msgLength = 0
+l3data hex dump
+
+RIL3_MD Dump RRM Message ------------END
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x0,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x0, link 0x20
+07 00 00 00 02 03 00 00 00 00 20 
+
+RM_MAIN:MD prim=0x010b,entryID=9,sapi=0, OId=10
+ENTER-rm_Despatch
+ENTER-rm_S7ReleasingSigTrafficChan
+ERROR-rm_S7SigChanActivated: LAPDm message:11
+STAY in RM_MAIN while(1) loop
+CNI_LAPDM_Ph_Callback received PH-RANDOM-ACCESS-IND, length 17
+0d 00 00 00 02 02 00 00 88 00 20 03 50 85 00 00 
+00 
+
+RIL3MD ==> RRM
+RIL3_MD Dump RRM Message ------------BEGIN
+    Module_ID = 1
+    l3_id = 65442488
+    entry_id = 0
+    lapdm_oid = 1
+    primitive_type = 10
+    sapi = 0
+    channel_type = 7
+    error_cause = 0
+    unserved_data_after_release = 0
+    l3_data.msgLength = 8
+l3data hex dump
+03 50 85 00 00 00 08 70 
+
+RIL3_MD Dump RRM Message ------------END
+CNI_LAPDM_Find_LAPDM_OID: LAPDm OID not found (trx=0x0,channel=0x0,link=0x20)
+CNI_LAPDM_Ph_Callback lapdm oid is null, trx 0x0, channel 0x0, link 0x20
+07 00 00 00 02 03 00 00 00 00 20 
+
+RM_MAIN:MD prim=0x010a,entryID=0,sapi=0, OId=1
+ENTER-rm_Despatch
+Entering rm_DlRaInd=0x010a
+ENTER-rm_DlRaInd
+TRACK-rm_DlRaInd: neci=0,cos=0,ref=3
+ENTER-rm_ChanReq
+ENTER-rm_AllocateSmCtxt
+TRACK-rm_AllocSmCtxt: Assigned SDCCH4 = 3
+ENTER-rm_SendChanActivation
+STAY in RM_MAIN while(1) loop
+send to dsp:
+03e5c298: 19 00 00 00 08 00 21 00 38 00 00 00 03 01 00 01 
+03e5c2a8: 00 00 00 00 00 00 00 00 00 00 00 00 00 2b 2b 2b 
+03e5c2b8: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 1 messages
+From DSP
+03e64844: 08 00 22 00 38 00 52 74 50 85 00 00 00 08 70 32 
+ENTER-rm_GetIrtEntryId
+TRACK-rm_GetIrtEntryId: Idx=3, entryId=11
+Rx L1 primitive= 0x0001,entryID=11
+ENTER-rm_Despatch
+ENTER-rm_S2ActivatingSigTrafficChan
+ENTER-rm_SendImmAssign
+RM_SENDIMMASSIGN: l3_data.length=23
+ENTER-rm_StartTimer: entry ID=11, timer ID=0
+STAY in RM_MAIN while(1) loop
+send to dsp:
+03e5c298: 1e 00 00 00 02 00 01 00 90 00 20 2d 06 3f 03 38 
+03e5c2a8: a2 95 03 50 85 00 00 2b 2b 2b 2b 2b 2b 2b 2b 2b 
+03e5c2b8: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 1 messages
+Rx RM primitive= 0x0003, entryID=11, timerId=0
+ENTER-rm_Despatch
+ENTER-rm_S3SigChanActivated
+rm_S3SigChanActivated: Timer Expiry for entryID=11
+ENTER-rm_SendRfChanRelease
+STAY in RM_MAIN while(1) loop
+send to dsp:
+03e5c298: 06 00 00 00 08 00 2e 00 38 00 20 2d 06 3f 03 38 
+03e5c2a8: a2 95 03 50 85 00 00 2b 2b 2b 2b 2b 2b 2b 2b 2b 
+03e5c2b8: 2b 2b 2b 01 00 00 ee ee ee ee ee ee ee ee ee ee 
+03e5c2c8: ee ee ee ee ee ee ee ee ee ee ee ee ac 2e 16 00 
+sending 1 messages
+

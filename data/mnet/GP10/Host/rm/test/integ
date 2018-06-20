@@ -1,0 +1,35 @@
+ld < K:/Workdirs/integration/rm.back/I80486/l2l3.out
+ld < K:/Workdirs/integration/lapdm/I80486/test.o
+ld < K:/Workdirs/integration/jcc/I80486/jcc.out
+ld < K:/Workdirs/integration/mm/I80486/mmm.out
+
+CNI_LAPDM_Initialization 
+cni_testInit
+
+#create a lapdm instance channel type 0, trx 0, channel num 1, link 1
+#CNI_LAPDM_Create_Instance(0, 0 , 0x2000, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x2800, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x3000, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x3800, 0)
+
+
+#L3 register a lapdm instance oid 0, sapi 0, layer3_id 10, and a call back function
+#CNI_LAPDM_Instance_Registration(0, 0, 0x20, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(1, 0, 0x28, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(2, 0, 0x30, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(3, 0, 0x38, cni_l3CallBack)
+
+# Start MM Task and print its data
+mmInit
+mmDataPrint
+
+
+# Start RRM Task
+taskSpawn("rmTask",20, 0, 10000,rm_Main)
+
+# 
+#initL1
+#newInitDsp
+#hpi2dsp(&cx6,0,0x3800)
+#newGo
+

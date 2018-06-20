@@ -1,0 +1,151 @@
+<html>
+
+<head>
+<meta name="VI60_defaultClientScript" content="JavaScript">
+<title>First Radio Carrier Configuration</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="Microsoft FrontPage 4.0" name="GENERATOR">
+<meta content="FrontPage.Editor.Document" name="ProgId">
+<base target="_self">
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/common.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/state.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+
+
+
+<SCRIPT language="JavaScript">
+function PresetForm(theForm)
+{
+	// selectOption(theForm.carrier_administrativeState_0Select, theForm.carrier_administrativeState_0);
+	return true;
+} 
+
+
+function ParseForm(theForm)
+{
+	// parseSelect(theForm.carrier_administrativeState_0Select, theForm.carrier_administrativeState_0);
+ 	return true;
+} 
+
+function copyValue(src, dst)
+{
+    src.value = dst.value
+	return true;
+} 
+
+</SCRIPT>
+
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form name="rf1_package" method="post" onsubmit="return ParseForm(this);">
+
+  <input type="hidden" name="cellAllocation.0" value="$%cellAllocation.0#$">
+
+    <!-- Fixed value -->
+  <input type="hidden" name="radioCarrierID_0" value="0">
+  <!----  Not used now
+  <input name="carrier_administrativeState_0" type="hidden" value="$%carrier_administrativeState_0#$">
+  ------------------->
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="453">
+      <tr>
+        <td width="437">
+        <h2 align="center">First Radio Carrier Configuration</h2>
+              <div align="center">
+                <table border="1" width="392">
+                 <!------------ Not used now 
+                  <tr>
+                    <td height="23" align="left">Operational State:</td>
+                    <td height="23" align="left">
+                        <script> displayState("$%carrier_operationalState_0#$") </script>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height="23" align="left">Administrative State:</td>
+                    <td height="23" align="left"><select name="carrier_administrativeState_0Select" size="1" onchange="lockWarning(this, 1)">
+                      <option value="0">Locked</option>
+                      <option value="1" selected>Unlocked</option>
+                      <option value="2">Shuttingd Down</option>
+                    </select></td>
+                  </tr>
+                   <tr>
+                       <td height="21" align="left"> Alarm Status:</td>
+                       <td height="21" align="left">
+                         <script> displayAlarmStatus("$%carrier_alarmStatus_0#$") </script>
+                         </td>
+                    </tr>
+                    --------------------------->                
+                  <tr>
+                    <td width="202">Power Class</td>
+                    <td width="176">
+                    <script> displayPowerClass("$%powerClass_0#$") </script>
+
+                    <!-------------
+                    <select name="powerClass_0Select" size="1">
+                      <option value="1">Power Class M1 (0.2W - GSM 900)</option>
+                      <option selected value="2">Power Class M3 (0.1W - DCS 1800)</option>
+                      <option value="3">Power Class M2 (0.2W - PCS 1900)</option>
+                    </select>
+                      ------------------>
+                    </td>
+                    
+                  </tr>
+                  <tr>
+                    <td title="The number of 2 dB steps the TX should be reduced from the maximum transmit power, for tuning the cell coverage." width="202">Max.
+                    Transmit Power Reduction<br>
+ <font size="1">(in 2dB steps)</font></td>
+                    <td title="Integer(0..6)" width="176"><input name="txPwrMaxReduction_0" size="1" maxlength="1" value="$%txPwrMaxReduction_0#$"
+                    onchange="return isValidInt(this,0,6);"> &nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td title="Constant radio frequency assigned to the radioCarrier object." width="202">Radio Frequency</td>
+                    <td title="Integer(0..1023)" width="176"><input type="text" name="carrierFrequency_0.0" value="$%carrierFrequency_0#$" size="4" maxlength="4"
+                    onchange="return isValidInt(this,0,1023) && copyValue(this.form.elements[0], this)"></td>
+                  </tr>
+                </table>
+              </div>
+        </center>
+        <div align="center">
+          <center>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <table border="0">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+                </form>
+
+    </table>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+

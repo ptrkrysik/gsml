@@ -1,0 +1,86 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Successful Immediate Assignment Procedures, per cause</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/perCause.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/common.js"></SCRIPT>
+
+
+
+<body onload="$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" name="apaClockSourceFrequencyTable">
+
+  <div align="center">
+    <table border="4" bgcolor="#D6D3CE" width="498">
+      <tr>
+        <td width="1028">
+        <h3 align="center">&nbsp;Successful Immediate Assignment<br>
+        &nbsp;Procedures, per cause</h3>
+        <div align="center">
+            <center>
+              <table border="0">
+                <tr>
+                  <td align="left">
+                  <p align="left"><b> Start Time:</b></td>
+                  <td>
+                  <i>
+                  <script> displayTime("$%meanPCHAGCHQueueLength#$") </script>
+                  </i>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="left"><b>Duration:</b></td>
+                  <td><i>Last Completed 15-Minute Measurement Interval</i></td>
+                </tr>
+              </table>
+            </center>
+        </div>
+        <div align="center">
+          <center>
+          <table border="1" width="449" height="49">
+            <tr>
+              <th height="18" align="left" width="80%"><font face="&#12;charset0Courier" size="3">Channel
+                Assignment Cause</font></th>
+              <th height="18" align="center" width="20%"><font face="&#12;charset0Courier" size="2">Successful
+                Count</font></th>
+            </tr>
+            <! $%createTable(succImmediateAssingProcsCause,*,,,,,succImmediateAssingProcsCause,succImmediateAssingProcsValue)#$ >
+            <! $%REPEAT(succImmediateAssingProcsCause,1,8)#$ >   
+            <tr>
+              <td align="left" width="80%" height="19"> <script> displayCause("$%succImmediateAssingProcsCause#$") </script> </td>
+              <td align="center" width="20%" height="19">$%succImmediateAssingProcsValue#$</td>
+            </tr>
+    
+            <! $%endRow(succImmediateAssingProcsCause)#$ >
+            <! $%REPEAT(END)#$ >
+            <! $%endTable(succImmediateAssingProcsCause)#$>    
+
+          </table>
+          </center>
+        </div>
+        <center>
+        <div align="center">
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"><input name="Recall1" type="button" value="Recall" onclick="window.location.reload()"></td>
+            </tr>
+          </table>
+        </div>
+        </center>
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>
+
+</body>
+
+</html>

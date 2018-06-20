@@ -1,0 +1,4 @@
+
+StarGateInt   6   10.1.1.198
+StarGateOut   9   10.1.1.198
+Cisco         1   10.1.1.8

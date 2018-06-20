@@ -1,0 +1,175 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Handover Control Package</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+
+<SCRIPT language="JavaScript">
+
+function PresetForm(theForm)
+{
+   
+	return true;
+} 
+	
+function ParseForm(theForm)
+{
+    
+	return true;
+} 
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="power_control">
+
+  <input name="adjCell_synchronized.$%getInstance(adjCell_handoverIndex)#$" type="hidden" value="$%adjCell_synchronized#$">
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="646">
+      <tr>
+        <td width="630">
+        <h2 align="center">Handover Control Options</h2>
+        <table border="0" width="100%">
+          <tr>
+            <td width="50%">
+            </td>
+            <td valign="top">
+            </td>
+          </tr>
+          <tr>
+            <td width="50%">
+            <table border="1" cellspacing="1" width="308">
+              <tr>
+                <th colspan="2" width="298">
+                  <p align="center"><b>Handover Threshold Signal Strength</b></th>
+              </tr>
+              <tr>
+                <td width="248">Threshold level for handover due to uplink strength</td>
+                <td width="44"
+                title="RxLev ::= INTEGER (0..63)
+-- 0 : &lt; -110 dB,
+-- 1 : -110 dB .. -109 dB
+-- 2 : -109 dB .. -108 dB
+--
+-- 63: &gt; -48 dB
+-- Ref. GSM 05.08 (RXLEV)"><input type="text" name="hoThresholdLevParamRxLevelUL" size="2" value="$%hoThresholdLevParamRxLevelUL#$" maxlength="2"
+                onchange="isValidInt(this,0,63);"></td>
+              </tr>
+              <tr>
+                <td width="248">Threshold level for handover due to downlink
+                  strength</td>
+                <td width="44"
+                title="RxLev ::= INTEGER (0..63)
+-- 0 : &lt; -110 dB,
+-- 1 : -110 dB .. -109 dB
+-- 2 : -109 dB .. -108 dB
+--
+-- 63: &gt; -48 dB
+-- Ref. GSM 05.08 (RXLEV)"><input type="text" name="hoThresholdLevParamRxLevelDL" size="2" value="$%hoThresholdLevParamRxLevelDL#$" maxlength="2"
+                onchange="isValidInt(this,0,63);"></td>
+              </tr>
+              <tr>
+                <td width="248" title="The number of averages that have to be taken into account, when making a handover decision (N5).">N5</td>
+                <td width="44" title="INTEGER (1..31)"><input type="text" name="hoThresholdLevParamNx" size="2" value="$%hoThresholdLevParamNx#$"
+                maxlength="2" onchange="isValidInt(this,1,31);"></td>
+              </tr>
+              <tr>
+                <td width="248"
+                title="The number of averages (out of total averages) that have to be upper/lower than the threshold, before making a handover decision (P5).">P5</td>
+                <td width="44" title="INTEGER (1..31)"><input type="text" name="hoThresholdLevParamPx" size="2" value="$%hoThresholdLevParamPx#$"
+                maxlength="2" onchange="isValidInt(this,1,31);"></td>
+              </tr>
+            </table>
+            </td>
+            <td width="50%">
+            <table border="1" cellspacing="1" width="311">
+              <tr>
+                <th colspan="2" height="19" width="301">
+                  <p align="center"><b>Handover&nbsp; Threshold Signal Quality</b></th>
+              </tr>
+              <tr>
+                <td height="21" width="256">Threshold level for handover due to uplink quality&nbsp;</td>
+                <td height="21"
+                title="RxQual ::= INTEGER (0..7)
+-- 0: less than 0.2%
+-- 1: 0.2% to 0.4%
+-- 2: 0.4% to 0.8%
+-- 3: 0.8% to 1.6%
+-- 4: 1.6% to 3.2%
+-- 5: 3.2% to 6.4%
+-- 6: 6.4% to 12.8%
+-- 7: greater than 12.8%" width="39"><input type="text" name="hoThresholdQualParamRxQualUL" size="1" value="$%hoThresholdQualParamRxQualUL#$"
+                maxlength="1" onchange="isValidInt(this,0,7)"></td>
+              </tr>
+              <tr>
+                <td height="23" width="256">Threshold level for handover due to
+                  downlink quality</td>
+                <td height="23"
+                title="RxQual ::= INTEGER (0..7)
+-- 0: less than 0.2%
+-- 1: 0.2% to 0.4%
+-- 2: 0.4% to 0.8%
+-- 3: 0.8% to 1.6%
+-- 4: 1.6% to 3.2%
+-- 5: 3.2% to 6.4%
+-- 6: 6.4% to 12.8%
+-- 7: greater than 12.8%" width="39"><input type="text" name="hoThresholdQualParamRxQualDL" size="1" value="$%hoThresholdQualParamRxQualDL#$"
+                maxlength="1" onchange="isValidInt(this,0,7)"></td>
+              </tr>
+              <tr>
+                <td height="23" width="256" title="The number of averages that have to be taken into account, when making a handover decision (N6).">N6</td>
+                <td height="23" width="39" title="INTEGER (1..31)"><input type="text" name="hoThresholdQualParamNx" size="2"
+                value="$%hoThresholdQualParamNx#$" maxlength="2" onchange="isValidInt(this,1,31)"></td>
+              </tr>
+              <tr>
+                <td height="23" width="256"
+                title="The number of averages (out of total averages) that have to be upper/lower than the threshold, before making a handover decision (P6).">P6</td>
+                <td height="23" width="39" title="INTEGER (1..31)"><input type="text" name="hoThresholdQualParamPx" size="2"
+                value="$%hoThresholdQualParamPx#$" maxlength="2" onchange="isValidInt(this,1,31)"></td>
+              </tr>
+            </table>
+            </td>
+          </tr>
+          <tr>
+            <td width="50%"></td>
+            <td width="50%"></td>
+          </tr>
+        </table>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        </center>
+      </td>
+    </tr>
+    </table>
+  </div>
+  <p align="center">&nbsp;</p>
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

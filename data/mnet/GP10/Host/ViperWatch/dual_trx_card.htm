@@ -1,0 +1,149 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Parameter</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+
+<SCRIPT language="JavaScript">
+
+function ParseForm(theForm)
+{
+}
+
+function PresetForm(theForm)
+{
+}
+
+function displayLockStatus(theStatus)
+{
+	if (theStatus == "1")
+	{
+		document.write("Locked");
+	} else {
+		document.write("Not Locked");
+	}
+}
+function displayMemoryStatus(theStatus)
+{
+	if (theStatus == "1")
+	{
+		document.write("Successfully Read");
+	} else {
+		document.write("Default");
+	}
+}
+
+function displayFpgaStatus(theStatus)
+{
+	if (theStatus == "1")
+	{
+		document.write("Not Synchronized");
+	} else {
+		document.write("Synchronized");
+	}
+}
+
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="dual_trx_card">
+
+  <font face="Times New Roman"><input type="hidden" name="trxLoopBackMode" value="$%trxLoopBackMode#$"></font>
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="425">
+      <tr>
+        <td width="409">
+        <h2 align="center">Dual TRX Card</h2>
+        <div align="center">
+          <center>
+          <table border="1" width="349">
+            <tr>
+              <td align="left" width="180">Serial Number:</td>
+              <td height="23" width="157"><font face="Times New Roman">$%trxSerialNumber#$</font></td>
+            </tr>
+            <tr>
+              <td align="left" width="180">Software Version:</td>
+              <td height="21" width="157"><font face="Times New Roman">$%trxSoftwareVersion#$</font></td>
+            </tr>
+            <tr>
+              <td align="left" width="180">FPGA Synchronization Status</td>
+              <td height="21" width="157">
+              <script language="javaScript"> displayFpgaStatus("$%gpsCardStatus#$") </script>
+            </td>
+            </tr>
+            <tr>
+              <td align="left" width="180">Trim Value Status</td>
+              <td height="21" width="157">
+                <script language="javaScript"> displayMemoryStatus("$%trxLoopBackMode#$") </script>
+             </td>
+            </tr>
+            <tr>
+              <td align="left" width="337" colspan="2">
+              <p align="center">&nbsp;
+              <p align="center"><b>PLL Lock Detect Status:</b>
+              <table border="1" width="331" cellpadding="2">
+                <tr>
+                  <td height="23" align="left" width="200">Master Reference Synthesizer:</td>
+                  <td height="23" width="113">
+                  <script language="javaScript"> displayLockStatus("$%referenceFrequencyPLL_LockDetectStatus#$") </script>
+                </td>
+                </tr>
+                <tr>
+                  <td height="23" align="left" width="200">Transceiver 1 Synthesizer:</td>
+                  <td height="23" width="113">
+                  <script language="javaScript"> displayLockStatus("$%transceiver_1_PLL_LockDetectStatus#$") </script>
+                 </td>
+                </tr>
+                <tr>
+                  <td height="23" align="left" width="200">Transceiver 2 Synthesizer:</td>
+                  <td height="23" width="113">
+                   <script language="javaScript"> displayLockStatus("$%transceiver_2B_PLL_LockDetectStatus#$") </script>
+                </td>
+                </tr>
+                <tr>
+                  <td height="23" align="left" width="200">Intermediate Frequency Synthesizer:</td>
+                  <td height="23" width="113">
+                  <script language="javaScript"> displayLockStatus("$%intermediateFrequency_LockDetectStatus#$") </script>
+                </td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        </td>
+      </tr>
+    </table>
+    </center>
+  </div>
+  <p align="center">&nbsp;</p>
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

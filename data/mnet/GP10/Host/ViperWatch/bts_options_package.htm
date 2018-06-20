@@ -1,0 +1,288 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>BTS Options Package</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+
+
+
+<SCRIPT language="JavaScript">
+
+function updateCheckBox(theForm, theCheckBox)
+{
+	
+	for (var i = 0; i < theCheckBox.length; i++)
+	{
+		if (theForm.elements[i].value == "1") 
+		{
+			theCheckBox[i].checked = true;
+			theCheckBox[i].defaultChecked = true;
+			
+		}
+	}
+			
+}
+
+function PresetForm(theForm)
+{
+clickRadio(theForm.allowIMSIAttachDetachRadio, theForm.allowIMSIAttachDetach);
+clickRadio(theForm.cellBarredRadio, theForm.cellBarred);
+clickRadio(theForm.dtxDownlinkRadio, theForm.dtxDownlink);
+clickRadio(theForm.emergencyCallRestrictedRadio, theForm.emergencyCallRestricted);
+clickRadio(theForm.isImsiCheckRequiredRadio, theForm.rm_nim_1_0);
+selectOption(theForm.dtxUplinkOption, theForm.dtxUplink);
+updateCheckBox(theForm, theForm.notAllowedClassCheck);
+
+return true;
+} 
+
+	
+
+function updateHidden(theForm, theCheckBox)
+{
+	
+	//window.alert("length " + theCheckBox.length );
+	for (var i = 0; i < theCheckBox.length; i++)
+	{
+		if (theCheckBox[i].checked)
+		{
+			theForm.elements[i].value = "1";
+		} else {
+		    theForm.elements[i].value = "0";
+		}
+	}
+}
+
+
+function ParseForm(theForm)
+{	
+		parseRadio(theForm.allowIMSIAttachDetachRadio, theForm.allowIMSIAttachDetach);
+	 	parseRadio(theForm.cellBarredRadio, theForm.cellBarred);
+		parseRadio(theForm.dtxDownlinkRadio, theForm.dtxDownlink);
+		parseRadio(theForm.emergencyCallRestrictedRadio, theForm.emergencyCallRestricted);
+		parseRadio(theForm.isImsiCheckRequiredRadio, theForm.rm_nim_1_0);
+		parseSelect(theForm.dtxUplinkOption, theForm.dtxUplink);
+		updateHidden(theForm, theForm.notAllowedClassCheck);
+} 
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="bts_options_package">
+
+
+  <!$%createTable(notAllowedAccessClassIndex,*,,,,,notAllowedAccessClassIndex,notAllowedAccessClass)#$>
+  <!$%REPEAT(notAllowedAccessClassIndex,1,16)#$>
+  <input type="hidden" name="notAllowedAccessClass.$%getInstance(notAllowedAccessClassIndex)#$" value="$%notAllowedAccessClass#$">
+  <!$%endRow(notAllowedAccessClassIndex)#$>
+  <!$%REPEAT(END)#$>
+  <!$%endTable(notAllowedAccessClassIndex)#$>
+  <input type="hidden" name="allowIMSIAttachDetach" value="$%allowIMSIAttachDetach#$">
+  <input type="hidden" name="cellBarred" value="$%cellBarred#$">
+  <input type="hidden" name="dtxDownlink" value="$%dtxDownlink#$">
+  <input type="hidden" name="dtxUplink" value="$%dtxUplink#$">
+  <input type="hidden" name="emergencyCallRestricted" value="$%emergencyCallRestricted#$">
+  <input type="hidden" name="rm_nim_1_0" value="$%rm_nim_1_0#$">
+  
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="536">
+      <tr>
+        <td width="520">
+        <h2 align="center">BTS Options Package</h2>
+        <div align="center">
+          <center>
+          <table border="1" height="345" width="521" cellpadding="2">
+            <tr>
+              <td height="19" valign="middle">Use&nbsp; IMSI attach/detach procedure?</td>
+              <td height="19" valign="middle" align="center" nowrap>
+              <table border="0" width="100%">
+                <tr>
+                  <td height="32" valign="middle" align="center" nowrap><input name="allowIMSIAttachDetachRadio" type="radio" value="1">Yes</td>
+                  <td height="32" valign="middle" align="center" nowrap><input name="allowIMSIAttachDetachRadio" type="radio" value="0"> No</td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+            <tr>
+              <td height="8" valign="middle">Cell Barred?&nbsp;</td>
+              <td height="8" valign="middle" align="center" nowrap>
+              <table border="0" width="100%">
+                <tr>
+                  <td height="32" valign="middle" align="center" nowrap><input name="cellBarredRadio" type="radio" value="1"> Yes</td>
+                  <td height="32" valign="middle" align="center" nowrap><input name="cellBarredRadio" type="radio" value="0"> No</td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+            <tr>
+              <td height="14" valign="middle">Downlink DTX is available in the BTS?</td>
+              <td height="14" valign="middle" align="center" nowrap>
+              <table border="0" width="100%">
+                <tr>
+                  <td height="32" valign="middle" align="center" nowrap>
+                  <input name="dtxDownlinkRadio" type="radio" value="1"> Yes</td>
+                  <td height="32" valign="middle" align="center" nowrap>
+                  <input name="dtxDownlinkRadio" type="radio" value="0" Checked> No</td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+            <tr>
+              <td height="22" valign="middle">Discontinuous Transmission (DTX) mode to be used by the Mobile Stations (dtxUplink)</td>
+              <td height="22" valign="middle" align="left" nowrap><select name="dtxUplinkOption" size="1">
+                <option value="0">MS may use DTX</option>
+                <option value="1">MS shall use DTX</option>
+                <option selected value="2">MS shall not use DTX</option>
+              </select></td>
+            </tr>
+            <tr>
+              <td height="30" valign="middle">Is IMSI required for Emergency
+                calls?</td>
+              <td height="30" valign="middle" align="center" nowrap>
+              <table border="0" width="100%">
+                <tr>
+                  <td height="1" valign="middle" align="center" nowrap><input name="isImsiCheckRequiredRadio" type="radio" value="1" checked> Yes</td>
+                  <td height="1" valign="middle" align="center" nowrap><input name="isImsiCheckRequiredRadio" type="radio" value="0"> No</td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+            <tr>
+              <td height="30" valign="middle">Emergency calls restricted to MSs belonging to access classes from 11 to 15?</td>
+              <td height="30" valign="middle" align="center" nowrap>
+              <table border="0" width="100%">
+                <tr>
+                  <td height="1" valign="middle" align="center" nowrap><input name="emergencyCallRestrictedRadio" type="radio" value="1" checked> Yes</td>
+                  <td height="1" valign="middle" align="center" nowrap><input name="emergencyCallRestrictedRadio" type="radio" value="0"> No</td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+            <tr>
+              <td height="158" valign="middle">MS Access Classes not allowed to access the cell<br>
+              (notAllowedAccessClasses)</td>
+              <td height="158">
+              <table border="0" width="100%">
+                <tr>
+                  <td height="10" valign="middle" align="center" title="Check if MS Access Classe 0 is not allowed to access the cell.">
+                  <p align="center">0<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                  <td height="27" valign="middle" align="center" title="Check if MS Access Classe 1 is not allowed to access the cell.">
+                  <p align="center">1<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                  <td height="27" valign="middle" align="center" title="Check if MS Access Classe 2 is not allowed to access the cell.">
+                  <p align="center">2<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                  <td height="27" valign="middle" align="center" title="Check if MS Access Classe 3 is not allowed to access the cell.">
+                  <p align="center">3<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td height="10" valign="middle" align="center" title="Check if MS Access Classe 4 is not allowed to access the cell.">
+                  <p align="center">4<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                  <td height="10" valign="middle" align="center" title="Check if MS Access Classe 5 is not allowed to access the cell.">
+                  <p align="center">5<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                  <td height="10" valign="middle" align="center" title="Check if MS Access Classe 6 is not allowed to access the cell.">
+                  <p align="center">6<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                  <td height="10" valign="middle" align="center" title="Check if MS Access Classe 7 is not allowed to access the cell.">
+                  <p align="center">7<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td height="21" valign="middle" align="center" title="Check if MS Access Classe 8 is not allowed to access the cell.">
+                  <p align="center">8<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                  <td height="21" valign="middle" align="center" title="Check if MS Access Classe 9 is not allowed to access the cell.">
+                  <p align="center">9<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                  <td height="21" valign="middle" align="center" title="Check if MS Access Classe 10 is not allowed to access the cell.">
+                  <p align="center">10<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                  <td height="21" valign="middle" align="center" title="Check if MS Access Classe 11 is not allowed to access the cell.">
+                  <p align="center">11<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td height="11" valign="middle" align="center" title="Check if MS Access Classe 12 is not allowed to access the cell.">
+                  <p align="center">12<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                  <td height="11" valign="middle" align="center" title="Check if MS Access Classe 13 is not allowed to access the cell.">
+                  <p align="center">13<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                  <td height="11" valign="middle" align="center" title="Check if MS Access Classe 14 is not allowed to access the cell.">
+                  <p align="center">14<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                  <td height="11" valign="middle" align="center" title="Check if MS Access Classe 15 is not allowed to access the cell.">
+                  <p align="center">15<br>
+                  <input name="notAllowedClassCheck" type="checkbox" value="ON"></p>
+                  </td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+            <tr>
+              <td height="38" valign="middle"
+              title="The interval for the MS periodic location updates. The interval is measured in decihours; the range is 0 to 255 decihours (25.5 hours). The value zero indicates that the MS should not perform any periodic location updates.">Periodic
+              Location Update Interval (timerPeriodicUpdateMS) <font size="1">(Deci Hours)</font></td>
+              <td height="38" valign="middle" align="left" title="0 to 255 deci hours"><input maxlength="3" name="timerPeriodicUpdateMS" size="3"
+              value="$%timerPeriodicUpdateMS#$" onchange="return isValidInt(this,0,255);"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        </td>
+      </tr>
+    </table>
+    </center>
+  </div>
+  <p align="center">&nbsp;
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

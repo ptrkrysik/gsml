@@ -1,0 +1,274 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GPRS Radio Subsystem Link Control Parameters 2</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+
+
+<SCRIPT language="JavaScript">
+
+function PresetForm(theForm)
+{
+	// for TEXT elements
+	theForm.intFrequency.defaultValue = 0;
+	theForm.nccPermitted.defaultValue = 0;
+	theForm.tavgW.defaultValue = 15;
+	theForm.tavgT.defaultValue = 5;
+	theForm.navgI.defaultValue = 4;
+	theForm.gprsMsTargetPower.defaultValue = 30;
+
+
+	// for select element
+	selectOption(theForm.ncReportingPeriodISelect, theForm.ncReportingPeriodI);
+	selectOption(theForm.ncReportingPeriodTSelect, theForm.ncReportingPeriodT);
+	selectOption(theForm.extMeasurementOrderSelect, theForm.extMeasurementOrder);
+	selectOption(theForm.extReportingPeriodSelect, theForm.extReportingPeriod);
+	selectOption(theForm.extReportingTypeSelect, theForm.extReportingType);
+	selectOption(theForm.pcMeasChanSelect, theForm.pcMeasChan);
+	selectOption(theForm.spgcCcchSupSelect, theForm.spgcCcchSup);
+
+	return true;
+} 
+
+function ParseForm(theForm)
+{	
+	// for select element
+	parseSelect(theForm.ncReportingPeriodISelect,	theForm.ncReportingPeriodI);
+	parseSelect(theForm.ncReportingPeriodTSelect,	theForm.ncReportingPeriodT);
+	parseSelect(theForm.extMeasurementOrderSelect,	theForm.extMeasurementOrder);
+	parseSelect(theForm.extReportingPeriodSelect,	theForm.extReportingPeriod);
+	parseSelect(theForm.extReportingTypeSelect,	theForm.extReportingType);
+	parseSelect(theForm.pcMeasChanSelect,	theForm.pcMeasChan);
+	parseSelect(theForm.spgcCcchSupSelect,	theForm.spgcCcchSup);
+
+	return true;
+} 
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="gprs_options_package">
+
+  <!-- Begin of Hidden Elements -->
+  <input type="hidden" name="ncReportingPeriodI" value="$%ncReportingPeriodI#$">
+  <input type="hidden" name="ncReportingPeriodT" value="$%ncReportingPeriodT#$">
+  <input type="hidden" name="extMeasurementOrder" value="$%extMeasurementOrder#$">
+  <input type="hidden" name="extReportingPeriod" value="$%extReportingPeriod#$">
+  <input type="hidden" name="extReportingType" value="$%extReportingType#$">
+  <input type="hidden" name="pcMeasChan" value="$%pcMeasChan#$">
+  <input type="hidden" name="spgcCcchSup" value="$%spgcCcchSup#$">
+  <!-- End of Hidden Elements -->
+  
+  <div align="center">
+    <center>
+    <table width="590" border="4" bgcolor="#D6D3CE" >
+      <tr>
+        <td >
+        <h2 align="center">GPRS Radio Subsystem Link Control Parameters 2</h2>
+        <div align="center">
+          <center>
+          <table border="1" height="345" cellpadding="2">
+            <!-- Select ncReportingPeriodI -->
+						<tr>
+							<td valign="middle" title="Time period for measurement reporting 0.48, 0.96, 1.92, ..., 61.44 seconds">
+								NC Reporting Period I
+							</td>
+							<td valign="middle" align="left" nowrap>
+								<select name="ncReportingPeriodISelect" size="1">
+									<option selected value="0">0.48 Sec</option>
+									<option value="1">0.96 Sec</option>
+									<option value="2">1.92 Sec</option>
+									<option value="3">3.84 Sec</option>
+									<option value="4">7.68 Sec</option>
+									<option value="5">15.36 Sec</option>
+									<option value="6">30.72 Sec</option>
+									<option value="7">61.44 Sec</option>
+								</select>
+							</td>
+            </tr>
+            <!-- Select ncReportingPeriodT -->
+						<tr>
+							<td valign="middle" title="Time period for measurement reporting 0.48, 0.96, 1.92, ..., 61.44 seconds">
+								NC Reporting Period T
+							</td>
+							<td valign="middle" align="left" nowrap>
+								<select name="ncReportingPeriodTSelect" size="1">
+									<option selected value="0">0.48 Sec</option>
+									<option value="1">0.96 Sec</option>
+									<option value="2">1.92 Sec</option>
+									<option value="3">3.84 Sec</option>
+									<option value="4">7.68 Sec</option>
+									<option value="5">15.36 Sec</option>
+									<option value="6">30.72 Sec</option>
+									<option value="7">61.44 Sec</option>
+								</select>
+							</td>
+
+            </tr>
+            <!-- Select extMeasurementOrder -->
+						<tr>
+							<td valign="middle" title="Controls extended measurement reporting.">
+								Extended Measurement Order
+							</td>
+							<td valign="middle" align="left" nowrap>
+								<select name="extMeasurementOrderSelect" size="1">
+									<option selected value="0">0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+								</select>
+							</td>
+
+
+            </tr>
+            <!-- Select extReportingPeriod -->
+						<tr>
+							<td valign="middle" title="Time period for measurement reporting 60, 120, 240,..., 7680 seconds">
+								Extended Reporting Period
+							</td>
+							<td valign="middle" align="left" nowrap>
+								<select name="extReportingPeriodSelect" size="1">
+									<option selected value="0">60 Sec</option>
+									<option value="1">120 Sec</option>
+									<option value="2">240 Sec</option>
+									<option value="3">480 Sec</option>
+									<option value="4">960 Sec</option>
+									<option value="5">1920 Sec</option>
+									<option value="6">3840 Sec</option>
+									<option value="7">7280 Sec</option>
+								</select>
+							</td>
+            </tr>
+            <!-- Select extReportingType -->
+						<tr>
+							<td valign="middle" title="">
+								Extended Reporting Type
+							</td>
+							<td valign="middle" align="left" nowrap>
+								<select name="extReportingTypeSelect" size="1">
+									<option selected value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+								</select>
+							</td>
+            </tr>
+            <!-- Text intFrequency -->
+						<tr>
+							<td valign="middle" title="Frequency for which the MS shall include interference measurements in extended measurement report type 3.">
+								Interference Frequency
+							</td>
+							<td valign="middle" align="left" title="INTEGER (0..31)">
+								<input maxlength="2" name="intFrequency" size="4" value="$%intFrequency#$" onchange="return isValidInt(this,0,31);">
+							</td>
+            </tr>
+            <!-- Text nccPermitted -->
+						<tr>
+							<td valign="middle" title="Bit map of NCC part of BSIC for which the MS shall report extended measurements.">
+								NCC Permitted
+							</td>
+							<td valign="middle" align="left" title="INTEGER(0..65535)">
+								<input maxlength="5" name="nccPermitted" size="6" value="$%nccPermitted#$" onchange="return isValidInt(this,0,65535);">
+							</td>
+            </tr>
+            <!-- Select pcMeasChan -->
+						<tr>
+							<td valign="middle" title="Flag that indicates whether the downlink measurements for power control shall be made  on BCCH or PDCH.">
+								PC Measurement Channel
+							</td>
+							<td valign="middle" align="left" nowrap>
+								<select name="pcMeasChanSelect" size="1">
+									<option selected value="0">Off</option>
+									<option value="1">On</option>
+								</select>
+							</td>
+            </tr>
+            <!-- Text tavgW -->
+						<tr>
+							<td valign="middle" title="Signal level filter period for power control in packet idle mode2(k/2)/ 6 multiframes, k = 0,1,..., 25">
+								T Avg W
+							</td>
+							<td valign="middle" align="left" title="INTEGER  (0..25)">
+								<input maxlength="2" name="tavgW" size="4" value="$%tavgW#$" onchange="return isValidInt(this,0,25);">
+							</td>
+            </tr>
+            <!-- Text tavgT -->
+						<tr>
+							<td valign="middle" title="Signal level filter period for power control in packet transfer mode2(k/2)/ 6 multiframes, k = 0,1,..., 25">
+								T Avg T
+							</td>
+							<td valign="middle" align="left" title="INTEGER  (0..25)">
+								<input maxlength="2" name="tavgT" size="4" value="$%tavgT#$" onchange="return isValidInt(this,0,25);">
+							</td>
+            </tr>
+            <!-- Text navgI -->
+						<tr>
+							<td valign="middle" title="Interference signal level filter constant for power control 2(k/2), k = 0,1,..., 15">
+								N Avg I
+							</td>
+							<td valign="middle" align="left" title="INTEGER  (0..15)">
+								<input maxlength="2" name="navgI" size="4" value="$%navgI#$" onchange="return isValidInt(this,0,15);">
+							</td>
+            </tr>
+            <!-- Text gprsMsTargetPower -->
+						<tr>
+							<td valign="middle" title="open loop power control is employed, telling the MS to assume a balanced link and adjust its transmitted power to meet the desired target at the GP. A target is send to the MS in the form of a power control value, gamma, which is computed based on MS_GPRS_TARGET_POWER using the formula in 05.08.">
+								GPRS MS Target Power
+							</td>
+							<td valign="middle" align="left" title="INTEGER (0..63)">
+								<input maxlength="2" name="gprsMsTargetPower" size="4" value="$%gprsMsTargetPower#$" onchange="return isValidInt(this,0,63);">
+							</td>
+            </tr>
+            <!-- Select spgcCcchSup -->
+						<tr>
+							<td valign="middle" title="This field indicates the support of the parameter SPLIT_PG_CYCLE on CCCH on the network side">
+								SPGC CCCH Support
+							</td>
+							<td valign="middle" align="left" nowrap>
+								<select name="spgcCcchSupSelect" size="1">
+									<option selected value="0">SPLIT_PG_CYCLE is not supported on CCCH in this cell</option>
+									<option value="1">SPLIT_PG_CYCLE is supported on CCCH in this cell</option>
+								</select>
+							</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <table height="50" border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        </td>
+      </tr>
+    </table>
+    </center>
+  </div>
+  <p align="center">&nbsp;
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>
+
+
+

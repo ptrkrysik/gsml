@@ -1,0 +1,62 @@
+ The purpose of this email is to remind every one about the new way of
+ starting vipercells and the new startup script files.
+
+ Last week it was decided that a common startup script file will be used
+ irrespective of booting/loading form network or flash. The name of this
+ script file is viperStart. (For cdc boards 8, 9, and 10, it is
+ viperStartCdc1; for cdcim boards it is viperStartCdcim.) These files
+ reside in the scripts directory. The startup script file loads all the
+ required modules, calls  functions to initialize hardware and starts
+ DSPs.
+
+ The startup script file is specified in the boot parameter. This field
+ when loading from compact flash is /ata/ViperCall/scripts/viperStart.
+ While loading from network specify appropriate path. For example,
+ /Beta1-load/Beta2_01/scripts. Also remember to set the 'other' field of
+ the boot parameter to correct vipercall base. This field for example can
+ be /ata/ViperCall or /Beta-load/Beta2_01.
+
+ The startup scripts file that we have been using from Tornado should be
+ considered deprecated.
+
+ -Chetan Katira
+
+Another reminder for people who want to use some private built module
+instead of official builds...  To do this,
+
+1. Copy official viperStart and module_list (preferable from RCS) to your
+   private directory.
+   For example, I put copies into K:\Beta2-Load\Test-Script\ as
+   myStart, my_list
+
+2. In myStart, change one line of
+   viperLoadList("Scripts/module_list", getenv("VIPERCALL_BASE"), 1)
+    to
+
+   viperLoadList("/Beta2-Load/Test-Script/my_list", getenv("VIPERCALL_BASE"), 0)
+
+3. In my_list, change the module path.
+   For example, from
+   Bin/l1proxy.out
+    to
+
+   #/Beta2-Load/Test-Bin/l1proxy.out
+
+   Notice # sign suppresses appending base directory and uses absolute path
+   for the filename.
+
+4. Set boot param for 'other' field to official build directory, e.g.
+   /Beta2-Load/Beta2.0.1
+
+5. Put /Beta2-Load/Test-Script/myStart to init script bootParam
+    or  run script "< myStart" from the correct pwd.
+
+ -Kevin Lim
+
+p.s. This only works with vxWorks version Beta1.0.2 or Beta2.0.2 up.
+     Also, module_list lines should end with UNIX EOL. 'vi -b' works.
+     So far, I know Tornado, Notepad saved file will give errors.
+     You can use wordpad but you have to rename to remove '.txt'.
+     If this is too much trouble, we will fix this.
+
+

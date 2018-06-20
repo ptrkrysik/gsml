@@ -1,0 +1,184 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GP10 System Information</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/ip.js"></SCRIPT>
+
+<SCRIPT language="JavaScript">
+
+
+function ParseForm(theForm)
+{
+	return (validateIp(theForm.viperCellDefGateway, "Default Gateway") && IpWarning(theForm));
+}
+
+function PresetForm(theForm)
+{
+	return true;
+}
+
+function IpWarning(theForm)
+{
+	if (theForm.ipAdress.defaultValue != theForm.ipAdress.value)
+	{ 
+		alert("You are trying to change IP address of GP10. The change will not take effect until you reboot the GP10.");
+	}
+	return true;
+}
+
+function isValidName(theField, name)
+{	
+  if (theField.value == "")
+  {
+    alert("Please enter a value for the " + name + " field.");
+    theField.value = theField.defaultValue;
+    theField.focus();
+    return (false);
+  }
+ 
+  var checkOK = " ()#-0123456789";
+  var checkStr = theField.value;
+  var allValid = true;
+  var decPoints = 0;
+  var status;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    status = false;
+    ch = checkStr.charAt(i);
+    if (((ch >= "a".charAt(0)) && (ch <= "z".charAt(0)) ) || ((ch >= "A".charAt(0))  && (ch <= "Z".charAt(0))))
+    {
+	status = true;
+    } else {
+
+       for (j = 0;  j < checkOK.length;  j++)
+       {
+         if (ch == checkOK.charAt(j))
+         {
+	     status = true;
+           break;
+         }
+       }
+    }
+    if (!status)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+		alert("Please enter valid characters in " + name + " field.");
+		theField.value = theField.defaultValue;
+		theField.focus();
+		return (false);
+  }
+  return (true);
+}
+
+		
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="dual_trx_card" >
+
+<font face="Times New Roman">
+
+<div align="center">
+  <center>
+  <table border="4" bgcolor="#D6D3CE" width="501">
+    <tr>
+      <td width="485">
+    <h2 align="center">GP10 System Information</h2>
+        <div align="center">
+
+<font face="Times New Roman">
+
+          <table border="1" width="445" height="381">
+            <tr>
+     <td width="167" height="23" align="left"> Name:</td>
+     <td width="262" height="23"><input type="text" name="viperCellName" size="30" value="$%viperCellName#$" maxlength="30" onChange="isValidName(this, 'GP10 Name');"></td>
+            </tr>
+            <tr>
+     <td width="167" height="23" align="left">IP Address: Subnet Mask</td>
+     <td width="262" height="23"><input type="text" name="ipAdress" size="35" value="$%ipAdress#$"></td>
+            </tr>
+            <tr>
+     <td width="167" height="23" align="left">Default IP Gateway</td>
+     <td width="262" height="23"><input type="text" name="viperCellDefGateway" size="35" value="$%viperCellDefGateway#$"></td>
+            </tr>
+            <tr>
+     <td width="167" height="23" align="left">Location:</td>
+     <td width="262" height="23"><input type="text" name="viperCellLocation" size="35" value="$%viperCellLocation#$"></td>
+            </tr>
+            <tr>
+     <td width="167" height="23" align="left">Asset Number:</td>
+     <td width="262" height="23"><input type="text" name="viperCellAssetNumber" size="20" value="$%viperCellAssetNumber#$" maxlength="20"></td>
+            </tr>
+            <tr>
+     <td width="167" height="22" align="left">Customer Name:</td>
+     <td width="262" height="22"><input type="text" name="viperCellCustomerName" size="30" value="$%viperCellCustomerName#$" maxlength="30"></td>
+            </tr>
+            <tr>
+     <td width="167" height="98" align="left">Customer Address:</td>
+     <td width="262" height="98"><textarea rows="4" name="viperCellCustomerAddress" cols="30">$%viperCellCustomerAddress#$</textarea></td>
+            </tr>
+            <tr>
+     <td width="167" height="23" align="left">Customer Phone:</td>
+     <td width="262" height="23"><input type="text" name="viperCellCustomerPhone" size="30" value="$%viperCellCustomerPhone#$" maxlength="30"></td>
+            </tr>
+            <tr>
+     <td width="167" height="23" align="left">Customer Email:</td>
+     <td width="262" height="23"><input type="text" name="viperCellCustomerEmail" size="30" value="$%viperCellCustomerEmail#$"></td>
+            </tr>
+            <tr>
+     <td width="167" height="98" align="left">Comments:</td>
+     <td width="262" height="98"><textarea rows="4" name="viperCellCustomerInfo" cols="30">$%viperCellCustomerInfo#$</textarea></td>
+            </tr>
+          </table>
+          <table border="0">
+            <tr>
+     <td width="90%"><blink><font color="#0000FF" size="1" face="Times New Roman">Note:
+      Changes made on this page will only be effective after the reboot of
+      GP10.</font></blink></td>
+            </tr>
+          </table>
+        </div>
+
+    <div align="center">
+      <center>
+      <table border="0" cellpadding="3">
+        <tr>
+          <td align="center"></td>
+          <td align="center"></td>
+        </tr>
+        <tr>
+          <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change.">  </td>
+          <td align="center">  <input name="Recall" type="button" value="Recall" onclick="window.location.reload()" title="Click this button to refresh the form."></td>
+        </tr>
+        <tr>
+          <td align="center"></td>
+          <td align="center"></td>
+        </tr>
+      </table>
+      </center>
+    </div>
+      </td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+<p align="center">&nbsp;</p>
+
+<p align="center">&nbsp;</p>
+</form>
+
+</body>
+

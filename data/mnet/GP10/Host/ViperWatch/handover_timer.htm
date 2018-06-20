@@ -1,0 +1,119 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Handover Timer</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+
+<SCRIPT language="JavaScript">
+
+function ParseForm(theForm)
+{
+	return true;	
+}
+
+function PresetForm(theForm)
+{
+	return true;	
+}
+
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="handover_timer">
+
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="352">
+      <tr>
+        <td width="473">
+        <h2 align="center">Handover Timers</h2>
+        <div align="center">
+          <center>
+          <table border="1"  width="273">
+            <tr>
+              <th valign="middle" align="center" width="165">Timer Name</th>
+              <th valign="middle" title="Integer(0..65535) (the unit is 10ms)" align="center" width="92">Value<br>
+                <font size="1">(in 10ms Units)</font></th>
+            </tr>
+            <tr>
+              <td valign="middle" align="center">T103</td>
+            </center>
+          </center>
+          <td valign="middle" title="Integer(0..65535) (the unit is 10ms)">
+          <p align="center"><input name="t103" size="5" maxlenght="5" value="$%t103#$" onchange="isValidInt(this,0,65535)"></td>
+          </tr>
+          <center>
+          <center>
+          <tr>
+            <td valign="middle" align="center">T104</td>
+          </center>
+          </center>
+          <td valign="middle" title="Integer(0..65535) (the unit is 10ms)">
+          <p align="center"><input name="t104" size="5" maxlenght="5" value="$%t104#$" onchange="isValidInt(this,0,65535)"></p>
+          </td>
+          </tr>
+           <tr>
+            <td valign="middle" align="center">T202</td>
+          </center>
+          </center>
+          <td valign="middle" title="Integer(0..65535) (the unit is 10ms)">
+          <p align="center"><input name="t202" size="5" maxlenght="5" value="$%t202#$" onchange="isValidInt(this,0,65535)"></p>
+          </td>
+          </tr>
+          <center>
+          <center>
+          <tr>
+            <td valign="middle" align="center">T204</td>
+          </center>
+          </center>
+          <td valign="middle" title="Integer(0..65535) (the unit is 10ms)">
+          <p align="center"><input name="t204" size="5" maxlenght="5" value="$%t204#$" onchange="isValidInt(this,0,65535)"></p>
+          </td>
+          </tr>
+          <center>
+          <center>
+          <tr>
+            <td valign="middle" align="center">T211</td>
+            <td valign="middle" title="Integer(0..65535) (the unit is 10ms)">
+            <p align="center"><input name="t211" size="5" maxlenght="5" value="$%t211#$" onchange="isValidInt(this,0,65535)"></td>
+          </tr>
+          </table>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        </center>
+      </td>
+    </tr>
+    </table>
+  </div>
+  <p align="center">&nbsp;</p>
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

@@ -1,0 +1,8 @@
+ld < test.o
+ld < hpitest2.o
+ld < msg1.o
+initL1
+initDsp
+hpi2dsp(&cx6,0,0x3800)
+go
+period 1,sendDsp,&msg1,20

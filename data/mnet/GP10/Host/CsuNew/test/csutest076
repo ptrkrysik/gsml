@@ -1,0 +1,91 @@
+#--------------------------------------------------
+# Startup script for lab ViperCell 
+#--------------------------------------------------
+# Changes from alpha07:
+#   ARFCN 561
+#   Access Class 3
+#   SetLogServerPort(23000)
+#--------------------------------------------------
+
+
+taskPrioritySet(taskNameToId("tNetTask"), 10) 
+routeAdd "10.1.2.0", "10.1.1.7"
+
+ld < K:/Alpha-load/Bin/logging.out
+
+ld < K:/Alpha-load/Bin/oam_init.out
+ld < K:/Alpha-load/Bin/oam_api.out
+
+ld < K:/Alpha-load/Bin/l1proxy_init.out
+ld < K:/Alpha-load/Bin/lapdm_init.out
+ld < K:/Alpha-load/Bin/mmm_init.out
+ld < K:/Alpha-load/Bin/ccm_init.out
+ld < K:/Alpha-load/CSU-Test-Bin/rm_init.out
+ld < K:/Alpha-load/Bin/lapdm_api.out
+ld < K:/Alpha-load/Bin/jcc_api.out
+ld < K:/Alpha-load/Bin/ccm_api.out
+ld < K:/Alpha-load/CSU-Test-Bin/rm_api.out
+ld < K:/Alpha-load/Bin/jetrtp.out
+
+ld < K:/Alpha-load/CSU-Test-Bin/csu.out
+ld < K:/Alpha-load/Bin/l1proxy.out
+ld < K:/Alpha-load/Bin/ril3.out
+ld < K:/Alpha-load/Bin/lapdm.out
+ld < K:/Alpha-load/Bin/jcc.out
+ld < K:/Alpha-load/Bin/mmm_api.out
+ld < K:/Alpha-load/CSU-Test-Bin/h323.out
+ld < K:/Alpha-load/Bin/h323_api.out
+ld < K:/Alpha-load/Bin/mmm.out
+ld < K:/Alpha-load/Bin/ccm.out
+ld < K:/Alpha-load/Bin/cc_test.out
+ld < K:/Alpha-load/CSU-Test-Bin/rm.out
+
+ld < K:/Alpha-load/Bin/ldCoff.o
+
+# load dsp coff file
+#pBlkDev = ramDevCreate(0, 512, 2000, 2000, 0)
+#dosFsMkfs("/RAM1", pBlkDev)
+#copy "K:/Alpha-load/Bin/Dsp.out","/RAM1/Dsp.out"
+
+# load module root_task module
+
+ld < K:/Alpha-load/Bin/root_task.out
+
+csu_TblInitAll()
+
+snmp_initializeMib()
+initOamApi()
+
+# intg_CellCfg(s16 arfcn, u8 bsic, u8 accessClass, u8 mnc1, u8 mnc2)
+intg_CellCfg(561, 0x2d, 3, 0, 6)
+
+# Bring Up RootTask
+rootTaskInit
+
+# Turn off control-info, console print 
+SetModuleLogOptions(100, 0xFE)
+SetLogServerPort(50724)
+
+# load DSP
+initDsp(0)
+initDsp(1)
+initInt()
+#taskSpawn(0,50,0,1024*1024,ldCoff,"/RAM1/dsp.out")
+ldCoff("K:/Alpha-load/Bin/Dsp.out")
+taskDelay(400)
+defaultPort = 1
+go 1
+
+#memShow
+
+
+<setLogFile
+
+taskDelay(100)
+intg_SendChanActivation(1)
+intg_SendChanDeActivation(1)
+intg_CancelAll
+#<confcsu
+intg_SetUlSG(0,0x290)
+intg_SetDlSG(0,0xc0)
+

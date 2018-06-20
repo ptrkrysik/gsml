@@ -1,0 +1,340 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Adjacent Cell Handover Package</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+
+<SCRIPT language="JavaScript">
+
+function PresetForm(theForm)
+{
+   
+	return true;
+} 
+	
+function ParseForm(theForm)
+{
+    
+	return true;
+} 
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="power_control">
+
+  <input name="adjCell_synchronized.$%getInstance(adjCell_handoverIndex)#$" type="hidden" value="$%adjCell_synchronized#$">
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="507">
+      <tr>
+        <td width="491">
+        <h2 align="center">MS Power Control Parameters</h2>
+        </center>
+        <div align="center">
+          <table border="1" cellspacing="1" width="428" height="152">
+            <tr>
+              <td height="38"
+              title="The number of SACCH multiframes over which signal strength measurements are averaged, i.e. the window size (Hreqave in GSM 05.08)."
+              width="359">
+              <p align="left">Signal Strength Measurements Averaging window&nbsp;</p>
+              </td>
+    <center>
+              <td height="38" title="Integer(0..31) (in number of SACCH multiframe)" width="53"><input type="text" name="pcAveragingLevHreqave"
+              size="2" value="$%pcAveragingLevHreqave#$" maxlength="2" onchange="isValidInt(this,0,31);"></td>
+            </tr>
+        </center>
+            <tr>
+              <td height="38" align="left"
+              title="The number of SACCH multiframes over which signal quality measurements are averaged, i.e. the window size (Hreqave in GSM 05.08)."
+              width="359">
+              <p align="left">Signal Quality Measurements Averaging window</p>
+              </td>
+    <center>
+              <td height="38" align="left" title="Integer(0..31) (in number of SACCH multiframe)" width="53"><input type=" text"
+              name="pcAveragingQualHreqave" size="2" value="$%pcAveragingQualHreqave#$" maxlength="2" onchange="isValidInt(this,0,31);"></td>
+            </tr>
+              <tr>
+              <td height="23" align="left"
+              title="The value for the upper threshold of a mobile's RXLEV before activation of uplink dynamic power control."
+              width="359">Uplink Power Control Target</td>
+              <td height="23" align="left" title="RxLev ::= INTEGER (0..63)
+-- 0 : &lt; -110 dB,
+-- 1 : -110 dB .. -109 dB
+-- 2 : -109 dB .. -108 dB
+--
+-- 63: &gt; -48 dB
+-- Ref. GSM 05.08 (RXLEV)" width="53"><input type=" text"
+              name="pcLowerThresholdLevParamRxLevelUL" size="2" value="$%pcLowerThresholdLevParamRxLevelUL#$" maxlength="2" onchange="isValidInt(this,0,63);"></td>
+              </tr>
+              <tr>
+                  <td height="23"
+                  title="The msTxPwrMaxCell attribute is used to indicate the maximum power level a MS may use in an adjacent cell."
+                  width="249">Maximum MS Tx Power</td>
+                  <td height="23"
+                  title="TxPower ::= INTEGER
+-- Value in dBm
+-- TXPWR range in GSM 900:  5..39 dBm
+-- TXPWR range in DCS 1800: 0..30 dBm
+-- TXPWR range in PCS 1900: 0..33 dBm" width="43"><input type="text" name="msTxPwrMaxCellDef" size="2" value="$%msTxPwrMaxCellDef#$" maxlength="2"
+                  onchange="return isValidTxPower(this, $%gsmdcsIndicator#$);"></td>
+              </tr>
+          </table>
+        </div>
+<!--------
+        <table border="0" width="100%">
+          <tr>
+            <td width="50%"></td>
+            <td width="50%"></td>
+          </tr>
+          <tr>
+            <td width="50%">
+            <table border="1" cellspacing="1" width="307" height="188">
+              <tr>
+                <th colspan="2" width="297" height="19">
+                  <p align="center"><b>Lower Threshold Signal Strength</b></th>
+              </tr>
+              <tr>
+                <td width="231" height="38">Threshold level for uplink power increase (L_RXLEV_UL_P)</td>
+                <td width="60"
+                title="RxLev ::= INTEGER (0..63)
+-- 0 : &lt; -110 dB,
+-- 1 : -110 dB .. -109 dB
+-- 2 : -109 dB .. -108 dB
+--
+-- 63: &gt; -48 dB
+-- Ref. GSM 05.08 (RXLEV)" height="38"><input type="text" name="pcLowerThresholdLevParamRxLevelUL" size="2"
+                value="$%pcLowerThresholdLevParamRxLevelUL#$" maxlength="2" onchange="isValidInt(this,0,63);"></td>
+              </tr>
+              <tr>
+                <td width="231" height="38">Threshold level for downlink power increase (L_RXLEV_DL_P).</td>
+                <td width="60"
+                title="RxLev ::= INTEGER (0..63)
+-- 0 : &lt; -110 dB,
+-- 1 : -110 dB .. -109 dB
+-- 2 : -109 dB .. -108 dB
+--
+-- 63: &gt; -48 dB
+-- Ref. GSM 05.08 (RXLEV)" height="38"><input type="text" name="pcLowerThresholdLevParamRxLevelDL" size="2"
+                value="$%pcLowerThresholdLevParamRxLevelDL#$" maxlength="2" onchange="isValidInt(this,0,63)"></td>
+              </tr>
+              <tr>
+                <td width="231" title="The total number of averages that have to be taken into account before power increase decision (N1)."
+                height="23">N1</td>
+                <td width="60" title="INTEGER (1..31)" height="23"><input type="text" name="pcLowerThresholdLevParamNx" size="2"
+                value="$%pcLowerThresholdLevParamNx#$" maxlength="2" onchange="isValidInt(this,0,31)"></td>
+              </tr>
+              <tr>
+                <td width="231"
+                title="The number of averages (out of total averages) that have to be lower than the threshold, before making a power increase decision (P1)."
+                height="40">P1</td>
+                <td width="60" title="INTEGER (1..31)" height="40"><input type="text" name="pcLowerThresholdLevParamPx" size="2"
+                value="$%pcLowerThresholdLevParamPx#$" maxlength="2" onchange="isValidInt(this,0,31)"></td>
+              </tr>
+            </table>
+            </td>
+            <td width="50%">
+            <table border="1" cellspacing="1" width="313">
+              <tr>
+                <th colspan="2" width="299">
+                  <p align="center"><b>Upper Threshold Signal Strength</b></th>
+              </tr>
+              <tr>
+                <td width="249">Threshold level for uplink power reduction<br>
+                (U_RXLEV_UL_P)</td>
+                <td width="48"
+                title="RxLev ::= INTEGER (0..63)
+-- 0 : &lt; -110 dB,
+-- 1 : -110 dB .. -109 dB
+-- 2 : -109 dB .. -108 dB
+--
+-- 63: &gt; -48 dB
+-- Ref. GSM 05.08 (RXLEV)"><input type="text" name="pcUpperThresholdLevParamRxLevelUL" size="2" value="$%pcUpperThresholdLevParamRxLevelUL#$"
+                maxlength="2" onchange="isValidInt(this,0,63);"></td>
+              </tr>
+              <tr>
+                <td width="249">Threshold level for downlink power reduction (U_RXLEV_DL_P).</td>
+                <td width="48"
+                title="RxLev ::= INTEGER (0..63)
+-- 0 : &lt; -110 dB,
+-- 1 : -110 dB .. -109 dB
+-- 2 : -109 dB .. -108 dB
+--
+-- 63: &gt; -48 dB
+-- Ref. GSM 05.08 (RXLEV)"><input type="text" name="pcUpperThresholdLevParamRxLevelDL" size="2" value="$%pcUpperThresholdLevParamRxLevelDL#$"
+                maxlength="2" onchange="isValidInt(this,0,63)"></td>
+              </tr>
+              <tr>
+                <td width="249" title="The total number of averages that have to be taken into account before power reduction decision (N2).">N2</td>
+                <td width="48" title="INTEGER (1..31)"><input type="text" name="pcUpperThresholdLevParamNx1" size="2"
+                value="$%pcUpperThresholdLevParamNx#$" maxlength="2" onchange="isValidInt(this,0,31)"></td>
+              </tr>
+              <tr>
+                <td width="249"
+                title="The number of averages (out of total averages) that have to be lower than the threshold, before making a power reduction decision (P2).">P2</td>
+                <td width="48" title="INTEGER (1..31)"><input type="text" name="pcUpperThresholdLevParamPx1" size="2"
+                value="$%pcUpperThresholdLevParamPx#$" maxlength="2" onchange="isValidInt(this,0,31)"></td>
+              </tr>
+            </table>
+            </td>
+          </tr>
+          <tr>
+            <td width="50%">
+            <table border="1" cellspacing="1" width="307">
+              <tr>
+                <th colspan="2" width="297">
+                  <p align="center"><b>&nbsp;Lower Threshold Signal Quality</b></th>
+              </tr>
+              <tr>
+                <td width="235">Threshold level for uplink power increase (L_RXQUAL_UL_P).</td>
+                <td width="56"
+                title="RxQual ::= INTEGER (0..7)
+-- 0: less than 0.2%
+-- 1: 0.2% to 0.4%
+-- 2: 0.4% to 0.8%
+-- 3: 0.8% to 1.6%
+-- 4: 1.6% to 3.2%
+-- 5: 3.2% to 6.4%
+-- 6: 6.4% to 12.8%
+-- 7: greater than 12.8%"><input type="text" name="pcLowerThresholdQualParamRxQualUL" size="1" value="$%pcLowerThresholdQualParamRxQualUL#$"
+                maxlength="1" onchange="isValidInt(this,0,7)"></td>
+              </tr>
+              <tr>
+                <td width="235">Threshold level for downlink power increase (L_RXQUAL_DL_P).</td>
+                <td
+                title="RxQual ::= INTEGER (0..7)
+-- 0: less than 0.2%
+-- 1: 0.2% to 0.4%
+-- 2: 0.4% to 0.8%
+-- 3: 0.8% to 1.6%
+-- 4: 1.6% to 3.2%
+-- 5: 3.2% to 6.4%
+-- 6: 6.4% to 12.8%
+-- 7: greater than 12.8%" width="56"><input type="text" name="pcLowerThresholdQualParamRxQualDL" size="1"
+                value="$%pcLowerThresholdQualParamRxQualDL#$" maxlength="1" onchange="isValidInt(this,0,7)"></td>
+              </tr>
+              <tr>
+                <td title="The total number of averages that have to be taken into account before power increase decision (N3)." width="235">N3</td>
+                <td width="56" title="INTEGER (1..31)"><input type="text" name="pcLowerThresholdQualParamNx" size="2"
+                value="$%pcLowerThresholdQualParamNx#$" maxlength="2" onchange="isValidInt(this,0,31)">
+              </tr>
+              <tr>
+                <td
+                title="The number of averages (out of total averages) that have to be lower than the threshold, before making a power increase decision (P3)."
+                width="235">P3</td>
+                <td width="56" title="INTEGER (1..31)"><input type="text" name="pcLowerThresholdQualParamPx" size="2"
+                value="$%pcLowerThresholdQualParamPx#$" maxlength="2" onchange="isValidInt(this,0,31)"></td>
+              </tr>
+            </table>
+            </td>
+            <td width="50%">
+            <table border="1" cellspacing="1" width="313">
+              <tr>
+                <th colspan="2" height="19" width="303">
+                  <p align="center"><b>Upper Threshold Signal Quality</b></th>
+              </tr>
+              <tr>
+                <td height="21" width="251">Threshold level for uplink power reduction (U_RXQUAL_UL_P)</td>
+                <td height="21"
+                title="RxQual ::= INTEGER (0..7)
+-- 0: less than 0.2%
+-- 1: 0.2% to 0.4%
+-- 2: 0.4% to 0.8%
+-- 3: 0.8% to 1.6%
+-- 4: 1.6% to 3.2%
+-- 5: 3.2% to 6.4%
+-- 6: 6.4% to 12.8%
+-- 7: greater than 12.8%" width="46"><input type="text" name="pcUpperThresholdQualParamRxQualUL" size="1"
+                value="$%pcUpperThresholdQualParamRxQualUL#$" maxlength="1" onchange="isValidInt(this,0,7)"></td>
+              </tr>
+              <tr>
+                <td height="23" width="251">Threshold level for downlink power reduction (U_RXQUAL_DL_P).</td>
+                <td height="23"
+                title="RxQual ::= INTEGER (0..7)
+-- 0: less than 0.2%
+-- 1: 0.2% to 0.4%
+-- 2: 0.4% to 0.8%
+-- 3: 0.8% to 1.6%
+-- 4: 1.6% to 3.2%
+-- 5: 3.2% to 6.4%
+-- 6: 6.4% to 12.8%
+-- 7: greater than 12.8%" width="46"><input type="text" name="pcUpperThresholdQualParamRxQualDL" size="1"
+                value="$%pcUpperThresholdQualParamRxQualDL#$" maxlength="1" onchange="isValidInt(this,0,7)"></td>
+              </tr>
+              <tr>
+                <td height="23" width="251"
+                title="The total number of averages that have to be taken into account before power reduction decision (N4).">N4</td>
+                <td height="23" width="46" title="INTEGER (1..31)"><input type="text" name="pcUpperThresholdQualParamNx" size="2"
+                value="$%pcUpperThresholdQualParamNx#$" maxlength="2" onchange="isValidInt(this,0,31)"></td>
+              </tr>
+              <tr>
+                <td height="23" width="251"
+                title="The number of averages (out of total averages) that have to be lower than the threshold, before making a power reduction decision (P4).">P4</td>
+                <td height="23" width="46" title="INTEGER (1..31)"><input type="text" name="pcUpperThresholdQualParamPx" size="2"
+                value="$%pcUpperThresholdQualParamPx#$" maxlength="2" onchange="isValidInt(this,0,31)"></td>
+              </tr>
+            </table>
+            </td>
+          </tr>
+        </table>
+       
+        <p>&nbsp;</p>
+        <div align="center">
+          <table border="1" cellspacing="1">
+            <tr>
+              <th colspan="2" height="15">Threshold Signal Strength</th>
+            </tr>
+            <tr>
+              <td height="22"
+              title="The number of SACCH multiframes over which signal strength measurements are averaged, i.e. the window size (Hreqave in GSM 05.08).">Threshold
+              for activating uplink dynamic power Control</td>
+              <td height="22"
+              title="RxLev ::= INTEGER (0..63)
+-- 0 : &lt; -110 dB,
+-- 1 : -110 dB .. -109 dB
+-- 2 : -109 dB .. -108 dB
+--
+-- 63: &gt; -48 dB
+-- Ref. GSM 05.08 (RXLEV)"><input type="text" name="pcAveragingLevHreqave1" size="2" value="$%pcAveragingLevHreqave#$" maxlength="2"
+              onchange="isValidInt(this,0,31);"></td>
+            </tr>
+          </table>
+           ------->
+
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        </center>
+      </td>
+    </tr>
+    </table>
+  </div>
+  <p align="center">&nbsp;</p>
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>

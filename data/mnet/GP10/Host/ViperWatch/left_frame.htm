@@ -1,0 +1,387 @@
+<HTML>
+<HEAD>
+<META name="Robots" content="noIndex, Follow">
+<title>Cisco GMS Port Manager Table of Contents</title>
+</head>
+
+<SCRIPT language="javascript">
+
+function OpenAlarm() 
+{	
+	var url = "./htlm_alarm.htm";
+	var popupWin = window.open (url, "HtmlbasedViperCellAlarm", "width=650,height=200,toolbar=0,scrollbars=1,resizable=1");
+	if (!document.all && window.focus) popupWin.focus();
+}
+
+</SCRIPT>
+
+<SCRIPT language="javascript">
+
+<!-- begin hiding
+
+var orgLinkColor =""; // used to remember link color prior to highlight.
+var linkHilightColor = "green"; // Link highlight color
+
+// ** BEGIN OUTLINE AUTHOR-ADUSTABLE SPECIFICATIONS **//
+
+// size of horizontal indent per level
+var indentPixels = 20
+
+// art files and sizes for three widget styles
+// (all three widgets must have same height/width)
+var collapsedWidget = "./Images/plus.gif"
+var expandedWidget = "./Images/minus.gif"
+var endpointWidget = "./Images/filler.gif" //was end.gif
+var widgetWidth = 11
+var widgetHeight = 11
+
+
+var db = new Array();
+
+// inputArray[0] is an empty string. The data starts at inputArray[1].
+// Expecting a string with lines of this form:
+// TYPE::DISPLAY::"URL"::HELP
+// where type is 0 (part), 1 (preface, index)), 2 (chapter-level), 
+//               3 (h1), 4 (h2)
+// how to identify document types:
+//   book with parts: if a book has parts, assume it has everything else.
+//   book without parts: as soon as you see a type=2, it's got chapters; 
+//        still look for a part, though
+//   single file document: if you get to the end and never see a type=2, 
+//        then it's a single-file document
+// Check to see if the book has parts or chapters. 
+// The answer determines the depth argument.
+
+var hasParts = false;
+var hasChapters = false;
+var inPrefaceyThing = false;
+var recordCount = 1;
+
+var prevLevel = 0;
+
+
+// Create array object containing outline content and attributes.
+// To adapt outline for your use, modify this table.
+// Start the array with [1], and continue without gaps to your last item.
+// The order of the five parameters:
+//    1. Integer of indentation level (0 is leftmost margin level)
+//    2. String to display in outline entry.
+//    3. URL of link for outline entry; Use empty string ("") for no link
+//    4. Help Message to be displayed')
+
+// THIS DEVEDGE DOCUMENT STARTS HERE
+var documentName = "GPManager";
+
+// AddEntry(level, outline text, url, help
+AddEntry(0, "System Information", "main", "welcome.htm", "General Information of this GP10");
+// AddEntry(0, "GP10 Management Info", "main", "vipercell_mgmt_info.htm", "GP10 Management Information");
+AddEntry(0, "GSM MIB",  "main", "vipercell_gsm_mib.htm", "GP10 GSM MIB");
+
+AddEntry(1, "Cell Configuration Management",  "main", "cell_config_mgmt.htm", "Cell Configuration Management Overview");
+AddEntry(2, "BTS Basic Package",  "main", "bts_basic_package.htm", "BTS Basic Package as defined in GSM spec");
+AddEntry(2, "BTS Cell Allocation Table",  "main", "bts_cell_allocaiton_table.htm", "BTS Cell Allocation Table");
+AddEntry(2, "BTS CCCH Config Package",  "main", "bts_ccch_config_package.htm", "BTS CCCH Config Package");
+AddEntry(2, "BTS Options Package",  "main", "bts_options_package.htm", "BTS Options Package");
+AddEntry(2, "First TRX Package",  "main", "trx1_package.htm", "First Transceiver Package");
+AddEntry(2, "Second TRX Package",  "main", "trx2_package.htm", "Second Transceiver Package");
+AddEntry(2, "First Radio Carrier Package",  "main", "rf1_package.htm", "First Radio Carrier Package");
+AddEntry(2, "Second Radio Carrier Package",  "main", "rf2_package.htm", "Second Radio Carrier Package");
+
+//AddEntry(2, "Frequency Hopping",  "main", "frequency_hopping.htm", "Frequency Hopping Package");
+
+AddEntry(1, "Protocol Configuration Management",  "main", "proto_config_mgmt.htm", "Protocol Configuration Management");
+AddEntry(2, "Layer 2 (LAPDm) Timers", "main",  "layer2_timer.htm", "Layer 2 (LAPDm) Timers");
+AddEntry(2, "Layer 3 (RRM) Timers", "main",  "layer3_timer.htm", "Layer 3 (RRM) Timers");
+AddEntry(2, "Layer 3 (CCM) Timers", "main",  "call_config_data.htm", "Layer 3 (CCM) Timers");
+AddEntry(2, "Handover Timers", "main",  "handover_timer.htm", "Handover Timers");
+AddEntry(2, "CDR Control Timers", "main",  "cdr_timer.htm", "CDR Control Timers");
+
+
+
+AddEntry(1, "Adjacent Cell Configuration Management",  "main", "adjcent_cell_mgmt_overview.htm", "Adjacent Cell Management Overview");
+AddEntry(2, "Adjacent Cell Handover Package",  "main", "adjcell_handover_package.htm", "Adjacent Cell Handover Package");
+AddEntry(2, "Adjacent Cell Reselection Package",  "main", "adjcell_reslection_package.htm", "Adjacent Cell Reselection Package");
+
+//AddEntry(1, "Power Control Management",  "main", "power_control_mgmt_overview.htm", "Power Control Management Overview");
+AddEntry(1, "MS Power Control Parameters",  "main", "power_control_package.htm", "Power Control Package");
+// AddEntry(2, "Power Control Averaging Parameters",  "main", "pc_averaging_parameters.htm", "");
+// AddEntry(2, "Power Control Threshold Parameters",  "main", "pc_threshold_parameters.htm", "");
+
+// AddEntry(1, "Handover Control Management",  "main", "handover_control_mgmt_overview.htm", "Handover Control Management Overview");
+AddEntry(1, "Handover Control General Parameters",  "main", "handover_control_package.htm", "");
+// AddEntry(2, "Handover Averaging Parameters",  "main", "ho_averaging_parameters.htm", "");
+// AddEntry(2, "Handover Threshold Parameters",  "main", "ho_threshold_parameters.htm", "");
+// AddEntry(2, "Handover Interference Averaging Parameters",  "main", "ho_interference_averaging_parameters.htm", "");
+
+AddEntry(1, "Cell Measurement Package",  "main", "cell_measurement_overview.htm", "Cell Measurement Overview");
+AddEntry(2, "Cell Measurement Parameters",  "main", "cell_measurement.htm", "Cell Measurement Parameters");
+AddEntry(2, "Attempted Immediate Assignment Measurement",  "main", "attem_immi_assign.htm", "Attempted Immediate Assignment Procedures per cause");
+AddEntry(2, "Successful Immediate Assignment Measurement", "main", "succ_immi_assi.htm", "Successful Immediate Assignment Measurement per cause");
+
+AddEntry(1, "Call Control Measurement Package",  "main", "call_measurement_overview.htm", "Call Measurement Overview");
+AddEntry(2, "Call Control Measurement Parameters",  "main", "call_control_measurement.htm", "Call Control Measurement Parameters");
+// AddEntry(2, "External Handovers",  "main", "external_handover.htm", "External Handover, per Cause");
+
+//AddEntry(0, "", "", "", "");
+// AddEntry(0, "H323 Mib", "main", "vipercell_h323_overview.htm", "GP10 VoIP MIB overview");
+AddEntry(0, "VoIP Parameters", "main", "h323_parameters.htm", "GP10 VoIP Parameters");
+
+//AddEntry(0, "", "", "", "");
+AddEntry(0, "System Feature Control", "main", "feature_control.htm", "System Feature Configuration");
+
+//AddEntry(0, "", "", "", "");
+// AddEntry(0, "GP10 Config MIB", "main", "vipercell_config_overview.htm", "GP10 Configuration MIB Overview");
+// AddEntry(1, "Call Config Data", "main", "call_config_data.htm", "");
+// AddEntry(1, "Mobility Config Data", "main", "mobility_config_data.htm", "");
+// AddEntry(1, "Radio Resource Config Data", "main", "radio_resource_config_data.htm", "");
+
+//AddEntry(0, "", "", "", "");
+
+AddEntry(0, "GPRS Package", "main", "gprs_overview.htm", "GP10 GPRS Package Overview");
+AddEntry(1, "GPRS Basic Package", "main", "gprs_basic_package.htm", "GPRS Basic Parameters");
+AddEntry(1, "GPRS Option Package", "main", "gprs_options_package.htm", "GPRS Option Parameters");
+AddEntry(1, "GPRS Interface Package", "main", "gprs_interface_overview.htm", "GPRS Interface Parameters");
+AddEntry(2, "RSS Package", "main", "gprs_rss_overview.htm", "RSS Group Parameters");
+AddEntry(3, "RSS Parameter 1", "main", "gprs_interface_rss1.htm", "RSS Parameter 1");
+AddEntry(3, "RSS Parameter 2", "main", "gprs_interface_rss2.htm", "RSS Parameter 2");
+AddEntry(3, "RSS Frequency Table", "main", "gprs_interface_rss_freq_table.htm", "RSS Frequency Table");
+AddEntry(2, "RLCMAC Package", "main", "gprs_interface_rlcmac.htm", "RLCMAC Parameters");
+AddEntry(2, "BSSGP Package", "main", "gprs_interface_bssgp.htm", "BSSGP Parameters");
+AddEntry(1, "GPRS Measurement Package", "main", "gprs_measurement_package.htm", "GPRS Measurement Package");
+
+AddEntry(0, "Maintenance", "main", "maintenance.htm", "GP10 Maintenance Overview");
+AddEntry(1, "User Management", "main", "user_mgmt.htm", "GP10 User Management.");
+AddEntry(1, "Load and Save MIB", "main", "export_import.htm", "Save and Load file to and from a disk file.");
+AddEntry(1, "Reboot GP10", "main", "reboot.htm", "Reboot the GP10");
+AddEntry(1, "Oam Operation Status", "main", "last_error.htm", "Status of Last OAM Oparation");
+AddEntry(1, "Maintenance Command Handler", "main", "mch.htm", "GP10 Maintenance Command Handler Interface");
+AddEntry(1, "CDR Configuration", "main", "ssl_conf.htm", "CDR Configuration for SSL Connection and Password ");	// 06/20/01
+AddEntry(1, "CLI Status", "main", "cli.htm", "Get status and terminate CLI session");
+
+//AddEntry(0, "", "", "", "");
+AddEntry(0, "GP10 Specific MIB", "main", "vipercell_specific.htm", "Overview of GP10 Specific MIB");
+AddEntry(1, "Dual TRX Card", "main", "dual_trx_card.htm", "Dual TRX Card Related Parameters");
+// AddEntry(1, "ARFCN RSS Function", "main", "arfcn_rssi_function.htm", "ARFCN RSS Fuction");
+AddEntry(1, "Clock Card", "main", "clock_card.htm", "Clock Card Related Parameters");
+// AddEntry(1, "GPS Card", "main", "gps_card.htm", "GPS Card Related Parameters");
+AddEntry(1, "Power Supply Status", "main", "power_card.htm", "Power Supply Status");
+// AddEntry(1, "External Power Supply", "main", "external_power_supply.htm", "External Power Supply Related Parameters");
+AddEntry(1, "CDC Board", "main", "cdc_board.htm", "CDC Board Specific Parameters");
+
+// AddEntry(1, "Automatic Parameter Allocation", "main", "apa_overview", "Automatic Paramter Allocation Overview");
+// AddEntry(2, "Automatic Parameter Allocation", "main", "automatic_parameter_allocation", "Automatic Parameter Allocation Parameters");
+// AddEntry(2, "Invalid Frequencies", "main", "apa_invalid_frequency_table", "Automatic Parameter Allocation Invalid Frequencies");
+// AddEntry(2, "Clock Source Frequencies", "main", "apa_clock_source_frequency_table", " Automatic Parameter Allocation Source Frequencies");
+
+//AddEntry(0, "", "", "", "");
+//AddEntry(0, "Test and Diagnostic", "main", "mch.htm", "GP10 Maintenance Command Handler Interface");	// commented out 08/02/01
+//AddEntry(0, "ViperAlarm", "footer", "alarm.htm", "GP10 Alarm Interface");
+AddEntry(0, "ViperAlarm Log", "", "javascript:OpenAlarm()", "Html-based GP10 Alarm Log");
+
+// THIS DEVEDGE DOCUMENT ENDS HERE
+
+
+function AddEntry(level, display, target, url, help)
+{
+
+	db[recordCount++] = new dbRecord(false, level, display, target, url, help);
+   if (recordCount-2 > 0)
+   {
+		db[recordCount-2].mother = (level > prevLevel)
+	}
+
+	prevLevel = level;
+}
+ 
+// object constructor for each outline entry
+function dbRecord(mother, level, display, target, url, help){
+	this.mother = mother   // is this item a parent?
+	this.display = display // text to display
+	this.URL = url         // link tied to text; if empty string, item appears as straight text
+	this.HELP = help	      // Displays balloon help
+	this.indent = level   // how many levels nested?
+	this.target = target   // Target frame
+	return this
+}
+
+// pre-load all images into cache
+var fillerImg = new Image(1,1)
+fillerImg.src = "./Images/filler.gif"
+var collapsedImg = new Image(widgetWidth,widgetHeight)
+collapsedImg.src = collapsedWidget
+var expandedImg = new Image(widgetWidth,widgetHeight)
+expandedImg.src = expandedWidget
+var endpointImg = new Image(widgetWidth,widgetHeight)
+endpointImg.src = endpointWidget
+
+// ** functions that get and set persistent cookie data **
+// set cookie data
+var mycookie = document.cookie
+function setCurrState(setting) {
+   mycookie = document.cookie = "currState=" + escape(setting)
+}
+// retrieve cookie data
+function getCurrState() {
+   var label = "currState="
+   var labelLen = label.length
+   var cLen = mycookie.length
+   var i = 0
+   while (i < cLen) {
+      var j = i + labelLen
+      if (mycookie.substring(i,j) == label) {
+         var cEnd = mycookie.indexOf(";",j)
+         if (cEnd ==     -1) {
+            cEnd = mycookie.length
+         }
+         return unescape(mycookie.substring(j,cEnd))
+      }
+      i++
+   }
+   return ""
+}
+
+// **function that updates persistent storage of state**
+// toggles an outline mother entry, storing new value in the cookie
+function toggle(n) {
+	if (n != 0) {
+		var newString = ""
+		var currState = getCurrState() // of whole outline
+		var expanded = currState.charAt(n-1) // of clicked item
+		newString += currState.substring(0,n-1)
+		newString += expanded ^ 1 // Bitwise XOR clicked item
+		newString += currState.substring(n,currState.length)
+		setCurrState(newString) // write new state back to cookie
+	}
+}
+
+// **functions used in assembling updated outline**
+// returns the proper GIF file name for each entry's control
+function getGIF(n) {
+	var mom = db[n].mother  // is entry a parent?
+	var expanded = getCurrState().charAt(n-1) // of clicked item
+	if (!mom) {
+		return endpointWidget
+	} else {
+		if (expanded == 1) {
+			return expandedWidget
+		}
+	}
+	return collapsedWidget
+}
+
+// returns the proper status line text based on the icon style
+function getGIFStatus(n) {
+	var mom = db[n].mother  // is entry a parent
+	var expanded = getCurrState().charAt(n-1) // of rolled item
+	if (!mom) {
+		return "No further items"
+	} else {
+		if (expanded == 1) {
+			return "Click to collapse nested items"
+		}
+	}
+	return "Click to expand nested items"
+}
+
+// initialize 'current state' storage field
+if (getCurrState() == "" || getCurrState().length != (db.length-1)) {
+	initState = ""
+	for (i = 1; i < db.length; i++) {
+		initState += "0"
+	}
+	setCurrState(initState)
+}
+
+function highlight(obj, color) {
+  orgLinkColor = obj.style.color;
+  obj.style.color=color;
+}
+
+function undoHighlight(obj) {
+  obj.style.color=orgLinkColor;
+}
+
+
+function display(obj, display) {
+  obj.style.display=display;
+}
+
+function displayURL(url, display, help, target)
+{
+	document.write(insertURL(url, display, help, target));
+ 
+}
+
+function insertURL(url, display, help, target)
+{
+	return("<FONT SIZE='-1'> <A target=\"" + target + "\" title=\"" + help + "\" HREF=\"" + url + "\" onMouseOver='highlight(this,linkHilightColor);' onMouseOut='undoHighlight(this);' > " + display + "</A></FONT><BR>")
+}
+
+// end -->
+</SCRIPT>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<SCRIPT LANGUAGE="javascript">
+<!-- start
+// build new outline based on the values of the cookie
+// and data points in the outline data array.
+// This fires each time the user clicks on a control,
+// because the HREF for each one reloads the current document.
+var newOutline = ""
+var prevIndentDisplayed = 0
+var showMyDaughter = 0
+// DOCUMENT NAME IS HERE (DEVEDGE INFO WAS PREVIOUSLY HERE ALSO BUT WAS MOVED TO LATER IN FILE)
+document.write("<NOBR><FONT SIZE=-1><B>" + documentName + "</FONT></B></NOBR><BR>")
+// DOCUMENT NAME ENDS HERE
+// cycle through each entry in the outline array
+for (var i = 1; i < db.length; i++) {
+	var theGIF = getGIF(i)				// get the image
+	var theGIFStatus = getGIFStatus(i)  // get the status message
+	var currIndent = db[i].indent		// get the indent level
+	var expanded = getCurrState().charAt(i-1) // current state
+	// display entry only if it meets one of three criteria
+	if (currIndent == 0 || currIndent <= prevIndentDisplayed || (showMyDaughter == 1 && (currIndent - prevIndentDisplayed == 1))) {
+		newOutline += "<NOBR><IMG SRC=\"./Images/filler.gif\" HEIGHT = 1 WIDTH =" + (indentPixels * currIndent) + ">"
+		newOutline += "<A HREF=\"javascript:history.go(0)\" target=_self title=\"" + theGIFStatus + "\" onMouseOver=\"window.status=\'" + theGIFStatus + "\';return true;\" onClick=\"toggle(" + i + ");return " + (theGIF != endpointWidget) + "\">"
+		newOutline += "<IMG SRC=\"" + theGIF + "\" HEIGHT=" + widgetHeight + " WIDTH=" + widgetWidth + " BORDER=0></A>"		
+
+		if (db[i].HELP == "" || db[i].HELP == null)
+			db[i].HELP = db[i].URL;
+		if (db[i].URL == "" || db[i].URL == null) {
+			newOutline += "  <FONT SIZE='-1'> " + db[i].display + " </FONT> </NOBR><BR>"	// no link, just a listed item	
+		} else {
+			newOutline += insertURL(db[i].URL, db[i].display, db[i].HELP, db[i].target);
+		}
+		prevIndentDisplayed = currIndent
+		showMyDaughter = expanded
+		if (db.length > 25) {
+			document.write(newOutline)
+			newOutline = ""
+		}
+	}
+}
+// document.write(newOutline)
+
+document.write("<HR>")
+// DEVEDGE INFORMATION STARTS HERE
+
+displayURL("http://www.cisco.com/", "Cisco Systems, Inc.", "Cisco Systems, Inc.", "main");
+displayURL("http://www.cisco.com/public/copyright.html", "Important Notices", "Important Notices", "main");
+displayURL("http://www.cisco.com/public/privacy.html", "Privacy Statement", "Privacy Statement", "main");
+
+document.write("<HR>")
+// DEVEDGE INFORMATION ENDS HERE
+document.write("<NOBR><FONT SIZE=-2>If cookies are disabled,</FONT></NOBR><BR>")
+document.write("<NOBR><FONT SIZE=-2>this outline cannot expand.</FONT></NOBR><BR>")
+document.write("<NOBR><FONT SIZE=-2>This frame is resizable.</FONT></NOBR><BR>")
+
+document.write("<FONT SIZE=-2>Last Modified: Aug 21, 2000</FONT></NOBR>")
+
+// end -->
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+StartUp()
+{
+  Init_Target();
+}
+  
+hotmenu Init_Target()
+{
+  *(unsigned int *) 0x1800000=0x3060;
+  *(unsigned int *) 0x1800004=0x40F40323;
+  *(unsigned int *) 0x1800008=0x40;  
+  *(unsigned int *) 0x1800010=0x30;
+  *(unsigned int *) 0x1800014=0x30;
+  *(unsigned int *) 0x1800018=0x7227000;
+  *(unsigned int *) 0x180001c=0x4E1;
+}

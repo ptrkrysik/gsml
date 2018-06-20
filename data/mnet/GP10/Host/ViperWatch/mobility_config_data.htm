@@ -1,0 +1,104 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Parameter</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+
+<SCRIPT Language="JavaScript">
+
+
+function PresetForm(theForm)
+{
+	clickCheckBox(theForm.mm_authenticationRequiredCheck, theForm.mm_authenticationRequired);
+	clickCheckBox(theForm.mm_cipheringRequiredCheck, theForm.mm_cipheringRequired);
+	clickCheckBox(theForm.mm_IMEICheckRequiredCheck, theForm.mm_IMEICheckRequired);
+	return true;
+} 
+
+
+function ParseForm(theForm)
+{	
+	parseCheckBox(theForm.mm_authenticationRequiredCheck, theForm.mm_authenticationRequired);
+	parseCheckBox(theForm.mm_cipheringRequiredCheck, theForm.mm_cipheringRequired);
+	parseCheckBox(theForm.mm_IMEICheckRequiredCheck, theForm.mm_IMEICheckRequired);
+	return true;
+	
+} 
+
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this);" name="mm_config_data">
+
+  <input type="hidden" name="mm_authenticationRequired" value="$%mm_authenticationRequired#$" >
+  <input type="hidden" name="mm_cipheringRequired" value="$%mm_cipheringRequired#$" >
+  <input type="hidden" name="mm_IMEICheckRequired" value="$%mm_IMEICheckRequired#$" >
+
+
+
+<div align="center">
+  <center>
+  <table border="4" bgcolor="#D6D3CE" width="384">
+    <tr>
+      <td width="446">
+    <h2 align="center">Mobility Management Configuration&nbsp; Options</h2>
+        <div align="center">
+          <table border="0" width="368">
+            <tr>
+   <td>Max. #&nbsp; of MM Connections</td>
+   <td><font size="1"><input type="text" name="mm_max_mm_connections"size="6" maxlength="6" value="$%mm_max_mm_connections#$" maxlength="6"></font></td>
+            </tr>
+            <tr>
+   <td>Paging Response Timer<span lang="FR" style="mso-ansi-language:FR"> -T3113<o:p>
+          </o:p>
+   </span></td>
+   <td><font size="1"><input type="text" name="mm_paging_t3113" size="6" maxlength="6" value="$%mm_paging_t3113#$" maxlength="6"></font></td>
+            </tr>
+            <tr>
+   <td>Authentication Required</td>
+   <td><input type="checkbox" name="mm_authenticationRequiredCheck" value="" ></td>
+            </tr>
+            <tr>
+   <td>Ciphering Required<o:p>
+&nbsp;</td>
+   <td><input type="checkbox" name="mm_cipheringRequiredCheck" value="" ></td>
+            </tr>
+            <tr>
+   <td>IMEI Check Required</td>
+   <td><input type="checkbox" name="mm_IMEICheckRequiredCheck" value="" ></td>
+   
+            </tr>
+            <tr>
+   <td height="21" width="236"></td>
+   <td height="21" width="118"></td>
+            </tr>
+          </table>
+        </div>
+
+    <div align="center">
+      <table border="0" cellpadding="3">
+        <tr>
+          <td align="center"><input name="B2" type="submit" value="Submit">  </td>
+          <td align="center">  <input name="Recall1" type="button" value="Recall" onclick="window.location.reload()"></td>
+          <td align="center"><input name="Reset1" type="reset" value="Reset"></td>
+        </tr>
+      </table>
+    </div>
+      </td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+<p align="center">&nbsp;</p>
+
+</form>
+
+</body>
+

@@ -1,0 +1,305 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GPRS Radio Subsystem Link Control Parameters 1</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+
+
+<SCRIPT language="JavaScript">
+
+function PresetForm(theForm)
+{
+	// for TEXT elements
+	theForm.gprsMsTxpwrMaxCch.defaultValue		= 30;
+	theForm.gprsRexLevAccessMin.defaultValue	= 10;
+	theForm.gprsReselectOffset.defaultValue		= 0;
+	theForm.lsaId.defaultValue								= 0;
+	theForm.hcsThreshold.defaultValue					= 0;
+	theForm.gprsPenaltyTime.defaultValue			= 0;
+	theForm.gprsCellReselectHysteresis.defaultValue	= 4;
+	theForm.alpha.defaultValue								= 10;
+	theForm.pB.defaultValue										= 0;
+
+
+	// for select element
+	selectOption(theForm.priorityClassSelect,						theForm.priorityClass);
+	selectOption(theForm.gprsTemporaryOffsetSelect,			theForm.gprsTemporaryOffset);
+	selectOption(theForm.gprsRaReselectHysteresisSelect,theForm.gprsRaReselectHysteresis);
+	selectOption(theForm.c32QualSelect,									theForm.c32Qual);
+	selectOption(theForm.c31HysteresisSelect,						theForm.c31Hysteresis);
+	selectOption(theForm.networkControlOrderSelect,			theForm.networkControlOrder);
+
+
+	return true;
+} 
+
+function ParseForm(theForm)
+{	
+	if (isValidInt(theForm.gprsMsTxpwrMaxCch,0,31)==false)
+		return false;
+	if (isValidInt(theForm.gprsRexLevAccessMin,0,63)==false)
+		return false;
+	if (isValidInt(theForm.gprsReselectOffset,0,31)==false)
+		return false;
+	if (isValidInt(theForm.lsaId,0,65535)==false)
+		return false;
+	if (isValidInt(theForm.hcsThreshold,0,31)==false)
+		return false;
+	if (isValidInt(theForm.gprsPenaltyTime,0,31)==false)
+		return false;
+	if (isValidInt(theForm.gprsCellReselectHysteresis,0,7)==false)
+		return false;
+	if (isValidInt(theForm.alpha,0,10)==false)
+		return false;
+
+	// for select element
+	parseSelect(theForm.priorityClassSelect,						theForm.priorityClass);
+	parseSelect(theForm.gprsTemporaryOffsetSelect,			theForm.gprsTemporaryOffset);
+	parseSelect(theForm.gprsRaReselectHysteresisSelect,	theForm.gprsRaReselectHysteresis);
+	parseSelect(theForm.c32QualSelect,									theForm.c32Qual);
+	parseSelect(theForm.c31HysteresisSelect,						theForm.c31Hysteresis);
+	parseSelect(theForm.networkControlOrderSelect,			theForm.networkControlOrder);
+
+	return true;
+} 
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="gprs_interface_rss1_package">
+
+  <!-- Begin of Hidden Elements -->
+  <input type="hidden" name="priorityClass"							value="$%priorityClass#$">
+  <input type="hidden" name="gprsTemporaryOffset"				value="$%gprsTemporaryOffset#$">
+  <input type="hidden" name="gprsRaReselectHysteresis"	value="$%gprsRaReselectHysteresis#$">
+  <input type="hidden" name="c32Qual"										value="$%c32Qual#$">
+  <input type="hidden" name="c31Hysteresis"							value="$%c31Hysteresis#$">
+  <input type="hidden" name="networkControlOrder"				value="$%networkControlOrder#$">
+  <!-- End of Hidden Elements -->
+  
+  <div align="center">
+    <center>
+    <table width="670" border="4" bgcolor="#D6D3CE" >
+      <tr>
+        <td>
+        <h2 align="center">GPRS Radio Subsystem Link Control Parameters 1</h2>
+        <div align="center">
+          <center>
+          <table border="1" height="345" cellpadding="2">
+            <!-- Text gprsMsTxpwrMaxCch -->
+						<tr>
+						  <td valign="middle" title="The maximum TX power level an MS may use when accessing the system.">
+								MS Tx Pwr Max CCH
+							</td>
+							<td valign="middle" align="left" title="INTEGER (0..31)">
+								<input maxlength="2" name="gprsMsTxpwrMaxCch" size="4" value="$%gprsMsTxpwrMaxCch#$" onchange="return isValidInt(this,0,31);">
+							</td>
+						</tr>
+            <!-- Text gprsRexLevAccessMin -->
+            <tr>
+							<td valign="middle" title="Minimum received signal level at the MS required for access to the system.">
+								Rex Lev Access Min
+							</td>
+							<td valign="middle" align="left" title="INTEGER (0..63)">
+								<input maxlength="2" name="gprsRexLevAccessMin" size="4" value="$%gprsRexLevAccessMin#$" onchange="return isValidInt(this,0,63);">
+							</td>
+            </tr>
+            <!-- Text gprsReselectOffset -->
+						<tr>
+							<td valign="middle" title="Applies an offset and hysteresis to the C32 re-selection criterion. -52, -48,... -12, -10,... 12, 16, ... 48">
+								Reselect Offset
+							</td>
+							<td valign="middle" align="left" title="INTEGER (0..31)">
+								<input maxlength="2" name="gprsReselectOffset" size="4" value="$%gprsReselectOffset#$" onchange="return isValidInt(this,0,31);">
+							</td>
+            </tr>
+						<!-- Select priorityClass -->
+						<tr>
+						<td valign="middle" title="The HCS Priority for the cells.">
+							Priority Class
+						</td>
+						<td valign="middle" align="left" nowrap>
+							<select name="priorityClassSelect" size="1">
+								<option selected value="0">Packet Access is not allowed in the cell.</option>
+								<option value="1">Spare, shall be interpreted as 0</option>
+								<option value="2">Spare, shall be interpreted as 0</option>
+								<option value="3">Packet access is allowed for priority level 1</option>
+								<option value="4">Packet access is allowed for priority level 1 to 2</option>
+								<option value="5">Packet access is allowed for priority level 1 to 3</option>
+								<option value="6">Packet access is allowed for priority level 1 to 4</option>
+								<option value="7">Spare, shall be interpreted as 6</option>
+							</select>
+						</td>
+            </tr>
+						<!-- Text lsaId -->
+            <tr>
+							<td valign="middle" title="The LSA Identities for the cell">
+								LSA Id
+							</td>
+							<td valign="middle" align="left" title="INTEGER(0..65535)">
+								<input maxlength="5" name="lsaId" size="6" value="$%lsaId#$" onchange="return isValidInt(this,0,65535);">
+							</td>
+            </tr>
+						<!-- Text hcsThreshold -->
+            <tr>
+							<td valign="middle" title="HCS signal level threshold -110, -108,..., -48">
+								HCS Threshold
+							</td>
+							<td valign="middle" align="left" title="INTEGER (0..31)">
+								<input maxlength="2" name="hcsThreshold" size="4" value="$%hcsThreshold#$" onchange="return isValidInt(this,0,31);">
+							</td>
+            </tr>
+						<!-- Select gprsTemporaryOffset -->	
+            <tr>
+  						<td valign="middle" title="Applies a negative offset to C32 for the duration of PENALTY_TIME. 0, 10,..., 60 dB, infinity">
+								Temporary Offset
+							</td>
+							<td valign="middle" align="left" nowrap>
+								<select name="gprsTemporaryOffsetSelect" size="1">
+									<option selected value="0">0 dB</option>
+									<option value="1">10 dB</option>
+									<option value="2">20 dB</option>
+									<option value="3">30 dB</option>
+									<option value="4">40 dB</option>
+									<option value="5">50 dB</option>
+									<option value="6">60 dB</option>
+									<option value="7">Infinity</option>
+								</select>
+							</td>
+            </tr>
+						<!-- Text gprsPenaltyTime -->
+            <tr>
+							<td valign="middle" title="Gives the duration for which the temporary offset is applied. 10, 20,..., 320 seconds">
+								Penalty Time
+							</td>
+							<td valign="middle" align="left" title="INTEGER (0..31)">
+								<input maxlength="2" name="gprsPenaltyTime" size="4" value="$%gprsPenaltyTime#$" onchange="return isValidInt(this,0,31);">
+							</td>
+            </tr>
+						<!-- Text gprsCellReselectHysteresis -->
+            <tr>
+							<td valign="middle" title="Additional hysteresis applied in Ready state for cells in the same RA. 0, 2,..., 14 dB">
+								Cell Reselect Hysteresis
+							</td>
+							<td valign="middle" align="left" title="INTEGER (0..7)">
+ 								<input maxlength="1" name="gprsCellReselectHysteresis" size="4" value="$%gprsCellReselectHysteresis#$" onchange="return isValidInt(this,0,7);">
+							</td>
+            </tr>
+						<!-- Select gprsRaReselectHysteresis -->
+            <tr>
+							<td valign="middle" title="Additional hysteresis applied for cells in different RAs. 0, 2,..., 14 dB">
+								RA Reselect Hysteresis
+							</td>
+							<td valign="middle" align="left" nowrap>
+								<select name="gprsRaReselectHysteresisSelect" size="1">
+									<option value="0">0 dB</option>
+									<option value="1">2 dB</option>
+									<option value="2">4 dB</option>
+									<option value="3">6 dB</option>
+									<option selected value="4">8 dB</option>
+									<option value="5">10 dB</option>
+									<option value="6">12 dB</option>
+									<option value="7">14 dB</option>
+								</select>
+							</td>
+            </tr>
+						<!-- Select c32Qual -->
+            <tr>
+							<td valign="middle" title="Flag indicating an exception rule for GPRS_RESELECT_OFFSET.">
+								C32 Qual
+							</td>
+							<td valign="middle" align="left" nowrap>
+								<select name="c32QualSelect" size="1">
+									<option selected value="0">Off</option>
+									<option value="1">On</option>
+								</select>
+							</td>
+
+            </tr>
+						<!-- Select c31Hysteresis -->
+            <tr>
+							<td valign="middle" title="Flag indicating if hysteresis shall be applied to C31.">
+								C31 Hysteresis
+							</td>
+							<td valign="middle" align="left" nowrap>
+								<select name="c31HysteresisSelect" size="1">
+									<option selected value="0">Off</option>
+									<option value="1">On</option>
+								</select>
+							</td>
+            </tr>
+						<!-- Text alpha -->
+            <tr>
+							<td valign="middle" title="This field is a binary representation of the paremeter for MS output Power control in units of 0.1">
+								Alpha
+							</td>
+							<td valign="middle" align="left" title="INTEGER (0..10)">
+								<input maxlength="2" name="alpha" size="4" value="$%alpha#$" onchange="return isValidInt(this,0,10);">
+							</td>
+            </tr>
+						<!-- Text pB -->
+            <tr>
+							<td valign="middle" title="Power reduction used by BTS on PBCCH blocks, relatively to the output power used on BCCH  0, -2,..., -30 dB">
+								Power Reduction on PBCCH
+							</td>
+							<td valign="middle" align="left" title="INTEGER (0..15)">
+								<input maxlength="2" name="pB" size="4" value="$%pB#$" onchange="return isValidInt(this,0,15);">
+							</td>
+            </tr>
+						<!-- Select networkControlOrder -->
+            <tr>
+							<td valign="middle" title="Controls cell re-selection and measurement reporting">
+								Network Control Order
+							</td>
+							<td valign="middle" align="left" nowrap>
+								<select name="networkControlOrderSelect" size="1">
+									<option value="0">NC0: MS controlled cell re-selection, no measurement reporting,</option>
+									<option selected value="1">NC1: MS controlled cell re-selection, MS sends measurement reports</option>
+									<option value="2">Network controlled cell re-selection, MS sends measurement reports</option>
+									<option value="3">Reserved for future use, interpreted as NC0 by mobile station.</option>
+								</select>
+							</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <table height="50" border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        </td>
+      </tr>
+    </table>
+    </center>
+  </div>
+  <p align="center">&nbsp;
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>
+
+
+
+

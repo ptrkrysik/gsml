@@ -1,0 +1,37 @@
+td lapdm_phserver
+td lapdm_dlserver
+
+td mmMain
+td ccMain
+td OrigCall
+td TermCall
+td L1TaskUp
+td L1TaskDn
+td rmTask
+
+
+unld "l1proxy_init.out"
+
+unld "lapdm_init.out"
+unld "mmm_init.out"
+unld "ccm_init.out"
+unld "rm_init.out"
+
+unld "lapdm_api.out"
+unld "rm_api.out"
+
+unld "l1proxy.out"
+unld "lapdm.out"
+unld "ril3.out"
+unld "jcc.out"
+unld "mmm.out"
+unld "ccm.out"
+unld "cc_test.out"
+unld "rm.out"
+
+# Force an update write on the log file.
+
+logFdDelete(logFile)
+
+close(logFile)
+

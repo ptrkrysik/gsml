@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>$%helpTopic#$</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<META content="noIndex, Follow" name=Robots>
+
+<STYLE>BODY {
+	MARGIN: 0px
+}
+</STYLE>
+<script >
+function displayTopic(helpTopic)
+{
+	re = /%20/gi;
+	document.write(helpTopic.replace(re, " "));	
+}
+</script>
+
+</HEAD>
+<BODY aLink=#006699 bgColor=#ffffff link=#006699 vLink=#006699 marginwidth="0" 
+marginheight="0">
+<CENTER>
+<TABLE border=0 cellPadding=3 cellSpacing=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD bgColor=#cccccc vAlign=center width="90%"><B><FONT 
+      face=arial,helvetica size=3>
+<script>
+displayTopic("$%helpTopic#$")
+</script>
+      
+      </FONT></B> </TD>
+    <TD bgColor=#cccccc width=10>&nbsp;&nbsp;&nbsp;</TD>
+    <TD align=right bgColor=#cccccc vAlign=center><A 
+      href="javascript:window.close()"><IMG 
+      alt="Close this window and continue" border=0 height=19 name=sp_close 
+      src="Images/sp_close.gif" vspace=20 width=103></A>
+  <TR>
+    <TD colSpan=3 vAlign=top width=* bgcolor="#FFFFCC"><BR><FONT face=arial,helvetica 
+      size=2><B>$%helpDetail#$</B></FONT> </TD></TR></TBODY></TABLE></CENTER></BODY></HTML>

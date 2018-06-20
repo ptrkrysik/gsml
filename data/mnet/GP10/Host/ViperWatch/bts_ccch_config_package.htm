@@ -1,0 +1,162 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>CCCH Config Package</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+
+<SCRIPT language="JavaScript">
+
+function PresetForm(theForm)
+{
+	selectOption(theForm.maxNumberRetransmissionsSelect, theForm.maxNumberRetransmissions);
+	clickCheckBox(theForm.cellBarQualify, theForm.rm_nim_0_6);
+	return true;
+}
+
+function ParseForm(theForm)
+{
+	parseSelect(theForm.maxNumberRetransmissionsSelect, theForm.maxNumberRetransmissions);
+	parseCheckBox(theForm.cellBarQualify, theForm.rm_nim_0_6);
+	theForm.noOfBlocksForAccessGrant.value = "0";
+
+	return true;
+}
+
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this);" name="bts_ccch_config">
+
+  <input type="HIDDEN" name="maxNumberRetransmissions" value="$%maxNumberRetransmissions#$">
+  <input type="HIDDEN" name="rm_nim_0_6" value="$%rm_nim_0_6#$">
+  
+  <h2 align="center">&nbsp;</h2>
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="441">
+      <tr>
+        <td width="503">
+        <h2 align="center">BTS CCCH Configuration Package</h2>
+              <div align="center">
+                <table border="1" width="352" height="230">
+                  <tr>
+                    <td width="267"
+                    title="Maximum number of retransmissions a MS may perform on the RACH. Refer to Specification GSM 05.08 (MAX_RETRAN)." height="21">Max. Number
+                    Retransmission</td>
+                    <td width="71" height="21"><select name="maxNumberRetransmissionsSelect" size="1">
+                      <option value="1" selected>1</option>
+                      <option value="2">2</option>
+                      <option value="4">4</option>
+                      <option value="7">7</option>
+                    </select></td>
+                  </tr>
+                  <tr>
+                    <td width="267"
+                    title="The maximum transmit power level a MS may use when accessing the cell until commanded otherwise. See Specification GSM 05.08 (MS_TXPWR_MAX_CCH). This parameter is also used in order to evaluate the path loss criterion parameter (C1) of a cell. See Specification GSM 05.08.">MS
+                    Tx Power Max CCH</font></td>
+                    <td width="71" title="TxPower ::= INTEGER
+-- Value in dBm
+-- TXPWR range in GSM 900:  5..39 dBm
+-- TXPWR range in DCS 1800: 0..30 dBm
+-- TXPWR range in PCS 1900: 0..33 dBm" height="23">
+
+                  <input type="text" name="mSTxPwrMaxCCH" size="2" value="$%mSTxPwrMaxCCH#$" maxlength="2"
+                    onchange="return isValidTxPower(this, $%gsmdcsIndicator#$);"></td>
+                  </tr>
+                  <tr>
+                    <td width="267"
+                    title="The number of TDMA frames reserved for the Access Grant channel during a period of 51 TDMA frames (a multiframe). Only a value of zero is supported at this time. For details refer to pecification GSM 05.02." height="23">No.
+                    of Blocks for Access Grant</td>
+                    <td width="71" title="Integer(0..0)" height="23"><input type="text" name="noOfBlocksForAccessGrant" size="1"
+                    value="$%noOfBlocksForAccessGrant#$" maxlength="1" onchange="return isValidInt(this,0,0);"></td>
+                  </tr>
+                  <tr>
+                    <td width="267"
+                    title="The number of multiframes (51 frames) between two transmissions of the same paging message to mobiles of the same paging group." height="23">No.
+                    of Multi-frames Between Paging</td>
+                    <td width="71" title="Integer(2..9)" height="23"><input type="text" name="noOfMultiframesBetweenPaging" size="1"
+                    value="$%noOfMultiframesBetweenPaging#$" maxlength="1" onchange="return isValidInt(this,2,9);"></td>
+                  </tr>
+                  <tr>
+                    <td width="267"
+                    title="Represents the maximum number of RACH slots a MS must wait, after an unsuccessful random access attempt, before a new random access. The value is coded as an integer in the range 0 to 15." height="23">No.
+                    of Slots Spread Trans (Tx Integer)</td>
+                    <td width="71" title="Integer(0..15)" height="23"><input type="text" name="numberOfSlotsSpreadTrans" size="2"
+                    value="$%numberOfSlotsSpreadTrans#$" maxlength="2" onchange="return isValidInt(this,0,15);"></td>
+                  </tr>
+                  <tr>
+              <td height="23"
+              title="Applies an offset to the C2 reselection criterion. (see CELL_RESELECT_OFFSETin GSM 05.08)."
+              width="359">
+              <p align="left">Cell Reselect Offset</p>
+              </td>
+              <td height="23"
+               title="Integer(0-63) (in 2 dB steps)
+Accepted values 0 to 126 dB, i.e. 0 = 0 dB, 1 = 2 dB, etc."
+                    width="53"><input type="text" name="rm_nim_0_3" size="2"
+                    value="$%rm_nim_0_3#$" maxlength="2" onchange="return isValidInt(this,0,63);"></td>
+                  </tr>
+                  <tr>
+              <td height="23" align="left"
+              title="Applies a negative offset to C2 for the duration of PENALTY_TIME."        
+              width="359">
+              <p align="left">Temporary Offset</p>
+              </td>
+              <td height="23" align="left" title="Integer(0..7) in 10 dB steps.
+Accepted values 0 to 60 dB, i.e. 0 = 0 dB, 1 = 10 dB, etc. and 7 = infinity" width="53"><input type="text" name="rm_nim_0_4" size="2"
+                    value="$%rm_nim_0_4#$" maxlength="2" onchange="return isValidInt(this,0,7);"></td>
+                  </tr>
+                  <tr>
+              <td height="23" align="left"
+              title="Gives the duration for which the temporary offset is applied. "
+              width="359">Penalty Offset</td>
+              <td height="23" align="left" title="RxLev ::= INTEGER (0..31)  (in 20 sec steps)
+Accepted values from 20 to 620 second, i.e. 0 = 20 s, 1 = 40 s, etc. 
+31 is reserved to indicate that CELL_RESELECT_OFFSET is subtracted from C2 and TEMPORARY_OFFSET is ignored." 
+
+					  width="53"><input type="text" name="rm_nim_0_5" size="2"
+                    value="$%rm_nim_0_5#$" maxlength="2" onchange="return isValidInt(this,0,31);"></td>
+                  </tr>
+                  <tr>
+              <td height="23" align="left"
+              title="Specifies whether cell bar qualifies for this cell"
+              width="359">Cell Bar Qualify?</td>
+              <td height="23" align="left" title="Check if Cell bar qualify applies to this GP10" 
+				  width="53"><input type="checkbox" name="cellBarQualify"></td>
+                  </tr>
+                </table>
+              </div>
+        <div align="center">
+          <table border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+        </div>
+        </td>
+      </tr>
+    </table>
+    </center>
+  </div>
+</form>
+
+</body>

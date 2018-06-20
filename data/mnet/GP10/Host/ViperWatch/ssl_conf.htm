@@ -1,0 +1,132 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>CDR Configuration</title>
+</head>
+<script language="JavaScript"
+src="js/form.js"></script>
+<script>
+
+function PresetForm(theForm)
+{
+	clickCheckBox(theForm.ClientSslEnable, theForm.cdrClientSSLEnable);	// MIB var cdrClientSSLEnable
+	
+	if (theForm.ClientSslEnable.checked)
+	{
+		theForm.SslPassword.disabled = false;
+	}
+	else
+	{
+		theForm.SslPassword.disabled = true;
+	}
+
+	return true;
+} 
+
+function ParseForm(theForm)
+{
+	parseCheckBox(theForm.ClientSslEnable, theForm.cdrClientSSLEnable);	
+	return true;
+} 
+
+
+function ClientSslEnableClickHandler(theElem)
+{
+	var bSslPassDisabled = theElem.form.SslPassword.disabled;
+	
+	if (theElem.checked)		// enable Client SSL password
+	{
+		theElem.form.SslPassword.disabled = false;
+	}
+	else						// disable Client SSL password
+	{
+		theElem.form.SslPassword.disabled = true;
+	}
+}
+
+
+
+function writeSslGroup()
+{
+	var EncryptEnabled = document.forms[0].SslCapability.value;
+
+	if (EncryptEnabled == 1)
+	{
+		CheckBoxOrHidden = "checkbox";
+		PasswordOrHidden = "password";
+	}
+	else
+	{
+		CheckBoxOrHidden = "hidden";
+		PasswordOrHidden = "hidden";
+	}
+
+	document.write("<tr>");
+	document.write("<td align='RIGHT' width='169'>");
+	document.write("<input type='" +  CheckBoxOrHidden + "' name='ClientSslEnable' OnClick='ClientSslEnableClickHandler(this);' value='ON'>");
+	document.write("</td>");
+	if (EncryptEnabled == 1)
+		document.write("<td width='319'>Enable SSL connection between GP10 and GMC");
+	document.write("</td>");
+	document.write("</tr>");
+
+	document.write("<tr>");
+	if (EncryptEnabled == 1)
+		document.write("<td align='RIGHT' width='169'><b>SSL Password</b>");
+	document.write("</td>");
+	document.write("<td width='319'><input type='" + PasswordOrHidden + "' name='SslPassword'  MAXLENGTH='60' size='20'	value='$%SslPassword#$'  onFocus=\"if (this.disabled) {alert(\'SSL is not enabled\'); blur(); }\"> ");
+	document.write("</td>");
+	document.write("</tr>");
+	
+	if (EncryptEnabled != 1)
+	{
+		document.write("<tr>");
+		document.write("<td colspan='2' align='center'><h3>This system does not have SSL capability.</h3>");
+		document.write("</tr>");
+	}
+	return;
+}
+
+</script>
+
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" onsubmit="return ParseForm(this)">
+	<input type="hidden"  name="cdrClientSSLEnable" value="$%cdrClientSSLEnable#$">
+    <input type="hidden" name="SslCapability" value="$%SslCapability#$">
+
+	<table bgcolor="#D6D3CE" align="CENTER" border="4" width="549">
+		<tr>
+			<td width="533"><div align="center"><center><h2>CDR Configuration </h2></center></div>
+			
+				<table align="CENTER" width="496">
+					<script> writeSslGroup()</script>
+				</table>
+      
+				<table border="0" width="387">
+					<tr>
+						<td width="379" align="CENTER"><blink><font color="#0000FF" size="1" face="Times New Roman">
+							Changes made on this page will only be effective after the reboot of GMC.</font></blink>
+						</td>
+					</tr>
+				</table>
+      
+				<table align="CENTER">
+					<tr>
+						<td><input type="submit" value=" Submit " title="Click this button to commit the change.">
+						</td>
+						<td><input type="button" value=" Recall " onclick="window.location.reload()" title="Click this button to refresh the form."> 
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

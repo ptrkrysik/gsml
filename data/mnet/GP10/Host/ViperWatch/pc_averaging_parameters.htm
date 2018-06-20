@@ -1,0 +1,379 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Handover Control Package</title>
+</head>
+<SCRIPT >
+
+function clickButton(theRadio, valueHolder)
+{
+	if (valueHolder.value != 0 && valueHolder.value != 1)
+	{ 
+		window.alert("Incorrect MIB value for " + valueHolder.name + "  "+ valueHolder.value + "Corrected to 0");
+		valueHolder.value = 0;
+	}
+	
+	for (var i = 0; i < theRadio.length; i++)
+	{
+		if (theRadio[i].value == valueHolder.value) 
+		{
+			theRadio[i].click();
+			break;
+		}
+	}
+}
+
+function selectOption(theSelect, valueHolder)
+{
+	if (valueHolder.value < 0 && valueHolder.value >= theSelect.length)
+	{ 
+		window.alert("Incorrect MIB value for " + valueHolder.name + "  "+ valueHolder.value + "Corrected to 0");
+		valueHolder.value = 0;
+	}
+	for (var i = 0; i < theSelect.length; i++)
+	{
+		if (theSelect.options[i].value == valueHolder.value) 
+		{
+			theSelect.options[i].selected = true;
+			break;
+		}
+	}
+			
+}
+
+function clickCheckBox(theCheckBox)
+{
+	
+	// window.alert("length " + theCheckBox.length );
+	for (var i = 0; i < theCheckBox.length; i++)
+	{
+		if (!((theCheckBox[i].value == 0) || (theCheckBox[i].checked)) ) 
+		{
+			theCheckBox[i].click();
+		}
+	}
+			
+}
+
+
+
+function presetButtons(theForm)
+{
+	selectOption(theForm.pcAveragingLevWeightingSelect, theForm.pcAveragingLevWeighting);
+	selectOption(theForm.pcAveragingQualWeightingSelect, theForm.pcAveragingQualWeighting);
+return true;
+} 
+
+function parseRadio(radioButton, valueHolder)
+{
+	for (var i = 0; i < radioButton.length; i++)
+	{
+		if (radioButton[i].checked)
+		{
+			valueHolder.value = radioButton[i].value;
+			break;
+		}
+	}
+}
+	
+function parseSelect(theSelect, valueHolder)
+{
+	for (var i = 0; i < theSelect.length; i++)
+	{
+		if (theSelect.options[i].selected) 
+		{
+			valueHolder.value = theSelect.options[i].value;
+			break;
+		}
+	}
+}
+function parseButtons(theForm)
+{
+	parseSelect(theForm.pcAveragingLevWeightingSelect, theForm.pcAveragingLevWeighting);
+	parseSelect(theForm.pcAveragingQualWeightingSelect, theForm.pcAveragingQualWeighting);
+	return true;
+} 
+</SCRIPT>
+
+<body onload="presetButtons(this.document.forms[0]);$%reloadTopframe#$">
+
+<!--webbot BOT="GeneratedScript" PREVIEW=" " startspan --><script Language="JavaScript"><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+  if (theForm.pcAveragingLevHreqave.value == "")
+  {
+    alert("Please enter a value for the \"Handover Averaging Level Hreqave\" field.");
+    theForm.pcAveragingLevHreqave.focus();
+    return (false);
+  }
+
+  if (theForm.pcAveragingLevHreqave.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Handover Averaging Level Hreqave\" field.");
+    theForm.pcAveragingLevHreqave.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcAveragingLevHreqave.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Handover Averaging Level Hreqave\" field.");
+    theForm.pcAveragingLevHreqave.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Handover Averaging Level Hreqave\" field.");
+    theForm.pcAveragingLevHreqave.focus();
+    return (false);
+  }
+
+  if (theForm.pcAveragingLevHreqt.value == "")
+  {
+    alert("Please enter a value for the \"Handover Averaging Level  Hreqt\" field.");
+    theForm.pcAveragingLevHreqt.focus();
+    return (false);
+  }
+
+  if (theForm.pcAveragingLevHreqt.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Handover Averaging Level  Hreqt\" field.");
+    theForm.pcAveragingLevHreqt.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcAveragingLevHreqt.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Handover Averaging Level  Hreqt\" field.");
+    theForm.pcAveragingLevHreqt.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Handover Averaging Level  Hreqt\" field.");
+    theForm.pcAveragingLevHreqt.focus();
+    return (false);
+  }
+
+  if (theForm.pcAveragingQualHreqave.value == "")
+  {
+    alert("Please enter a value for the \"Handover Averaging Signal Quality Hreqave\" field.");
+    theForm.pcAveragingQualHreqave.focus();
+    return (false);
+  }
+
+  if (theForm.pcAveragingQualHreqave.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Handover Averaging Signal Quality Hreqave\" field.");
+    theForm.pcAveragingQualHreqave.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcAveragingQualHreqave.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Handover Averaging Signal Quality Hreqave\" field.");
+    theForm.pcAveragingQualHreqave.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Handover Averaging Signal Quality Hreqave\" field.");
+    theForm.pcAveragingQualHreqave.focus();
+    return (false);
+  }
+
+  if (theForm.pcAveragingQualHreqt.value == "")
+  {
+    alert("Please enter a value for the \"Handover Averaging Quality Hreqt\" field.");
+    theForm.pcAveragingQualHreqt.focus();
+    return (false);
+  }
+
+  if (theForm.pcAveragingQualHreqt.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"Handover Averaging Quality Hreqt\" field.");
+    theForm.pcAveragingQualHreqt.focus();
+    return (false);
+  }
+
+  var checkOK = "0123456789-";
+  var checkStr = theForm.pcAveragingQualHreqt.value;
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    allNum += ch;
+  }
+  if (!allValid)
+  {
+    alert("Please enter only digit characters in the \"Handover Averaging Quality Hreqt\" field.");
+    theForm.pcAveragingQualHreqt.focus();
+    return (false);
+  }
+
+  var chkVal = allNum;
+  var prsVal = parseInt(allNum);
+  if (chkVal != "" && !(prsVal >= "0" && prsVal <= "31"))
+  {
+    alert("Please enter a value greater than or equal to \"0\" and less than or equal to \"31\" in the \"Handover Averaging Quality Hreqt\" field.");
+    theForm.pcAveragingQualHreqt.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot BOT="GeneratedScript" endspan --><form method="POST" onsubmit="return FrontPage_Form1_Validator(this)" name="FrontPage_Form1">
+
+<div align="center">
+ <center>
+ <table border="0" cellpadding="0" cellspacing="0" height="280" width="407">
+  <tr>
+   <th valign="top" height="36" width="383" align="center"><font size="4">Power Control Averaging Parameters</font></th>
+  </tr>
+  <tr>
+   <td valign="top" height="125" width="383" align="center">
+
+   <div align="center">
+    <center>
+    <table border="1" cellspacing="1" width="411">
+     <tr>
+      <th colspan="2" height="15" width="401">
+       <p align="center">Level Parameters (Signal Strength)</th>
+     </tr>
+     <tr>
+      <td height="22" width="208">Hreqave</td>
+      <td height="22" width="187"><!--webbot bot="Validation" S-Display-Name="Handover Averaging Level Hreqave" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="pcAveragingLevHreqave" size="2" value="$%pcAveragingLevHreqave#$" maxlength="2"></td>
+     </tr>
+     <tr>
+      <td height="30" width="208">Hreqt</td>
+      <td height="30" width="187"><!--webbot bot="Validation" S-Display-Name="Handover Averaging Level  Hreqt" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="pcAveragingLevHreqt" size="2" value="$%pcAveragingLevHreqt#$" maxlength="2"></td>
+     </tr>
+     <tr>
+      <td height="24" width="208">Weighting</td>
+      <td height="24" width="187"><select size="1" name="pcAveragingLevWeightingSelect">
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+      </select></td>
+     </tr>
+     <input type="hidden" name="pcAveragingLevWeighting" value="$%pcAveragingLevWeighting#$">
+    </table>
+    </center>
+   </div>
+
+   </td>
+  </tr>
+  <tr>
+   <td align="center" valign="top" height="10" width="383">
+   <table border="1" height="104" width="408">
+    <tr>
+     <th colspan="2" height="8" align="left" width="398">
+      <p align="center">Quality&nbsp; Parameters (Signal Quality)</th>
+    </tr>
+    <tr>
+     <td height="24" align="left" width="210">Hreqave</td>
+     <td height="24" align="left" width="182"><!--webbot bot="Validation" S-Display-Name="Handover Averaging Signal Quality Hreqave" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="pcAveragingQualHreqave" size="2" value="$%pcAveragingQualHreqave#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td height="24" align="left" width="210">Hreqt</td>
+     <td height="24" align="left" width="182"><!--webbot bot="Validation" S-Display-Name="Handover Averaging Quality Hreqt" S-Data-Type="Integer" S-Number-Separators="x" B-Value-Required="TRUE" I-Maximum-Length="2" S-Validation-Constraint="Greater than or equal to" S-Validation-Value="0" S-Validation-Constraint="Less than or equal to" S-Validation-Value="31" --><input type="text" name="pcAveragingQualHreqt" size="2" value="$%pcAveragingQualHreqt#$" maxlength="2"></td>
+    </tr>
+    <tr>
+     <td height="24" align="left" width="210">Weighting</td>
+     <td height="24" align="left" width="182"><select size="1" name="pcAveragingQualWeightingSelect">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+     </select></td>
+     <input type="hidden" name="pcAveragingQualWeighting" value="$%pcAveragingQualWeighting#$">
+
+    </tr>
+   </table>
+   </td>
+  </tr>
+ </table>
+ </center>
+</div>
+
+<p align="center"><input name="B1" type="submit" value="Submit" onclick="parseButtons(window.document.forms[0])">   <input name="Recall" type="button" value="Recall" onclick="window.location.reload()"> <input name="Reset" type="reset" value="Reset" onclick="presetButtons(window.document.forms[0])"> </p>
+</form>
+
+</body>
+
+</html>

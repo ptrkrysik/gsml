@@ -1,0 +1,92 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Latest OAM Operation Status</title>
+</head>
+
+<SCRIPT >
+function displayStatus(theStatus)
+{
+
+	document.write( "<B>");
+	switch (theStatus)
+	{
+		case "1": 
+			document.write( "<font color='#FF00FF'> IN PROGESS </font>");
+			break;
+		case "2": 
+			document.write( "SUCCESSFUL");
+			break;
+		case "3": 
+			document.write( "<font color='#FF0000'> FAILED </font>");
+			break;
+		default:
+			document.write( "NIL");
+			break;
+	}
+	document.write( "</B>");
+	
+}
+
+</SCRIPT>
+
+<body onload="$%reloadTopframe#$">
+
+<h2 align="left">&nbsp;</h2>
+<div align="center">
+  <center>
+  <table border="4" bgcolor="#D6D3CE" width="557">
+    <tr>
+      <td width="541">
+      <h2 align="center">Latest OAM Operation Status</h2>
+      <div align="center">
+        <table border="0" width="82%">
+          <tr>
+            <td width="100%">
+            <div align="left">
+              <table border="1" cellpadding="3">
+                <tr>
+                  <td align="right">Latest OAM Operation Status:</td>
+                  <td align="left">  <SCRIPT language="JavaScript"> displayStatus("$%oamCommandExecutionStatus#$"); </SCRIPT>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="right">Latest Error:</td>
+                  <td align="left"><font color="#FF0000">&nbsp;$%oamCommandLastError#$</font></td>
+                </tr>
+              </table>
+            </div>
+            <p>Note: The &quot;Latest Error&quot; is a system error which occurred during the processing of a previously originated OAM operation.&nbsp; If there is no error at any OAM operation,
+            the error string is not changed.</p>
+            <p>Please click<a href="javascript:history.go(-1)" title="Click to gack to the previous page.  This operation will not reload the page">
+            here</a> to go back to the previous page.</td>
+          </tr>
+        </table>
+      </div>
+      <div align="center">
+        <table border="0" cellpadding="3">
+          <tr>
+            <td align="center"></td>
+          </tr>
+          <tr>
+            <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+            title="Click this button to refresh the form."></td>
+          </tr>
+          <tr>
+            <td align="center"></td>
+          </tr>
+        </table>
+      </div>
+      </center>
+    </td>
+  </tr>
+  </table>
+</div>
+<h2 align="left">&nbsp;</h2>
+<p>&nbsp;</p>
+
+</body>

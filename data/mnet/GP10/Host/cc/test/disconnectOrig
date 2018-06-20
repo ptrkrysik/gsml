@@ -1,0 +1,17 @@
+#Disconnect Originator
+
+# Disconnect to CC - O
+#      Soft Mobile Index         L1L2Prim  PD        Msg. Type
+fromMS(origSoftMobIndex,         4,        3,        0x25)
+
+# Release Complete to CC - O
+#      Soft Mobile Index         L1L2Prim  PD        Msg. Type
+fromMS(origSoftMobIndex,         4,        3,        0x2a)
+
+# Make sure that all resource data is back in idle state
+
+tmmPrint
+
+tccPrint
+
+irtDataPrint

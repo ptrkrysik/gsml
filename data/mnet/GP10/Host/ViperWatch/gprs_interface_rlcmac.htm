@@ -1,0 +1,128 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GPRS Radio Link Control Parameters</title>
+</head>
+
+<SCRIPT language="JavaScript" src="./js/form.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="./js/integer.js"></SCRIPT>
+
+
+
+<SCRIPT language="JavaScript">
+
+function PresetForm(theForm)
+{
+	// for TEST elements
+	theForm.t3169.defaultValue	= 5;
+	theForm.t3191.defaultValue	= 5;
+	theForm.t3193.defaultValue	= 3;
+	theForm.t3195.defaultValue	= 5;
+
+	return true;
+} 
+
+function ParseForm(theForm)
+{	
+	return true;
+} 
+
+</SCRIPT>
+
+<body onload="PresetForm(this.document.forms[0]);$%reloadTopframe#$">
+
+<form method="POST" cellpadding="0" onsubmit="return ParseForm(this)" name="gprs_interface_rlcmac">
+  <div align="center">
+    <center>
+    <table border="4" bgcolor="#D6D3CE" width="440">
+      <tr>
+        <td >
+        <h2 align="center">GPRS Radio Link Control Parameters</h2>
+        <div align="center">
+          <center>
+          <table border="1" cellpadding="2">
+						<!-- Text t3169 -->
+            <tr>
+              <td width="120" valign="middle" title="Wait for Reuse of USF and TFI after the mobile station 
+uplink assignment is invalid.Defines when the current 
+uplink assignment is surely invalid on the mobile station 
+side so that the assigned USF(s) and TFI can be reused on 
+the uplink. During that period the corresponding USF(s) is 
+not broadcast.">
+									T3169
+								</td>
+              <td width="120" valign="middle" align="left" title="INTEGER (1..30)">
+								<input name="t3169" value="$%t3169#$" maxlength="2" size="4" onchange="return isValidInt(this,1,30);"></td>
+            </tr>
+
+						<!-- Text t3191 -->
+            <tr>
+              <td valign="middle" title="Wait for reuse of TFI after sending of the last RLC Data 
+BlockDefines when the current assignment is surely invalid 
+on the mobile station side so that the TFI can be reused.">
+									T3191
+								</td>
+              <td valign="middle" align="left" title="INTEGER (1..30)">
+								<input name="t3191" value="$%t3191#$" maxlength="2" size="4" onchange="return isValidInt(this,1,30);"></td>
+            </tr>
+
+						<!-- Text t3193 -->
+            <tr>
+              <td valign="middle" title="Wait for reuse of TFI after reception of the final Packet 
+Downlink Ack/Nack from the mobile station.Defines when 
+timer T3192 on the mobile station side has surely expired 
+so that the TFI can be reused.">
+									T3193
+								</td>
+              <td valign="middle" align="left" title="INTEGER (0..65535)">
+								<input name="t3193" value="$%t3193#$" maxlength="5" size="5" onchange="return isValidInt(this,0,65535);"></td>
+            </tr>
+
+						<!-- Text t3195 -->
+            <tr>
+              <td valign="middle" title="Wait for reuse of TFI when there is no response from 
+the MS (radio failure or cell change)Defines when the 
+current assignment is surely invalid on the mobile 
+station side so that the TFI can be reused.">
+									T3195
+								</td>
+              <td valign="middle" align="left" title="INTEGER (1..30)">
+								<input name="t3195" value="$%t3195#$" maxlength="2" size="4" onchange="return isValidInt(this,1,30);"></td>
+            </tr>
+
+          </table>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <table height="50" border="0" cellpadding="3">
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+            <tr>
+              <td align="center"><input name="B1" type="submit" value="Submit" title="Click this button to commit the change."></td>
+              <td align="center"><input name="Recall" type="button" value="Recall" onclick="window.location.reload()"
+              title="Click this button to refresh the form."></td>
+            </tr>
+            <tr>
+              <td align="center"></td>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        </td>
+      </tr>
+    </table>
+    </center>
+  </div>
+  <p align="center">&nbsp;
+  <p align="center">&nbsp;</p>
+</form>
+
+</body>
+

@@ -1,0 +1,101 @@
+#
+# load all the module-init files (with global variables)
+#
+ld < K:/Workdirs/integration/l1proxy/I80486/l1proxy_init.out
+ld < K:/Workdirs/integration/lapdm/I80486/lapdm_init.out
+ld < K:/Workdirs/integration/mm/I80486/mmm_init.out
+ld < K:/Workdirs/integration/cc/I80486/ccm_init.out
+ld < K:/Workdirs/integration/rm/I80486/rm_init.out
+
+#
+# load all the module-api files (used by other modules)
+#
+ld < K:/Workdirs/integration/lapdm/I80486/lapdm_api.out
+ld < K:/Workdirs/integration/rm/I80486/rm_api.out
+
+#
+# load all the core module files next
+#
+ld < K:/Workdirs/integration/l1proxy/I80486/l1proxy.out
+ld < K:/Workdirs/integration/lapdm/I80486/lapdm.out
+ld < K:/Workdirs/integration/ril3/I80486/ril3.out
+ld < K:/Workdirs/integration/jcc/I80486/jcc.out
+ld < K:/Workdirs/integration/mm/I80486/mmm.out
+ld < K:/Workdirs/integration/cc/I80486/ccm.out
+ld < K:/Workdirs/integration/cc/I80486/cc_test.out
+ld < K:/Workdirs/integration/rm/I80486/rm.out
+
+
+#
+# Initialization of all modules
+#
+CNI_LAPDM_Initialization 
+
+#
+# Ready-to-send scheme: 1 means LAPDm will remember the RTS and will not require
+# L1 to send RTS all the times. 0 means use the standard way, L1 needs to send up
+# RTS all the times. LAPDm will not cache the RTS. 0 is the default.
+# 
+cni_lapdm_enable_rts_caching = 1
+# cni_lapdm_enable_rts_caching = 0
+
+#cni_testInit
+
+#create a lapdm instance channel type 0, trx 0, channel num 1, link 1
+#CNI_LAPDM_Create_Instance(0, 0 , 0x2000, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x2800, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x3000, 0)
+#CNI_LAPDM_Create_Instance(0, 0 , 0x3800, 0)
+
+
+#L3 register a lapdm instance oid 0, sapi 0, layer3_id 10, and a call back function
+#CNI_LAPDM_Instance_Registration(0, 0, 0x20, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(1, 0, 0x28, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(2, 0, 0x30, cni_l3CallBack)
+#CNI_LAPDM_Instance_Registration(3, 0, 0x38, cni_l3CallBack)
+
+# MD debugging dump.	0 (disable) or 1 (enable)
+CNI_RIL3MD_EnableDebug = 0
+
+# Start MM Task and print its data
+mmInit
+mmDataPrint
+
+# Start CC Task and print its data
+ccInit
+ccDataPrint
+
+# Initialize the IRT Table
+CNI_RIL3_IRT_Init
+
+# Start RRM Task
+rm_Task
+
+# Start the Orig and Term Soft Mobiles
+#                LUDB Index for Terminating Mobile
+origSoftMobStart(0                                )
+termSoftMobStart()
+
+# load dsp coff file
+pBlkDev = ramDevCreate(0, 512, 2000, 2000, 0)
+dosFsMkfs("/RAM1", pBlkDev)
+pwd
+#copy " K:/Workdirs/integration/dsp/Dsp.out","/RAM1/Dsp.out"
+#copy "integration/dsp/hpitest.out","/RAM1/dsp.out"
+# 
+initL1
+newInitDsp
+newGo
+
+# Send logs to a file under pre-alpha
+# open the log file
+logFile = open("K:/Workdirs/integration/Pre-Alpha/mmcc-log.txt", 2, 0)
+# Go to the end to append the new logs
+lseek(logFile, 0, 2)
+# Set the file as the new log file
+logFdSet(logFile)
+
+#
+i
+
+
